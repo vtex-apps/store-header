@@ -1,0 +1,12 @@
+{
+  "pages": {
+    "header": {
+      "path": "/_v/header"
+    }
+  },
+  "extensions": {
+    "header": {
+      "component": "Header"
+    }
+  }
+}

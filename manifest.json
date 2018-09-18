@@ -1,0 +1,24 @@
+{
+  "vendor": "vtex",
+  "name": "header",
+  "version": "1.0.0",
+  "title": "VTEX Header",
+  "defaultLocale": "pt-BR",
+  "description": "The VTEX Header component",
+  "builders": {
+    "react": "2.x"
+  },
+  "mustUpdateAt": "2019-04-02",
+  "categories": [],
+  "registries": [
+    "smartcheckout"
+  ],
+  "settingsSchema": {},
+  "scripts": {
+    "postreleasy": "vtex publish --verbose"
+  },
+  "dependencies": {
+    "vtex.store": "1.x",
+    "vtex.styleguide": "6.x"
+  }
+}
