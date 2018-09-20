@@ -19,7 +19,7 @@ class TopMenu extends Component {
 
   renderLogo(mobileMode, logoUrl, logoTitle) {
     return (
-      <div className="vtex-top-menu__logo w-20-m flex justify-start">
+      <div className="vtex-top-menu__logo flex justify-start">
         <Link to="/" className="outline-0">
           <ExtensionPoint
             id="logo"
@@ -82,7 +82,7 @@ class TopMenu extends Component {
         'fixed shadow-5 top-0 z-999': fixed,
       }
     )
-    const contentClasses = 'w-100 w-90-m w-80-xl center flex justify-center pb4 pv2-m pv6-l ph3-s ph7-m ph6-xl'
+    const contentClasses = 'w-100 w-90-l center flex justify-center pb4 pv2-m pv6-l ph3-s ph7-m ph6-xl'
     return (
       <ReactResizeDetector handleWidth>
         {
@@ -91,7 +91,7 @@ class TopMenu extends Component {
             return (
               <div className={containerClasses}>
                 <div className={contentClasses}>
-                  <div className="flex flex-wrap w-100 justify-between-m items-center">
+                  <div className="flex-wrap flex-nowrap-ns flex w-100 justify-between-m items-center">
                     {mobileMode && this.renderMobileMenu()}
                     {this.renderLogo(mobileMode, logoUrl, logoTitle)}
                     {this.renderSearchBar(mobileMode)}
