@@ -19,7 +19,7 @@ class TopMenu extends Component {
 
   renderLogo(mobileMode, logoUrl, logoTitle) {
     return (
-      <div className="vtex-top-menu__logo flex justify-start">
+      <div className="vtex-top-menu__logo flex justify-start w-25-m w-30-l">
         <Link to="/" className="outline-0">
           <ExtensionPoint
             id="logo"
@@ -41,7 +41,7 @@ class TopMenu extends Component {
 
   renderSearchBar(mobileMode) {
     return (
-      <div className={`vtex-top-menu__search-bar flex pa2-m w-100 w-30-m ${mobileMode ? 'order-2' : 'order-1'}`}>
+      <div className={`vtex-top-menu__search-bar flex pa2-m w-100 w-50-m w-40-l ${mobileMode ? 'order-2' : 'order-1'}`}>
         <ExtensionPoint
           id="search-bar"
           placeholder={this.translate('search-placeholder')}
@@ -53,7 +53,9 @@ class TopMenu extends Component {
 
   renderIcons(mobileMode) {
     return (
-      <div className={`vtex-top-menu__icons flex justify-end items-center ${mobileMode ? 'order-1 ml-auto' : 'order-2'}`}>
+      <div className={
+        `vtex-top-menu__icons flex justify-end items-center w-25-m w-30-l ${mobileMode ? 'order-1 ml-auto' : 'order-2'}`
+      }>
         <div className="mr7-m">
           <ExtensionPoint
             id="login"
