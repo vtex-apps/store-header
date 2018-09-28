@@ -77,12 +77,12 @@ class TopMenu extends Component {
   render() {
     const { logoUrl, logoTitle, fixed } = this.props
     const containerClasses = classNames(
-      'vtex-top-menu flex justify-center w-100 bg-white',
+      'vtex-top-menu vtex-page-padding flex justify-center w-100 bg-white',
       {
         'fixed shadow-5 top-0 z-999': fixed,
       }
     )
-    const contentClasses = 'w-100 w-90-l center flex justify-center pb4 pv2-m pv6-l ph3-s ph7-m ph6-xl'
+    const contentClasses = 'w-100 center flex justify-center pb4 pv2-m pv6-l ph3-s ph7-m ph6-xl'
     return (
       <ReactResizeDetector handleWidth>
         {
