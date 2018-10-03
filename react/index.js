@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
+import hoistNonReactStatics from 'hoist-non-react-statics'
 
 import Modal from './components/Modal'
 import TopMenu from './components/TopMenu'
@@ -72,7 +73,7 @@ class Header extends Component {
       <Fragment>
         <ExtensionPoint id="telemarketing" />
         <div
-          className="vtex-header relative z-2 w-100"
+          className="vtex-header relative z-2 w-100 bb bw1 b--light-gray"
           ref={this._root}
         >
           <div className="z-2 items-center w-100 top-0 bg-white tl">
@@ -111,8 +112,7 @@ class Header extends Component {
   }
 }
 
-const HeaderIntl = orderFormConsumer(injectIntl(Header))
-HeaderIntl.schema = {
+Header.schema = {
   title: 'editor.header.title',
   description: 'editor.header.description',
   type: 'object',
@@ -127,4 +127,4 @@ HeaderIntl.schema = {
   },
 }
 
-export default HeaderIntl
+export default hoistNonReactStatics(orderFormConsumer(injectIntl(Header)), Header) 

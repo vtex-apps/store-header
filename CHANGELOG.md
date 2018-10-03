@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - `Header` schema to display the logo uploaded by the user.
+### Removed
+- `Header` box-shadow.
 
 ## [1.0.1] - 2018-09-20
 ### Fixed
