@@ -111,4 +111,20 @@ class Header extends Component {
   }
 }
 
-export default orderFormConsumer(injectIntl(Header))
+const orderForm = orderFormConsumer(injectIntl(Header))
+orderForm.schema = {
+  title: 'editor.header.title',
+  description: 'editor.header.description',
+  type: 'object',
+  properties: {
+    logoUrl: {
+      type: 'string',
+      title: 'editor.header.logo.title',
+      widget: {
+        'ui:widget': 'image-uploader',
+      },
+    },
+  },
+}
+
+export default orderForm
