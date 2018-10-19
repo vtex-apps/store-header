@@ -54,7 +54,7 @@ class Header extends Component {
       this.setState({
         showMenuPopup: false,
       })
-    } else if (scroll >= scrollHeight) {
+    } else if (scroll >= scrollHeight && !this.state.showMenuPopup) {
       this.setState({
         showMenuPopup: true,
       })
