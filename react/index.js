@@ -1,13 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { injectIntl, intlShape } from 'react-intl'
 import hoistNonReactStatics from 'hoist-non-react-statics'
 
 import Modal from './components/Modal'
 import TopMenu from './components/TopMenu'
 
 import { Alert } from 'vtex.styleguide'
-import { ExtensionPoint } from 'render'
+import { ExtensionPoint, withRuntimeContext } from 'render'
 
 import {
   orderFormConsumer,
@@ -25,8 +24,10 @@ class Header extends Component {
     name: PropTypes.string,
     logoUrl: PropTypes.string,
     logoTitle: PropTypes.string,
-    intl: intlShape.isRequired,
     orderFormContext: contextPropTypes,
+    runtime: PropTypes.shape({
+      page: PropTypes.string,
+    })
   }
 
   _root = React.createRef()
@@ -61,8 +62,10 @@ class Header extends Component {
   }
 
   render() {
-    const { logoUrl, logoTitle, orderFormContext } = this.props
+    const { logoUrl, logoTitle, orderFormContext, runtime: { page } } = this.props
     const { showMenuPopup } = this.state
+
+    const isInCheckout = page && page.startsWith('store/checkout')
 
     const offsetTop = (this._root.current && this._root.current.offsetTop) || 0
 
@@ -79,9 +82,9 @@ class Header extends Component {
           <div className="z-2 items-center w-100 top-0 bg-white tl">
             <ExtensionPoint id="menu-link" />
           </div>
-          <TopMenu logoUrl={logoUrl} logoTitle={logoTitle} />
-          <ExtensionPoint id="category-menu" />
-          {showMenuPopup && (
+          <TopMenu logoUrl={logoUrl} logoTitle={logoTitle} isInCheckout={isInCheckout} />
+          {!isInCheckout && <ExtensionPoint id="category-menu" />}
+          {!isInCheckout && showMenuPopup && (
             <Modal>
               <TopMenu
                 logoUrl={logoUrl}
@@ -127,4 +130,4 @@ Header.schema = {
   },
 }
 
-export default hoistNonReactStatics(orderFormConsumer(injectIntl(Header)), Header) 
+export default hoistNonReactStatics(orderFormConsumer(withRuntimeContext(Header)), Header) 

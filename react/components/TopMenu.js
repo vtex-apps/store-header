@@ -77,11 +77,12 @@ class TopMenu extends Component {
   }
 
   render() {
-    const { logoUrl, logoTitle, fixed } = this.props
+    const { logoUrl, logoTitle, fixed, isInCheckout } = this.props
     const containerClasses = classNames(
       'vtex-top-menu flex justify-center w-100 bg-white',
       {
         'fixed bw1 bb b--light-gray top-0 z-999': fixed,
+        'checkout': isInCheckout,
       }
     )
     const contentClasses = 'w-100 w-90-l center flex justify-center pb4 pv2-m pv6-l ph3-s ph7-m ph6-xl'
@@ -96,8 +97,8 @@ class TopMenu extends Component {
                   <div className="flex-wrap flex-nowrap-ns flex w-100 justify-between-m items-center">
                     {mobileMode && this.renderMobileMenu()}
                     {this.renderLogo(mobileMode, logoUrl, logoTitle)}
-                    {this.renderSearchBar(mobileMode)}
-                    {this.renderIcons(mobileMode)}
+                    {!isInCheckout && this.renderSearchBar(mobileMode)}
+                    {!isInCheckout && this.renderIcons(mobileMode)}
                   </div>
                 </div>
               </div>
@@ -114,6 +115,7 @@ TopMenu.propTypes = {
   logoTitle: PropTypes.string,
   intl: intlShape.isRequired,
   fixed: PropTypes.bool,
+  isInCheckout: PropTypes.bool,
 }
 
 TopMenu.defaultProps = {
