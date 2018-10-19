@@ -79,9 +79,9 @@ class Header extends Component {
           className="vtex-header relative z-2 w-100 bb bw1 b--light-gray"
           ref={this._root}
         >
-          <div className="z-2 items-center w-100 top-0 bg-white tl">
+          {!isInCheckout && <div className="z-2 items-center w-100 top-0 bg-white tl">
             <ExtensionPoint id="menu-link" />
-          </div>
+          </div>}
           <TopMenu logoUrl={logoUrl} logoTitle={logoTitle} isInCheckout={isInCheckout} />
           {!isInCheckout && <ExtensionPoint id="category-menu" />}
           {!isInCheckout && showMenuPopup && (
