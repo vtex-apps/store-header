@@ -25,6 +25,7 @@ class Header extends Component {
     name: PropTypes.string,
     logoUrl: PropTypes.string,
     logoTitle: PropTypes.string,
+    leanMode: PropTypes.bool,
     intl: intlShape.isRequired,
     orderFormContext: contextPropTypes,
   }
@@ -61,7 +62,7 @@ class Header extends Component {
   }
 
   render() {
-    const { logoUrl, logoTitle, orderFormContext } = this.props
+    const { logoUrl, logoTitle, leanMode, orderFormContext } = this.props
     const { showMenuPopup } = this.state
 
     const offsetTop = (this._root.current && this._root.current.offsetTop) || 0
@@ -79,13 +80,14 @@ class Header extends Component {
           <div className="z-2 items-center w-100 top-0 bg-white tl">
             <ExtensionPoint id="menu-link" />
           </div>
-          <TopMenu logoUrl={logoUrl} logoTitle={logoTitle} />
-          <ExtensionPoint id="category-menu" />
+          <TopMenu logoUrl={logoUrl} logoTitle={logoTitle} leanMode={leanMode}/>
+          {!leanMode && <ExtensionPoint id="category-menu" />}
           {showMenuPopup && (
             <Modal>
               <TopMenu
                 logoUrl={logoUrl}
                 logoTitle={logoTitle}
+                leanMode={leanMode}
                 fixed
               />
             </Modal>
@@ -123,7 +125,7 @@ Header.schema = {
       widget: {
         'ui:widget': 'image-uploader',
       },
-    },
+    }
   },
 }
 
