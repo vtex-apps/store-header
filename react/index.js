@@ -32,6 +32,11 @@ class Header extends Component {
     orderFormContext: contextPropTypes,
   }
 
+  /** Determines an unmatching regex for default behavior of the leanMode */
+  static defaultProps = {
+    leanWhen: 'a^'
+  }
+
   _root = React.createRef()
 
   componentDidMount() {
@@ -48,7 +53,9 @@ class Header extends Component {
   verifyModeByPage = (page) => {
     const { leanWhen } = this.props
     const { lastPage } = this.state
-    if (!leanWhen || page === lastPage) return 
+    console.log('leanWhen', leanWhen)
+
+    if (page === lastPage) return 
 
     const acceptedPaths = new RegExp(leanWhen)
     this.setState({leanMode: acceptedPaths.test(page), lastPage: page})
