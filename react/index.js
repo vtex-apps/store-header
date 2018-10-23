@@ -42,12 +42,16 @@ class Header extends Component {
 
   componentDidUpdate() {
     const { runtime: { page: currentPage }} = this.props
+    this.verifyModeByPage(currentPage)
+  }
+
+  verifyModeByPage = (page) => {
     const { leanWhen } = this.props
     const { lastPage } = this.state
-    if (!leanWhen || currentPage === lastPage) return 
+    if (!leanWhen || page === lastPage) return 
 
     const acceptedPaths = new RegExp(leanWhen)
-    this.setState({leanMode: acceptedPaths.test(currentPage), lastPage: currentPage})
+    this.setState({leanMode: acceptedPaths.test(page), lastPage: page})
   }
 
   componentWillUnmount() {
