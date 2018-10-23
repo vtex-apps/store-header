@@ -19,13 +19,15 @@ import './global.css'
 class Header extends Component {
   state = {
     showMenuPopup: false,
+    leanMode: false,
+    lastPathname: null
   }
 
   static propTypes = {
     name: PropTypes.string,
     logoUrl: PropTypes.string,
     logoTitle: PropTypes.string,
-    leanMode: PropTypes.bool,
+    leanWhen: PropTypes.string,
     intl: intlShape.isRequired,
     orderFormContext: contextPropTypes,
   }
@@ -36,6 +38,16 @@ class Header extends Component {
     document.addEventListener('scroll', this.handleScroll)
 
     this.handleScroll()
+  }
+
+  componentDidUpdate() {
+    const { leanWhen } = this.props
+    const { lastPathname } = this.state
+    const pathname = window.location.pathname || ""
+    if (!leanWhen || pathname === lastPathname) return 
+
+    const acceptedPaths = new RegExp(leanWhen)
+    this.setState({leanMode: acceptedPaths.test(pathname), lastPathname: pathname})
   }
 
   componentWillUnmount() {
@@ -62,8 +74,8 @@ class Header extends Component {
   }
 
   render() {
-    const { logoUrl, logoTitle, leanMode, orderFormContext } = this.props
-    const { showMenuPopup } = this.state
+    const { logoUrl, logoTitle, orderFormContext } = this.props
+    const { showMenuPopup, leanMode } = this.state
 
     const offsetTop = (this._root.current && this._root.current.offsetTop) || 0
 
