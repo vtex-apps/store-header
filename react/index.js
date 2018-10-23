@@ -19,7 +19,7 @@ import './global.css'
 class Header extends Component {
   state = {
     showMenuPopup: false,
-    leanMode: false,
+    leanMode: true,
     lastPage: null
   }
 
