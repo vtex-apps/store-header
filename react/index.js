@@ -7,7 +7,7 @@ import Modal from './components/Modal'
 import TopMenu from './components/TopMenu'
 
 import { Alert } from 'vtex.styleguide'
-import { ExtensionPoint } from 'render'
+import { ExtensionPoint, withRuntimeContext } from 'render'
 
 import {
   orderFormConsumer,
@@ -20,7 +20,7 @@ class Header extends Component {
   state = {
     showMenuPopup: false,
     leanMode: false,
-    lastPathname: null
+    lastPage: null
   }
 
   static propTypes = {
@@ -41,13 +41,13 @@ class Header extends Component {
   }
 
   componentDidUpdate() {
+    const { runtime: { page: currentPage }} = this.props
     const { leanWhen } = this.props
-    const { lastPathname } = this.state
-    const pathname = window.location.pathname || ""
-    if (!leanWhen || pathname === lastPathname) return 
+    const { lastPage } = this.state
+    if (!leanWhen || currentPage === lastPage) return 
 
     const acceptedPaths = new RegExp(leanWhen)
-    this.setState({leanMode: acceptedPaths.test(pathname), lastPathname: pathname})
+    this.setState({leanMode: acceptedPaths.test(currentPage), lastPage: currentPage})
   }
 
   componentWillUnmount() {
@@ -141,4 +141,4 @@ Header.schema = {
   },
 }
 
-export default hoistNonReactStatics(orderFormConsumer(injectIntl(Header)), Header) 
+export default withRuntimeContext(hoistNonReactStatics(orderFormConsumer(injectIntl(Header)), Header)) 
