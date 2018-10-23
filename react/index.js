@@ -53,7 +53,6 @@ class Header extends Component {
   verifyModeByPage = (page) => {
     const { leanWhen } = this.props
     const { lastPage } = this.state
-    console.log('leanWhen', leanWhen)
 
     if (page === lastPage) return 
 
