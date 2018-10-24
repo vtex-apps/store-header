@@ -7,11 +7,11 @@ import Modal from './components/Modal'
 import TopMenu from './components/TopMenu'
 
 import { Alert } from 'vtex.styleguide'
-import { ExtensionPoint } from 'render'
+import { ExtensionPoint, withRuntimeContext } from 'render'
 
 import {
   orderFormConsumer,
-  contextPropTypes,
+  contextPropTypes
 } from 'vtex.store/OrderFormContext'
 
 import './global.css'
@@ -19,14 +19,21 @@ import './global.css'
 class Header extends Component {
   state = {
     showMenuPopup: false,
+    leanMode: true
   }
 
   static propTypes = {
     name: PropTypes.string,
     logoUrl: PropTypes.string,
     logoTitle: PropTypes.string,
+    leanWhen: PropTypes.string,
     intl: intlShape.isRequired,
-    orderFormContext: contextPropTypes,
+    orderFormContext: contextPropTypes
+  }
+
+  /** Determines an unmatching regex for default behavior of the leanMode */
+  static defaultProps = {
+    leanWhen: 'a^'
   }
 
   _root = React.createRef()
@@ -35,6 +42,15 @@ class Header extends Component {
     document.addEventListener('scroll', this.handleScroll)
 
     this.handleScroll()
+  }
+
+  isLeanMode = () => {
+    const {
+      leanWhen,
+      runtime: { page }
+    } = this.props
+    const acceptedPaths = new RegExp(leanWhen)
+    return acceptedPaths.test(page)
   }
 
   componentWillUnmount() {
@@ -51,11 +67,11 @@ class Header extends Component {
 
     if (scroll < scrollHeight && this.state.showMenuPopup) {
       this.setState({
-        showMenuPopup: false,
+        showMenuPopup: false
       })
     } else if (scroll >= scrollHeight) {
       this.setState({
-        showMenuPopup: true,
+        showMenuPopup: true
       })
     }
   }
@@ -64,6 +80,7 @@ class Header extends Component {
     const { logoUrl, logoTitle, orderFormContext } = this.props
     const { showMenuPopup } = this.state
 
+    const leanMode = this.isLeanMode()
     const offsetTop = (this._root.current && this._root.current.offsetTop) || 0
 
     const hasMessage =
@@ -79,13 +96,18 @@ class Header extends Component {
           <div className="z-2 items-center w-100 top-0 bg-white tl">
             <ExtensionPoint id="menu-link" />
           </div>
-          <TopMenu logoUrl={logoUrl} logoTitle={logoTitle} />
-          <ExtensionPoint id="category-menu" />
+          <TopMenu
+            logoUrl={logoUrl}
+            logoTitle={logoTitle}
+            leanMode={leanMode}
+          />
+          {!leanMode && <ExtensionPoint id="category-menu" />}
           {showMenuPopup && (
             <Modal>
               <TopMenu
                 logoUrl={logoUrl}
                 logoTitle={logoTitle}
+                leanMode={leanMode}
                 fixed
               />
             </Modal>
@@ -121,10 +143,12 @@ Header.schema = {
       type: 'string',
       title: 'editor.header.logo.title',
       widget: {
-        'ui:widget': 'image-uploader',
-      },
-    },
-  },
+        'ui:widget': 'image-uploader'
+      }
+    }
+  }
 }
 
-export default hoistNonReactStatics(orderFormConsumer(injectIntl(Header)), Header) 
+export default withRuntimeContext(
+  hoistNonReactStatics(orderFormConsumer(injectIntl(Header)), Header)
+)

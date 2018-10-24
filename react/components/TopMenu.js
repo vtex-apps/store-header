@@ -34,8 +34,9 @@ class TopMenu extends Component {
   }
 
   renderMobileMenu() {
+    const { leanMode } = this.props
     return (
-      <ExtensionPoint id="category-menu" mobileMode />
+      !leanMode && <ExtensionPoint id="category-menu" mobileMode />
     )
   }
 
@@ -52,6 +53,7 @@ class TopMenu extends Component {
   }
 
   renderIcons(mobileMode) {
+    const { leanMode } = this.props
     return (
       <div className={
         `vtex-top-menu__icons flex justify-end items-center w-25-m w-30-l ${mobileMode ? 'order-1 ml-auto' : 'order-2'}`
@@ -65,19 +67,20 @@ class TopMenu extends Component {
             iconLabel={!mobileMode ? this.translate('topMenu.login.icon.label') : ''}
           />
         </div>
-        <ExtensionPoint
+        {!leanMode && <ExtensionPoint
           id="minicart"
           iconClasses="gray"
           iconSize={mobileMode ? MINICART_ICON_SIZE_MOBILE : MINICART_ICON_SIZE_DESKTOP}
           iconLabel={!mobileMode ? this.translate('topMenu.minicart.icon.label') : ''}
           labelClasses="gray"
-        />
+        />}
       </div>
     )
   }
 
   render() {
-    const { logoUrl, logoTitle, fixed } = this.props
+    const { logoUrl, logoTitle, leanMode, fixed } = this.props
+
     const containerClasses = classNames(
       'vtex-top-menu flex justify-center w-100 bg-white',
       {
@@ -96,7 +99,7 @@ class TopMenu extends Component {
                   <div className="flex-wrap flex-nowrap-ns flex w-100 justify-between-m items-center">
                     {mobileMode && this.renderMobileMenu()}
                     {this.renderLogo(mobileMode, logoUrl, logoTitle)}
-                    {this.renderSearchBar(mobileMode)}
+                    {!leanMode && this.renderSearchBar(mobileMode)}
                     {this.renderIcons(mobileMode)}
                   </div>
                 </div>
@@ -112,6 +115,7 @@ class TopMenu extends Component {
 TopMenu.propTypes = {
   logoUrl: PropTypes.string,
   logoTitle: PropTypes.string,
+  leanMode: PropTypes.bool,
   intl: intlShape.isRequired,
   fixed: PropTypes.bool,
 }
