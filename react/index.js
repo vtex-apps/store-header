@@ -26,7 +26,6 @@ class Header extends Component {
     name: PropTypes.string,
     logoUrl: PropTypes.string,
     logoTitle: PropTypes.string,
-    leanWhen: PropTypes.string,
     intl: intlShape.isRequired,
     orderFormContext: contextPropTypes
   }
@@ -42,15 +41,6 @@ class Header extends Component {
     document.addEventListener('scroll', this.handleScroll)
 
     this.handleScroll()
-  }
-
-  isLeanMode = () => {
-    const {
-      leanWhen,
-      runtime: { page }
-    } = this.props
-    const acceptedPaths = new RegExp(leanWhen)
-    return acceptedPaths.test(page) || this.state.leanMode
   }
 
   componentWillUnmount() {
@@ -84,13 +74,14 @@ class Header extends Component {
 
   render() {
     const { logoUrl, logoTitle, orderFormContext } = this.props
-    const { showMenuPopup } = this.state
+    const { showMenuPopup, leanMode } = this.state
 
-    const leanMode = this.isLeanMode()
     const offsetTop = (this._root.current && this._root.current.offsetTop) || 0
 
     const hasMessage =
       orderFormContext.message.text && orderFormContext.message.text !== ''
+
+    console.log(leanMode)
 
     return (
       <Fragment>
