@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Header using vtex-page-padding class instead of tachyons ph6-xl, ph7-m, ph3-s, w-90-l.
 
 ## [1.2.1] - 2018-10-25
 
