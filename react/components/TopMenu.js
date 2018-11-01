@@ -87,7 +87,7 @@ class TopMenu extends Component {
         'fixed bw1 bb b--light-gray top-0 z-999': fixed,
       }
     )
-    const contentClasses = 'w-100 w-90-l center flex justify-center pb4 pv2-m pv6-l ph3-s ph7-m ph6-xl'
+    const contentClasses = 'vtex-page-padding w-100 center flex justify-center pb4 pv2-m pv6-l'
     return (
       <ReactResizeDetector handleWidth>
         {
