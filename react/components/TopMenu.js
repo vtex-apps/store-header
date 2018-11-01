@@ -111,9 +111,9 @@ class TopMenu extends Component {
     const { logoUrl, logoTitle, leanMode, fixed } = this.props
     const { searchActive } = this.state
     const containerClasses = classNames(
-      'vtex-top-menu flex justify-center w-100 bg-white',
+      'vtex-top-menu flex justify-center w-100 bg-base',
       {
-        'vtex-top-menu-fixed fixed bw1 bb b--light-gray top-0 z-999': fixed,
+        'vtex-top-menu-fixed fixed bw1 bb b--muted-4 top-0 z-999': fixed,
       },
       {
         'vtex-top-menu-static': !fixed,

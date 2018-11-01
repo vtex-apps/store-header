@@ -9,7 +9,7 @@ import { ExtensionPoint, withRuntimeContext } from 'render'
 
 import {
   orderFormConsumer,
-  contextPropTypes
+  contextPropTypes,
 } from 'vtex.store/OrderFormContext'
 
 import './global.css'
@@ -17,7 +17,7 @@ import './global.css'
 class Header extends Component {
   state = {
     showMenuPopup: false,
-    leanMode: true
+    leanMode: true,
   }
 
   static propTypes = {
@@ -29,11 +29,14 @@ class Header extends Component {
     orderFormContext: contextPropTypes,
     showSearchBar: PropTypes.bool,
     showLogin: PropTypes.bool,
+    runtime: PropTypes.shape({
+      page: PropTypes.string,
+    }),
   }
 
   /** Determines an unmatching regex for default behavior of the leanMode */
   static defaultProps = {
-    leanWhen: 'a^'
+    leanWhen: 'a^',
   }
 
   _root = React.createRef()
@@ -47,7 +50,7 @@ class Header extends Component {
   isLeanMode = () => {
     const {
       leanWhen,
-      runtime: { page }
+      runtime: { page },
     } = this.props
     const acceptedPaths = new RegExp(leanWhen)
     return acceptedPaths.test(page)
@@ -96,10 +99,10 @@ class Header extends Component {
       <Fragment>
         <ExtensionPoint id="telemarketing" />
         <div
-          className={`vtex-header relative z-2 w-100 bb bw1 b--light-gray ${leanMode ? 'vtex-header-lean-mode' : ''}`}
+          className={`vtex-header relative z-2 w-100 bb bw1 b--muted-4 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
           ref={this._root}
         >
-          <div className="z-2 items-center w-100 top-0 bg-white tl">
+          <div className="z-2 items-center w-100 top-0 bg-base tl">
             <ExtensionPoint id="menu-link" />
           </div>
           <TopMenu {...topMenuOptions} />
@@ -138,7 +141,7 @@ Header.schema = {
       type: 'string',
       title: 'editor.header.logo.title',
       widget: {
-        'ui:widget': 'image-uploader'
+        'ui:widget': 'image-uploader',
       }
     },
     showSearchBar: {
