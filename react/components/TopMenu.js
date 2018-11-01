@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { intlShape, injectIntl } from 'react-intl'
 import { ExtensionPoint, Link } from 'render'
+import { Button, IconSearch } from 'vtex.styleguide'
+
 import classNames from 'classnames'
 import ReactResizeDetector from 'react-resize-detector'
 
@@ -13,6 +15,8 @@ const MINICART_ICON_SIZE_MOBILE = 23
 const MINICART_ICON_SIZE_DESKTOP = 30
 const LOGIN_ICON_SIZE_MOBILE = 23
 const LOGIN_ICON_SIZE_DESKTOP = 30
+const SEARCH_ICON_SIZE_MOBILE = 20
+const SEARCH_ICON_SIZE_DESKTOP = 30
 
 class TopMenu extends Component {
   translate = id => this.props.intl.formatMessage({ id: `header.${id}` })
@@ -49,20 +53,24 @@ class TopMenu extends Component {
     />
     return showSearchBar && (
       <div className={`vtex-top-menu__search-bar flex pa2-m w-100 w-50-m w-40-l ${mobileMode ? 'order-2' : 'order-1'}`}>
-        {mobileMode ? (mobileMode && !fixed) && searchBar : searchBar}
+        {mobileMode ? !fixed && searchBar : searchBar}
       </div>
     )
   }
 
   renderIcons(mobileMode) {
-    const { leanMode, showLogin, fixed } = this.props
+    const { leanMode, fixed, showLogin } = this.props
+    const { searchActive } = this.state
 
     return (
       <div className={
         `vtex-top-menu__icons flex justify-end items-center w-25-m w-30-l ${mobileMode ? 'order-1 ml-auto' : 'order-2'}`
       }>
         <div className="mr7-m">
-       {showLogin && <ExtensionPoint
+          {(mobileMode && fixed) && showLogin && <Button icon variation="tertiary">
+            <IconSearch size={mobileMode ? SEARCH_ICON_SIZE_MOBILE : SEARCH_ICON_SIZE_DESKTOP} color="gray" />
+          </Button>}
+          <ExtensionPoint
             id="login"
             iconClasses="gray"
             labelClasses="gray"
@@ -93,12 +101,13 @@ class TopMenu extends Component {
         'vtex-top-menu-static' : !fixed,
       }
     )
-    const contentClasses = 'w-100 w-90-l center flex justify-center pb4 pv2-m pv6-l ph3-s ph7-m ph6-xl'
     return (
       <ReactResizeDetector handleWidth>
         {
           width => {
             const mobileMode = width < 640 || (global.__RUNTIME__.hints.mobile && (!width || width < 640))
+            const contentClasses = `w-100 w-90-l center flex justify-center  ${mobileMode & !fixed ? 'pb4' : ''}  pv2-m pv6-l ph3-s ph7-m ph6-xl`
+
             return (
               <div className={containerClasses}>
                 <div className={contentClasses}>
