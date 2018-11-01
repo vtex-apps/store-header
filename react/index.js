@@ -22,6 +22,7 @@ class Header extends Component {
 
   static propTypes = {
     name: PropTypes.string,
+    linkUrl: PropTypes.string,
     logoUrl: PropTypes.string,
     logoTitle: PropTypes.string,
     leanWhen: PropTypes.string,
@@ -78,7 +79,7 @@ class Header extends Component {
   }
 
   render() {
-    const { logoUrl, logoTitle, orderFormContext, showSearchBar, showLogin } = this.props
+    const { linkUrl, logoUrl, logoTitle, orderFormContext, showSearchBar, showLogin } = this.props
     const { showMenuPopup } = this.state
 
     const leanMode = this.isLeanMode()
@@ -88,6 +89,7 @@ class Header extends Component {
       orderFormContext.message.text && orderFormContext.message.text !== ''
 
     const topMenuOptions = {
+      linkUrl,
       logoUrl,
       logoTitle,
       leanMode,

@@ -22,10 +22,10 @@ class TopMenu extends Component {
   state = { searchActive: false }
   translate = id => this.props.intl.formatMessage({ id: `header.${id}` })
 
-  renderLogo(mobileMode, logoUrl, logoTitle) {
+  renderLogo(mobileMode, linkUrl, logoUrl, logoTitle) {
     return (
       <div className="vtex-top-menu__logo flex justify-start w-20-m w-25-l mw4 mw5-ns">
-        <Link to="/" className="outline-0">
+        <Link to={linkurl} className="outline-0">
           <ExtensionPoint
             id="logo"
             url={logoUrl}
@@ -113,7 +113,7 @@ class TopMenu extends Component {
   }
 
   render() {
-    const { logoUrl, logoTitle, leanMode, fixed } = this.props
+    const { linkUrl, logoUrl, logoTitle, leanMode, fixed } = this.props
     const { searchActive } = this.state
     const containerClasses = classNames(
       'vtex-top-menu flex justify-center w-100 bg-base',
@@ -135,7 +135,7 @@ class TopMenu extends Component {
                 <div className={contentClasses}>
                   <div className="flex-wrap flex-nowrap-ns flex w-100 justify-between-m items-center">
                     {!searchActive && mobileMode && this.renderMobileMenu()}
-                    {!searchActive && this.renderLogo(mobileMode, logoUrl, logoTitle)}
+                    {!searchActive && this.renderLogo(mobileMode, linkUrl, logoUrl, logoTitle)}
                     {!searchActive && !leanMode && this.renderSearchBar(mobileMode)}
                     {!searchActive && this.renderIcons(mobileMode)}
                     {(searchActive && this.renderMobileSearchBar(searchActive))}
@@ -151,6 +151,7 @@ class TopMenu extends Component {
 }
 
 TopMenu.propTypes = {
+  linkUrl: PropTypes.string,
   logoUrl: PropTypes.string,
   logoTitle: PropTypes.string,
   showSearchBar: PropTypes.bool,
@@ -164,6 +165,7 @@ TopMenu.defaultProps = {
   fixed: false,
   showSearchBar: true,
   showLogin: true,
+  linkUrl: "/"
 }
 
 export default injectIntl(TopMenu)
