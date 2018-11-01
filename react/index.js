@@ -50,7 +50,7 @@ class Header extends Component {
       runtime: { page }
     } = this.props
     const acceptedPaths = new RegExp(leanWhen)
-    return acceptedPaths.test(page)
+    return acceptedPaths.test(page) || this.state.leanMode
   }
 
   componentWillUnmount() {
@@ -74,6 +74,12 @@ class Header extends Component {
         showMenuPopup: true
       })
     }
+  }
+
+  toggleLeanMode = () => {
+    this.setState({
+      leanMode: !this.state.leanMode
+    })
   }
 
   render() {
@@ -100,6 +106,7 @@ class Header extends Component {
             logoUrl={logoUrl}
             logoTitle={logoTitle}
             leanMode={leanMode}
+            toggleLeanMode={this.toggleLeanMode.bind(this)}
           />
           {!leanMode && <ExtensionPoint id="category-menu" />}
           {showMenuPopup && (
@@ -108,6 +115,7 @@ class Header extends Component {
                 logoUrl={logoUrl}
                 logoTitle={logoTitle}
                 leanMode={leanMode}
+                toggleLeanMode={this.toggleLeanMode.bind(this)}
                 fixed
               />
             </Modal>

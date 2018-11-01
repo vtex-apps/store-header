@@ -34,9 +34,8 @@ class TopMenu extends Component {
   }
 
   renderMobileMenu() {
-    const { leanMode } = this.props
     return (
-      !leanMode && <ExtensionPoint id="category-menu" mobileMode />
+      <ExtensionPoint id="category-menu" mobileMode />
     )
   }
 
@@ -53,7 +52,6 @@ class TopMenu extends Component {
   }
 
   renderIcons(mobileMode) {
-    const { leanMode } = this.props
     return (
       <div className={
         `vtex-top-menu__icons flex justify-end items-center w-25-m w-30-l ${mobileMode ? 'order-1 ml-auto' : 'order-2'}`
@@ -67,7 +65,7 @@ class TopMenu extends Component {
             iconLabel={!mobileMode ? this.translate('topMenu.login.icon.label') : ''}
           />
         </div>
-        {!leanMode && <ExtensionPoint
+        {<ExtensionPoint
           id="minicart"
           iconClasses="gray"
           iconSize={mobileMode ? MINICART_ICON_SIZE_MOBILE : MINICART_ICON_SIZE_DESKTOP}
@@ -75,6 +73,17 @@ class TopMenu extends Component {
           labelClasses="gray"
         />}
       </div>
+    )
+  }
+
+  renderLean () {
+    const { leanMode, toggleLeanMode } = this.props
+    return (
+      <ExtensionPoint
+        id="show-on-lean"
+        toggleLeanMode={toggleLeanMode}
+        leanMode={leanMode}
+      />
     )
   }
 
@@ -88,6 +97,7 @@ class TopMenu extends Component {
       }
     )
     const contentClasses = 'w-100 w-90-l center flex justify-center pb4 pv2-m pv6-l ph3-s ph7-m ph6-xl'
+
     return (
       <ReactResizeDetector handleWidth>
         {
@@ -97,10 +107,11 @@ class TopMenu extends Component {
               <div className={containerClasses}>
                 <div className={contentClasses}>
                   <div className="flex-wrap flex-nowrap-ns flex w-100 justify-between-m items-center">
-                    {mobileMode && this.renderMobileMenu()}
-                    {this.renderLogo(mobileMode, logoUrl, logoTitle)}
+                    {leanMode && this.renderLean()}
+                    {!leanMode && mobileMode && this.renderMobileMenu()}
+                    {!leanMode && this.renderLogo(mobileMode, logoUrl, logoTitle)}
                     {!leanMode && this.renderSearchBar(mobileMode)}
-                    {this.renderIcons(mobileMode)}
+                    {!leanMode && this.renderIcons(mobileMode)}
                   </div>
                 </div>
               </div>
