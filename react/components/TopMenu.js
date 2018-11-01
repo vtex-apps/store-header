@@ -41,20 +41,22 @@ class TopMenu extends Component {
   }
 
   renderSearchBar(mobileMode) {
-    const { showSearchBar } = this.props
+    const { showSearchBar, fixed } = this.props
+    const searchBar = <ExtensionPoint
+      id="search-bar"
+      placeholder={this.translate('search-placeholder')}
+      emptyPlaceholder={this.translate('search-emptyPlaceholder')}
+    />
     return showSearchBar && (
       <div className={`vtex-top-menu__search-bar flex pa2-m w-100 w-50-m w-40-l ${mobileMode ? 'order-2' : 'order-1'}`}>
-        <ExtensionPoint
-          id="search-bar"
-          placeholder={this.translate('search-placeholder')}
-          emptyPlaceholder={this.translate('search-emptyPlaceholder')}
-        />
+        {mobileMode ? (mobileMode && !fixed) && searchBar : searchBar}
       </div>
     )
   }
 
   renderIcons(mobileMode) {
-    const { leanMode, showLogin } = this.props
+    const { leanMode, showLogin, fixed } = this.props
+
     return (
       <div className={
         `vtex-top-menu__icons flex justify-end items-center w-25-m w-30-l ${mobileMode ? 'order-1 ml-auto' : 'order-2'}`
