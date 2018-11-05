@@ -19,6 +19,8 @@ const SEARCH_ICON_SIZE_MOBILE = 20
 const SEARCH_ICON_SIZE_DESKTOP = 30
 
 class TopMenu extends Component {
+
+  state = { searchActive: false }
   translate = id => this.props.intl.formatMessage({ id: `header.${id}` })
 
   renderLogo(mobileMode, logoUrl, logoTitle) {
@@ -45,7 +47,7 @@ class TopMenu extends Component {
   }
 
   renderSearchBar(mobileMode) {
-    const { showSearchBar, fixed } = this.props
+    const { fixed, showSearchBar } = this.props
     const searchBar = <ExtensionPoint
       id="search-bar"
       placeholder={this.translate('search-placeholder')}
@@ -67,7 +69,7 @@ class TopMenu extends Component {
         `vtex-top-menu__icons flex justify-end items-center w-25-m w-30-l ${mobileMode ? 'order-1 ml-auto' : 'order-2'}`
       }>
         <div className="mr7-m">
-          {(mobileMode && fixed) && showLogin && <Button icon variation="tertiary">
+          {(mobileMode && fixed) && showLogin && <Button icon variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })}>
             <IconSearch size={mobileMode ? SEARCH_ICON_SIZE_MOBILE : SEARCH_ICON_SIZE_DESKTOP} color="gray" />
           </Button>}
           <ExtensionPoint
@@ -91,7 +93,7 @@ class TopMenu extends Component {
 
   render() {
     const { logoUrl, logoTitle, leanMode, fixed } = this.props
-
+    const { searchActive } = this.state
     const containerClasses = classNames(
       'vtex-top-menu flex justify-center w-100 bg-white',
       {
@@ -112,10 +114,22 @@ class TopMenu extends Component {
               <div className={containerClasses}>
                 <div className={contentClasses}>
                   <div className="flex-wrap flex-nowrap-ns flex w-100 justify-between-m items-center">
-                    {mobileMode && this.renderMobileMenu()}
-                    {this.renderLogo(mobileMode, logoUrl, logoTitle)}
+                    {!searchActive && mobileMode && this.renderMobileMenu()}
+                    {!searchActive && this.renderLogo(mobileMode, logoUrl, logoTitle)}
                     {!leanMode && this.renderSearchBar(mobileMode)}
-                    {this.renderIcons(mobileMode)}
+                    {!searchActive && this.renderIcons(mobileMode)}
+                    {(searchActive && <div className="flex justify-start pa2">
+                      <div className="w-90">
+                        <ExtensionPoint
+                          id="search-bar"
+                          placeholder={this.translate('search-placeholder')}
+                          emptyPlaceholder={this.translate('search-emptyPlaceholder')}
+                        />
+                      </div>
+                      <div className="w-10"><Button size="small" variation="tertiary"  onClick={e => this.setState({ searchActive: !searchActive })} >CANCEL</Button>
+                      </div>
+                    </div>
+                    )}
                   </div>
                 </div>
               </div>
