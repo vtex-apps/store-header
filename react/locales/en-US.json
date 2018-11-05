@@ -2,6 +2,8 @@
   "editor.header.title": "Header",
   "editor.header.description": "Header component",
   "editor.header.logo.title": "Logo",
+  "editor.header.show.searchbar.title": "Show SearchBar",
+  "editor.header.show.login.title": "Show Login",
   "header.search-placeholder": "Search for products, brands...",
   "header.search-emptyPlaceholder": "No matches found",
   "header.topMenu.minicart.icon.label": "My Cart",

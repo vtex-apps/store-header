@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.3.0] - 2018-11-05
+### Added
+- Configuration to show, searchBar, and login buttons
+
 ## [1.2.1] - 2018-10-25
 
 ## [1.2.0] - 2018-10-24
