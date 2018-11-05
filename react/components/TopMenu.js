@@ -60,6 +60,23 @@ class TopMenu extends Component {
     )
   }
 
+  renderMobileSearchBar(searchActive) {
+    return (
+      <div className="flex justify-start pa2">
+        <div className="w-90">
+          <ExtensionPoint
+            id="search-bar"
+            placeholder={this.translate('search-placeholder')}
+            emptyPlaceholder={this.translate('search-emptyPlaceholder')}
+          />
+        </div>
+        <div className="w-10"><Button size="small" variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })} >CANCEL</Button>
+        </div>
+      </div>
+    )
+  }
+
+
   renderIcons(mobileMode) {
     const { leanMode, fixed, showLogin } = this.props
     const { searchActive } = this.state
@@ -116,20 +133,9 @@ class TopMenu extends Component {
                   <div className="flex-wrap flex-nowrap-ns flex w-100 justify-between-m items-center">
                     {!searchActive && mobileMode && this.renderMobileMenu()}
                     {!searchActive && this.renderLogo(mobileMode, logoUrl, logoTitle)}
-                    {!leanMode && this.renderSearchBar(mobileMode)}
+                    {!searchActive && !leanMode && this.renderSearchBar(mobileMode)}
                     {!searchActive && this.renderIcons(mobileMode)}
-                    {(searchActive && <div className="flex justify-start pa2">
-                      <div className="w-90">
-                        <ExtensionPoint
-                          id="search-bar"
-                          placeholder={this.translate('search-placeholder')}
-                          emptyPlaceholder={this.translate('search-emptyPlaceholder')}
-                        />
-                      </div>
-                      <div className="w-10"><Button size="small" variation="tertiary"  onClick={e => this.setState({ searchActive: !searchActive })} >CANCEL</Button>
-                      </div>
-                    </div>
-                    )}
+                    {(searchActive && this.renderMobileSearchBar(searchActive))}
                   </div>
                 </div>
               </div>
