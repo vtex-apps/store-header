@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Configuration to show, searchBar, minicart, logo and login buttons
+- Configuration to show, searchBar, and login buttons
 
 ## [1.2.1] - 2018-10-25
 
