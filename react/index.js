@@ -30,8 +30,6 @@ class Header extends Component {
     intl: intlShape.isRequired,
     orderFormContext: contextPropTypes,
     showSearchBar: PropTypes.boolean,
-    showMinicart: PropTypes.boolean,
-    showLogo: PropTypes.boolean,
     showLogin: PropTypes.boolean,
   }
 
@@ -81,7 +79,7 @@ class Header extends Component {
   }
 
   render() {
-    const { logoUrl, logoTitle, orderFormContext, showSearchBar, showLogin, showLogo, showMinicart } = this.props
+    const { logoUrl, logoTitle, orderFormContext, showSearchBar, showLogin } = this.props
     const { showMenuPopup } = this.state
 
     const leanMode = this.isLeanMode()
@@ -97,8 +95,6 @@ class Header extends Component {
       fixed: showMenuPopup,
       showSearchBar,
       showLogin,
-      showLogo,
-      showMinicart,
     }
 
     return (
@@ -158,20 +154,8 @@ Header.schema = {
       default: true,
       isLayout: true,
     },
-    showLogo: {
-      title: 'editor.header.show.logo.title',
-      type: 'boolean',
-      default: true,
-      isLayout: true,
-    },
     showLogin: {
       title: 'editor.header.show.login.title',
-      type: 'boolean',
-      default: true,
-      isLayout: true,
-    },
-    showMinicart: {
-      title: 'editor.header.show.minicart.title',
       type: 'boolean',
       default: true,
       isLayout: true,

@@ -18,8 +18,7 @@ class TopMenu extends Component {
   translate = id => this.props.intl.formatMessage({ id: `header.${id}` })
 
   renderLogo(mobileMode, logoUrl, logoTitle) {
-    const { showLogo } = this.props
-    return showLogo && (
+    return (
       <div className="vtex-top-menu__logo flex justify-start w-25-m w-30-l">
         <Link to="/" className="outline-0">
           <ExtensionPoint
@@ -55,7 +54,7 @@ class TopMenu extends Component {
   }
 
   renderIcons(mobileMode) {
-    const { leanMode, showLogin, showMinicart } = this.props
+    const { leanMode, showLogin } = this.props
     return (
       <div className={
         `vtex-top-menu__icons flex justify-end items-center w-25-m w-30-l ${mobileMode ? 'order-1 ml-auto' : 'order-2'}`
@@ -69,7 +68,7 @@ class TopMenu extends Component {
             iconLabel={!mobileMode ? this.translate('topMenu.login.icon.label') : ''}
           />}
         </div>
-        {!leanMode && showMinicart && <ExtensionPoint
+        {!leanMode && <ExtensionPoint
           id="minicart"
           iconClasses="gray"
           iconSize={mobileMode ? MINICART_ICON_SIZE_MOBILE : MINICART_ICON_SIZE_DESKTOP}
@@ -118,9 +117,7 @@ TopMenu.propTypes = {
   logoUrl: PropTypes.string,
   logoTitle: PropTypes.string,
   showSearchBar: PropTypes.bool,
-  showLogo: PropTypes.bool,
   showLogin: PropTypes.bool,
-  showMinicart: PropTypes.bool,
   leanMode: PropTypes.bool,
   fixed: PropTypes.bool,
   intl: intlShape.isRequired,
@@ -129,9 +126,7 @@ TopMenu.propTypes = {
 TopMenu.defaultProps = {
   fixed: false,
   showSearchBar: true,
-  showLogo: true,
   showLogin: true,
-  showMinicart: true,
 }
 
 export default injectIntl(TopMenu)

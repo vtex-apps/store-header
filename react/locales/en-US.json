@@ -3,8 +3,6 @@
   "editor.header.description": "Header component",
   "editor.header.logo.title": "Logo",
   "editor.header.show.searchbar.title": "Show SearchBar",
-  "editor.header.show.minicart.title": "Show Minicart",
-  "editor.header.show.logo.title": "Show Logo",
   "editor.header.show.login.title": "Show Login",
   "header.search-placeholder": "Search for products, brands...",
   "header.search-emptyPlaceholder": "No matches found",
