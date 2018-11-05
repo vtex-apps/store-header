@@ -7,5 +7,7 @@
   "header.search-placeholder": "Búsqueda por productos, marcas...",
   "header.search-emptyPlaceholder": "Ningún resultado encontrado",
   "header.topMenu.minicart.icon.label": "Mi Cesta",
-  "header.topMenu.login.icon.label": "Entrar"
+  "header.topMenu.login.icon.label": "Entrar",
+  "header.topMenu.search-cancel": "CANCEL"
+
 }

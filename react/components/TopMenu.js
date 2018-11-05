@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { intlShape, injectIntl } from 'react-intl'
 import { ExtensionPoint, Link } from 'render'
 import { Button, IconSearch } from 'vtex.styleguide'
-
 import classNames from 'classnames'
 import ReactResizeDetector from 'react-resize-detector'
 
@@ -62,15 +61,17 @@ class TopMenu extends Component {
 
   renderMobileSearchBar(searchActive) {
     return (
-      <div className="flex justify-start pa2">
-        <div className="w-90">
+      <div className="flex justify-start pa2 relative w-100">
+        <div className="w-80">
           <ExtensionPoint
             id="search-bar"
             placeholder={this.translate('search-placeholder')}
             emptyPlaceholder={this.translate('search-emptyPlaceholder')}
+            mobileMode
           />
         </div>
-        <div className="w-10"><Button size="small" variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })} >CANCEL</Button>
+        <div className="w-20">
+          <Button className="right-0" size="small" variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })} >{this.translate('search-cancel')}</Button>
         </div>
       </div>
     )
@@ -126,7 +127,6 @@ class TopMenu extends Component {
           width => {
             const mobileMode = width < 640 || (global.__RUNTIME__.hints.mobile && (!width || width < 640))
             const contentClasses = `w-100 w-90-l center flex justify-center  ${mobileMode & !fixed ? 'pb4' : ''}  pv2-m pv6-l ph3-s ph7-m ph6-xl`
-
             return (
               <div className={containerClasses}>
                 <div className={contentClasses}>
