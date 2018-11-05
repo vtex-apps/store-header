@@ -28,7 +28,11 @@ class Header extends Component {
     logoTitle: PropTypes.string,
     leanWhen: PropTypes.string,
     intl: intlShape.isRequired,
-    orderFormContext: contextPropTypes
+    orderFormContext: contextPropTypes,
+    showSearchBar: PropTypes.boolean,
+    showMinicart: PropTypes.boolean,
+    showLogo: PropTypes.boolean,
+    showLogin: PropTypes.boolean,
   }
 
   /** Determines an unmatching regex for default behavior of the leanMode */
@@ -77,7 +81,7 @@ class Header extends Component {
   }
 
   render() {
-    const { logoUrl, logoTitle, orderFormContext } = this.props
+    const { logoUrl, logoTitle, orderFormContext, showSearchBar, showLogin, showLogo, showMinicart } = this.props
     const { showMenuPopup } = this.state
 
     const leanMode = this.isLeanMode()
@@ -85,6 +89,17 @@ class Header extends Component {
 
     const hasMessage =
       orderFormContext.message.text && orderFormContext.message.text !== ''
+
+    const topMenuOptions = {
+      logoUrl,
+      logoTitle,
+      leanMode,
+      fixed: showMenuPopup,
+      showSearchBar,
+      showLogin,
+      showLogo,
+      showMinicart,
+    }
 
     return (
       <Fragment>
@@ -96,20 +111,11 @@ class Header extends Component {
           <div className="z-2 items-center w-100 top-0 bg-white tl">
             <ExtensionPoint id="menu-link" />
           </div>
-          <TopMenu
-            logoUrl={logoUrl}
-            logoTitle={logoTitle}
-            leanMode={leanMode}
-          />
+          <TopMenu {...topMenuOptions} />
           {!leanMode && <ExtensionPoint id="category-menu" />}
           {showMenuPopup && (
             <Modal>
-              <TopMenu
-                logoUrl={logoUrl}
-                logoTitle={logoTitle}
-                leanMode={leanMode}
-                fixed
-              />
+              <TopMenu {...topMenuOptions} />
             </Modal>
           )}
           <div
@@ -145,6 +151,30 @@ Header.schema = {
       widget: {
         'ui:widget': 'image-uploader'
       }
+    },
+    showSearchBar: {
+      title: 'editor.header.show.searchbar.title',
+      type: 'boolean',
+      default: true,
+      isLayout: true,
+    },
+    showLogo: {
+      title: 'editor.header.show.logo.title',
+      type: 'boolean',
+      default: true,
+      isLayout: true,
+    },
+    showLogin: {
+      title: 'editor.header.show.login.title',
+      type: 'boolean',
+      default: true,
+      isLayout: true,
+    },
+    showMinicart: {
+      title: 'editor.header.show.minicart.title',
+      type: 'boolean',
+      default: true,
+      isLayout: true,
     }
   }
 }

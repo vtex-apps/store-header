@@ -18,7 +18,8 @@ class TopMenu extends Component {
   translate = id => this.props.intl.formatMessage({ id: `header.${id}` })
 
   renderLogo(mobileMode, logoUrl, logoTitle) {
-    return (
+    const { showLogo } = this.props
+    return showLogo && (
       <div className="vtex-top-menu__logo flex justify-start w-25-m w-30-l">
         <Link to="/" className="outline-0">
           <ExtensionPoint
@@ -41,7 +42,8 @@ class TopMenu extends Component {
   }
 
   renderSearchBar(mobileMode) {
-    return (
+    const { showSearchBar } = this.props
+    return showSearchBar && (
       <div className={`vtex-top-menu__search-bar flex pa2-m w-100 w-50-m w-40-l ${mobileMode ? 'order-2' : 'order-1'}`}>
         <ExtensionPoint
           id="search-bar"
@@ -53,21 +55,21 @@ class TopMenu extends Component {
   }
 
   renderIcons(mobileMode) {
-    const { leanMode } = this.props
+    const { leanMode, showLogin, showMinicart } = this.props
     return (
       <div className={
         `vtex-top-menu__icons flex justify-end items-center w-25-m w-30-l ${mobileMode ? 'order-1 ml-auto' : 'order-2'}`
       }>
         <div className="mr7-m">
-          <ExtensionPoint
+       {showLogin && <ExtensionPoint
             id="login"
             iconClasses="gray"
             labelClasses="gray"
             iconSize={mobileMode ? LOGIN_ICON_SIZE_MOBILE : LOGIN_ICON_SIZE_DESKTOP}
             iconLabel={!mobileMode ? this.translate('topMenu.login.icon.label') : ''}
-          />
+          />}
         </div>
-        {!leanMode && <ExtensionPoint
+        {!leanMode && showMinicart && <ExtensionPoint
           id="minicart"
           iconClasses="gray"
           iconSize={mobileMode ? MINICART_ICON_SIZE_MOBILE : MINICART_ICON_SIZE_DESKTOP}
@@ -115,13 +117,21 @@ class TopMenu extends Component {
 TopMenu.propTypes = {
   logoUrl: PropTypes.string,
   logoTitle: PropTypes.string,
+  showSearchBar: PropTypes.bool,
+  showLogo: PropTypes.bool,
+  showLogin: PropTypes.bool,
+  showMinicart: PropTypes.bool,
   leanMode: PropTypes.bool,
-  intl: intlShape.isRequired,
   fixed: PropTypes.bool,
+  intl: intlShape.isRequired,
 }
 
 TopMenu.defaultProps = {
   fixed: false,
+  showSearchBar: true,
+  showLogo: true,
+  showLogin: true,
+  showMinicart: true,
 }
 
 export default injectIntl(TopMenu)

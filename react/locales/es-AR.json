@@ -2,6 +2,7 @@
   "editor.header.title": "Cabecera",
   "editor.header.description": "Componente de cabecera",
   "editor.header.logo.title": "Logotipo",
+  "editor.header.searchbar.title": "Mostrar Busca",
   "header.search-placeholder": "Búsqueda por productos, marcas...",
   "header.search-emptyPlaceholder": "Ningún resultado encontrado",
   "header.topMenu.minicart.icon.label": "Mi Cesta",
