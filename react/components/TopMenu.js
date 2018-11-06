@@ -65,13 +65,13 @@ class TopMenu extends Component {
         <div className="w-80">
           <ExtensionPoint
             id="search-bar"
-            placeholder={this.translate('search-placeholder')}
+            placeholder=" "
             emptyPlaceholder={this.translate('search-emptyPlaceholder')}
             mobileMode
           />
         </div>
         <div className="w-20">
-          <Button className="right-0" size="small" variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })} >{this.translate('search-cancel')}</Button>
+          <Button className="right-0 black-90" size="small" variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })} >{this.translate('search-cancel')}</Button>
         </div>
       </div>
     )
