@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import ReactResizeDetector from 'react-resize-detector'
 
 const LOGO_WIDTH_MOBILE = 90
-const LOGO_WIDTH_DESKTOP = 150
+const LOGO_WIDTH_DESKTOP = 140
 const LOGO_HEIGHT_MOBILE = 30
 const LOGO_HEIGHT_DESKTOP = 50
 const MINICART_ICON_SIZE_MOBILE = 23
@@ -19,7 +19,7 @@ class TopMenu extends Component {
 
   renderLogo(mobileMode, logoUrl, logoTitle) {
     return (
-      <div className="vtex-top-menu__logo flex justify-start w-25-m w-30-l">
+      <div className="vtex-top-menu__logo flex justify-start ml3 w-25-m w-30-l">
         <Link to="/" className="outline-0">
           <ExtensionPoint
             id="logo"
