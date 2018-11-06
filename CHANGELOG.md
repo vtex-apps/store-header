@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fixed bug where topbar was permanently fixed when scrolling
+- Fixed bug where content was jumping around when the header was set to fixed
+
 ## [1.3.1] - 2018-11-06
 
 ### Fixed
