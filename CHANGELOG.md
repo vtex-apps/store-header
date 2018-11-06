@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.3.3] - 2018-11-06
+### Fixed
+- Fixes `showSearchBar should be a function` error
+
 ## [1.3.2] - 2018-11-06
 
 ### Fixed

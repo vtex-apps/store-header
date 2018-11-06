@@ -29,8 +29,8 @@ class Header extends Component {
     leanWhen: PropTypes.string,
     intl: intlShape.isRequired,
     orderFormContext: contextPropTypes,
-    showSearchBar: PropTypes.boolean,
-    showLogin: PropTypes.boolean,
+    showSearchBar: PropTypes.bool,
+    showLogin: PropTypes.bool,
   }
 
   /** Determines an unmatching regex for default behavior of the leanMode */
