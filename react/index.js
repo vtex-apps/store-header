@@ -90,7 +90,6 @@ class Header extends Component {
       logoUrl,
       logoTitle,
       leanMode,
-      fixed: showMenuPopup,
       showSearchBar,
       showLogin,
     }
@@ -109,7 +108,7 @@ class Header extends Component {
           {!leanMode && <ExtensionPoint id="category-menu" />}
           {showMenuPopup && (
             <Modal>
-              <TopMenu {...topMenuOptions} />
+              <TopMenu fixed {...topMenuOptions} />
             </Modal>
           )}
           <div
