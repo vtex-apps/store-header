@@ -61,7 +61,7 @@ class TopMenu extends Component {
 
   renderMobileSearchBar(searchActive) {
     return (
-      <div className="flex justify-start pa2 pb3 relative w-100">
+      <div className="flex justify-start pa2 pt3 relative w-100">
         <div className="w-80">
           <ExtensionPoint
             id="search-bar"
@@ -69,7 +69,7 @@ class TopMenu extends Component {
             compactMode
           />
         </div>
-        <div className="w-20 vtex-button bw1 ba fw5 ttu br2 fw4 v-mid relative pv3 ph5 f6 bg-transparent b--transparent c-muted-1 hover-b--transparent hover-c-action-primary pointer ">
+        <div className="w-20 vtex-button bw1 ba fw5 ttu br2 fw4 v-mid relative pv3 ph5 f7 bg-transparent b--transparent c-muted-1 hover-b--transparent hover-c-action-primary pointer ">
           <span onClick={e => this.setState({ searchActive: !searchActive })} >{this.translate('search-cancel')}</span>
         </div>
       </div>
@@ -78,7 +78,7 @@ class TopMenu extends Component {
 
 
   renderIcons(mobileMode) {
-    const { leanMode, fixed, showLogin } = this.props
+    const { leanMode, fixed, showLogin, showSearchBar } = this.props
     const { searchActive } = this.state
 
     return (
@@ -86,7 +86,7 @@ class TopMenu extends Component {
         `vtex-top-menu__icons flex justify-end items-center w-25-m w-30-l ${mobileMode ? 'order-1 ml-auto' : 'order-2'}`
       }>
         <div className="mr7-m">
-          {(mobileMode && fixed) && showLogin && <Button icon variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })}>
+          {(mobileMode && fixed && showSearchBar) && showLogin && <Button icon variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })}>
             <IconSearch size={mobileMode ? SEARCH_ICON_SIZE_MOBILE : SEARCH_ICON_SIZE_DESKTOP} color="gray" />
           </Button>}
           <ExtensionPoint
