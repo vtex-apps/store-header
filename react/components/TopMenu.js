@@ -65,13 +65,12 @@ class TopMenu extends Component {
         <div className="w-80">
           <ExtensionPoint
             id="search-bar"
-            placeholder=" "
             emptyPlaceholder={this.translate('search-emptyPlaceholder')}
-            mobileMode
+            compactMode
           />
         </div>
-        <div className="w-20">
-          <Button className="right-0 black-90" size="small" variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })} >{this.translate('search-cancel')}</Button>
+        <div className="w-20 vtex-button bw1 ba fw5 ttu br2 fw4 v-mid relative pv3 ph5 f6 bg-transparent b--transparent c-muted-1 hover-b--transparent hover-c-action-primary pointer ">
+          <span onClick={e => this.setState({ searchActive: !searchActive })} >{this.translate('search-cancel')}</span>
         </div>
       </div>
     )
