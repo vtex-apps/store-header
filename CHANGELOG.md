@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.4.0] - 2018-11-07
+
 ### Added
 
 - Added the classes `vtex-top-menu-fixed` and `vtex-top-menu-static` to each respective stage of the top menu.
