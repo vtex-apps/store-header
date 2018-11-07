@@ -10,11 +10,11 @@ const LOGO_WIDTH_MOBILE = 90
 const LOGO_WIDTH_DESKTOP = 150
 const LOGO_HEIGHT_MOBILE = 30
 const LOGO_HEIGHT_DESKTOP = 50
-const MINICART_ICON_SIZE_MOBILE = 23
+const MINICART_ICON_SIZE_MOBILE = 22
 const MINICART_ICON_SIZE_DESKTOP = 30
-const LOGIN_ICON_SIZE_MOBILE = 23
+const LOGIN_ICON_SIZE_MOBILE = 22
 const LOGIN_ICON_SIZE_DESKTOP = 30
-const SEARCH_ICON_SIZE_MOBILE = 20
+const SEARCH_ICON_SIZE_MOBILE = 22
 const SEARCH_ICON_SIZE_DESKTOP = 30
 
 class TopMenu extends Component {
@@ -61,7 +61,7 @@ class TopMenu extends Component {
 
   renderMobileSearchBar(searchActive) {
     return (
-      <div className="flex justify-start pa2 relative w-100">
+      <div className="flex justify-start pa2 pb3 relative w-100">
         <div className="w-80">
           <ExtensionPoint
             id="search-bar"
