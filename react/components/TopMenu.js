@@ -61,7 +61,7 @@ class TopMenu extends Component {
 
   renderMobileSearchBar(searchActive) {
     return (
-      <div className="flex justify-start pa1 pr6 pt3 relative w-100">
+      <div className="flex justify-start pa2 pr4 pt3 relative w-100">
         <div className="w-80">
           <ExtensionPoint
             id="search-bar"
@@ -69,7 +69,7 @@ class TopMenu extends Component {
             compactMode
           />
         </div>
-        <div className="w-20"><Button size="small" variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })} >CANCEL</Button>
+        <div className="w-20 pl0"><Button size="small" variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })} >CANCEL</Button>
         </div>
       </div>
     )
