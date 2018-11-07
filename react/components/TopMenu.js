@@ -61,7 +61,7 @@ class TopMenu extends Component {
 
   renderMobileSearchBar(searchActive) {
     return (
-      <div className="flex justify-start pa2 pt3 relative w-100">
+      <div className="flex justify-start pa1 pr6 pt3 relative w-100">
         <div className="w-80">
           <ExtensionPoint
             id="search-bar"
@@ -69,8 +69,7 @@ class TopMenu extends Component {
             compactMode
           />
         </div>
-        <div className="w-20 vtex-button bw1 ba fw5 ttu br2 fw4 v-mid relative pv3 ph5 f7 bg-transparent b--transparent c-muted-1 hover-b--transparent hover-c-action-primary pointer ">
-          <span onClick={e => this.setState({ searchActive: !searchActive })} >{this.translate('search-cancel')}</span>
+        <div className="w-20"><Button size="small" variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })} >CANCEL</Button>
         </div>
       </div>
     )
@@ -117,7 +116,7 @@ class TopMenu extends Component {
         'vtex-top-menu-fixed fixed bw1 bb b--light-gray top-0 z-999': fixed,
       },
       {
-        'vtex-top-menu-static' : !fixed,
+        'vtex-top-menu-static': !fixed,
       }
     )
     return (
