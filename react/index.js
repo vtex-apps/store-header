@@ -104,11 +104,9 @@ class Header extends Component {
           </div>
           <TopMenu {...topMenuOptions} />
           {!leanMode && <ExtensionPoint id="category-menu" />}
-          <Modal>
-            <div style={{ visibility: showMenuPopup ? 'inherit' : 'hidden' }}>
-              <TopMenu fixed {...topMenuOptions} />
-            </div>
-          </Modal>
+          <div style={{ visibility: showMenuPopup ? 'inherit' : 'hidden' }}>
+            <TopMenu fixed {...topMenuOptions} />
+          </div>
           <div
             className="flex flex-column items-center fixed w-100"
             style={{ top: offsetTop + 120 }}
