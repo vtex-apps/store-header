@@ -95,7 +95,7 @@ class TopMenu extends Component {
             labelClasses="gray"
             iconSize={mobileMode ? LOGIN_ICON_SIZE_MOBILE : LOGIN_ICON_SIZE_DESKTOP}
             iconLabel={!mobileMode ? this.translate('topMenu.login.icon.label') : ''}
-          />}
+          />
         </div>
         {!leanMode && <ExtensionPoint
           id="minicart"
