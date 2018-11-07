@@ -8,6 +8,5 @@
   "header.search-emptyPlaceholder": "No matches found",
   "header.topMenu.minicart.icon.label": "My Cart",
   "header.topMenu.login.icon.label": "Sign in",
-  "header.topMenu.search-cancel": "CANCEL"
-
+  "header.search-cancel": "CANCEL"
 }
