@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.5.1] - 2018-11-07
+
 ### Fixed
 
 - The "fixed" topbar is always being rendered, and its visibility is toggled now instead. This is so its height can be always calculable.
