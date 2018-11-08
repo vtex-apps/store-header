@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.5.0] - 2018-11-07
+### Added
+- Hide the `SearchBar` when scroll the page in mobile devices. 
+- In the above scenario, a icon is displayed and when clicked the `Searchbar` is rendered.
+
 ## [1.4.0] - 2018-11-07
 
 ### Added
