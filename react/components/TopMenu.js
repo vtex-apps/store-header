@@ -124,7 +124,7 @@ class TopMenu extends Component {
         {
           width => {
             const mobileMode = width < 640 || (global.__RUNTIME__.hints.mobile && (!width || width < 640))
-            const contentClasses = `vtex-page-pd w-100 center flex justify-center  ${mobileMode & !fixed ? 'pb4' : ''}  pv2-m pv6-l`
+            const contentClasses = `ph3 ph5-m ph8-l ph9-xl w-100 center flex justify-center  ${mobileMode & !fixed ? 'pb4' : ''}  pv2-m pv6-l`
             return (
               <div className={containerClasses}>
                 <div className={contentClasses}>
