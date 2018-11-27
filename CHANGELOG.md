@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.1.0] - 2018-11-27
+### Changed
+- Paddings and margins to match other components.
+
 ## [2.0.0] - 2018-11-08
 ### Changed
 - Replace tachyons colors with design tokens and fix static analysis warnings.
