@@ -24,7 +24,7 @@ class TopMenu extends Component {
 
   renderLogo(mobileMode, logoUrl, logoTitle) {
     return (
-      <div className="vtex-top-menu__logo flex pl3 justify-start w-25-m w-30-l">
+      <div className="vtex-top-menu__logo flex justify-start w-20-m w-25-l mw4 mw5-ns">
         <Link to="/" className="outline-0">
           <ExtensionPoint
             id="logo"
@@ -124,7 +124,7 @@ class TopMenu extends Component {
         {
           width => {
             const mobileMode = width < 640 || (global.__RUNTIME__.hints.mobile && (!width || width < 640))
-            const contentClasses = `ph3 ph5-m ph8-l ph9-xl w-100 center flex justify-center  ${mobileMode & !fixed ? 'pb4' : ''}  pv2-m pv6-l`
+            const contentClasses = `w-100 w-90-l center flex justify-center pv2-m pv6-l ph3-s ph7-m ph6-xl`
             return (
               <div className={containerClasses}>
                 <div className={contentClasses}>
