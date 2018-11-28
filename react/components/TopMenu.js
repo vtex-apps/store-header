@@ -24,11 +24,7 @@ class TopMenu extends Component {
 
   renderLogo(mobileMode, logoUrl, logoTitle) {
     return (
-<<<<<<< HEAD
-      <div className="vtex-top-menu__logo flex pl3 justify-start w-25-m w-30-l">
-=======
       <div className="vtex-top-menu__logo flex justify-start w-20-m w-25-l mw4 mw5-ns">
->>>>>>> Fix padding bottom and add max width to logo
         <Link to="/" className="outline-0">
           <ExtensionPoint
             id="logo"
