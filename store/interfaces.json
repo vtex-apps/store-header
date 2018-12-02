@@ -1,0 +1,37 @@
+{
+    "header": {
+        "required": [
+            "logo",
+            "login",
+            "telemarketing"
+        ],
+        "allowed": [
+            "minicart",
+            "category-menu",
+            "menu",
+            "search-bar"
+        ]
+    },
+    "header/full": {
+        "required": [
+            "logo",
+            "login",
+            "telemarketing",
+            "minicart",
+            "category-menu",
+            "search-bar"
+        ],
+        "allowed": [
+            "menu"
+        ],
+        "component": "Full"
+    },
+    "header/slim": {
+        "required": [
+            "logo",
+            "login",
+            "telemarketing"
+        ],
+        "component": "Slim"
+    }
+}

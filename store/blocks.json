@@ -1,0 +1,21 @@
+{
+    "header/full": {
+        "blocks": [
+            "logo",
+            "login",
+            "telemarketing",
+            "minicart",
+            "category-menu",
+            "search-bar"
+        ],
+        "component": "Full"
+    },
+    "header/slim": {
+        "blocks": [
+            "logo",
+            "login",
+            "telemarketing"
+        ],
+        "component": "Slim"
+    }
+}
