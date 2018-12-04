@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import Modal from './components/Modal'
-import TopMenu from './components/TopMenu'
+import TopBar from './components/TopBar'
 import { Alert } from 'vtex.styleguide'
 import { ExtensionPoint, withRuntimeContext } from 'render'
 
@@ -15,9 +15,17 @@ import {
 import './global.css'
 
 class Header extends Component {
+  constructor(props) {
+    super(props)
+
+    this.topbar = React.createRef()
+  }
+
   state = {
     showMenuPopup: false,
     leanMode: true,
+    topbarMaxHeight: 0,
+    topbarMinHeight: 0,
   }
 
   static propTypes = {
@@ -66,20 +74,21 @@ class Header extends Component {
     }
 
     const scroll = window.scrollY
-    const { scrollHeight } = this._root.current
+    // const { scrollHeight } = this._root.current
 
-    const showMenuPopup = scroll >= scrollHeight
+    this.topbar.current && this.topbar.current.squish(scroll)
+  }
 
-    if (showMenuPopup !== this.state.showMenuPopup) {
-      this.setState({
-        showMenuPopup
-      })
-    }
+  handleTopbarUpdateDimensions = ({minHeight, maxHeight}) => {
+    this.setState({
+      topbarMinHeight: minHeight,
+      topbarMaxHeight: maxHeight,
+    })
   }
 
   render() {
     const { logoUrl, logoTitle, orderFormContext, showSearchBar, showLogin } = this.props
-    const { showMenuPopup } = this.state
+    const { topbarMinHeight, topbarMaxHeight } = this.state
 
     const leanMode = this.isLeanMode()
     const offsetTop = (this._root.current && this._root.current.offsetTop) || 0
@@ -99,17 +108,48 @@ class Header extends Component {
       <Fragment>
         <ExtensionPoint id="telemarketing" />
         <div
-          className={`vtex-header force-full-width relative z-2 w-100 bb bw1 b--muted-4 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
+          className={`vtex-header force-full-width relative z-2 w-100 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
           ref={this._root}
         >
+          {/*
           <div className="z-2 items-center w-100 top-0 bg-base tl">
             <ExtensionPoint id="menu-link" />
           </div>
-          <TopMenu {...topMenuOptions} />
-          {!leanMode && <ExtensionPoint id="category-menu" />}
-          <div style={{ visibility: showMenuPopup ? 'inherit' : 'hidden' }}>
-            <TopMenu fixed {...topMenuOptions} />
+          */}
+          <div className={`w-100 top-0 ${topbarMaxHeight ? 'fixed' : 'relative'} z-3`}>
+            <div className="bg-base-bkp">
+              <TopBar
+                {...topMenuOptions}
+                onUpdateDimensions={this.handleTopbarUpdateDimensions}
+                ref={this.topbar}
+              />
+            </div>
           </div>
+
+          {!!topbarMaxHeight && (
+            <React.Fragment>
+              <div
+                className="bg-base w-100"
+                style={{
+                  height: topbarMaxHeight,
+                }}
+              />
+              <div
+                className="fixed top-0 w-100 bb bw1 b--muted-4"
+                style={{
+                  height: topbarMinHeight,
+                  boxSizing: 'content-box',
+                }}
+              />
+            </React.Fragment>
+          )}
+
+          <div className="relative z-2">
+            {!leanMode && <ExtensionPoint id="category-menu" />}
+          </div>
+
+          <div className="bb bw1 b--muted-4" />
+
           <div
             className="flex flex-column items-center fixed w-100"
             style={{ top: offsetTop + 120 }}
