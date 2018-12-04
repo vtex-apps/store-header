@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - No padding being applied in the `SearchBar` bottom in mobile mode.
 
+### Changed
+- Logo sizes on desktop and mobile.
+
 ## [2.1.2] - 2018-12-04
 ### Fixed
 - Paddings to match the body.
