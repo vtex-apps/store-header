@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fixed topbar padding bottom on mobile
+
 ## [2.1.3] - 2018-12-05
 ### Fixed
 - No padding being applied in the `SearchBar` bottom in mobile mode.
