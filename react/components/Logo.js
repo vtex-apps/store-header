@@ -4,7 +4,7 @@ import { ExtensionPoint, Link } from 'render'
 import ReactResizeDetector from 'react-resize-detector'
 
 const Logo = ({link, src, title, maxWidth, maxHeight, onResize}) => (
-  <div className="vtex-top-menu__logo">
+  <div className="vtex-top-menu__logo pv2">
     <ReactResizeDetector handleHeight onResize={onResize}>
       {() => (
         <Link to={link} className="outline-0">

@@ -6,6 +6,7 @@ import Modal from './components/Modal'
 import TopBar from './components/TopBar'
 import { Alert } from 'vtex.styleguide'
 import { ExtensionPoint, withRuntimeContext } from 'render'
+import SearchBar from './components/SearchBar'
 
 import {
   orderFormConsumer,
@@ -22,8 +23,8 @@ class Header extends Component {
   }
 
   state = {
-    showMenuPopup: false,
     leanMode: true,
+    hasScrolledPastThreshold: false,
     topbarMaxHeight: 0,
     topbarMinHeight: 0,
   }
@@ -144,8 +145,11 @@ class Header extends Component {
             </React.Fragment>
           )}
 
-          <div className="relative z-2">
+          <div className="relative z-2 bg-base">
             {!leanMode && <ExtensionPoint id="category-menu" />}
+            <div className="dn-m pa2">
+              <SearchBar mobileMode />
+            </div>
           </div>
 
           <div className="bb bw1 b--muted-4" />

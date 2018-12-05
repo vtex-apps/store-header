@@ -6,15 +6,14 @@ import { Button, IconSearch } from 'vtex.styleguide'
 import ReactResizeDetector from 'react-resize-detector'
 import {Adopt} from 'react-adopt'
 import Logo from './Logo'
+import SearchBar from './SearchBar'
 
 const LOGO_MAX_WIDTH_DESKTOP = 150
 const LOGO_MAX_WIDTH_MOBILE = 90
-const LOGO_MAX_HEIGHT_MOBILE = 30
+const LOGO_MAX_HEIGHT_MOBILE = 40
 const LOGO_MAX_HEIGHT_DESKTOP = 75
-const LOGO_COLLAPSED_HEIGHT_DESKTOP = 50
-const HEIGHT_REDUCTION_DESKTOP = 40
-const HEIGHT_REDUCTION_TABLET = 10
-const HEIGHT_REDUCTION_MOBILE = 0
+const LOGO_COLLAPSED_HEIGHT_DESKTOP = 40
+const LOGO_COLLAPSED_HEIGHT_MOBILE = 40
 const MINICART_ICON_SIZE_MOBILE = 22
 const MINICART_ICON_SIZE_DESKTOP = 30
 const LOGIN_ICON_SIZE_MOBILE = 22
@@ -34,7 +33,7 @@ class TopBar extends Component {
   state = {
     searchActive: false,
     logoHeight: null,
-    heightReduction: HEIGHT_REDUCTION_MOBILE,
+    heightReduction: 0,
   }
 
   renderMobileMenu() {
@@ -45,29 +44,9 @@ class TopBar extends Component {
   }
 
   renderSearchBar(mobileMode) {
-    const { fixed, showSearchBar } = this.props
-    const searchBar = (
-      <Adopt
-        mapper={{
-          placeholder: <FormattedMessage id='header.search-placeholder' />,
-          emptyPlaceholder: <FormattedMessage id='header.search-emptyPlaceholder' />,
-        }}
-      >
-        {({placeholder, emptyPlaceholder}) => (
-          <ExtensionPoint
-            id="search-bar"
-            placeholder={placeholder}
-            emptyPlaceholder={emptyPlaceholder}
-          />
-        )}
-      </Adopt>
-    )
-
-    return showSearchBar && (
-      <div className={`vtex-top-menu__search-bar flex pa2-m flex-grow-1 justify-center ${mobileMode ? 'order-2' : 'order-1'}`}>
-        <div className="w-100 mw7">
-          {mobileMode ? !fixed && searchBar : searchBar}
-        </div>
+    return (
+      <div className="dn db-ns">
+        <SearchBar mobileMode={mobileMode} fixed={this.props.fixed} />
       </div>
     )
   }
@@ -75,7 +54,8 @@ class TopBar extends Component {
   renderMobileSearchBar(searchActive) {
     return (
       <div className="flex justify-start pa2 pr4 pt3 relative w-100">
-        <div className="w-80">
+        <SearchBar compactMode />
+        {/* <div className="w-80">
           <Adopt
             mapper={{
               emptyPlaceholder: <FormattedMessage id='header.search-emptyPlaceholder' />
@@ -89,7 +69,7 @@ class TopBar extends Component {
               />
             )}
           </Adopt>
-        </div>
+        </div> */}
         <div className="w-20 pl0"><Button size="small" variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })} >CANCEL</Button>
         </div>
       </div>
@@ -129,7 +109,7 @@ class TopBar extends Component {
   }
 
   getMaxHeight = () => {
-    return this.container.current ? this.container.current.scrollHeight : 0
+    return this.container.current ? this.container.current.offsetHeight : 0
   }
 
   getMinHeight = () => {
@@ -140,7 +120,7 @@ class TopBar extends Component {
   squish = value => {
     const totalHeightReduction = this.state.heightReduction
 
-    const p = Math.min(1, value / totalHeightReduction)
+    const p = Math.min(1, value / (totalHeightReduction * 2))
     const logoElement = this.logoContainer.current
     const containerElement = this.container.current
     const contentElement = this.content.current
@@ -169,7 +149,7 @@ class TopBar extends Component {
     const contentPaddings = contentComputedStyles ? parseFloat(contentComputedStyles.getPropertyValue('padding-top')) : 0
     const logoReduction = Math.max(0, this.state.logoHeight - LOGO_COLLAPSED_HEIGHT_DESKTOP)
     const minPadding = 3
-    const heightReduction = ((contentPaddings - minPadding) * 2) + logoReduction
+    const heightReduction = Math.max(0, ((contentPaddings - minPadding) * 2) + logoReduction)
 
     this.setState({
       heightReduction,
@@ -182,6 +162,7 @@ class TopBar extends Component {
   }
 
   handleLogoResize = (width, height) => {
+    console.log('handleLogoResize')
     this.setState({
       logoHeight: height,
     }, () => {
@@ -206,17 +187,29 @@ class TopBar extends Component {
                   {!searchActive && mobileMode && this.renderMobileMenu()}
                   {!searchActive && (
                     <div className="mr5" ref={this.logoContainer}>
-                      <Logo
-                        src={logoUrl}
-                        link={linkUrl}
-                        title={logoTitle}
-                        maxWidth={mobileMode ? LOGO_MAX_WIDTH_MOBILE : LOGO_MAX_WIDTH_DESKTOP}
-                        maxHeight={mobileMode ? LOGO_MAX_HEIGHT_MOBILE : LOGO_MAX_HEIGHT_DESKTOP}
-                        onResize={this.handleLogoResize}
-                      />
+                      <div className="dn db-ns">
+                        <Logo
+                          src={logoUrl}
+                          link={linkUrl}
+                          title={logoTitle}
+                          maxWidth={LOGO_MAX_WIDTH_DESKTOP}
+                          maxHeight={LOGO_MAX_HEIGHT_DESKTOP}
+                          onResize={this.handleLogoResize}
+                        />
+                      </div>
+                      <div className="db dn-ns">
+                        <Logo
+                          src={logoUrl}
+                          link={linkUrl}
+                          title={logoTitle}
+                          maxWidth={LOGO_MAX_WIDTH_MOBILE}
+                          maxHeight={LOGO_MAX_HEIGHT_MOBILE}
+                          onResize={this.handleLogoResize}
+                        />
+                      </div>
                     </div>
                   )}
-                  {!searchActive && !leanMode && this.renderSearchBar(mobileMode)}
+                  {!searchActive && !leanMode && !mobileMode && this.renderSearchBar(mobileMode)}
                   {!searchActive && this.renderIcons(mobileMode)}
                   {(searchActive && this.renderMobileSearchBar(searchActive))}
                 </div>
