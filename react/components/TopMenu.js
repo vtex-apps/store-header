@@ -47,11 +47,16 @@ class TopMenu extends Component {
 
   renderSearchBar(mobileMode) {
     const { fixed, showSearchBar } = this.props
-    const searchBar = <ExtensionPoint
-      id="search-bar"
-      placeholder={this.translate('search-placeholder')}
-      emptyPlaceholder={this.translate('search-emptyPlaceholder')}
-    />
+    const searchBar = (
+      <div className="mb3-s w-100">
+        <ExtensionPoint
+          id="search-bar"
+          placeholder={this.translate('search-placeholder')}
+          emptyPlaceholder={this.translate('search-emptyPlaceholder')}
+        />
+      </div>
+    )
+
     return showSearchBar && (
       <div className={`vtex-top-menu__search-bar flex pa2-m w-100 w-50-m w-40-l ${mobileMode ? 'order-2' : 'order-1'}`}>
         {mobileMode ? !fixed && searchBar : searchBar}
@@ -124,7 +129,7 @@ class TopMenu extends Component {
         {
           width => {
             const mobileMode = width < 640 || (global.__RUNTIME__.hints.mobile && (!width || width < 640))
-            const contentClasses = `w-100 center flex justify-center pv2-m pv6-l ph3 pb3-s ph5-m ph8-l ph9-xl`
+            const contentClasses = `w-100 center flex justify-center pv2-m pv6-l ph3 ph5-m ph8-l ph9-xl`
             return (
               <div className={containerClasses}>
                 <div className={contentClasses}>
