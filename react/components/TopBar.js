@@ -45,7 +45,7 @@ class TopBar extends Component {
 
   renderSearchBar(mobileMode) {
     return (
-      <div className="dn db-ns">
+      <div className="dn db-ns w-100">
         <SearchBar mobileMode={mobileMode} fixed={this.props.fixed} />
       </div>
     )
