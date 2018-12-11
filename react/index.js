@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { injectIntl, intlShape } from 'react-intl'
-import hoistNonReactStatics from 'hoist-non-react-statics'
 import TopMenu from './components/TopMenu'
 import { ExtensionPoint, withRuntimeContext } from 'render'
 
@@ -14,7 +12,6 @@ class Header extends Component {
     logoUrl: PropTypes.string,
     logoTitle: PropTypes.string,
     leanWhen: PropTypes.string,
-    intl: intlShape.isRequired,
     orderFormContext: contextPropTypes,
     showSearchBar: PropTypes.bool,
     showLogin: PropTypes.bool,
@@ -95,6 +92,4 @@ Header.schema = {
   }
 }
 
-export default withRuntimeContext(
-  hoistNonReactStatics(injectIntl(Header), Header)
-)
+export default withRuntimeContext(Header)
