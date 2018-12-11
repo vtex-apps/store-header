@@ -62,18 +62,16 @@ class Header extends Component {
 
     return (
       <Fragment>
-        <ExtensionPoint id="telemarketing" />
         <div
           className={`vtex-header force-full-width relative z-2 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
         >
+          <TopMenu {...topMenuOptions}>
+            <ExtensionPoint id="telemarketing" />
           <div className="z-2 items-center w-100 top-0 bg-base tl">
             <ExtensionPoint id="menu-link" />
           </div>
-          <TopMenu {...topMenuOptions} />
-          {!leanMode && <ExtensionPoint id="category-menu" />}
-          <div style={{ visibility: showMenuPopup ? 'inherit' : 'hidden' }}>
-            <TopMenu fixed {...topMenuOptions} />
-          </div>
+          </TopMenu>
+
           <div
             className="flex flex-column items-center fixed w-100"
             style={{ top: offsetTop + 120 }}
