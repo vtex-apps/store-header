@@ -142,6 +142,17 @@ class TopMenu extends Component {
     )
   }
 
+  renderCollapsibleContent = () => (
+    <div className="relative z-2 bg-base">
+      <ExtensionPoint id="category-menu" />
+      {this.props.showSearchBar && (
+        <div className="dn-m pa2">
+          <SearchBar />
+        </div>
+      )}
+    </div>
+  )
+
   render() {
     const { linkUrl, logoUrl, logoTitle, leanMode, fixed } = this.props
     const { searchActive } = this.state
