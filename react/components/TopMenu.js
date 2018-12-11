@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { intlShape, injectIntl } from 'react-intl'
-import { ExtensionPoint, Link } from 'render'
+import { FormattedMessage } from 'react-intl'
+import { ExtensionPoint } from 'render'
 import { Button, IconSearch } from 'vtex.styleguide'
 import classNames from 'classnames'
 import ReactResizeDetector from 'react-resize-detector'
@@ -194,8 +194,6 @@ TopMenu.propTypes = {
   showSearchBar: PropTypes.bool,
   showLogin: PropTypes.bool,
   leanMode: PropTypes.bool,
-  fixed: PropTypes.bool,
-  intl: intlShape.isRequired,
 }
 
 TopMenu.defaultProps = {
@@ -205,4 +203,4 @@ TopMenu.defaultProps = {
   linkUrl: "/"
 }
 
-export default injectIntl(TopMenu)
+export default TopMenu
