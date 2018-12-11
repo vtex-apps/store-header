@@ -51,6 +51,100 @@ class TopMenu extends Component {
     </div>
   }
 
+  componentDidMount() {
+    document.addEventListener('scroll', this.handleScroll)
+
+    this.handleScroll()
+    this.handleUpdateDimensions()
+  }
+
+  componentDidUpdate(prevState) {
+    if(prevState.mobileSearchActive !== this.state.mobileSearchActive){
+      this.handleScroll()
+    }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.handleScroll)
+  }
+
+  handleScroll = () => {
+    const scroll = window.scrollY
+    if (typeof scroll !== 'number') return
+
+    const scrollValue = Math.min(1, scroll / Math.max(this.state.heightReduction, this.state.minHeight))
+
+    this.updateLogoSize(scrollValue)
+    this.updateTopBarSize(scrollValue)
+    this.updateSearchButtonVisibility(scrollValue)
+
+  }
+
+  updateLogoSize = scrollValue => {
+    const logoElement = this.logoContainer.current
+    if (logoElement) {
+      const targetScale = Math.min(1, LOGO_COLLAPSED_HEIGHT / this.state.logoHeight)
+      const scale = 1 - (scrollValue * (1 - targetScale))
+      logoElement.style.transform = `scale(${scale})`
+    }
+  }
+
+  updateTopBarSize = scrollValue => {
+    /** This function, instead of setting the height of the topbar, changes its 
+     * position and the position of its contents. This is done for performance
+     * (changing height triggers a reflow, which is expensive. Setting transform
+     * only triggers a composition, which is cheap)
+     * */
+
+
+    /** This division/rounding/multiplication prevents the position from being a non-integer
+     * on either elements, so as to not to become blurry on non-retina displays, and makes both
+     * move in tandem, preventing "jumpiness" */
+    const currentHeightReduction = Math.round((scrollValue * this.state.heightReduction) / 2) * 2
+
+    const containerElement = this.container.current
+    if (containerElement) {
+      const offset = currentHeightReduction
+      containerElement.style.transform = `translate3d(0, ${-offset}px, 0)`
+    }
+
+    const contentElement = this.content.current
+    if (contentElement) {
+      const offset = currentHeightReduction * 0.5
+      contentElement.style.transform = `translate3d(0, ${offset}px, 0)`
+    }
+  }
+
+  updateSearchButtonVisibility = scrollValue => {
+    const searchButtonElement = this.mobileSearchButton.current
+    if (searchButtonElement) {
+      searchButtonElement.style.opacity = scrollValue
+    }
+  }
+
+  getContentPaddings = () => {
+    const contentElement = this.content.current
+    const contentComputedStyles = contentElement && window.getComputedStyle && window.getComputedStyle(contentElement, null)
+    return contentComputedStyles ? parseFloat(contentComputedStyles.getPropertyValue('padding-top')) : 0
+  }
+
+  handleUpdateDimensions = () => {
+    const contentPaddings = this.getContentPaddings()
+    const logoReduction = Math.max(0, this.state.logoHeight - LOGO_COLLAPSED_HEIGHT)
+    const heightReduction = Math.max(0, (contentPaddings * 2) + logoReduction)
+
+    const maxHeight = this.container.current ? this.container.current.offsetHeight : 0
+    const minHeight = maxHeight - heightReduction - (heightReduction % 2)
+
+    this.setState({
+      heightReduction,
+      maxHeight,
+      minHeight,
+    }, () => {
+      this.props.onUpdateDimensions({ minHeight, maxHeight })
+    })
+  }
+
   renderFixedContent = () => {
     const { leanMode } = this.props
     const { mobileSearchActive } = this.state
