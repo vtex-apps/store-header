@@ -14,11 +14,6 @@ import {
 import './global.css'
 
 class Header extends Component {
-  state = {
-    showMenuPopup: false,
-    leanMode: true,
-  }
-
   static propTypes = {
     name: PropTypes.string,
     linkUrl: PropTypes.string,
