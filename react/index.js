@@ -3,13 +3,7 @@ import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import TopMenu from './components/TopMenu'
-import { Alert } from 'vtex.styleguide'
 import { ExtensionPoint, withRuntimeContext } from 'render'
-
-import {
-  orderFormConsumer,
-  contextPropTypes,
-} from 'vtex.store/OrderFormContext'
 
 import './global.css'
 
@@ -44,12 +38,9 @@ class Header extends Component {
   }
 
   render() {
-    const { logoUrl, linkUrl, logoTitle, orderFormContext, showSearchBar, showLogin } = this.props
+    const { logoUrl, linkUrl, logoTitle, showSearchBar, showLogin } = this.props
 
     const leanMode = this.isLeanMode()
-
-    const hasMessage =
-      orderFormContext.message.text && orderFormContext.message.text !== ''
 
     const topMenuOptions = {
       linkUrl,
@@ -71,23 +62,6 @@ class Header extends Component {
               <ExtensionPoint id="menu-link" />
             </div>
           </TopMenu>
-
-          <div
-            className="flex flex-column items-center fixed w-100"
-            style={{ top: 120 }}
-          >
-            {hasMessage && (
-              <div className="pa2 mw9">
-                <Alert
-                  type={
-                    orderFormContext.message.isSuccess ? 'success' : 'error'
-                  }
-                >
-                  {orderFormContext.message.text}
-                </Alert>
-              </div>
-            )}
-          </div>
         </div>
       </Fragment>
     )
@@ -122,5 +96,5 @@ Header.schema = {
 }
 
 export default withRuntimeContext(
-  hoistNonReactStatics(orderFormConsumer(injectIntl(Header)), Header)
+  hoistNonReactStatics(injectIntl(Header), Header)
 )
