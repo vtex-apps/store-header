@@ -244,39 +244,54 @@ class TopMenu extends Component {
   )
 
   render() {
-    const { linkUrl, logoUrl, logoTitle, leanMode, fixed } = this.props
-    const { searchActive } = this.state
-    const containerClasses = classNames(
-      'vtex-top-menu flex justify-center w-100 bg-base',
-      {
-        'vtex-top-menu-fixed fixed bw1 bb b--muted-4 top-0 z-999': fixed,
-      },
-      {
-        'vtex-top-menu-static': !fixed,
-      }
-    )
+    const { leanMode } = this.props
+    const { maxHeight, minHeight } = this.state
+
+    const hasCalculatedMenuHeight = typeof maxHeight === 'number'
+
     return (
-      <ReactResizeDetector handleWidth>
-        {
-          width => {
-            const mobileMode = width < 640 || (global.__RUNTIME__.hints.mobile && (!width || width < 640))
-            const contentClasses = `w-100 center flex justify-center pv2-m pv6-l ph3 ph5-m ph8-l ph9-xl`
-            return (
-              <div className={containerClasses}>
-                <div className={contentClasses}>
-                  <div className="flex-wrap flex-nowrap-ns flex w-100 justify-between-m items-center">
-                    {!searchActive && mobileMode && this.renderMobileMenu()}
-                    {!searchActive && this.renderLogo(mobileMode, linkUrl, logoUrl, logoTitle)}
-                    {!searchActive && !leanMode && this.renderSearchBar(mobileMode)}
-                    {!searchActive && this.renderIcons(mobileMode)}
-                    {(searchActive && this.renderMobileSearchBar(searchActive))}
-                  </div>
-                </div>
-              </div>
-            )
-          }
-        }
-      </ReactResizeDetector>
+      <ResizeDetector handleWidth onResize={this.handleUpdateDimensions}>
+        <div
+          className={`vtex-top-menu flex justify-center w-100 bg-base top-0 left-0 z-3 ph3-s ph7-m ph8-l ph9-xl ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
+          ref={this.container}
+        >
+          <div className="w-100 mw9 flex justify-center pv6-l pv2-m" ref={this.content}>
+            <div className="flex w-100 justify-between-m items-center">
+              {this.renderFixedContent()}
+            </div>
+          </div>
+        </div>
+
+        {hasCalculatedMenuHeight && (
+          <React.Fragment>
+            {/* This is a spacer to push down the page's content, since the menu 
+            itself is fixed and doesn't affect the page's layout */}
+            <div
+              className="bg-base w-100 z-2 relative"
+              style={{
+                height: maxHeight,
+              }}
+            />
+
+            {/* This is a border below the fixed menu. Its z-index is under
+            the collapsible contents, so it's only visible when the collapsible
+            menu scrolls out of view */}
+            <div
+              className="fixed top-0 left-0 w-100 bb bw1 b--muted-4"
+              style={{
+                height: minHeight,
+                boxSizing: 'content-box',
+              }}
+            />
+          </React.Fragment>
+        )}
+
+        {!leanMode && this.renderCollapsibleContent()}
+
+        {/* This is a border below the collapsible menu. It scrolls out of
+        view along with the menu */}
+        <div className="bb bw1 b--muted-4" />
+      </ResizeDetector>
     )
   }
 }
