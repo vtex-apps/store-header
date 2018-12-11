@@ -29,29 +29,6 @@ class TopMenu extends Component {
     heightReduction: 0,
   }
 
-  renderLogo = () => {
-    const { logoUrl, linkUrl, logoTitle } = this.props
-
-    return (
-      <div className="mr5" ref={this.logoContainer}>
-        <Logo
-          src={logoUrl}
-          link={linkUrl}
-          title={logoTitle}
-          sizeDesktop={{width: LOGO_MAX_WIDTH_DESKTOP, height: LOGO_MAX_HEIGHT_DESKTOP}}
-          sizeMobile={{width: LOGO_MAX_WIDTH_MOBILE, height: LOGO_MAX_HEIGHT_MOBILE}}
-          onUpdateSize={this.handleLogoUpdateSize}
-          />
-      </div>
-    )
-  }
-
-  renderMobileCategoryMenu = () => {
-    <div className="db dn-ns">
-      <ExtensionPoint id="category-menu" mobileMode />
-    </div>
-  }
-
   componentDidMount() {
     document.addEventListener('scroll', this.handleScroll)
 
