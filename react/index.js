@@ -12,7 +12,6 @@ class Header extends Component {
     logoUrl: PropTypes.string,
     logoTitle: PropTypes.string,
     leanWhen: PropTypes.string,
-    orderFormContext: contextPropTypes,
     showSearchBar: PropTypes.bool,
     showLogin: PropTypes.bool,
     runtime: PropTypes.shape({
