@@ -6,16 +6,13 @@ import { Button, IconSearch } from 'vtex.styleguide'
 import classNames from 'classnames'
 import ReactResizeDetector from 'react-resize-detector'
 
-const LOGO_WIDTH_MOBILE = 71
-const LOGO_WIDTH_DESKTOP = 142
-const LOGO_HEIGHT_MOBILE = 40
-const LOGO_HEIGHT_DESKTOP = 80
-const MINICART_ICON_SIZE_MOBILE = 22
-const MINICART_ICON_SIZE_DESKTOP = 30
-const LOGIN_ICON_SIZE_MOBILE = 22
-const LOGIN_ICON_SIZE_DESKTOP = 30
-const SEARCH_ICON_SIZE_MOBILE = 22
-const SEARCH_ICON_SIZE_DESKTOP = 30
+const LOGO_MAX_WIDTH_DESKTOP = 150
+const LOGO_MAX_WIDTH_MOBILE = 90
+const LOGO_MAX_HEIGHT_MOBILE = 40
+const LOGO_MAX_HEIGHT_DESKTOP = 75
+const LOGO_COLLAPSED_HEIGHT = 40
+const ICON_SIZE_MOBILE = 22
+const ICON_SIZE_DESKTOP = 30
 
 class TopMenu extends Component {
 
