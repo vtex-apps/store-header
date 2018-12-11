@@ -89,6 +89,14 @@ class TopMenu extends Component {
     }
   }
 
+  handleLogoUpdateSize = ({ height }) => {
+    this.setState({
+      logoHeight: height,
+    }, () => {
+      this.handleUpdateDimensions()
+    })
+  }
+
   updateTopBarSize = scrollValue => {
     /** This function, instead of setting the height of the topbar, changes its 
      * position and the position of its contents. This is done for performance
