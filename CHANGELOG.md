@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Header no longer depends on 'OrderFormContext' and no longer has Alert.
+
 ### Added
 - Add `linkUrl` prop to `Header` component that changes the logo link URL.
 
