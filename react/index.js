@@ -67,9 +67,9 @@ class Header extends Component {
         >
           <TopMenu {...topMenuOptions}>
             <ExtensionPoint id="telemarketing" />
-          <div className="z-2 items-center w-100 top-0 bg-base tl">
-            <ExtensionPoint id="menu-link" />
-          </div>
+            <div className="z-2 items-center w-100 top-0 bg-base tl">
+              <ExtensionPoint id="menu-link" />
+            </div>
           </TopMenu>
 
           <div

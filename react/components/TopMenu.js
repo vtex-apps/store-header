@@ -184,11 +184,11 @@ class TopMenu extends Component {
     return mobileSearchActive ? (
       <div className="flex justify-start pa2 pr4 pt3 relative w-100">
         <SearchBar
-            compactMode
+          compactMode
           autoFocus
           onCancel={() => this.setState({ mobileSearchActive: false })}
-          />
-        </div>
+        />
+      </div>
     ) : (
       <React.Fragment>
         {!leanMode && this.renderMobileCategoryMenu()}
@@ -196,7 +196,7 @@ class TopMenu extends Component {
         {!leanMode && (
           <div className="dn db-ns flex-grow-1">
             <SearchBar />
-      </div>
+          </div>
         )}
         {this.renderIcons()}
       </React.Fragment>
@@ -225,20 +225,20 @@ class TopMenu extends Component {
             </div>
           )}
           {showLogin && (
-          <ExtensionPoint
-            id="login"
+            <ExtensionPoint
+              id="login"
               iconClasses="c-muted-1"
               labelClasses="c-muted-1"
               iconSize={ICON_SIZE_MOBILE}
-          />
+            />
           )}
-        {!leanMode && <ExtensionPoint
-          id="minicart"
+          {!leanMode && <ExtensionPoint
+            id="minicart"
             iconClasses="c-muted-1"
             labelClasses="c-muted-1"
             iconSize={ICON_SIZE_MOBILE}
-        />}
-      </div>
+          />}
+        </div>
         {/** Desktop icons */}
         <div className="dn flex-ns">
           {showLogin && (
@@ -334,7 +334,7 @@ TopMenu.propTypes = {
   logoTitle: PropTypes.string,
   showSearchBar: PropTypes.bool,
   showLogin: PropTypes.bool,
-  leanMode: PropTypes.bool,
+  leanMode: PropTypes.bool,  
   onUpdateDimensions: PropTypes.func,
 }
 
