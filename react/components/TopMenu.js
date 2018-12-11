@@ -194,13 +194,13 @@ TopMenu.propTypes = {
   showSearchBar: PropTypes.bool,
   showLogin: PropTypes.bool,
   leanMode: PropTypes.bool,
+  onUpdateDimensions: PropTypes.func,
 }
 
 TopMenu.defaultProps = {
-  fixed: false,
   showSearchBar: true,
   showLogin: true,
-  linkUrl: "/"
+  onUpdateDimensions: () => {},
 }
 
 export default TopMenu
