@@ -74,7 +74,7 @@ class Header extends Component {
 
           <div
             className="flex flex-column items-center fixed w-100"
-            style={{ top: offsetTop + 120 }}
+            style={{ top: 120 }}
           >
             {hasMessage && (
               <div className="pa2 mw9">
