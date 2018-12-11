@@ -27,6 +27,7 @@ class Header extends Component {
     hasScrolledPastThreshold: false,
     topbarMaxHeight: 0,
     topbarMinHeight: 0,
+    topDistance: 3
   }
 
   static propTypes = {
@@ -75,8 +76,8 @@ class Header extends Component {
     }
 
     const scroll = window.scrollY
-    // const { scrollHeight } = this._root.current
 
+    this.handleTopDistanceChange(scroll, 50)
     this.topbar.current && this.topbar.current.squish(scroll)
   }
 
@@ -87,9 +88,15 @@ class Header extends Component {
     })
   }
 
+  handleTopDistanceChange = (scroll, triggerValue) => {
+    scroll > triggerValue
+    ? this.setState({ topDistance: 0 }) 
+    : this.setState({ topDistance: 3 })
+  }
+
   render() {
     const { logoUrl, logoTitle, orderFormContext, showSearchBar, showLogin } = this.props
-    const { topbarMinHeight, topbarMaxHeight } = this.state
+    const { topbarMinHeight, topbarMaxHeight, topDistance } = this.state
 
     const leanMode = this.isLeanMode()
     const offsetTop = (this._root.current && this._root.current.offsetTop) || 0
@@ -117,7 +124,7 @@ class Header extends Component {
             <ExtensionPoint id="menu-link" />
           </div>
           */}
-          <div className={`w-100 top-0 ${topbarMaxHeight ? 'fixed' : 'relative'} z-3`}>
+          <div className={`w-100 top-${topDistance} ${topbarMaxHeight ? 'fixed' : 'relative'} z-3`}>
             <div className="bg-base-bkp">
               <TopBar
                 {...topMenuOptions}
