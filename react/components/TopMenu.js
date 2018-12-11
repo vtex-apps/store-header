@@ -40,11 +40,10 @@ class TopMenu extends Component {
     )
   }
 
-  renderMobileMenu() {
-    const { leanMode } = this.props
-    return (
-      !leanMode && <ExtensionPoint id="category-menu" mobileMode />
-    )
+  renderMobileCategoryMenu = () => {
+    <div className="db dn-ns">
+      <ExtensionPoint id="category-menu" mobileMode />
+    </div>
   }
 
   renderSearchBar(mobileMode) {
