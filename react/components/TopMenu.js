@@ -65,19 +65,29 @@ class TopMenu extends Component {
     )
   }
 
-  renderMobileSearchBar(searchActive) {
-    return (
+  renderFixedContent = () => {
+    const { leanMode } = this.props
+    const { mobileSearchActive } = this.state
+
+    return mobileSearchActive ? (
       <div className="flex justify-start pa2 pr4 pt3 relative w-100">
-        <div className="w-80">
-          <ExtensionPoint
-            id="search-bar"
-            emptyPlaceholder={this.translate('search-emptyPlaceholder')}
+        <SearchBar
             compactMode
+          autoFocus
+          onCancel={() => this.setState({ mobileSearchActive: false })}
           />
         </div>
-        <div className="w-20 pl0"><Button size="small" variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })} >CANCEL</Button>
-        </div>
+    ) : (
+      <React.Fragment>
+        {!leanMode && this.renderMobileCategoryMenu()}
+        {this.renderLogo()}
+        {!leanMode && (
+          <div className="dn db-ns flex-grow-1">
+            <SearchBar />
       </div>
+        )}
+        {this.renderIcons()}
+      </React.Fragment>
     )
   }
 
