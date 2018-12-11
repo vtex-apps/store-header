@@ -20,8 +20,13 @@ class TopMenu extends Component {
   logoContainer = React.createRef()
   mobileSearchButton = React.createRef()
 
-  state = { searchActive: false }
-  translate = id => this.props.intl.formatMessage({ id: `header.${id}` })
+  state = {
+    mobileSearchActive: false,
+    logoHeight: null,
+    minHeight: null,
+    maxHeight: null,
+    heightReduction: 0,
+  }
 
   renderLogo = () => {
     const { logoUrl, linkUrl, logoTitle } = this.props
