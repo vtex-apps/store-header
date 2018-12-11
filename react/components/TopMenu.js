@@ -81,34 +81,63 @@ class TopMenu extends Component {
     )
   }
 
-
-  renderIcons(mobileMode) {
-    const { leanMode, fixed, showLogin, showSearchBar } = this.props
-    const { searchActive } = this.state
+  renderIcons() {
+    const { leanMode, showLogin, showSearchBar } = this.props
 
     return (
-      <div className={
-        `vtex-top-menu__icons flex justify-end items-center w-25-m w-30-l ${mobileMode ? 'order-1 ml-auto' : 'order-2'}`
-      }>
-        <div className="mr7-m">
-          {(mobileMode && fixed && showSearchBar) && showLogin && <Button icon variation="tertiary" onClick={e => this.setState({ searchActive: !searchActive })}>
-            <IconSearch size={mobileMode ? SEARCH_ICON_SIZE_MOBILE : SEARCH_ICON_SIZE_DESKTOP} color="gray" />
-          </Button>}
+      <div className="vtex-top-menu__icons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns">
+        {/** Both desktop and mobile icons are rendered, and hidden through CSS,
+          for better server side rendering support */}
+
+        {/** Mobile icons */}
+        <div className="flex dn-ns">
+          {showSearchBar && !leanMode && (
+            <div ref={this.mobileSearchButton} className="o-0">
+              <Button
+                icon
+                variation="tertiary"
+                onClick={() => this.setState(state => ({ mobileSearchActive: !state.mobileSearchActive }))}
+              >
+                <span className="c-muted-1"><IconSearch size={ICON_SIZE_MOBILE}/></span>
+              </Button>
+            </div>
+          )}
+          {showLogin && (
           <ExtensionPoint
             id="login"
-            iconClasses="gray"
-            labelClasses="gray"
-            iconSize={mobileMode ? LOGIN_ICON_SIZE_MOBILE : LOGIN_ICON_SIZE_DESKTOP}
-            iconLabel={!mobileMode ? this.translate('topMenu.login.icon.label') : ''}
+              iconClasses="c-muted-1"
+              labelClasses="c-muted-1"
+              iconSize={ICON_SIZE_MOBILE}
           />
-        </div>
+          )}
         {!leanMode && <ExtensionPoint
           id="minicart"
-          iconClasses="gray"
-          iconSize={mobileMode ? MINICART_ICON_SIZE_MOBILE : MINICART_ICON_SIZE_DESKTOP}
-          iconLabel={!mobileMode ? this.translate('topMenu.minicart.icon.label') : ''}
-          labelClasses="gray"
+            iconClasses="c-muted-1"
+            labelClasses="c-muted-1"
+            iconSize={ICON_SIZE_MOBILE}
         />}
+      </div>
+        {/** Desktop icons */}
+        <div className="dn flex-ns">
+          {showLogin && (
+            <ExtensionPoint
+              id="login"
+              iconClasses="c-muted-1"
+              labelClasses="c-muted-1"
+              iconSize={ICON_SIZE_DESKTOP}
+              iconLabel={<FormattedMessage id="header.topMenu.login.icon.label" />}
+            />
+          )}
+          {!leanMode && (
+            <ExtensionPoint
+              id="minicart"
+              iconClasses="c-muted-1"
+              labelClasses="c-muted-1"
+              iconSize={ICON_SIZE_DESKTOP}
+              iconLabel={<FormattedMessage id="header.topMenu.minicart.icon.label" />}
+            />
+          )}
+        </div>
       </div>
     )
   }
