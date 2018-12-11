@@ -39,14 +39,6 @@ class Header extends Component {
     leanWhen: 'a^',
   }
 
-  _root = React.createRef()
-
-  componentDidMount() {
-    document.addEventListener('scroll', this.handleScroll)
-
-    this.handleScroll()
-  }
-
   isLeanMode = () => {
     const {
       leanWhen,
@@ -56,33 +48,10 @@ class Header extends Component {
     return acceptedPaths.test(page)
   }
 
-  componentWillUnmount() {
-    document.removeEventListener('scroll', this.handleScroll)
-  }
-
-  handleScroll = () => {
-    if (!this._root.current) {
-      return
-    }
-
-    const scroll = window.scrollY
-    const { scrollHeight } = this._root.current
-
-    const showMenuPopup = scroll >= scrollHeight
-
-    if (showMenuPopup !== this.state.showMenuPopup) {
-      this.setState({
-        showMenuPopup
-      })
-    }
-  }
-
   render() {
-    const { linkUrl, logoUrl, logoTitle, orderFormContext, showSearchBar, showLogin } = this.props
-    const { showMenuPopup } = this.state
+    const { logoUrl, logoTitle, orderFormContext, showSearchBar, showLogin } = this.props
 
     const leanMode = this.isLeanMode()
-    const offsetTop = (this._root.current && this._root.current.offsetTop) || 0
 
     const hasMessage =
       orderFormContext.message.text && orderFormContext.message.text !== ''
@@ -100,8 +69,7 @@ class Header extends Component {
       <Fragment>
         <ExtensionPoint id="telemarketing" />
         <div
-          className={`vtex-header force-full-width relative z-2 w-100 bb bw1 b--muted-4 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
-          ref={this._root}
+          className={`vtex-header force-full-width relative z-2 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
         >
           <div className="z-2 items-center w-100 top-0 bg-base tl">
             <ExtensionPoint id="menu-link" />
