@@ -44,7 +44,7 @@ class Header extends Component {
   }
 
   render() {
-    const { logoUrl, logoTitle, orderFormContext, showSearchBar, showLogin } = this.props
+    const { logoUrl, linkUrl, logoTitle, orderFormContext, showSearchBar, showLogin } = this.props
 
     const leanMode = this.isLeanMode()
 
