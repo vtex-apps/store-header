@@ -25,7 +25,7 @@ class TopMenu extends Component {
   renderLogo(mobileMode, linkUrl, logoUrl, logoTitle) {
     return (
       <div className="vtex-top-menu__logo flex justify-start w-20-m w-25-l mw4 mw5-ns">
-        <Link to={linkurl} className="outline-0">
+        <Link to={linkUrl} className="outline-0">
           <ExtensionPoint
             id="logo"
             url={logoUrl}
