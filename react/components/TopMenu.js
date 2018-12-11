@@ -15,6 +15,10 @@ const ICON_SIZE_MOBILE = 22
 const ICON_SIZE_DESKTOP = 30
 
 class TopMenu extends Component {
+  container = React.createRef()
+  content = React.createRef()
+  logoContainer = React.createRef()
+  mobileSearchButton = React.createRef()
 
   state = { searchActive: false }
   translate = id => this.props.intl.formatMessage({ id: `header.${id}` })
