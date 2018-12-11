@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { ExtensionPoint } from 'render'
 import { Button, IconSearch } from 'vtex.styleguide'
-import classNames from 'classnames'
-import ReactResizeDetector from 'react-resize-detector'
+import ResizeDetector from 'react-resize-detector'
+import Logo from './Logo'
+import SearchBar from './SearchBar'
 
 const LOGO_MAX_WIDTH_DESKTOP = 150
 const LOGO_MAX_WIDTH_MOBILE = 90
