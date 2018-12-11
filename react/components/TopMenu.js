@@ -23,18 +23,19 @@ class TopMenu extends Component {
   state = { searchActive: false }
   translate = id => this.props.intl.formatMessage({ id: `header.${id}` })
 
-  renderLogo(mobileMode, linkUrl, logoUrl, logoTitle) {
+  renderLogo = () => {
+    const { logoUrl, linkUrl, logoTitle } = this.props
+
     return (
-      <div className="vtex-top-menu__logo flex justify-start w-20-m w-25-l mw4 mw5-ns">
-        <Link to={linkurl} className="outline-0">
-          <ExtensionPoint
-            id="logo"
-            url={logoUrl}
-            title={logoTitle}
-            width={mobileMode ? LOGO_WIDTH_MOBILE : LOGO_WIDTH_DESKTOP}
-            height={mobileMode ? LOGO_HEIGHT_MOBILE : LOGO_HEIGHT_DESKTOP}
+      <div className="mr5" ref={this.logoContainer}>
+        <Logo
+          src={logoUrl}
+          link={linkUrl}
+          title={logoTitle}
+          sizeDesktop={{width: LOGO_MAX_WIDTH_DESKTOP, height: LOGO_MAX_HEIGHT_DESKTOP}}
+          sizeMobile={{width: LOGO_MAX_WIDTH_MOBILE, height: LOGO_MAX_HEIGHT_MOBILE}}
+          onUpdateSize={this.handleLogoUpdateSize}
           />
-        </Link>
       </div>
     )
   }
