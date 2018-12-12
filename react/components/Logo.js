@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { ExtensionPoint, Link } from 'render'
 import ReactResizeDetector from 'react-resize-detector'
 
-const Logo = ({link, src, title, sizeMobile, sizeDesktop, onUpdateSize}) => (
+const Logo = ({link, src, title, sizeMobile, sizeDesktop, onResize}) => (
   <div className="vtex-top-menu__logo pv2">
-    <ReactResizeDetector handleHeight onResize={(width, height) => onUpdateSize({width, height})}>
+    <ReactResizeDetector handleHeight onResize={onResize}>
       <Link
         to={link}
         className="outline-0"
@@ -45,7 +45,7 @@ Logo.propTypes = {
   src: PropTypes.string.isRequired,
   link: PropTypes.string,
   title: PropTypes.string,
-  onUpdateSize: PropTypes.func,
+  onResize: PropTypes.func,
   sizeMobile: PropTypes.shape({
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
@@ -58,7 +58,7 @@ Logo.propTypes = {
 
 Logo.defaultProps = {
   link: '/',
-  onUpdateSize: () => {},
+  onResize: () => {},
 }
 
 export default Logo
