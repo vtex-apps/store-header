@@ -52,12 +52,16 @@ class Header extends Component {
         <div
           className={`vtex-header force-full-width relative z-2 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
         >
-          <TopMenu {...topMenuOptions}>
-            <ExtensionPoint id="telemarketing" />
-            <div className="z-2 items-center w-100 top-0 bg-base tl">
-              <ExtensionPoint id="menu-link" />
-            </div>
-          </TopMenu>
+          <TopMenu
+            {...topMenuOptions}
+            extraHeaders={(
+              <ExtensionPoint id="telemarketing" />
+              // TODO: either add support or remove menu-link
+              // <div className="z-2 items-center w-100 top-0 bg-base tl">
+              //   <ExtensionPoint id="menu-link" />
+              // </div>
+            )}
+          />
         </div>
       </Fragment>
     )

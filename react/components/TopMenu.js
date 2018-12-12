@@ -28,6 +28,7 @@ class TopMenu extends Component {
     minHeight: null,
     maxHeight: null,
     heightReduction: 0,
+    extraHeadersHeight: 0,
   }
 
   componentDidMount() {
@@ -131,7 +132,7 @@ class TopMenu extends Component {
     const logoReduction = Math.max(0, this.state.logoHeight - Math.max(this.state.iconsHeight, LOGO_COLLAPSED_HEIGHT))
     const heightReduction = Math.max(0, contentPaddings + logoReduction)
 
-    const maxHeight = this.container.current ? this.container.current.offsetHeight : 0
+    const maxHeight = (this.container.current ? this.container.current.offsetHeight : 0) + this.state.extraHeadersHeight
     const minHeight = maxHeight - heightReduction - (heightReduction % 2)
 
     this.setState({
@@ -140,6 +141,14 @@ class TopMenu extends Component {
       minHeight,
     }, () => {
       this.props.onUpdateDimensions({ minHeight, maxHeight })
+    })
+  }
+
+  handleExtraHeadersResize = (width, height) => {
+    this.setState({
+      extraHeadersHeight: height,
+    }, () => {
+      this.handleUpdateDimensions()
     })
   }
 
@@ -270,16 +279,24 @@ class TopMenu extends Component {
   )
 
   render() {
-    const { leanMode } = this.props
-    const { maxHeight, minHeight } = this.state
+    const { leanMode, extraHeaders } = this.props
+    const { maxHeight, minHeight, extraHeadersHeight } = this.state
 
     const hasCalculatedMenuHeight = typeof maxHeight === 'number'
 
     return (
       <ResizeDetector handleWidth onResize={this.handleUpdateDimensions}>
+        <div className="fixed top-0 left-0 w-100 z-4">
+          <ResizeDetector handleHeight onResize={this.handleExtraHeadersResize}>
+            {extraHeaders}
+          </ResizeDetector>
+        </div>
         <div
-          className={`vtex-top-menu flex justify-center w-100 bg-base top-0 left-0 z-3 ph3-s ph7-m ph8-l ph9-xl ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
-          ref={this.container}>
+          className={`vtex-top-menu flex justify-center w-100 bg-base left-0 z-3 ph3-s ph7-m ph8-l ph9-xl ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
+          ref={this.container}
+          style={{
+            top: extraHeadersHeight,
+          }}>
           <div
             className={`w-100 mw9 flex justify-center ${ leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
             ref={this.content}
@@ -341,6 +358,7 @@ TopMenu.propTypes = {
   showLogin: PropTypes.bool,
   leanMode: PropTypes.bool,  
   onUpdateDimensions: PropTypes.func,
+  extraHeaders: PropTypes.node,
 }
 
 TopMenu.defaultProps = {
