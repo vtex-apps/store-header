@@ -48,7 +48,8 @@ class TopMenu extends Component {
   }
 
   handleScroll = () => {
-    // If it's in leanMode, pretend it's scrolled all the way to the bottom
+    // If it's in leanMode, pretend it's scrolled all the way to the bottom,
+    // in order to make it look compressed
     const scroll = this.props.leanMode ? Infinity : window.scrollY
 
     if (typeof scroll !== 'number') return
