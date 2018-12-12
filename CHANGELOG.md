@@ -6,24 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-### Added
-- Add `linkUrl` prop to `Header` component that changes the logo link URL.
 
-## [2.1.4] - 2018-12-05
-
-### Fixed
-- Fixed topbar padding bottom on mobile
-
-## [2.1.3] - 2018-12-05
-### Fixed
-- No padding being applied in the `SearchBar` bottom in mobile mode.
+## [2.1.5] - 2018-12-06
 
 ### Changed
-- Logo sizes on desktop and mobile.
-
-## [2.1.2] - 2018-12-04
-### Fixed
-- Paddings to match the body.
+- Updated topbar layout and scroll behavior
 
 ## [2.1.1] - 2018-12-02
 
