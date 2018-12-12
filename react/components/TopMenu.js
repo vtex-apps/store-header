@@ -280,8 +280,18 @@ class TopMenu extends Component {
           ref={this.container}>
           <div
             className={`w-100 mw9 flex justify-center ${ leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
-            ref={this.content}>
-            <div className="flex w-100 justify-between-m items-center">
+            ref={this.content}
+            style={{
+              // Prevents the empty margins of this element from blocking the users clicks
+              // TODO: create a tachyons class for pointer events and remove this style
+              pointerEvents: 'none',
+            }}
+            >
+            <div
+              className="flex w-100 justify-between-m items-center"
+              style={{
+                pointerEvents: 'auto',
+              }}>
               {this.renderFixedContent()}
             </div>
           </div>
