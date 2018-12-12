@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- Layout adjustments on the topbar
+
 ## [2.1.5] - 2018-12-06
 
 ### Changed
