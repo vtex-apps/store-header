@@ -104,9 +104,10 @@ class TopMenu extends Component {
   }
 
   getContentPaddings = () => {
+    // Gets the calculated vertical paddings of the content container
     const contentElement = this.content.current
     const contentComputedStyles = contentElement && window.getComputedStyle && window.getComputedStyle(contentElement, null)
-    return contentComputedStyles ? parseFloat(contentComputedStyles.getPropertyValue('padding-top')) : 0
+    return contentComputedStyles ? parseFloat(contentComputedStyles.getPropertyValue('padding-top')) * 2 : 0
   }
 
   handleUpdateIconsDimensions = (width, height) => {
@@ -128,7 +129,7 @@ class TopMenu extends Component {
   handleUpdateDimensions = () => {
     const contentPaddings = this.getContentPaddings()
     const logoReduction = Math.max(0, this.state.logoHeight - Math.max(this.state.iconsHeight, LOGO_COLLAPSED_HEIGHT))
-    const heightReduction = Math.max(0, (contentPaddings * 2) + logoReduction)
+    const heightReduction = Math.max(0, contentPaddings + logoReduction)
 
     const maxHeight = this.container.current ? this.container.current.offsetHeight : 0
     const minHeight = maxHeight - heightReduction - (heightReduction % 2)
