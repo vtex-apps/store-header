@@ -70,22 +70,6 @@ class TopMenu extends Component {
     }
   }
 
-  handleUpdateIconsDimensions = (width, height) => {
-    this.setState({
-      iconsHeight: height,
-    }, () => {
-      this.handleUpdateDimensions()
-    })
-  }
-
-  handleUpdateLogoDimensions = (width, height) => {
-    this.setState({
-      logoHeight: height,
-    }, () => {
-      this.handleUpdateDimensions()
-    })
-  }
-
   updateTopBarScroll = scrollValue => {
     /** This function, instead of setting the height of the topbar, changes its 
      * position and the position of its contents. This is done for performance
@@ -123,6 +107,22 @@ class TopMenu extends Component {
     const contentElement = this.content.current
     const contentComputedStyles = contentElement && window.getComputedStyle && window.getComputedStyle(contentElement, null)
     return contentComputedStyles ? parseFloat(contentComputedStyles.getPropertyValue('padding-top')) : 0
+  }
+
+  handleUpdateIconsDimensions = (width, height) => {
+    this.setState({
+      iconsHeight: height,
+    }, () => {
+      this.handleUpdateDimensions()
+    })
+  }
+
+  handleUpdateLogoDimensions = (width, height) => {
+    this.setState({
+      logoHeight: height,
+    }, () => {
+      this.handleUpdateDimensions()
+    })
   }
 
   handleUpdateDimensions = () => {
