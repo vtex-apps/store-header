@@ -169,32 +169,6 @@ class TopMenu extends Component {
     </div>
   }
 
-  renderFixedContent = () => {
-    const { leanMode } = this.props
-    const { mobileSearchActive } = this.state
-
-    return mobileSearchActive ? (
-      <div className="flex justify-start pa2 pr4 pt3 relative w-100">
-        <SearchBar
-          compactMode
-          autoFocus
-          onCancel={() => this.setState({ mobileSearchActive: false })}
-        />
-      </div>
-    ) : (
-      <React.Fragment>
-        {!leanMode && this.renderMobileCategoryMenu()}
-        {this.renderLogo()}
-        {!leanMode && (
-          <div className="dn db-ns flex-grow-1">
-            <SearchBar />
-          </div>
-        )}
-        {this.renderIcons()}
-      </React.Fragment>
-    )
-  }
-
   renderIcons() {
     const { leanMode, showLogin, showSearchBar } = this.props
 
@@ -255,6 +229,32 @@ class TopMenu extends Component {
           </div>
         </ResizeDetector>
       </div>
+    )
+  }
+
+  renderFixedContent = () => {
+    const { leanMode } = this.props
+    const { mobileSearchActive } = this.state
+
+    return mobileSearchActive ? (
+      <div className="flex justify-start pa2 pr4 pt3 relative w-100">
+        <SearchBar
+          compactMode
+          autoFocus
+          onCancel={() => this.setState({ mobileSearchActive: false })}
+        />
+      </div>
+    ) : (
+      <React.Fragment>
+        {!leanMode && this.renderMobileCategoryMenu()}
+        {this.renderLogo()}
+        {!leanMode && (
+          <div className="dn db-ns flex-grow-1">
+            <SearchBar />
+          </div>
+        )}
+        {this.renderIcons()}
+      </React.Fragment>
     )
   }
 
