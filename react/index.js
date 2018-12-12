@@ -101,11 +101,6 @@ class Header extends Component {
           <div style={{ visibility: showMenuPopup ? 'inherit' : 'hidden' }}>
             <TopMenu fixed {...topMenuOptions} />
           </div>
-          <div
-            className="flex flex-column items-center fixed w-100"
-            style={{ top: offsetTop + 120 }}
-          >
-          </div>
         </div>
       </Fragment>
     )
