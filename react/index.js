@@ -1,35 +1,25 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { injectIntl, intlShape } from 'react-intl'
-import hoistNonReactStatics from 'hoist-non-react-statics'
-import Modal from './components/Modal'
 import TopMenu from './components/TopMenu'
-import { Alert } from 'vtex.styleguide'
 import { ExtensionPoint, withRuntimeContext } from 'render'
-
-import {
-  orderFormConsumer,
-  contextPropTypes,
-} from 'vtex.store/OrderFormContext'
 
 import './global.css'
 
 class Header extends Component {
-  state = {
-    showMenuPopup: false,
-    leanMode: true,
-  }
-
   static propTypes = {
-    name: PropTypes.string,
+    /** Address opened when the user clicks the logo */
     linkUrl: PropTypes.string,
+    /** URL of the logo image */
     logoUrl: PropTypes.string,
+    /** Alt text for the logo */
     logoTitle: PropTypes.string,
+    /** Cases in which the menu is in lean mode */
     leanWhen: PropTypes.string,
-    intl: intlShape.isRequired,
-    orderFormContext: contextPropTypes,
+    /** Sets whether the search bar is visible or not */
     showSearchBar: PropTypes.bool,
+    /** Sets whether the login button is displayed or not*/
     showLogin: PropTypes.bool,
+    /** Used to receive runtime context */
     runtime: PropTypes.shape({
       page: PropTypes.string,
     }),
@@ -38,14 +28,6 @@ class Header extends Component {
   /** Determines an unmatching regex for default behavior of the leanMode */
   static defaultProps = {
     leanWhen: 'a^',
-  }
-
-  _root = React.createRef()
-
-  componentDidMount() {
-    document.addEventListener('scroll', this.handleScroll)
-
-    this.handleScroll()
   }
 
   isLeanMode = () => {
@@ -57,79 +39,35 @@ class Header extends Component {
     return acceptedPaths.test(page)
   }
 
-  componentWillUnmount() {
-    document.removeEventListener('scroll', this.handleScroll)
-  }
-
-  handleScroll = () => {
-    if (!this._root.current) {
-      return
-    }
-
-    const scroll = window.scrollY
-    const { scrollHeight } = this._root.current
-
-    const showMenuPopup = scroll >= scrollHeight
-
-    if (showMenuPopup !== this.state.showMenuPopup) {
-      this.setState({
-        showMenuPopup
-      })
-    }
-  }
-
   render() {
-    const { linkUrl, logoUrl, logoTitle, orderFormContext, showSearchBar, showLogin } = this.props
-    const { showMenuPopup } = this.state
+    const { logoUrl, linkUrl, logoTitle, showSearchBar, showLogin } = this.props
 
     const leanMode = this.isLeanMode()
-    const offsetTop = (this._root.current && this._root.current.offsetTop) || 0
-
-    const hasMessage =
-      orderFormContext.message.text && orderFormContext.message.text !== ''
 
     const topMenuOptions = {
       linkUrl,
       logoUrl,
       logoTitle,
-      leanMode,
       showSearchBar,
       showLogin,
     }
 
     return (
-      <Fragment>
-        <ExtensionPoint id="telemarketing" />
-        <div
-          className={`vtex-header force-full-width relative z-2 w-100 bb bw1 b--muted-4 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
-          ref={this._root}
-        >
-          <div className="z-2 items-center w-100 top-0 bg-base tl">
-            <ExtensionPoint id="menu-link" />
-          </div>
-          <TopMenu {...topMenuOptions} />
-          {!leanMode && <ExtensionPoint id="category-menu" />}
-          <div style={{ visibility: showMenuPopup ? 'inherit' : 'hidden' }}>
-            <TopMenu fixed {...topMenuOptions} />
-          </div>
-          <div
-            className="flex flex-column items-center fixed w-100"
-            style={{ top: offsetTop + 120 }}
-          >
-            {hasMessage && (
-              <div className="pa2 mw9">
-                <Alert
-                  type={
-                    orderFormContext.message.isSuccess ? 'success' : 'error'
-                  }
-                >
-                  {orderFormContext.message.text}
-                </Alert>
-              </div>
-            )}
-          </div>
-        </div>
-      </Fragment>
+      <div
+        className={`vtex-header force-full-width relative z-2 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
+      >
+        <TopMenu
+          {...topMenuOptions}
+          leanMode={leanMode}
+          extraHeaders={(
+            <ExtensionPoint id="telemarketing" />
+            // TODO: either add support or remove menu-link
+            // <div className="z-2 items-center w-100 top-0 bg-base tl">
+            //   <ExtensionPoint id="menu-link" />
+            // </div>
+          )}
+        />
+      </div>
     )
   }
 }
@@ -161,6 +99,4 @@ Header.schema = {
   }
 }
 
-export default withRuntimeContext(
-  hoistNonReactStatics(orderFormConsumer(injectIntl(Header)), Header)
-)
+export default withRuntimeContext(Header)
