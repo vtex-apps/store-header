@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
 import TopMenu from './components/TopMenu'
 import { ExtensionPoint, withRuntimeContext } from 'render'
 
@@ -40,7 +41,7 @@ class Header extends Component {
   }
 
   render() {
-    const { logoUrl, linkUrl, logoTitle, showSearchBar, showLogin } = this.props
+    const { logoUrl, logoTitle, showSearchBar, showLogin } = this.props
 
     const leanMode = this.isLeanMode()
 

@@ -7,6 +7,7 @@
   "description": "The VTEX Store Header component",
   "builders": {
     "react": "2.x",
+    "store": "0.x",
     "messages": "0.x"
   },
   "mustUpdateAt": "2019-04-02",
@@ -18,7 +19,12 @@
     "postreleasy": "vtex publish --verbose"
   },
   "dependencies": {
-    "vtex.store": "1.x",
-    "vtex.styleguide": "8.x"
+    "vtex.styleguide": "8.x",
+    "vtex.telemarketing": "2.x",
+    "vtex.minicart": "2.x",
+    "vtex.login": "2.x",
+    "vtex.menu": "2.x",
+    "vtex.category-menu": "2.x",
+    "vtex.store-components": "3.x"
   }
 }

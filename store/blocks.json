@@ -1,0 +1,10 @@
+{
+  "header": {
+    "blocks": ["telemarketing", "logo"],
+    "component": "index"
+  },
+  "header/full": {
+    "blocks": ["telemarketing", "logo", "minicart", "login", "category-menu", "search-bar"],
+    "component": "index"
+  }
+}
