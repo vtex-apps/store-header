@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "dreamstore-header",
-  "version": "2.1.5",
+  "version": "2.2.0",
   "title": "VTEX Header",
   "defaultLocale": "pt-BR",
   "description": "The VTEX Header component",

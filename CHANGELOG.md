@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.2.0] - 2018-12-13
+
 ### Changed
 - Layout adjustments on the topbar.
 - Header no longer depends on 'OrderFormContext' and no longer has Alert.
