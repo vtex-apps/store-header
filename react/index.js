@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import TopMenu from './components/TopMenu'
 import { ExtensionPoint, withRuntimeContext } from 'render'
@@ -54,22 +54,20 @@ class Header extends Component {
     }
 
     return (
-      <Fragment>
-        <div
-          className={`vtex-header force-full-width relative z-2 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
-        >
-          <TopMenu
-            {...topMenuOptions}
-            extraHeaders={(
-              <ExtensionPoint id="telemarketing" />
-              // TODO: either add support or remove menu-link
-              // <div className="z-2 items-center w-100 top-0 bg-base tl">
-              //   <ExtensionPoint id="menu-link" />
-              // </div>
-            )}
-          />
-        </div>
-      </Fragment>
+      <div
+        className={`vtex-header force-full-width relative z-2 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
+      >
+        <TopMenu
+          {...topMenuOptions}
+          extraHeaders={(
+            <ExtensionPoint id="telemarketing" />
+            // TODO: either add support or remove menu-link
+            // <div className="z-2 items-center w-100 top-0 bg-base tl">
+            //   <ExtensionPoint id="menu-link" />
+            // </div>
+          )}
+        />
+      </div>
     )
   }
 }
