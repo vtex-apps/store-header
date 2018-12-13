@@ -7,13 +7,19 @@ import './global.css'
 
 class Header extends Component {
   static propTypes = {
-    name: PropTypes.string,
+    /** Address opened when the user clicks the logo */
     linkUrl: PropTypes.string,
+    /** URL of the logo image */
     logoUrl: PropTypes.string,
+    /** Alt text for the logo */
     logoTitle: PropTypes.string,
+    /** Cases in which the menu is in lean mode */
     leanWhen: PropTypes.string,
+    /** Sets whether the search bar is visible or not */
     showSearchBar: PropTypes.bool,
+    /** Sets whether the login button is displayed or not*/
     showLogin: PropTypes.bool,
+    /** Used to receive runtime context */
     runtime: PropTypes.shape({
       page: PropTypes.string,
     }),
