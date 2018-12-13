@@ -48,7 +48,6 @@ class Header extends Component {
       linkUrl,
       logoUrl,
       logoTitle,
-      leanMode,
       showSearchBar,
       showLogin,
     }
@@ -59,6 +58,7 @@ class Header extends Component {
       >
         <TopMenu
           {...topMenuOptions}
+          leanMode={leanMode}
           extraHeaders={(
             <ExtensionPoint id="telemarketing" />
             // TODO: either add support or remove menu-link
