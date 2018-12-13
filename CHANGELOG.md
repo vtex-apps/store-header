@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.2.1] - 2018-12-13
+
+### Fixed
+- Fixed bug where the category menu wouldn't show up on mobile.
+
 ## [2.2.0] - 2018-12-13
 
 ### Changed

@@ -172,11 +172,11 @@ class TopMenu extends Component {
     )
   }
 
-  renderMobileCategoryMenu = () => {
+  renderMobileCategoryMenu = () => (
     <div className="db dn-ns">
       <ExtensionPoint id="category-menu" mobileMode />
     </div>
-  }
+  )
 
   renderIcons() {
     const { leanMode, showLogin, showSearchBar } = this.props
