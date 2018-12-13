@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { Adopt } from 'react-adopt'
 import { ExtensionPoint } from 'render'
+import { Button } from 'vtex.styleguide'
 
 const SearchBar = ({ compactMode, autoFocus, onCancel }) => {
   return (
