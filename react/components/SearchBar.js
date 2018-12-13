@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl'
 import { Adopt } from 'react-adopt'
 import { ExtensionPoint } from 'render'
 
-const SearchBar = ({compactMode, autoFocus, onCancel}) => {
+const SearchBar = ({ compactMode, autoFocus, onCancel }) => {
   return (
     <React.Fragment>
       <div className="vtex-top-menu__search-bar flex pa2-m flex-grow-1 justify-center">
@@ -15,7 +15,7 @@ const SearchBar = ({compactMode, autoFocus, onCancel}) => {
               emptyPlaceholder: <FormattedMessage id='header.search-emptyPlaceholder' />,
             }}
           >
-            {({placeholder, emptyPlaceholder}) => (
+            {({ placeholder, emptyPlaceholder }) => (
               <ExtensionPoint
                 id="search-bar"
                 placeholder={placeholder}

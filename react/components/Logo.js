@@ -12,7 +12,7 @@ const Logo = ({link, src, title, sizeMobile, sizeDesktop, onResize}) => (
         // there is a weird bottom padding being added
         // below the image. This fixes the issue,
         // but the cause should be investigated
-        style={{fontSize:0}}
+        style={{ fontSize: 0 }}
       >
         {sizeMobile && (
           <div className="db dn-ns">
