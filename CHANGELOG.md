@@ -20,12 +20,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add `linkUrl` prop to `Header` component that changes the logo link URL.
 
 ### Changed
-- Updated topbar layout and scroll behavior
+- Updated topbar layout and scroll behavior.
 
 ## [2.1.4] - 2018-12-05
 
 ### Fixed
-- Fixed topbar padding bottom on mobile
+- Fixed topbar padding bottom on mobile.
 
 ## [2.1.3] - 2018-12-05
 ### Fixed
