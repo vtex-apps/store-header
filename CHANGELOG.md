@@ -8,11 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Changed
-- Layout adjustments on the topbar
-- Header no longer depends on 'OrderFormContext' and no longer has Alert
+- Layout adjustments on the topbar.
+- Header no longer depends on 'OrderFormContext' and no longer has Alert.
 
 ### Fixed
-- Fixes support for extra headers, such as telemarketing
+- Fixes support for extra headers, such as telemarketing.
 
 ## [2.1.5] - 2018-12-06
 
