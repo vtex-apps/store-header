@@ -43,7 +43,7 @@ class TopMenu extends Component {
   }
 
   componentDidUpdate(prevState) {
-    if(prevState.mobileSearchActive !== this.state.mobileSearchActive){
+    if (prevState.mobileSearchActive !== this.state.mobileSearchActive) {
       this.handleScroll()
     }
   }
@@ -155,8 +155,8 @@ class TopMenu extends Component {
   renderLogo = () => {
     const { logoUrl, linkUrl, logoTitle, leanMode } = this.props
 
-    const sizeDesktop = {width: LOGO_MAX_WIDTH_DESKTOP, height: LOGO_MAX_HEIGHT_DESKTOP}
-    const sizeMobile = {width: LOGO_MAX_WIDTH_MOBILE, height: LOGO_MAX_HEIGHT_MOBILE}
+    const sizeDesktop = { width: LOGO_MAX_WIDTH_DESKTOP, height: LOGO_MAX_HEIGHT_DESKTOP }
+    const sizeMobile = { width: LOGO_MAX_WIDTH_MOBILE, height: LOGO_MAX_HEIGHT_MOBILE }
 
     return (
       <div className="mr5" ref={this.logoContainer}>
@@ -196,7 +196,7 @@ class TopMenu extends Component {
                   variation="tertiary"
                   onClick={() => this.setState(state => ({ mobileSearchActive: !state.mobileSearchActive }))}
                 >
-                  <span className="c-muted-1"><IconSearch size={ICON_SIZE_MOBILE}/></span>
+                  <span className="c-muted-1"><IconSearch size={ICON_SIZE_MOBILE} /></span>
                 </Button>
               </div>
             )}
@@ -254,17 +254,17 @@ class TopMenu extends Component {
         />
       </div>
     ) : (
-      <React.Fragment>
-        {!leanMode && this.renderMobileCategoryMenu()}
-        {this.renderLogo()}
-        {!leanMode && (
-          <div className="dn db-ns flex-grow-1">
-            <SearchBar />
-          </div>
-        )}
-        {this.renderIcons()}
-      </React.Fragment>
-    )
+        <React.Fragment>
+          {!leanMode && this.renderMobileCategoryMenu()}
+          {this.renderLogo()}
+          {!leanMode && (
+            <div className="dn db-ns flex-grow-1">
+              <SearchBar />
+            </div>
+          )}
+          {this.renderIcons()}
+        </React.Fragment>
+      )
   }
 
   renderCollapsibleContent = () => (
@@ -298,16 +298,16 @@ class TopMenu extends Component {
             top: extraHeadersHeight,
           }}>
           <div
-            className={`w-100 mw9 flex justify-center ${ leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
+            className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
             ref={this.content}
             style={{
               // Prevents the empty margins of this element from blocking the users clicks
               // TODO: create a tachyons class for pointer events and remove this style
               pointerEvents: 'none',
             }}
-            >
+          >
             <div
-              className="flex w-100 justify-between-m items-center"
+              className="flex w-100 justify-between-m items-center pv3"
               style={{
                 pointerEvents: 'auto',
               }}>
@@ -356,7 +356,7 @@ TopMenu.propTypes = {
   logoTitle: PropTypes.string,
   showSearchBar: PropTypes.bool,
   showLogin: PropTypes.bool,
-  leanMode: PropTypes.bool,  
+  leanMode: PropTypes.bool,
   onUpdateDimensions: PropTypes.func,
   extraHeaders: PropTypes.node,
 }
@@ -364,7 +364,7 @@ TopMenu.propTypes = {
 TopMenu.defaultProps = {
   showSearchBar: true,
   showLogin: true,
-  onUpdateDimensions: () => {},
+  onUpdateDimensions: () => { },
 }
 
 export default TopMenu
