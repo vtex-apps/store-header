@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.2.3] - 2018-12-14
+
+## [2.2.2] - 2018-12-14
+### Fixed
+- Fix padding vertical of fixed top menu.
+
 ## [2.2.1] - 2018-12-13
 
 ### Fixed
