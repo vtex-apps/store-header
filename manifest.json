@@ -1,6 +1,6 @@
 {
   "vendor": "vtex",
-  "name": "dreamstore-header",
+  "name": "store-header",
   "version": "2.1.1",
   "title": "VTEX Header",
   "defaultLocale": "pt-BR",
