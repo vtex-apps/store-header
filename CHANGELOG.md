@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.3.0] - 2018-12-17
+### Added
+- Support to messages builder.
+- Rebrand the app name to `store-header`.
+
 ## [2.2.3] - 2018-12-14
 
 ## [2.2.2] - 2018-12-14
