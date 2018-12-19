@@ -8,7 +8,7 @@ import { Button } from 'vtex.styleguide'
 const SearchBar = ({ compactMode, autoFocus, onCancel }) => {
   return (
     <React.Fragment>
-      <div className="vtex-top-menu__search-bar flex pa2-m flex-grow-1 justify-center">
+      <div className="vtex-top-menu__search-bar flex ph5-s ph7-m ph8-l ph9-xl pb3 flex-grow-1 justify-center">
         <div className="w-100 mw7">
           <Adopt
             mapper={{
