@@ -1,10 +1,10 @@
 {
   "header": {
     "blocks": ["telemarketing", "logo"],
-    "component": "index"
+    "inheritComponent": true
   },
-  "header/full": {
+  "header.full": {
     "blocks": ["telemarketing", "logo", "minicart", "login", "category-menu", "search-bar"],
-    "component": "index"
+    "inheritComponent": true
   }
 }
