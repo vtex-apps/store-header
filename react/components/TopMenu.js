@@ -271,7 +271,7 @@ class TopMenu extends Component {
     <div className="relative z-2 bg-base">
       <ExtensionPoint id="category-menu" />
       {this.props.showSearchBar && (
-        <div className="dn-m pa2">
+        <div className="dn-m">
           <SearchBar />
         </div>
       )}
