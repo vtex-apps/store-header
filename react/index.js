@@ -29,6 +29,7 @@ class Header extends Component {
   /** Determines an unmatching regex for default behavior of the leanMode */
   static defaultProps = {
     leanWhen: 'a^',
+    linkUrl: "/"
   }
 
   isLeanMode = () => {
@@ -41,7 +42,7 @@ class Header extends Component {
   }
 
   render() {
-    const { logoUrl, logoTitle, showSearchBar, showLogin } = this.props
+    const { logoUrl, logoTitle, showSearchBar, showLogin, linkUrl } = this.props
 
     const leanMode = this.isLeanMode()
 
@@ -80,10 +81,14 @@ Header.schema = {
   properties: {
     logoUrl: {
       type: 'string',
-      title: 'editor.header.logo.title',
+      title: 'editor.header.logo.image',
       widget: {
         'ui:widget': 'image-uploader',
       }
+    },
+    linkUrl: {
+      type: 'string',
+      title: 'editor.header.link.url',
     },
     showSearchBar: {
       title: 'editor.header.show.searchbar.title',
