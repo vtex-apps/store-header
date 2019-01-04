@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "store-header",
-  "version": "2.3.1",
+  "version": "2.3.2-beta",
   "title": "VTEX Store Header",
   "defaultLocale": "pt-BR",
   "description": "The VTEX Store Header component",
