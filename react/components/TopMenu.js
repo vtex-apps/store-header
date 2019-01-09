@@ -2,10 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { ExtensionPoint } from 'render'
-import { Button, IconSearch } from 'vtex.styleguide'
 import ResizeDetector from 'react-resize-detector'
+
+import { Button, IconSearch } from 'vtex.styleguide'
+import { Container } from 'vtex.store-components'
+
 import Logo from './Logo'
 import SearchBar from './SearchBar'
+
+import header from '../store-header.css'
 
 const LOGO_MAX_WIDTH_DESKTOP = 150
 const LOGO_MAX_WIDTH_MOBILE = 90
@@ -182,10 +187,9 @@ class TopMenu extends Component {
     const { leanMode, showLogin, showSearchBar } = this.props
 
     return (
-      <div className="vtex-top-menu__icons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns">
+      <div className={`${header.topMenuIcons} flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}>
         {/** Both desktop and mobile icons are rendered, and hidden through CSS,
           for better server side rendering support */}
-
         <ResizeDetector handleHeight onResize={this.handleUpdateIconsDimensions}>
           {/** Mobile icons */}
           <div className="flex dn-ns">
@@ -286,62 +290,62 @@ class TopMenu extends Component {
 
     return (
       <ResizeDetector handleWidth onResize={this.handleUpdateDimensions}>
-        <div className="fixed top-0 left-0 w-100 z-4">
-          <ResizeDetector handleHeight onResize={this.handleExtraHeadersResize}>
-            {extraHeaders}
-          </ResizeDetector>
-        </div>
-        <div
-          className={`vtex-top-menu flex justify-center w-100 bg-base left-0 z-3 ph3-s ph7-m ph8-l ph9-xl ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
-          ref={this.container}
-          style={{
-            top: extraHeadersHeight,
-          }}>
+        <Container>
+          <div className="fixed top-0 left-0 w-100 z-4">
+            <ResizeDetector handleHeight onResize={this.handleExtraHeadersResize}>
+              {extraHeaders}
+            </ResizeDetector>
+          </div>
           <div
-            className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
-            ref={this.content}
+            className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
+            ref={this.container}
             style={{
-              // Prevents the empty margins of this element from blocking the users clicks
-              // TODO: create a tachyons class for pointer events and remove this style
-              pointerEvents: 'none',
-            }}
-          >
+              top: extraHeadersHeight,
+            }}>
             <div
-              className="flex w-100 justify-between-m items-center pv3"
+              className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
+              ref={this.content}
               style={{
-                pointerEvents: 'auto',
-              }}>
-              {this.renderFixedContent()}
+                // Prevents the empty margins of this element from blocking the users clicks
+                // TODO: create a tachyons class for pointer events and remove this style
+                pointerEvents: 'none',
+              }}
+            >
+              <div
+                className="flex w-100 justify-between-m items-center pv3"
+                style={{
+                  pointerEvents: 'auto',
+                }}>
+                {this.renderFixedContent()}
+              </div>
             </div>
           </div>
-        </div>
 
-        {hasCalculatedMenuHeight && (
-          <React.Fragment>
-            {/* This is a spacer to push down the page's content, since the menu 
+          {hasCalculatedMenuHeight && (
+            <React.Fragment>
+              {/* This is a spacer to push down the page's content, since the menu 
             itself is fixed and doesn't affect the page's layout */}
-            <div
-              className="bg-base w-100 z-2 relative"
-              style={{
-                height: leanMode ? minHeight : maxHeight,
-              }}
-            />
+              <div
+                className="bg-base w-100 z-2 relative"
+                style={{
+                  height: leanMode ? minHeight : maxHeight,
+                }}
+              />
 
-            {/* This is a border below the fixed menu. Its z-index is under
+              {/* This is a border below the fixed menu. Its z-index is under
             the collapsible contents, so it's only visible when the collapsible
             menu scrolls out of view */}
-            <div
-              className="fixed top-0 left-0 w-100 bb bw1 b--muted-4"
-              style={{
-                height: minHeight,
-                boxSizing: 'content-box',
-              }}
-            />
-          </React.Fragment>
-        )}
-
-        {!leanMode && this.renderCollapsibleContent()}
-
+              <div
+                className="fixed top-0 left-0 w-100 bb bw1 b--muted-4"
+                style={{
+                  height: minHeight,
+                  boxSizing: 'content-box',
+                }}
+              />
+            </React.Fragment>
+          )}
+          {!leanMode && this.renderCollapsibleContent()}
+        </Container>
         {/* This is a border below the collapsible menu. It scrolls out of
         view along with the menu */}
         <div className="bb bw1 b--muted-4" />
