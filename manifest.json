@@ -20,11 +20,11 @@
   },
   "dependencies": {
     "vtex.styleguide": "8.x",
-    "vtex.telemarketing": "2.3.1-beta",
-    "vtex.minicart": "2.3.1-beta",
-    "vtex.login": "2.2.1-beta",
-    "vtex.menu": "2.3.1-beta",
-    "vtex.category-menu": "2.3.4-beta",
-    "vtex.store-components": "3.4.1-beta"
+    "vtex.telemarketing": "2.x",
+    "vtex.minicart": "2.x",
+    "vtex.login": "2.x",
+    "vtex.menu": "2.x",
+    "vtex.category-menu": "2.x",
+    "vtex.store-components": "3.x"
   }
 }
