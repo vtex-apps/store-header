@@ -6,6 +6,7 @@ import { ExtensionPoint } from 'render'
 import { Button } from 'vtex.styleguide'
 
 import header from '../store-header.css'
+
 const SearchBar = ({ compactMode, autoFocus, onCancel }) => {
   return (
     <React.Fragment>

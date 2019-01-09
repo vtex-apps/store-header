@@ -76,17 +76,16 @@ class TopMenu extends Component {
     }
   }
 
+  /**
+   * This function, instead of setting the height of the topbar, changes its
+   * position and the position of its contents. This is done for performance
+   * (changing height triggers a reflow, which is expensive. Setting transform
+   * only triggers a composition, which is cheap)
+  **/
   updateTopBarScroll = scrollValue => {
-    /** This function, instead of setting the height of the topbar, changes its 
-     * position and the position of its contents. This is done for performance
-     * (changing height triggers a reflow, which is expensive. Setting transform
-     * only triggers a composition, which is cheap)
-     * */
-
-
-    /** This division/rounding/multiplication prevents the position from being a non-integer
-     * on either elements, so as to not to become blurry on non-retina displays, and makes both
-     * move in tandem, preventing "jumpiness" */
+    // This division/rounding/multiplication prevents the position from being a non-integer
+    // on either elements, so as to not to become blurry on non-retina displays, and makes both
+    // move in tandem, preventing "jumpiness"
     const currentHeightReduction = Math.round((scrollValue * this.state.heightReduction) / 2) * 2
 
     const containerElement = this.container.current
@@ -188,10 +187,12 @@ class TopMenu extends Component {
 
     return (
       <div className={`${header.topMenuIcons} flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}>
-        {/** Both desktop and mobile icons are rendered, and hidden through CSS,
-          for better server side rendering support */}
+        {/**
+          * Both desktop and mobile icons are rendered, and hidden through CSS,
+          * for better server side rendering support
+         **/}
         <ResizeDetector handleHeight onResize={this.handleUpdateIconsDimensions}>
-          {/** Mobile icons */}
+          {/* Mobile icons */}
           <div className="flex dn-ns">
             {showSearchBar && !leanMode && (
               <div ref={this.mobileSearchButton} className="o-0">
@@ -258,17 +259,17 @@ class TopMenu extends Component {
         />
       </div>
     ) : (
-        <React.Fragment>
-          {!leanMode && this.renderMobileCategoryMenu()}
-          {this.renderLogo()}
-          {!leanMode && (
-            <div className="dn db-ns flex-grow-1">
-              <SearchBar />
-            </div>
-          )}
-          {this.renderIcons()}
-        </React.Fragment>
-      )
+      <React.Fragment>
+        {!leanMode && this.renderMobileCategoryMenu()}
+        {this.renderLogo()}
+        {!leanMode && (
+          <div className="dn db-ns flex-grow-1">
+            <SearchBar />
+          </div>
+        )}
+        {this.renderIcons()}
+      </React.Fragment>
+    )
   }
 
   renderCollapsibleContent = () => (
@@ -290,62 +291,61 @@ class TopMenu extends Component {
 
     return (
       <ResizeDetector handleWidth onResize={this.handleUpdateDimensions}>
-        <Container>
-          <div className="fixed top-0 left-0 w-100 z-4">
-            <ResizeDetector handleHeight onResize={this.handleExtraHeadersResize}>
-              {extraHeaders}
-            </ResizeDetector>
-          </div>
+        <div className="fixed top-0 left-0 w-100 z-4">
+          <ResizeDetector handleHeight onResize={this.handleExtraHeadersResize}>
+            {extraHeaders}
+          </ResizeDetector>
+        </div>
+        <Container
+          className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
+          ref={this.container}
+          style={{
+            top: extraHeadersHeight,
+          }}
+        >
           <div
-            className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
-            ref={this.container}
+            className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
+            ref={this.content}
             style={{
-              top: extraHeadersHeight,
-            }}>
+              // Prevents the empty margins of this element from blocking the users clicks
+              // TODO: create a tachyons class for pointer events and remove this style
+              pointerEvents: 'none',
+            }}
+          >
             <div
-              className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
-              ref={this.content}
+              className="flex w-100 justify-between-m items-center pv3"
               style={{
-                // Prevents the empty margins of this element from blocking the users clicks
-                // TODO: create a tachyons class for pointer events and remove this style
-                pointerEvents: 'none',
-              }}
-            >
-              <div
-                className="flex w-100 justify-between-m items-center pv3"
-                style={{
-                  pointerEvents: 'auto',
-                }}>
-                {this.renderFixedContent()}
-              </div>
+                pointerEvents: 'auto',
+              }}>
+              {this.renderFixedContent()}
             </div>
           </div>
-
-          {hasCalculatedMenuHeight && (
-            <React.Fragment>
-              {/* This is a spacer to push down the page's content, since the menu 
-            itself is fixed and doesn't affect the page's layout */}
-              <div
-                className="bg-base w-100 z-2 relative"
-                style={{
-                  height: leanMode ? minHeight : maxHeight,
-                }}
-              />
-
-              {/* This is a border below the fixed menu. Its z-index is under
-            the collapsible contents, so it's only visible when the collapsible
-            menu scrolls out of view */}
-              <div
-                className="fixed top-0 left-0 w-100 bb bw1 b--muted-4"
-                style={{
-                  height: minHeight,
-                  boxSizing: 'content-box',
-                }}
-              />
-            </React.Fragment>
-          )}
-          {!leanMode && this.renderCollapsibleContent()}
         </Container>
+
+        {hasCalculatedMenuHeight && (
+          <React.Fragment>
+            {/* This is a spacer to push down the page's content, since the menu
+          itself is fixed and doesn't affect the page's layout */}
+            <div
+              className="bg-base w-100 z-2 relative"
+              style={{
+                height: leanMode ? minHeight : maxHeight,
+              }}
+            />
+
+            {/* This is a border below the fixed menu. Its z-index is under
+          the collapsible contents, so it's only visible when the collapsible
+          menu scrolls out of view */}
+            <div
+              className="fixed top-0 left-0 w-100 bb bw1 b--muted-4"
+              style={{
+                height: minHeight,
+                boxSizing: 'content-box',
+              }}
+            />
+          </React.Fragment>
+        )}
+        {!leanMode && this.renderCollapsibleContent()}
         {/* This is a border below the collapsible menu. It scrolls out of
         view along with the menu */}
         <div className="bb bw1 b--muted-4" />
