@@ -1,7 +1,3 @@
-.vtex-top-menu-fixed {
-  width: 100vw;
-}
-
 @media only screen and (max-width: 80em) {
   .vtex-login__profile {
     display: none;

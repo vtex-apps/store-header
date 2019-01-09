@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import TopMenu from './components/TopMenu'
 import { ExtensionPoint, withRuntimeContext } from 'render'
 
+import TopMenu from './components/TopMenu'
+
 import './global.css'
+import header from './store-header.css'
 
 class Header extends Component {
   static propTypes = {
@@ -28,6 +30,7 @@ class Header extends Component {
   /** Determines an unmatching regex for default behavior of the leanMode */
   static defaultProps = {
     leanWhen: 'a^',
+    linkUrl: "/"
   }
 
   isLeanMode = () => {
@@ -40,7 +43,7 @@ class Header extends Component {
   }
 
   render() {
-    const { logoUrl, linkUrl, logoTitle, showSearchBar, showLogin } = this.props
+    const { logoUrl, logoTitle, showSearchBar, showLogin, linkUrl } = this.props
 
     const leanMode = this.isLeanMode()
 
@@ -54,7 +57,7 @@ class Header extends Component {
 
     return (
       <div
-        className={`vtex-header force-full-width relative z-2 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
+        className={`${header.container} relative z-2 ${leanMode ? `${header.leanMode}` : ''}`}
       >
         <TopMenu
           {...topMenuOptions}
@@ -79,10 +82,14 @@ Header.schema = {
   properties: {
     logoUrl: {
       type: 'string',
-      title: 'editor.header.logo.title',
+      title: 'editor.header.logo.image',
       widget: {
         'ui:widget': 'image-uploader',
       }
+    },
+    linkUrl: {
+      type: 'string',
+      title: 'editor.header.link.url',
     },
     showSearchBar: {
       title: 'editor.header.show.searchbar.title',

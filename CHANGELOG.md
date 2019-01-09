@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.4.0] - 2019-01-09
+### Changed
+- Bye `pages.json`! Welcome `store-builder`.
+- Adapt header to use `Container` and CSS Modules.
+
 ## [2.3.1] - 2018-12-27
 ### Fixed
 - Fix horizontal padding on SearchBar.

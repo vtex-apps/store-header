@@ -1,0 +1,20 @@
+{
+  "header": {
+    "blocks": [
+      "telemarketing",
+      "logo"
+    ],
+    "inheritComponent": true
+  },
+  "header.full": {
+    "blocks": [
+      "telemarketing",
+      "logo",
+      "minicart",
+      "login",
+      "category-menu",
+      "search-bar"
+    ],
+    "inheritComponent": true
+  }
+}
