@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-
-import TopMenu from './components/TopMenu'
 import { ExtensionPoint, withRuntimeContext } from 'render'
 
+import TopMenu from './components/TopMenu'
+
 import './global.css'
+import header from './store-header.css'
 
 class Header extends Component {
   static propTypes = {
@@ -56,7 +57,7 @@ class Header extends Component {
 
     return (
       <div
-        className={`vtex-header force-full-width relative z-2 ${leanMode ? 'vtex-header-lean-mode' : ''}`}
+        className={`${header.container} relative z-2 ${leanMode ? `${header.leanMode}` : ''}`}
       >
         <TopMenu
           {...topMenuOptions}
