@@ -56,7 +56,7 @@ class Header extends Component {
     }
 
     return (
-      <div
+      <header
         className={`${header.container} relative z-2 ${leanMode ? `${header.leanMode}` : ''}`}
       >
         <TopMenu
@@ -70,7 +70,7 @@ class Header extends Component {
             // </div>
           )}
         />
-      </div>
+      </header>
     )
   }
 }

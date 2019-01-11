@@ -259,28 +259,28 @@ class TopMenu extends Component {
         />
       </div>
     ) : (
-      <React.Fragment>
-        {!leanMode && this.renderMobileCategoryMenu()}
-        {this.renderLogo()}
-        {!leanMode && (
-          <div className="dn db-ns flex-grow-1">
-            <SearchBar />
-          </div>
-        )}
-        {this.renderIcons()}
-      </React.Fragment>
-    )
+        <React.Fragment>
+          {!leanMode && this.renderMobileCategoryMenu()}
+          {this.renderLogo()}
+          {!leanMode && (
+            <div className="dn db-ns flex-grow-1">
+              <SearchBar />
+            </div>
+          )}
+          {this.renderIcons()}
+        </React.Fragment>
+      )
   }
 
   renderCollapsibleContent = () => (
-    <div className="relative z-2 bg-base">
+    <navbar className="relative z-2 bg-base">
       <ExtensionPoint id="category-menu" />
       {this.props.showSearchBar && (
         <div className="dn-m">
           <SearchBar />
         </div>
       )}
-    </div>
+    </navbar>
   )
 
   render() {
