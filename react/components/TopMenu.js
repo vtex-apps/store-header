@@ -62,6 +62,8 @@ class TopMenu extends Component {
 
     const scrollValue = Math.min(1, scroll / Math.max(this.state.heightReduction, this.state.minHeight))
 
+    if(!scroll && this.state.mobileSearchActive)this.setState({mobileSearchActive: false})
+
     this.updateLogoScroll(scrollValue)
     this.updateTopBarScroll(scrollValue)
     this.updateSearchButtonScroll(scrollValue)
