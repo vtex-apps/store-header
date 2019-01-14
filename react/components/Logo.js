@@ -10,11 +10,10 @@ const Logo = ({ link, src, title, sizeMobile, sizeDesktop, onResize }) => (
     <ReactResizeDetector handleHeight onResize={onResize}>
       <Link
         to={link}
-        className="outline-0"
         // there is a weird bottom padding being added
         // below the image. This fixes the issue,
         // but the cause should be investigated
-        style={{ fontSize: 0 }}
+        className={`outline-0 ${header.logoLink}`}
       >
         {sizeMobile && (
           <div className="db dn-ns">
@@ -24,6 +23,7 @@ const Logo = ({ link, src, title, sizeMobile, sizeDesktop, onResize }) => (
               title={title}
               width={sizeMobile.width}
               height={sizeMobile.height}
+              isMobile={true}
             />
           </div>
         )}
@@ -35,6 +35,7 @@ const Logo = ({ link, src, title, sizeMobile, sizeDesktop, onResize }) => (
               title={title}
               width={sizeDesktop.width}
               height={sizeDesktop.height}
+              isMobile={false}
             />
           </div>
         )}
