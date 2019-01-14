@@ -177,9 +177,9 @@ class TopMenu extends Component {
   }
 
   renderMobileCategoryMenu = () => (
-    <div className="db dn-ns">
+    <aside className="db dn-ns">
       <ExtensionPoint id="category-menu" mobileMode />
-    </div>
+    </aside>
   )
 
   renderIcons() {
