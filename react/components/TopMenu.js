@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl'
 import { ExtensionPoint } from 'render'
 import ResizeDetector from 'react-resize-detector'
 
-import { Button, IconSearch } from 'vtex.styleguide'
+import { ButtonWithIcon, IconSearch } from 'vtex.styleguide'
 import { Container } from 'vtex.store-components'
 
 import Logo from './Logo'
@@ -19,6 +19,7 @@ const LOGO_MAX_HEIGHT_DESKTOP = 75
 const LOGO_COLLAPSED_HEIGHT = 40
 const ICON_SIZE_MOBILE = 22
 const ICON_SIZE_DESKTOP = 30
+const MOBILE_SEARCH_SCROLL_LIMIT = 0.1979
 
 class TopMenu extends Component {
   container = React.createRef()
@@ -61,13 +62,18 @@ class TopMenu extends Component {
     if (typeof scroll !== 'number') return
 
     const scrollValue = Math.min(1, scroll / Math.max(this.state.heightReduction, this.state.minHeight))
-
-    if(!scroll && this.state.mobileSearchActive)this.setState({mobileSearchActive: false})
-
+    
+    this.updateMobileSearch(scrollValue)
     this.updateLogoScroll(scrollValue)
     this.updateTopBarScroll(scrollValue)
     this.updateSearchButtonScroll(scrollValue)
   }
+
+  updateMobileSearch = scrollValue => {
+    if(scrollValue <= MOBILE_SEARCH_SCROLL_LIMIT && this.state.mobileSearchActive){
+      this.setState({mobileSearchActive: false})
+    }
+  } 
 
   updateLogoScroll = scrollValue => {
     const logoElement = this.logoContainer.current
@@ -198,13 +204,12 @@ class TopMenu extends Component {
           <div className="flex dn-ns">
             {showSearchBar && !leanMode && (
               <div ref={this.mobileSearchButton} className="o-0">
-                <Button
-                  icon
+                <ButtonWithIcon
                   variation="tertiary"
                   onClick={() => this.setState(state => ({ mobileSearchActive: !state.mobileSearchActive }))}
                 >
                   <span className="c-muted-1"><IconSearch size={ICON_SIZE_MOBILE} /></span>
-                </Button>
+                </ButtonWithIcon>
               </div>
             )}
             {showLogin && (
