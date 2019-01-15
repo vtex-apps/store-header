@@ -5,7 +5,8 @@
       "login",
       "menu-link",
       "category-menu",
-      "search-bar"
+      "search-bar",
+      "theme"
     ],
     "required": [
       "telemarketing",
@@ -15,7 +16,8 @@
   },
   "header.full": {
     "allowed": [
-      "menu-link"
+      "menu-link",
+      "theme"
     ],
     "required": [
       "telemarketing",
@@ -26,5 +28,6 @@
       "search-bar"
     ],
     "component": "index"
-  }
+  },
+  "theme": {}
 }
