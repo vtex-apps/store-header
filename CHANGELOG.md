@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.4.4] - 2019-01-15
+### Changed
+- Add `theme` block. 
+
 ## [2.4.3] - 2019-01-15
 ### Fixed
 - Hide mobile search when scrollled back to top and replace `Button` component with `ButtonWithIcon` component.
