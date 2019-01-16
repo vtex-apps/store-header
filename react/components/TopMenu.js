@@ -201,9 +201,9 @@ class TopMenu extends Component {
          **/}
         <ResizeDetector handleHeight onResize={this.handleUpdateIconsDimensions}>
           {/* Mobile icons */}
-          <div className="flex dn-ns">
+          <div className="flex dn-ns mr3">
             {showSearchBar && !leanMode && (
-              <div ref={this.mobileSearchButton} className="o-0">
+              <div ref={this.mobileSearchButton} className="o-0 pv2 nl5">
                 <ButtonWithIcon
                   variation="tertiary"
                   onClick={() => this.setState(state => ({ mobileSearchActive: !state.mobileSearchActive }))}
