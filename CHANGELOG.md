@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.4.5] - 2019-01-17
+### Fixed
+- Adjust alignment of the search button and fix the minicart item counter overlapping.
+
 ## [2.4.4] - 2019-01-15
 ### Changed
 - Add `theme` block. 
