@@ -6,7 +6,7 @@
   "defaultLocale": "pt-BR",
   "description": "The VTEX Store Header component",
   "builders": {
-    "react": "2.x",
+    "react": "3.x",
     "store": "0.x",
     "messages": "0.x"
   },
@@ -19,7 +19,7 @@
     "postreleasy": "vtex publish --verbose"
   },
   "dependencies": {
-    "vtex.styleguide": "8.x",
+    "vtex.styleguide": "9.x",
     "vtex.telemarketing": "2.x",
     "vtex.minicart": "2.x",
     "vtex.login": "2.x",
