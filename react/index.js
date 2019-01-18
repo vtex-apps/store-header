@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { ExtensionPoint, withRuntimeContext } from 'render'
+import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
 
 import TopMenu from './components/TopMenu'
 

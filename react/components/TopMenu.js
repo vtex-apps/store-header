@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
-import { ExtensionPoint } from 'render'
+import { ExtensionPoint } from 'vtex.render-runtime'
 import ResizeDetector from 'react-resize-detector'
 
 import { ButtonWithIcon, IconSearch } from 'vtex.styleguide'

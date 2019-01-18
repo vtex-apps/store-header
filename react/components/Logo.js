@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ExtensionPoint, Link } from 'render'
+import { ExtensionPoint, Link } from 'vtex.render-runtime'
 import ReactResizeDetector from 'react-resize-detector'
 
 import header from '../store-header.css'
