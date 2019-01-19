@@ -1,13 +1,13 @@
 {
-  "header": {
-    "blocks": [
+  "header.lean": {
+    "content": [
       "telemarketing",
       "logo"
     ],
     "inheritComponent": true
   },
   "header.full": {
-    "blocks": [
+    "content": [
       "telemarketing",
       "logo",
       "minicart",

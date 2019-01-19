@@ -1,24 +1,21 @@
 {
   "header": {
-    "allowed": [
-      "minicart",
-      "login",
-      "menu-link",
-      "category-menu",
-      "search-bar",
-      "theme"
-    ],
     "required": [
       "telemarketing",
       "logo"
     ],
+    "allowed": [
+      "theme",
+      "menu-link"
+    ]
+  },
+  "header.lean": {
+    "allowed": [
+      "login"
+    ],
     "component": "index"
   },
   "header.full": {
-    "allowed": [
-      "menu-link",
-      "theme"
-    ],
     "required": [
       "telemarketing",
       "logo",
