@@ -251,7 +251,7 @@ class TopMenu extends Component {
     return mobileSearchActive ? (
       <div className="flex justify-start pa2 pr4 pt3 relative w-100">
         <SearchBar
-          compactMode
+          isMobile
           autoFocus
           onCancel={() => this.setState({ mobileSearchActive: false })}
         />
@@ -273,11 +273,6 @@ class TopMenu extends Component {
   renderCollapsibleContent = () => (
     <div className="relative z-2 bg-base">
       <ExtensionPoint id="category-menu" />
-      {this.props.showSearchBar && (
-        <div className="dn-m">
-          <SearchBar />
-        </div>
-      )}
     </div>
   )
 
