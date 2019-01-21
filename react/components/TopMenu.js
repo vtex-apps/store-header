@@ -66,7 +66,6 @@ class TopMenu extends Component {
     this.updateMobileSearch(scrollValue)
     this.updateLogoScroll(scrollValue)
     this.updateTopBarScroll(scrollValue)
-    this.updateSearchButtonScroll(scrollValue)
   }
 
   updateMobileSearch = scrollValue => {
@@ -106,13 +105,6 @@ class TopMenu extends Component {
     if (contentElement) {
       const offset = currentHeightReduction * 0.5
       contentElement.style.transform = `translate3d(0, ${offset}px, 0)`
-    }
-  }
-
-  updateSearchButtonScroll = scrollValue => {
-    const searchButtonElement = this.mobileSearchButton.current
-    if (searchButtonElement) {
-      searchButtonElement.style.opacity = scrollValue
     }
   }
 
@@ -200,10 +192,12 @@ class TopMenu extends Component {
           * for better server side rendering support
          **/}
         <ResizeDetector handleHeight onResize={this.handleUpdateIconsDimensions}>
+          
           {/* Mobile icons */}
           <div className="flex dn-ns mr3">
+            
             {showSearchBar && !leanMode && (
-              <div ref={this.mobileSearchButton} className="o-0 pv2 nl5">
+              <div ref={this.mobileSearchButton} className="pv2 nl5">
                 <ButtonWithIcon
                   variation="tertiary"
                   onClick={() => this.setState(state => ({ mobileSearchActive: !state.mobileSearchActive }))}
@@ -212,6 +206,7 @@ class TopMenu extends Component {
                 </ButtonWithIcon>
               </div>
             )}
+
             {showLogin && (
               <ExtensionPoint
                 id="login"
@@ -220,13 +215,16 @@ class TopMenu extends Component {
                 iconSize={ICON_SIZE_MOBILE}
               />
             )}
+
             {!leanMode && <ExtensionPoint
               id="minicart"
               iconClasses="c-muted-1"
               labelClasses="c-muted-1"
               iconSize={ICON_SIZE_MOBILE}
             />}
+
           </div>
+          
           {/** Desktop icons */}
           <div className="dn flex-ns">
             {showLogin && (
