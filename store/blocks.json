@@ -1,20 +1,19 @@
 {
   "header.lean": {
-    "content": [
+    "body": [
       "telemarketing",
+      "login",
       "logo"
-    ],
-    "inheritComponent": true
+    ]
   },
   "header.full": {
-    "content": [
+    "body": [
       "telemarketing",
       "logo",
       "minicart",
       "login",
       "category-menu",
       "search-bar"
-    ],
-    "inheritComponent": true
+    ]
   }
 }

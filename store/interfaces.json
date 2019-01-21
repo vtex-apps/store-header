@@ -26,5 +26,7 @@
     ],
     "component": "index"
   },
-  "theme": {}
+  "theme": {
+    "extensible": "public"
+  }
 }
