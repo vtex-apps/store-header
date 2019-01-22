@@ -4,8 +4,9 @@ import { FormattedMessage } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import ResizeDetector from 'react-resize-detector'
 
-import { ButtonWithIcon, IconSearch } from 'vtex.styleguide'
+import { ButtonWithIcon } from 'vtex.styleguide'
 import { Container } from 'vtex.store-components'
+import Icon from 'vtex.use-svg/Icon'
 
 import Logo from './Logo'
 import SearchBar from './SearchBar'
@@ -17,9 +18,8 @@ const LOGO_MAX_WIDTH_MOBILE = 90
 const LOGO_MAX_HEIGHT_MOBILE = 40
 const LOGO_MAX_HEIGHT_DESKTOP = 75
 const LOGO_COLLAPSED_HEIGHT = 40
-const ICON_SIZE_MOBILE = 22
+const ICON_SIZE_MOBILE = 20
 const ICON_SIZE_DESKTOP = 30
-const MOBILE_SEARCH_SCROLL_LIMIT = 0.1979
 
 class TopMenu extends Component {
   container = React.createRef()
@@ -177,6 +177,7 @@ class TopMenu extends Component {
 
   renderIcons() {
     const { leanMode, showLogin, showSearchBar } = this.props
+    const searchIcon = <Icon id='hpa-search' size={ICON_SIZE_MOBILE}/>
 
     return (
       <div className={`${header.topMenuIcons} flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}>
@@ -192,11 +193,10 @@ class TopMenu extends Component {
             {showSearchBar && !leanMode && (
               <div ref={this.mobileSearchButton} className="pv2 nl5">
                 <ButtonWithIcon
+                  icon={searchIcon}
                   variation="tertiary"
                   onClick={() => this.setState(state => ({ mobileSearchActive: !state.mobileSearchActive }))}
-                >
-                  <span className="c-muted-1"><IconSearch size={ICON_SIZE_MOBILE} /></span>
-                </ButtonWithIcon>
+                />
               </div>
             )}
 
