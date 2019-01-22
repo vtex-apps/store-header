@@ -177,7 +177,7 @@ class TopMenu extends Component {
 
   renderIcons() {
     const { leanMode, showLogin, showSearchBar } = this.props
-    const searchIcon = <Icon id='hpa-search' size={ICON_SIZE_MOBILE}/>
+    const searchIcon = <Icon id="hpa-search" className="near-black" size={ICON_SIZE_MOBILE}/>
 
     return (
       <div className={`${header.topMenuIcons} flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}>
@@ -203,16 +203,16 @@ class TopMenu extends Component {
             {showLogin && (
               <ExtensionPoint
                 id="login"
-                iconClasses="c-muted-1"
-                labelClasses="c-muted-1"
+                iconClasses="near-black"
+                labelClasses="near-black"
                 iconSize={ICON_SIZE_MOBILE}
               />
             )}
 
             {!leanMode && <ExtensionPoint
               id="minicart"
-              iconClasses="c-muted-1"
-              labelClasses="c-muted-1"
+              iconClasses="near-black"
+              labelClasses="near-black"
               iconSize={ICON_SIZE_MOBILE}
             />}
 
