@@ -20,6 +20,7 @@ const LOGO_MAX_HEIGHT_DESKTOP = 75
 const LOGO_COLLAPSED_HEIGHT = 40
 const ICON_SIZE_MOBILE = 16
 const ICON_SIZE_DESKTOP = 30
+const ICON_CLASSES_MOBILE = 'near-black'
 
 class TopMenu extends Component {
   container = React.createRef()
@@ -171,13 +172,18 @@ class TopMenu extends Component {
 
   renderMobileCategoryMenu = () => (
     <div className="db dn-ns">
-      <ExtensionPoint id="category-menu" mobileMode />
+      <ExtensionPoint
+        id="category-menu"
+        mobileMode
+        iconSize={ICON_SIZE_MOBILE}
+        iconClasses={ICON_CLASSES_MOBILE}
+        />
     </div>
   )
 
   renderIcons() {
     const { leanMode, showLogin, showSearchBar } = this.props
-    const searchIcon = <Icon id="hpa-search" className="near-black" size={ICON_SIZE_MOBILE}/>
+    const searchIcon = <Icon id="hpa-search" className={ICON_CLASSES_MOBILE} size={ICON_SIZE_MOBILE}/>
 
     return (
       <div className={`${header.topMenuIcons} flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}>
@@ -203,16 +209,16 @@ class TopMenu extends Component {
             {showLogin && (
               <ExtensionPoint
                 id="login"
-                iconClasses="near-black"
-                labelClasses="near-black"
+                iconClasses={ICON_CLASSES_MOBILE}
+                labelClasses={ICON_CLASSES_MOBILE}
                 iconSize={ICON_SIZE_MOBILE}
               />
             )}
 
             {!leanMode && <ExtensionPoint
               id="minicart"
-              iconClasses="near-black"
-              labelClasses="near-black"
+              iconClasses={ICON_CLASSES_MOBILE}
+              labelClasses={ICON_CLASSES_MOBILE}
               iconSize={ICON_SIZE_MOBILE}
             />}
 
