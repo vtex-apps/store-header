@@ -23,16 +23,18 @@ const SearchBar = ({ isMobile, autoFocus, onCancel }) => (
               placeholder={placeholder}
               emptyPlaceholder={emptyPlaceholder}
               autoFocus={autoFocus}
+              hasIconLeft={isMobile}
+              iconClasses="near-black"
             />
           )}
         </Adopt>
       </div>
+      {isMobile && (
+        <Button size="small" variation="tertiary" onClick={onCancel} collapseRight>
+          <span className='near-black ttl'><FormattedMessage id="header.search-cancel" /></span>
+        </Button>
+      )}
     </div>
-    {isMobile && (
-      <Button size="small" variation="tertiary" onClick={onCancel}>
-        <FormattedMessage id="header.search-cancel" />
-      </Button>
-    )}
   </React.Fragment>
 )
 
