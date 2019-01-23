@@ -278,7 +278,7 @@ class TopMenu extends Component {
 
   render() {
     const { leanMode, extraHeaders } = this.props
-    const { maxHeight, minHeight, extraHeadersHeight } = this.state
+    const { maxHeight, minHeight, extraHeadersHeight, mobileSearchActive } = this.state
 
     const hasCalculatedMenuHeight = typeof maxHeight === 'number'
 
@@ -290,7 +290,7 @@ class TopMenu extends Component {
           </ResizeDetector>
         </div>
         <Container
-          className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
+          className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 ${hasCalculatedMenuHeight ? 'fixed' : 'relative'} ${mobileSearchActive && 'bb bw1 b--muted-4'}`}
           ref={this.container}
           style={{
             top: extraHeadersHeight,
