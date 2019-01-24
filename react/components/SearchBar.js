@@ -7,9 +7,9 @@ import { Button } from 'vtex.styleguide'
 
 import header from '../store-header.css'
 
-const SearchBar = ({ isMobile, autoFocus, onCancel }) => (
+const SearchBar = ({ isMobile, autoFocus, onCancel, height }) => (
   <React.Fragment>
-    <div className={`${header.topMenuSearchBar} flex pa2-m flex-grow-1 justify-center`}>
+    <div className={`${header.topMenuSearchBar} flex pa2-m flex-grow-1 justify-center`} style={{height: height}}>
       <div className="w-100 mw7">
         <Adopt
           mapper={{
@@ -42,6 +42,7 @@ SearchBar.propTypes = {
   onCancel: PropTypes.func,
   isMobile: PropTypes.bool,
   autoFocus: PropTypes.bool,
+  height: PropTypes.number
 }
 
 SearchBar.defaultProps = {

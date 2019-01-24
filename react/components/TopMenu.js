@@ -21,6 +21,7 @@ const LOGO_COLLAPSED_HEIGHT = 40
 const ICON_SIZE_MOBILE = 16
 const ICON_SIZE_DESKTOP = 30
 const ICON_CLASSES_MOBILE = 'near-black'
+const SEARCHBAR_HEIGHT = 40
 
 class TopMenu extends Component {
   container = React.createRef()
@@ -255,10 +256,11 @@ class TopMenu extends Component {
     const { mobileSearchActive } = this.state
 
     return mobileSearchActive ? (
-      <div className="flex justify-start pa2 pr4 pt3 relative w-100">
+      <div className="flex justify-start pa2 relative w-100">
         <SearchBar
           isMobile
           autoFocus
+          height={SEARCHBAR_HEIGHT}
           onCancel={() => this.setState({ mobileSearchActive: false })}
         />
       </div>
@@ -296,7 +298,7 @@ class TopMenu extends Component {
           </ResizeDetector>
         </div>
         <Container
-          className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 ${hasCalculatedMenuHeight ? 'fixed' : 'relative'} ${mobileSearchActive && 'bb bw1 b--muted-4'}`}
+          className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
           ref={this.container}
           style={{
             top: extraHeadersHeight,
