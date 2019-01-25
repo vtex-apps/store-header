@@ -35,7 +35,6 @@ class TopMenu extends Component {
     minHeight: null,
     maxHeight: null,
     heightReduction: 0,
-    extraHeadersHeight: 0,
   }
 
   componentDidMount() {
@@ -146,7 +145,6 @@ class TopMenu extends Component {
     const contentPaddings = this.getContentPaddings()
     const logoReduction = Math.max(0, this.state.logoHeight - Math.max(this.state.iconsHeight, LOGO_COLLAPSED_HEIGHT))
     const heightReduction = Math.max(0, contentPaddings + logoReduction)
-    const extraHeadersHeight = this.extraHeaders.current ? this.extraHeaders.current.offsetHeight : 0
 
     const maxHeight = (this.container.current ? this.container.current.offsetHeight : 0)
     const minHeight = maxHeight - heightReduction - (heightReduction % 2)
@@ -157,14 +155,6 @@ class TopMenu extends Component {
       minHeight,
     }, () => {
       this.props.onUpdateDimensions({ minHeight, maxHeight })
-    })
-  }
-
-  handleExtraHeadersResize = (width, height) => {
-    this.setState({
-      extraHeadersHeight: height,
-    }, () => {
-      this.handleUpdateDimensions()
     })
   }
 
