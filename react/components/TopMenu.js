@@ -298,7 +298,7 @@ class TopMenu extends Component {
     const hasCalculatedMenuHeight = typeof maxHeight === 'number'
 
     return (
-      <ResizeDetector handleWidth onResize={this.handleUpdateDimensions}>
+      <ResizeDetector handleWidth handleHeight onResize={this.handleUpdateDimensions}>
         <div
           className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
           ref={this.container}
