@@ -30,7 +30,7 @@ class Header extends Component {
   /** Determines an unmatching regex for default behavior of the leanMode */
   static defaultProps = {
     leanWhen: 'a^',
-    linkUrl: "/"
+    linkUrl: '/',
   }
 
   isLeanMode = () => {
@@ -85,7 +85,7 @@ Header.schema = {
       title: 'editor.header.logo.image',
       widget: {
         'ui:widget': 'image-uploader',
-      }
+      },
     },
     linkUrl: {
       type: 'string',
@@ -102,8 +102,8 @@ Header.schema = {
       type: 'boolean',
       default: true,
       isLayout: true,
-    }
-  }
+    },
+  },
 }
 
 export default withRuntimeContext(Header)

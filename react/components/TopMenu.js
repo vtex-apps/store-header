@@ -24,6 +24,7 @@ const MOBILE_SEARCH_SCROLL_LIMIT = 0.1979
 class TopMenu extends Component {
   container = React.createRef()
   content = React.createRef()
+  extraHeaders = React.createRef()
   logoContainer = React.createRef()
   mobileSearchButton = React.createRef()
 
@@ -62,7 +63,7 @@ class TopMenu extends Component {
     if (typeof scroll !== 'number') return
 
     const scrollValue = Math.min(1, scroll / Math.max(this.state.heightReduction, this.state.minHeight))
-    
+
     this.updateMobileSearch(scrollValue)
     this.updateLogoScroll(scrollValue)
     this.updateTopBarScroll(scrollValue)
@@ -70,10 +71,10 @@ class TopMenu extends Component {
   }
 
   updateMobileSearch = scrollValue => {
-    if(scrollValue <= MOBILE_SEARCH_SCROLL_LIMIT && this.state.mobileSearchActive){
-      this.setState({mobileSearchActive: false})
+    if (scrollValue <= MOBILE_SEARCH_SCROLL_LIMIT && this.state.mobileSearchActive) {
+      this.setState({ mobileSearchActive: false })
     }
-  } 
+  }
 
   updateLogoScroll = scrollValue => {
     const logoElement = this.logoContainer.current
@@ -103,9 +104,11 @@ class TopMenu extends Component {
     }
 
     const contentElement = this.content.current
-    if (contentElement) {
+    const extraHeadersElement = this.extraHeaders.current
+    if (contentElement && extraHeadersElement) {
       const offset = currentHeightReduction * 0.5
       contentElement.style.transform = `translate3d(0, ${offset}px, 0)`
+      extraHeadersElement.style.transform = `translate3d(0, ${offset}px, 0)`
     }
   }
 
@@ -143,8 +146,9 @@ class TopMenu extends Component {
     const contentPaddings = this.getContentPaddings()
     const logoReduction = Math.max(0, this.state.logoHeight - Math.max(this.state.iconsHeight, LOGO_COLLAPSED_HEIGHT))
     const heightReduction = Math.max(0, contentPaddings + logoReduction)
+    const extraHeadersHeight = this.extraHeaders.current ? this.extraHeaders.current.offsetHeight : 0
 
-    const maxHeight = (this.container.current ? this.container.current.offsetHeight : 0) + this.state.extraHeadersHeight
+    const maxHeight = (this.container.current ? this.container.current.offsetHeight : 0)
     const minHeight = maxHeight - heightReduction - (heightReduction % 2)
 
     this.setState({
@@ -292,42 +296,40 @@ class TopMenu extends Component {
 
   render() {
     const { leanMode, extraHeaders } = this.props
-    const { maxHeight, minHeight, extraHeadersHeight } = this.state
+    const { maxHeight, minHeight } = this.state
 
     const hasCalculatedMenuHeight = typeof maxHeight === 'number'
 
     return (
       <ResizeDetector handleWidth onResize={this.handleUpdateDimensions}>
-        <div className="fixed top-0 left-0 w-100 z-4">
-          <ResizeDetector handleHeight onResize={this.handleExtraHeadersResize}>
-            {extraHeaders}
-          </ResizeDetector>
-        </div>
-        <Container
+        <div
           className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
           ref={this.container}
-          style={{
-            top: extraHeadersHeight,
-          }}
         >
-          <div
-            className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
-            ref={this.content}
-            style={{
-              // Prevents the empty margins of this element from blocking the users clicks
-              // TODO: create a tachyons class for pointer events and remove this style
-              pointerEvents: 'none',
-            }}
-          >
+          <div className="top-0 left-0 w-100 z-4">
             <div
-              className="flex w-100 justify-between-m items-center pv3"
+              className="w-100 mw9 flex flex-column justify-center"
               style={{
-                pointerEvents: 'auto',
-              }}>
-              {this.renderFixedContent()}
+                // Prevents the empty margins of this element from blocking the users clicks
+                // TODO: create a tachyons class for pointer events and remove this style
+                pointerEvents: 'none',
+              }}
+            >
+              <div ref={this.content}>
+                <div ref={this.extraHeaders}>
+                  {extraHeaders}
+                </div>
+                <Container
+                  className="flex w-100 justify-between-m items-center pv3"
+                  style={{
+                    pointerEvents: 'auto',
+                  }}>
+                  {this.renderFixedContent()}
+                </Container>
+              </div>
             </div>
           </div>
-        </Container>
+        </div>
 
         {hasCalculatedMenuHeight && (
           <React.Fragment>
