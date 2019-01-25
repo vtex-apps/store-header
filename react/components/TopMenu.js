@@ -85,7 +85,7 @@ class TopMenu extends Component {
     if (logoElement) {
       const targetScale = Math.min(1, LOGO_COLLAPSED_HEIGHT / this.state.logoHeight)
       const scale = 1 - (scrollValue * (1 - targetScale))
-      logoElement.style.transform = `scale(${scale})`
+      logoElement.style.WebkitTransform = `scale(${scale})`
     }
   }
 
@@ -104,15 +104,15 @@ class TopMenu extends Component {
     const containerElement = this.container.current
     if (containerElement) {
       const offset = currentHeightReduction
-      containerElement.style.transform = `translate3d(0, ${-offset}px, 0)`
+      containerElement.style.WebkitTransform = `translate3d(0, ${-offset}px, 0)`
     }
 
     const contentElement = this.content.current
     const extraHeadersElement = this.extraHeaders.current
     if (contentElement && extraHeadersElement) {
       const offset = currentHeightReduction * 0.5
-      contentElement.style.transform = `translate3d(0, ${offset}px, 0)`
-      extraHeadersElement.style.transform = `translate3d(0, ${offset}px, 0)`
+      contentElement.style.WebkitTransform = `translate3d(0, ${offset}px, 0)`
+      extraHeadersElement.style.WebkitTransform = `translate3d(0, ${offset}px, 0)`
     }
   }
 
