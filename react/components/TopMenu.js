@@ -35,6 +35,7 @@ class TopMenu extends Component {
     minHeight: null,
     maxHeight: null,
     heightReduction: 0,
+    extraHeadersHeight: 0,
   }
 
   componentDidMount() {
@@ -51,6 +52,10 @@ class TopMenu extends Component {
   componentDidUpdate(prevState) {
     if (prevState.mobileSearchActive !== this.state.mobileSearchActive) {
       this.handleScroll()
+    }
+    const extraHeadersHeight = this.extraHeaders.current ? this.extraHeaders.current.offsetHeight : 0
+    if (this.state.extraHeadersHeight !== extraHeadersHeight) {
+      this.handleUpdateDimensions()
     }
   }
 
@@ -148,11 +153,13 @@ class TopMenu extends Component {
 
     const maxHeight = (this.container.current ? this.container.current.offsetHeight : 0)
     const minHeight = maxHeight - heightReduction - (heightReduction % 2)
+    const extraHeadersHeight = this.extraHeaders.current ? this.extraHeaders.current.offsetHeight : 0
 
     this.setState({
       heightReduction,
       maxHeight,
       minHeight,
+      extraHeadersHeight,
     }, () => {
       this.props.onUpdateDimensions({ minHeight, maxHeight })
     })
