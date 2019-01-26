@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.6.1] - 2019-01-26
+### Changed
+- Remove `global.css`.
+
 ## [2.6.0] - 2019-01-22
 
 ## [2.5.1] - 2019-01-18
