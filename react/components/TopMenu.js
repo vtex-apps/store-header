@@ -302,24 +302,28 @@ class TopMenu extends Component {
     const hasLocalStorage = window && window.localStorage
     if (!hasLocalStorage) return
 
-    this.setState({
-      extraHeadersHeight: parseFloat(localStorage.getItem('extraHeadersHeight')),
-      minHeight: parseFloat(localStorage.getItem('minHeight')),
-      maxHeight: parseFloat(localStorage.getItem('maxHeight')),
-      logoHeight: parseFloat(localStorage.getItem('logoHeight')),
-      iconsHeight: parseFloat(localStorage.getItem('iconsHeight')),
-    })
+    try {
+      const headerDimensions = JSON.parse(localStorage.getItem('headerDimensions'))
+
+      this.setState({
+        ...headerDimensions
+      })
+    } catch (error) {
+      // Unable to parse JSON. Skip
+    }
   }
 
   saveInitialDimensions = () => {
     const hasLocalStorage = window && window.localStorage
     if (!hasLocalStorage) return
 
-    localStorage.setItem('extraHeadersHeight', this.state.extraHeadersHeight)
-    localStorage.setItem('minHeight', this.state.minHeight)
-    localStorage.setItem('maxHeight', this.state.maxHeight)
-    localStorage.setItem('logoHeight', this.state.logoHeight)
-    localStorage.setItem('iconsHeight', this.state.iconsHeight)
+    localStorage.setItem('headerDimensions', JSON.stringify({
+      extraHeadersHeight: this.state.extraHeadersHeight,
+      minHeight: this.state.minHeight,
+      maxHeight: this.state.maxHeight,
+      logoHeight: this.state.logoHeight,
+      iconsHeight: this.state.iconsHeight,
+    }))
   }
 
   render() {
