@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.6.2] - 2019-01-28
+### Fixed
+- Prevent the size of the header bouncing across different pages.
+
 ## [2.6.1] - 2019-01-26
 ### Changed
 - Remove `global.css`.
