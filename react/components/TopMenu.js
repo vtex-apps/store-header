@@ -20,10 +20,11 @@ const LOGO_MAX_HEIGHT_DESKTOP = 75
 const LOGO_COLLAPSED_HEIGHT = 40
 const ICON_SIZE_MOBILE = 16
 const ICON_SIZE_DESKTOP = 30
-const ICON_CLASSES_MOBILE = 'near-black'
+const ICON_CLASSES_MOBILE = 'near-black animated zoomIn faster'
 const SEARCHBAR_HEIGHT = 40
 
 class TopMenu extends Component {
+  
   container = React.createRef()
   content = React.createRef()
   logoContainer = React.createRef()
@@ -153,7 +154,7 @@ class TopMenu extends Component {
 
   renderLogo = () => {
     const { logoUrl, linkUrl, logoTitle, leanMode } = this.props
-
+    
     const sizeDesktop = { width: LOGO_MAX_WIDTH_DESKTOP, height: LOGO_MAX_HEIGHT_DESKTOP }
     const sizeMobile = { width: LOGO_MAX_WIDTH_MOBILE, height: LOGO_MAX_HEIGHT_MOBILE }
 
@@ -260,6 +261,7 @@ class TopMenu extends Component {
         <SearchBar
           isMobile
           autoFocus
+          iconClasses={ICON_CLASSES_MOBILE}
           height={SEARCHBAR_HEIGHT}
           onCancel={() => this.setState({ mobileSearchActive: false })}
         />
@@ -278,25 +280,61 @@ class TopMenu extends Component {
     )
   }
 
-  renderCollapsibleContent = () => (
-    <div className="relative z-2 bg-base">
-      <ExtensionPoint id="category-menu" />
-    </div>
+  renderCategoryMenu = () => (
+    <ExtensionPoint id="category-menu" />
   )
 
-  render() {
-    const { leanMode, extraHeaders } = this.props
-    const { maxHeight, minHeight, extraHeadersHeight, mobileSearchActive } = this.state
+  renderBorder = (fixed, height) => (
+    <div
+      className={`${fixed && 'fixed top-0 left-0 w-100'} bb bw1 b--muted-4`}
+      style={{
+        height: height || 'inherit',
+        boxSizing: 'content-box',
+      }}
+    />
+  )
 
+  renderCollapsibleContent = (leanMode, minHeight, maxHeight ) => {
+    const height = leanMode ? minHeight : maxHeight
+    return(
+      <React.Fragment>
+        {/* This is a spacer to push down the page's content, since the menu
+        itself is fixed and doesn't affect the page's layout */}
+        <div
+          className="bg-base w-100 z-2 relative"
+          style={{
+            height: height,
+          }}
+        />
+
+        {!leanMode && (
+          <div className="relative z-2 bg-base">
+            {this.renderCategoryMenu()}
+          </div>
+        )}
+
+        {/* This is a border below the collapsible menu. It scrolls out of
+        view along with the menu */}
+        {this.renderBorder()}
+      </React.Fragment>
+    )
+  }
+
+  render() {
+    
+    const { leanMode, extraHeaders, mobileMode } = this.props
+    const { maxHeight, minHeight, extraHeadersHeight } = this.state
     const hasCalculatedMenuHeight = typeof maxHeight === 'number'
 
     return (
       <ResizeDetector handleWidth onResize={this.handleUpdateDimensions}>
+        
         <div className="fixed top-0 left-0 w-100 z-4">
           <ResizeDetector handleHeight onResize={this.handleExtraHeadersResize}>
             {extraHeaders}
           </ResizeDetector>
         </div>
+
         <Container
           className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
           ref={this.container}
@@ -322,34 +360,11 @@ class TopMenu extends Component {
             </div>
           </div>
         </Container>
+        
+        {this.renderBorder(true, minHeight)}
 
-        {hasCalculatedMenuHeight && (
-          <React.Fragment>
-            {/* This is a spacer to push down the page's content, since the menu
-          itself is fixed and doesn't affect the page's layout */}
-            <div
-              className="bg-base w-100 z-2 relative"
-              style={{
-                height: leanMode ? minHeight : maxHeight,
-              }}
-            />
-
-            {/* This is a border below the fixed menu. Its z-index is under
-          the collapsible contents, so it's only visible when the collapsible
-          menu scrolls out of view */}
-            <div
-              className="fixed top-0 left-0 w-100 bb bw1 b--muted-4"
-              style={{
-                height: minHeight,
-                boxSizing: 'content-box',
-              }}
-            />
-          </React.Fragment>
-        )}
-        {!leanMode && this.renderCollapsibleContent()}
-        {/* This is a border below the collapsible menu. It scrolls out of
-        view along with the menu */}
-        <div className="bb bw1 b--muted-4" />
+        {!mobileMode && this.renderCollapsibleContent(leanMode, minHeight, maxHeight)}
+      
       </ResizeDetector>
     )
   }
