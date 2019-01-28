@@ -42,7 +42,8 @@ class TopMenu extends Component {
 
     /** TODO: Use this `handleUpdateDimensions` instead of
      * `getInitialDimensions` when the problem mentioned in
-     * the declaration of the latter is fixed. */
+     * the declaration of the latter is fixed.
+     * @author lbebber */
     this.getInitialDimensions()
     this.handleScroll()
   }
@@ -296,8 +297,10 @@ class TopMenu extends Component {
 
   /** QUICK FIX - persist the calculated dimensions for the
    * first render to avoid bouncing.
-   * Caused by the header unmounting and re-mounting.
-   * TODO: Should be removed if/when that is fixed. */
+   * Caused by the header unmounting and re-mounting,
+   * and/or components being "forgotten" across page loads.
+   * TODO: Should be removed if/when that is fixed.
+   * @author lbebber */
   getInitialDimensions = () => {
     const hasLocalStorage = window && window.localStorage
     if (!hasLocalStorage) return
@@ -309,7 +312,7 @@ class TopMenu extends Component {
         ...headerDimensions
       })
     } catch (error) {
-      // Unable to parse JSON. Skip
+      // Unable to parse JSON. Skip.
     }
   }
 
@@ -350,8 +353,9 @@ class TopMenu extends Component {
             className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
             ref={this.content}
             style={{
-              // Prevents the empty margins of this element from blocking the users clicks
-              // TODO: create a tachyons class for pointer events and remove this style
+              /** Prevents the empty margins of this element from blocking the users clicks
+               * TODO: create a tachyons class for pointer events and remove this style
+               * @author lbebber */
               pointerEvents: 'none',
             }}
           >
