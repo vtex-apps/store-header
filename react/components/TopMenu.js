@@ -312,7 +312,7 @@ class TopMenu extends Component {
         ...headerDimensions
       })
     } catch (error) {
-      // Unable to parse JSON. Skip.
+      // Unable to parse JSON. Skipping.
     }
   }
 
@@ -320,13 +320,17 @@ class TopMenu extends Component {
     const hasLocalStorage = window && window.localStorage
     if (!hasLocalStorage) return
 
-    localStorage.setItem('headerDimensions', JSON.stringify({
-      extraHeadersHeight: this.state.extraHeadersHeight,
-      minHeight: this.state.minHeight,
-      maxHeight: this.state.maxHeight,
-      logoHeight: this.state.logoHeight,
-      iconsHeight: this.state.iconsHeight,
-    }))
+    try {
+      localStorage.setItem('headerDimensions', JSON.stringify({
+        extraHeadersHeight: this.state.extraHeadersHeight,
+        minHeight: this.state.minHeight,
+        maxHeight: this.state.maxHeight,
+        logoHeight: this.state.logoHeight,
+        iconsHeight: this.state.iconsHeight,
+      }))
+    } catch (error) {
+      // Unable to save to localStorage. Skipping.
+    }
   }
 
   render() {
