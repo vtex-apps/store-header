@@ -40,8 +40,11 @@ class TopMenu extends Component {
   componentDidMount() {
     document.addEventListener('scroll', this.handleScroll)
 
+    /** TODO: Use this `handleUpdateDimensions` instead of
+     * `getInitialDimensions` when the problem mentioned in
+     * the declaration of the latter is fixed. */
+    this.getInitialDimensions()
     this.handleScroll()
-    this.handleUpdateDimensions()
   }
 
   componentWillUnmount() {
@@ -152,6 +155,7 @@ class TopMenu extends Component {
       maxHeight,
       minHeight,
     }, () => {
+      this.saveInitialDimensions()
       this.props.onUpdateDimensions({ minHeight, maxHeight })
     })
   }
@@ -289,6 +293,34 @@ class TopMenu extends Component {
       )}
     </div>
   )
+
+  /** QUICK FIX - persist the calculated dimensions for the
+   * first render to avoid bouncing.
+   * Caused by the header unmounting and re-mounting.
+   * TODO: Should be removed if/when that is fixed. */
+  getInitialDimensions = () => {
+    const hasLocalStorage = window && window.localStorage
+    if (!hasLocalStorage) return
+
+    this.setState({
+      extraHeadersHeight: parseFloat(localStorage.getItem('extraHeadersHeight')),
+      minHeight: parseFloat(localStorage.getItem('minHeight')),
+      maxHeight: parseFloat(localStorage.getItem('maxHeight')),
+      logoHeight: parseFloat(localStorage.getItem('logoHeight')),
+      iconsHeight: parseFloat(localStorage.getItem('iconsHeight')),
+    })
+  }
+
+  saveInitialDimensions = () => {
+    const hasLocalStorage = window && window.localStorage
+    if (!hasLocalStorage) return
+
+    localStorage.setItem('extraHeadersHeight', this.state.extraHeadersHeight)
+    localStorage.setItem('minHeight', this.state.minHeight)
+    localStorage.setItem('maxHeight', this.state.maxHeight)
+    localStorage.setItem('logoHeight', this.state.logoHeight)
+    localStorage.setItem('iconsHeight', this.state.iconsHeight)
+  }
 
   render() {
     const { leanMode, extraHeaders } = this.props
