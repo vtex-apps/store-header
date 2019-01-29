@@ -23,6 +23,25 @@ const ICON_SIZE_DESKTOP = 30
 const ICON_CLASSES_MOBILE = 'near-black animated zoomIn faster'
 const SEARCHBAR_HEIGHT = 40
 
+const Spacer = ({vertical=0, horizontal=0, index=1}) => (
+  <div
+    className={`bg-base w-100 z-${index} relative`}
+    style={{
+      height: vertical,
+      width: horizontal,
+    }}
+  />
+)
+
+const Border = ({fixed, top}) => (
+  <div
+    className={`${fixed && 'fixed top-0 left-0 w-100'} bb bw1 b--muted-4`}
+    style={{
+      top: top || 'inherit',
+      boxSizing: 'content-box',
+    }}
+  />
+)
 class TopMenu extends Component {
   
   container = React.createRef()
@@ -301,14 +320,8 @@ class TopMenu extends Component {
     const height = leanMode ? minHeight : maxHeight
     return(
       <React.Fragment>
-        {/* This is a spacer to push down the page's content, since the menu
-        itself is fixed and doesn't affect the page's layout */}
-        <div
-          className="bg-base w-100 z-2 relative"
-          style={{
-            height: height,
-          }}
-        />
+        
+        <Spacer vertical={height} />
 
         {!leanMode && (
           <div className="relative z-2 bg-base">
@@ -318,7 +331,7 @@ class TopMenu extends Component {
 
         {/* This is a border below the collapsible menu. It scrolls out of
         view along with the menu */}
-        {this.renderBorder()}
+        <Border />
       </React.Fragment>
     )
   }
@@ -364,7 +377,9 @@ class TopMenu extends Component {
           </div>
         </Container>
         
-        {this.renderBorder(true, minHeight)}
+        <Border fixed top={64 + 32} />
+
+        {mobileMode && <Spacer vertical={80} />}
 
         {!mobileMode && this.renderCollapsibleContent(leanMode, minHeight, maxHeight)}
       
