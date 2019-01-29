@@ -10,6 +10,7 @@ import Icon from 'vtex.use-svg/Icon'
 
 import Logo from './Logo'
 import SearchBar from './SearchBar'
+import {Spacer, Border} from './Helpers'
 
 import header from '../store-header.css'
 
@@ -23,25 +24,6 @@ const ICON_SIZE_DESKTOP = 30
 const ICON_CLASSES_MOBILE = 'near-black animated zoomIn faster'
 const SEARCHBAR_HEIGHT = 40
 
-const Spacer = ({vertical=0, horizontal=0, index=1}) => (
-  <div
-    className={`bg-base w-100 z-${index} relative`}
-    style={{
-      height: vertical,
-      width: horizontal,
-    }}
-  />
-)
-
-const Border = ({fixed, top}) => (
-  <div
-    className={`${fixed && 'fixed top-0 left-0 w-100'} bb bw1 b--muted-4`}
-    style={{
-      top: top || 'inherit',
-      boxSizing: 'content-box',
-    }}
-  />
-)
 class TopMenu extends Component {
   
   container = React.createRef()
