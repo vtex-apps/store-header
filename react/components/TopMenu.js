@@ -23,6 +23,8 @@ const ICON_SIZE_MOBILE = 16
 const ICON_SIZE_DESKTOP = 30
 const ICON_CLASSES_MOBILE = 'near-black animated zoomIn faster'
 const SEARCHBAR_HEIGHT = 40
+const EXTRA_HEADERS_HEIGHT = 32
+const HEADER_HEIGHT= 64
 
 class TopMenu extends Component {
   
@@ -356,7 +358,7 @@ class TopMenu extends Component {
           </div>
         </Container>
         
-        <Border fixed top={64 + 32} />
+        <Border fixed top={HEADER_HEIGHT + EXTRA_HEADERS_HEIGHT} />
 
         {mobileMode && <Spacer vertical={80} />}
 
