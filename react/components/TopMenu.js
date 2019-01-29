@@ -42,20 +42,17 @@ class TopMenu extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener('scroll', this.handleScroll)
+    const {mobileMode} = this.props
+    
+    if(mobileMode) return
 
+    document.addEventListener('scroll', this.handleScroll)
     this.handleScroll()
     this.handleUpdateDimensions()
   }
 
   componentWillUnmount() {
     document.removeEventListener('scroll', this.handleScroll)
-  }
-
-  componentDidUpdate(prevState) {
-    if (prevState.mobileSearchActive !== this.state.mobileSearchActive) {
-      this.handleScroll()
-    }
   }
 
   handleScroll = () => {
