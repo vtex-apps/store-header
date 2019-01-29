@@ -127,6 +127,14 @@ class TopMenu extends Component {
     })
   }
 
+  handleExtraHeadersResize = (width, height) => {
+    this.setState({
+      extraHeadersHeight: height,
+    }, () => {
+      this.handleUpdateDimensions()
+    })
+  }
+
   handleUpdateDimensions = () => {
     const contentPaddings = this.getContentPaddings()
     const logoReduction = Math.max(0, this.state.logoHeight - Math.max(this.state.iconsHeight, LOGO_COLLAPSED_HEIGHT))
@@ -141,14 +149,6 @@ class TopMenu extends Component {
       minHeight,
     }, () => {
       this.props.onUpdateDimensions({ minHeight, maxHeight })
-    })
-  }
-
-  handleExtraHeadersResize = (width, height) => {
-    this.setState({
-      extraHeadersHeight: height,
-    }, () => {
-      this.handleUpdateDimensions()
     })
   }
 
@@ -171,17 +171,6 @@ class TopMenu extends Component {
       </div>
     )
   }
-
-  renderMobileCategoryMenu = () => (
-    <div className="db dn-ns">
-      <ExtensionPoint
-        id="category-menu"
-        mobileMode
-        iconSize={ICON_SIZE_MOBILE}
-        iconClasses={ICON_CLASSES_MOBILE}
-        />
-    </div>
-  )
 
   renderIcons() {
     const { leanMode, showLogin, showSearchBar } = this.props
@@ -252,37 +241,51 @@ class TopMenu extends Component {
     )
   }
 
+  renderCategoryMenu = (mobileMode) => (
+    <ExtensionPoint
+        id="category-menu"
+        mobileMode={mobileMode}
+        iconSize={ICON_SIZE_MOBILE}
+        iconClasses={ICON_CLASSES_MOBILE}
+    />
+  )
+
   renderFixedContent = () => {
-    const { leanMode } = this.props
+    const { leanMode, mobileMode } = this.props
     const { mobileSearchActive } = this.state
 
     return mobileSearchActive ? (
-      <div className="flex justify-start pa2 relative w-100">
-        <SearchBar
-          isMobile
-          autoFocus
-          iconClasses={ICON_CLASSES_MOBILE}
-          height={SEARCHBAR_HEIGHT}
-          onCancel={() => this.setState({ mobileSearchActive: false })}
-        />
-      </div>
+      mobileMode && (
+        <div className="flex justify-start pa2 relative w-100">
+          <SearchBar
+            isMobile
+            autoFocus
+            iconClasses={ICON_CLASSES_MOBILE}
+            height={SEARCHBAR_HEIGHT}
+            onCancel={() => this.setState({ mobileSearchActive: false })}
+          />
+        </div>
+      )
     ) : (
       <React.Fragment>
-        {!leanMode && this.renderMobileCategoryMenu()}
+        {!leanMode && mobileMode && (
+          <div className="db dn-ns">
+            {this.renderCategoryMenu(mobileMode)}
+          </div>
+        )}
+
         {this.renderLogo()}
-        {!leanMode && (
+
+        {!leanMode && !mobileMode && (
           <div className="dn db-ns flex-grow-1">
             <SearchBar />
           </div>
         )}
+
         {this.renderIcons()}
       </React.Fragment>
     )
   }
-
-  renderCategoryMenu = () => (
-    <ExtensionPoint id="category-menu" />
-  )
 
   renderBorder = (fixed, height) => (
     <div
