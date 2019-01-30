@@ -4,7 +4,8 @@ import { FormattedMessage } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import ResizeDetector from 'react-resize-detector'
 
-import { ButtonWithIcon, IconSearch } from 'vtex.styleguide'
+import { ButtonWithIcon } from 'vtex.styleguide'
+import { IconSearch } from 'vtex.dreamstore-icons'
 import { Container } from 'vtex.store-components'
 
 import Logo from './Logo'
@@ -66,7 +67,7 @@ class TopMenu extends Component {
     if (typeof scroll !== 'number') return
 
     const scrollValue = Math.min(1, scroll / Math.max(this.state.heightReduction, this.state.minHeight))
-    
+
     this.updateMobileSearch(scrollValue)
     this.updateLogoScroll(scrollValue)
     this.updateTopBarScroll(scrollValue)
@@ -74,10 +75,10 @@ class TopMenu extends Component {
   }
 
   updateMobileSearch = scrollValue => {
-    if(scrollValue <= MOBILE_SEARCH_SCROLL_LIMIT && this.state.mobileSearchActive){
-      this.setState({mobileSearchActive: false})
+    if (scrollValue <= MOBILE_SEARCH_SCROLL_LIMIT && this.state.mobileSearchActive) {
+      this.setState({ mobileSearchActive: false })
     }
-  } 
+  }
 
   updateLogoScroll = scrollValue => {
     const logoElement = this.logoContainer.current
@@ -213,7 +214,7 @@ class TopMenu extends Component {
                   variation="tertiary"
                   onClick={() => this.setState(state => ({ mobileSearchActive: !state.mobileSearchActive }))}
                 >
-                  <span className="c-muted-1"><IconSearch size={ICON_SIZE_MOBILE} /></span>
+                  <IconSearch size={ICON_SIZE_MOBILE} className="c-muted-1" />
                 </ButtonWithIcon>
               </div>
             )}
@@ -271,17 +272,17 @@ class TopMenu extends Component {
         />
       </div>
     ) : (
-      <React.Fragment>
-        {!leanMode && this.renderMobileCategoryMenu()}
-        {this.renderLogo()}
-        {!leanMode && (
-          <div className="dn db-ns flex-grow-1">
-            <SearchBar />
-          </div>
-        )}
-        {this.renderIcons()}
-      </React.Fragment>
-    )
+        <React.Fragment>
+          {!leanMode && this.renderMobileCategoryMenu()}
+          {this.renderLogo()}
+          {!leanMode && (
+            <div className="dn db-ns flex-grow-1">
+              <SearchBar />
+            </div>
+          )}
+          {this.renderIcons()}
+        </React.Fragment>
+      )
   }
 
   renderCollapsibleContent = () => (
