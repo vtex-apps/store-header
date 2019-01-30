@@ -13,13 +13,13 @@ import SearchBar from './SearchBar'
 
 import header from '../store-header.css'
 
-const LOGO_MAX_WIDTH_DESKTOP = 150
+const LOGO_MAX_WIDTH_DESKTOP = 146
+const LOGO_MAX_HEIGHT_DESKTOP = 52
 const LOGO_MAX_WIDTH_MOBILE = 90
 const LOGO_MAX_HEIGHT_MOBILE = 40
-const LOGO_MAX_HEIGHT_DESKTOP = 75
 const LOGO_COLLAPSED_HEIGHT = 40
 const ICON_SIZE_MOBILE = 22
-const ICON_SIZE_DESKTOP = 30
+const ICON_SIZE_DESKTOP = 16
 const MOBILE_SEARCH_SCROLL_LIMIT = 0.1979
 
 class TopMenu extends Component {
@@ -221,15 +221,15 @@ class TopMenu extends Component {
             {showLogin && (
               <ExtensionPoint
                 id="login"
-                iconClasses="c-muted-1"
-                labelClasses="c-muted-1"
+                iconClasses="c-on-base"
+                labelClasses="c-on-base"
                 iconSize={ICON_SIZE_MOBILE}
               />
             )}
             {!leanMode && <ExtensionPoint
               id="minicart"
-              iconClasses="c-muted-1"
-              labelClasses="c-muted-1"
+              iconClasses="c-on-base"
+              labelClasses="c-on-base"
               iconSize={ICON_SIZE_MOBILE}
             />}
           </div>
@@ -238,8 +238,8 @@ class TopMenu extends Component {
             {showLogin && (
               <ExtensionPoint
                 id="login"
-                iconClasses="c-muted-1"
-                labelClasses="c-muted-1"
+                iconClasses="c-on-base"
+                labelClasses="c-on-base"
                 iconSize={ICON_SIZE_DESKTOP}
                 iconLabel={<FormattedMessage id="header.topMenu.login.icon.label" />}
               />
@@ -247,8 +247,8 @@ class TopMenu extends Component {
             {!leanMode && (
               <ExtensionPoint
                 id="minicart"
-                iconClasses="c-muted-1"
-                labelClasses="c-muted-1"
+                iconClasses="c-on-base"
+                labelClasses="c-on-base"
                 iconSize={ICON_SIZE_DESKTOP}
                 iconLabel={<FormattedMessage id="header.topMenu.minicart.icon.label" />}
               />
@@ -355,7 +355,7 @@ class TopMenu extends Component {
           }}
         >
           <div
-            className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
+            className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv2'}`}
             ref={this.content}
             style={{
               /** Prevents the empty margins of this element from blocking the users clicks
