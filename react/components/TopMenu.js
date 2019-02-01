@@ -14,7 +14,7 @@ import SearchBar from './SearchBar'
 import header from '../store-header.css'
 
 const LOGO_MAX_WIDTH_DESKTOP = 146
-const LOGO_MAX_HEIGHT_DESKTOP = 52
+const LOGO_MAX_HEIGHT_DESKTOP = 60
 const LOGO_MAX_WIDTH_MOBILE = 90
 const LOGO_MAX_HEIGHT_MOBILE = 40
 const LOGO_COLLAPSED_HEIGHT = 40

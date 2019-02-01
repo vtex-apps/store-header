@@ -25,7 +25,7 @@ const SearchBar = ({ compactMode, autoFocus, onCancel }) => {
                 emptyPlaceholder={emptyPlaceholder}
                 compactMode={compactMode}
                 autoFocus={autoFocus}
-                iconClasses="c-on-base"
+                iconClasses="c-muted-1"
               />
             )}
           </Adopt>
