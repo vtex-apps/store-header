@@ -221,15 +221,15 @@ class TopMenu extends Component {
             {showLogin && (
               <ExtensionPoint
                 id="login"
-                iconClasses="c-on-base"
-                labelClasses="c-on-base"
+                iconClasses="c-muted-1"
+                labelClasses="c-muted-1"
                 iconSize={ICON_SIZE_MOBILE}
               />
             )}
             {!leanMode && <ExtensionPoint
               id="minicart"
-              iconClasses="c-on-base"
-              labelClasses="c-on-base"
+              iconClasses="c-muted-1"
+              labelClasses="c-muted-1"
               iconSize={ICON_SIZE_MOBILE}
             />}
           </div>
@@ -238,8 +238,8 @@ class TopMenu extends Component {
             {showLogin && (
               <ExtensionPoint
                 id="login"
-                iconClasses="c-on-base"
-                labelClasses="c-on-base"
+                iconClasses="c-muted-1"
+                labelClasses="c-muted-1"
                 iconSize={ICON_SIZE_DESKTOP}
                 iconLabel={<FormattedMessage id="header.topMenu.login.icon.label" />}
               />
@@ -247,8 +247,8 @@ class TopMenu extends Component {
             {!leanMode && (
               <ExtensionPoint
                 id="minicart"
-                iconClasses="c-on-base"
-                labelClasses="c-on-base"
+                iconClasses="c-muted-1"
+                labelClasses="c-muted-1"
                 iconSize={ICON_SIZE_DESKTOP}
                 iconLabel={<FormattedMessage id="header.topMenu.minicart.icon.label" />}
               />
@@ -355,7 +355,7 @@ class TopMenu extends Component {
           }}
         >
           <div
-            className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv2'}`}
+            className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv1'}`}
             ref={this.content}
             style={{
               /** Prevents the empty margins of this element from blocking the users clicks
