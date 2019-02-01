@@ -18,7 +18,7 @@ const LOGO_MAX_HEIGHT_DESKTOP = 60
 const LOGO_MAX_WIDTH_MOBILE = 90
 const LOGO_MAX_HEIGHT_MOBILE = 40
 const LOGO_COLLAPSED_HEIGHT = 40
-const ICON_SIZE_MOBILE = 22
+const ICON_SIZE_MOBILE = 16
 const ICON_SIZE_DESKTOP = 16
 const MOBILE_SEARCH_SCROLL_LIMIT = 0.1979
 
@@ -365,7 +365,7 @@ class TopMenu extends Component {
             }}
           >
             <div
-              className="flex w-100 justify-between-m items-center pv3"
+              className="flex w-100 justify-between-m items-center pv2"
               style={{
                 pointerEvents: 'auto',
               }}>
