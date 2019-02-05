@@ -272,17 +272,20 @@ class TopMenu extends Component {
         />
       </div>
     ) : (
-        <React.Fragment>
-          {!leanMode && this.renderMobileCategoryMenu()}
-          {this.renderLogo()}
-          {!leanMode && (
-            <div className="dn db-ns flex-grow-1">
-              <SearchBar />
-            </div>
-          )}
-          {this.renderIcons()}
-        </React.Fragment>
-      )
+      <React.Fragment>
+        {!leanMode && this.renderMobileCategoryMenu()}
+        {this.renderLogo()}
+        {!leanMode && (
+          <div className="dn db-ns flex-grow-1">
+            <SearchBar />
+          </div>
+        )}
+        <div className="dn db-l">
+          <ExtensionPoint id="user-address" variation="inline" />
+        </div>
+        {this.renderIcons()}
+      </React.Fragment>
+    )
   }
 
   renderCollapsibleContent = () => (
@@ -401,6 +404,10 @@ class TopMenu extends Component {
         {/* This is a border below the collapsible menu. It scrolls out of
         view along with the menu */}
         <div className="bb bw1 b--muted-4" />
+
+        <div className="db dn-l">
+          <ExtensionPoint id="user-address" variation="bar" />
+        </div>
       </ResizeDetector>
     )
   }
