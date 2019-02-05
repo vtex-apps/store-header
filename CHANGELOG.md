@@ -9,6 +9,26 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Reduced form on mobile.
 
+## [2.7.1] - 2019-02-01
+
+## [2.7.0] - 2019-01-30
+### Changed
+- Use icons from `vtex.dreamstore-icons`.
+
+## [2.6.3] - 2019-01-29
+### Fixed
+- Remove `inheritComponent` from blocks.
+
+## [2.6.2] - 2019-01-28
+### Fixed
+- Prevent the size of the header bouncing across different pages.
+
+## [2.6.1] - 2019-01-26
+### Changed
+- Remove `global.css`.
+
+## [2.6.0] - 2019-01-22
+
 ## [2.5.1] - 2019-01-18
 ### Changed
 - Adjust the way to import render-runtime components.

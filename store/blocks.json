@@ -3,8 +3,7 @@
     "blocks": [
       "telemarketing",
       "logo"
-    ],
-    "inheritComponent": true
+    ]
   },
   "header.full": {
     "blocks": [
@@ -14,7 +13,6 @@
       "login",
       "category-menu",
       "search-bar"
-    ],
-    "inheritComponent": true
+    ]
   }
 }

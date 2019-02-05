@@ -1,0 +1,14 @@
+{
+  "editor.header.title": "editor.header.title",
+  "editor.header.description": "editor.header.description",
+  "editor.header.logo.title": "editor.header.logo.title",
+  "editor.header.logo.image": "editor.header.logo.image",
+  "editor.header.link.url": "editor.header.link.url",
+  "editor.header.show.searchbar.title": "editor.header.show.searchbar.title",
+  "editor.header.show.login.title": "editor.header.show.login.title",
+  "header.search-placeholder": "header.search-placeholder",
+  "header.search-emptyPlaceholder": "header.search-emptyPlaceholder",
+  "header.topMenu.minicart.icon.label": "header.topMenu.minicart.icon.label",
+  "header.topMenu.login.icon.label": "header.topMenu.login.icon.label",
+  "header.search-cancel": "header.search-cancel"
+}

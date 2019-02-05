@@ -3,10 +3,9 @@ import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import ResizeDetector from 'react-resize-detector'
-
 import { ButtonWithIcon } from 'vtex.styleguide'
+import { IconSearch } from 'vtex.dreamstore-icons'
 import { Container } from 'vtex.store-components'
-import Icon from 'vtex.use-svg/Icon'
 
 import Logo from './Logo'
 import SearchBar from './SearchBar'
@@ -21,10 +20,11 @@ const LOGO_MAX_HEIGHT_DESKTOP = 75
 const LOGO_COLLAPSED_HEIGHT = 40
 const ICON_SIZE_MOBILE = 16
 const ICON_SIZE_DESKTOP = 30
-const ICON_CLASSES_MOBILE = 'near-black animated zoomIn faster'
+const ICON_CLASSES_MOBILE = 'c-muted-1 animated zoomIn faster'
 const SEARCHBAR_HEIGHT = 40
 const EXTRA_HEADERS_HEIGHT = 32
 const HEADER_HEIGHT= 64
+const MOBILE_SEARCH_SCROLL_LIMIT = 0.1979 
 
 class TopMenu extends Component {
   
@@ -44,13 +44,17 @@ class TopMenu extends Component {
   }
 
   componentDidMount() {
+    this.getInitialDimensions()
+
     const {mobileMode} = this.props
-    
     if(mobileMode) return
 
     document.addEventListener('scroll', this.handleScroll)
+    /** TODO: Use this `handleUpdateDimensions` instead of
+     * `getInitialDimensions` when the problem mentioned in
+     * the declaration of the latter is fixed.
+     * @author lbebber */
     this.handleScroll()
-    this.handleUpdateDimensions()
   }
 
   componentWillUnmount() {
@@ -65,9 +69,16 @@ class TopMenu extends Component {
     if (typeof scroll !== 'number') return
 
     const scrollValue = Math.min(1, scroll / Math.max(this.state.heightReduction, this.state.minHeight))
-    
+
+    this.updateMobileSearch(scrollValue)
     this.updateLogoScroll(scrollValue)
     this.updateTopBarScroll(scrollValue)
+  }
+
+  updateMobileSearch = scrollValue => {
+    if (scrollValue <= MOBILE_SEARCH_SCROLL_LIMIT && this.state.mobileSearchActive) {
+      this.setState({ mobileSearchActive: false })
+    }
   }
 
   updateLogoScroll = scrollValue => {
@@ -148,6 +159,7 @@ class TopMenu extends Component {
       maxHeight,
       minHeight,
     }, () => {
+      this.saveInitialDimensions()
       this.props.onUpdateDimensions({ minHeight, maxHeight })
     })
   }
@@ -174,7 +186,7 @@ class TopMenu extends Component {
 
   renderIcons() {
     const { leanMode, showLogin, showSearchBar } = this.props
-    const searchIcon = <Icon id="hpa-search" className={ICON_CLASSES_MOBILE} size={ICON_SIZE_MOBILE}/>
+    const searchIcon = <IconSearch size={ICON_SIZE_MOBILE} className={ICON_CLASSES_MOBILE} />
 
     return (
       <div className={`${header.topMenuIcons} flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}>
@@ -317,6 +329,44 @@ class TopMenu extends Component {
     )
   }
 
+  /** QUICK FIX - persist the calculated dimensions for the
+   * first render to avoid bouncing.
+   * Caused by the header unmounting and re-mounting,
+   * and/or components being "forgotten" across page loads.
+   * TODO: Should be removed if/when that is fixed.
+   * @author lbebber */
+  getInitialDimensions = () => {
+    const hasLocalStorage = window && window.localStorage
+    if (!hasLocalStorage) return
+
+    try {
+      const headerDimensions = JSON.parse(localStorage.getItem('headerDimensions'))
+
+      this.setState({
+        ...headerDimensions
+      })
+    } catch (error) {
+      // Unable to parse JSON. Skipping.
+    }
+  }
+
+  saveInitialDimensions = () => {
+    const hasLocalStorage = window && window.localStorage
+    if (!hasLocalStorage) return
+
+    try {
+      localStorage.setItem('headerDimensions', JSON.stringify({
+        extraHeadersHeight: this.state.extraHeadersHeight,
+        minHeight: this.state.minHeight,
+        maxHeight: this.state.maxHeight,
+        logoHeight: this.state.logoHeight,
+        iconsHeight: this.state.iconsHeight,
+      }))
+    } catch (error) {
+      // Unable to save to localStorage. Skipping.
+    }
+  }
+
   render() {
     
     const { leanMode, extraHeaders, mobileMode } = this.props
@@ -343,8 +393,9 @@ class TopMenu extends Component {
             className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
             ref={this.content}
             style={{
-              // Prevents the empty margins of this element from blocking the users clicks
-              // TODO: create a tachyons class for pointer events and remove this style
+              /** Prevents the empty margins of this element from blocking the users clicks
+               * TODO: create a tachyons class for pointer events and remove this style
+               * @author lbebber */
               pointerEvents: 'none',
             }}
           >

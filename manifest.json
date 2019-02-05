@@ -1,14 +1,14 @@
 {
   "vendor": "vtex",
   "name": "store-header",
-  "version": "2.5.1",
+  "version": "2.7.1",
   "title": "VTEX Store Header",
   "defaultLocale": "pt-BR",
   "description": "The VTEX Store Header component",
   "builders": {
     "react": "3.x",
     "store": "0.x",
-    "messages": "0.x"
+    "messages": "1.x"
   },
   "mustUpdateAt": "2019-04-02",
   "categories": [],
@@ -26,6 +26,6 @@
     "vtex.menu": "2.x",
     "vtex.category-menu": "2.x",
     "vtex.store-components": "3.x",
-    "vtex.use-svg": "1.x"
+    "vtex.dreamstore-icons": "0.x"
   }
 }

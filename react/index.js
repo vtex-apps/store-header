@@ -4,7 +4,6 @@ import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
 
 import TopMenu from './components/TopMenu'
 
-import './global.css'
 import header from './store-header.css'
 
 class Header extends Component {
