@@ -253,10 +253,9 @@ class TopMenu extends Component {
     )
   }
 
-  renderCategoryMenu = (mobileMode) => (
+  renderCategoryMenu = () => (
     <ExtensionPoint
         id="category-menu"
-        mobileMode={mobileMode}
         iconSize={ICON_SIZE_MOBILE}
         iconClasses={ICON_CLASSES_MOBILE}
     />
@@ -282,7 +281,7 @@ class TopMenu extends Component {
       <React.Fragment>
         {!leanMode && mobileMode && (
           <div className="db dn-ns">
-            {this.renderCategoryMenu(mobileMode)}
+            {this.renderCategoryMenu()}
           </div>
         )}
 

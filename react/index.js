@@ -42,9 +42,8 @@ class Header extends Component {
   }
 
   render() {
-    const { logoUrl, logoTitle, showSearchBar, showLogin, linkUrl, runtime: {hints} } = this.props
+    const { logoUrl, logoTitle, showSearchBar, showLogin, linkUrl, runtime: { hints: mobile } } = this.props
     const leanMode = this.isLeanMode()
-    const isMobile = hints.mobile
 
     const topMenuOptions = {
       linkUrl,
@@ -60,7 +59,7 @@ class Header extends Component {
       >
         <TopMenu
           {...topMenuOptions}
-          mobileMode={isMobile}
+          mobileMode={mobile}
           leanMode={leanMode}
           extraHeaders={(
             <ExtensionPoint id="telemarketing" />
