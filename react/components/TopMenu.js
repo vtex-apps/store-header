@@ -177,7 +177,7 @@ class TopMenu extends Component {
     const sizeMobile = { width: LOGO_MAX_WIDTH_MOBILE, height: LOGO_MAX_HEIGHT_MOBILE }
 
     return (
-      <div className="mr5" ref={this.logoContainer}>
+      <div className={`${header.logoContainer} mr5`} ref={this.logoContainer}>
         <Logo
           src={logoUrl}
           link={linkUrl}
@@ -191,7 +191,7 @@ class TopMenu extends Component {
   }
 
   renderMobileCategoryMenu = () => (
-    <div className="db dn-ns">
+    <div className={`${header.categoryMenuMobile} db dn-ns`}>
       <ExtensionPoint id="category-menu" mobileMode />
     </div>
   )
