@@ -263,6 +263,9 @@ class TopMenu extends Component {
     const { leanMode } = this.props
     const { mobileSearchActive } = this.state
 
+    /** mobileSearchActive means, in a mobile context,
+     * if the user has pressed the "Search" icon,
+     * so the whole top bar will be a search field */
     return mobileSearchActive ? (
       <div className="flex justify-start pa2 pr4 pt3 relative w-100">
         <SearchBar
