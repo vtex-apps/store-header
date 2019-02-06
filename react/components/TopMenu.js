@@ -17,8 +17,6 @@ import withScrollHandler from './ScrollHandler';
 /**
  * Desing Correct
  */
-const LOGO_MAX_WIDTH_DESKTOP = 132
-const LOGO_MAX_HEIGHT_DESKTOP = 40
 const ICON_CLASSES = "c-on-base"
 const LABEL_CLASSES = "c-on-base"
 
@@ -30,8 +28,6 @@ const HEIGHTS = {
 /**
  * To check
  */
-const LOGO_MAX_WIDTH_MOBILE = 90
-const LOGO_MAX_HEIGHT_MOBILE = 40
 const SCROLL_HOOK = 80
 
 const getTransition = ( targetScale, origin, scroll) => {
@@ -59,24 +55,8 @@ const TopMenu = ({
   logoTitle,
   showLogin,
   showSearchBar,
+  mobile
 }) => {
-
-  const renderLogo = () => {
-    const sizeDesktop = { width: LOGO_MAX_WIDTH_DESKTOP, height: LOGO_MAX_HEIGHT_DESKTOP }
-    const sizeMobile = { width: LOGO_MAX_WIDTH_MOBILE, height: LOGO_MAX_HEIGHT_MOBILE }
-
-    return (
-      <div className="mr5" >
-        <Logo
-          src={logoUrl}
-          link={linkUrl}
-          title={logoTitle}
-          sizeDesktop={leanMode ? sizeMobile : sizeDesktop}
-          sizeMobile={sizeMobile}
-        />
-      </div>
-    )
-  }
 
   const renderIcons = () => (
       <div className={`${header.topMenuIcons} flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}>
@@ -152,7 +132,14 @@ const TopMenu = ({
         <React.Fragment>
           {/**!leanMode && renderCategoryMenu() */}
 
-          { renderLogo() }
+          { 
+            <Logo
+              src={logoUrl}
+              link={linkUrl}
+              title={logoTitle}
+              mobile={mobile}
+            />
+          }
 
           {!leanMode && (
             <div className="dn db-ns flex-grow-1">
@@ -223,6 +210,7 @@ TopMenu.propTypes = {
   leanMode: PropTypes.bool,
   onUpdateDimensions: PropTypes.func,
   extraHeaders: PropTypes.node,
+  mobile: PropTypes.bool
 }
 
 TopMenu.defaultProps = {

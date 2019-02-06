@@ -5,8 +5,18 @@ import ReactResizeDetector from 'react-resize-detector'
 
 import header from '../store-header.css'
 
-const Logo = ({ link, src, title, sizeMobile, sizeDesktop, onResize }) => (
-  <div className={`${header.topMenuLogo} pv2`}>
+const SIZE_MOBILE = {
+  width: 90,
+  height: 40,
+}
+
+const SIZE_DESKTOP = {
+  width: 132,
+  height: 40,
+}
+
+const Logo = ({ link, src, title, mobile, onResize }) => (
+  <div className={`${header.topMenuLogo} pv2 mr5`}>
     <ReactResizeDetector handleHeight onResize={onResize}>
       <Link
         to={link}
@@ -15,26 +25,27 @@ const Logo = ({ link, src, title, sizeMobile, sizeDesktop, onResize }) => (
         // but the cause should be investigated
         className={`outline-0 ${header.logoLink}`}
       >
-        {sizeMobile && (
+        {mobile && (
           <div className="db dn-ns">
             <ExtensionPoint
               id="logo"
               url={src}
               title={title}
-              width={sizeMobile.width}
-              height={sizeMobile.height}
+              width={SIZE_MOBILE.width}
+              height={SIZE_MOBILE.height}
               isMobile={true}
             />
           </div>
         )}
-        {sizeDesktop && (
+
+        {!mobile && (
           <div className="dn db-ns">
             <ExtensionPoint
               id="logo"
               url={src}
               title={title}
-              width={sizeDesktop.width}
-              height={sizeDesktop.height}
+              width={SIZE_DESKTOP.width}
+              height={SIZE_DESKTOP.height}
               isMobile={false}
             />
           </div>
@@ -49,14 +60,7 @@ Logo.propTypes = {
   link: PropTypes.string,
   title: PropTypes.string,
   onResize: PropTypes.func,
-  sizeMobile: PropTypes.shape({
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-  }),
-  sizeDesktop: PropTypes.shape({
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-  }),
+  mobile: PropTypes.bool
 }
 
 Logo.defaultProps = {
