@@ -26,7 +26,7 @@
     "vtex.menu": "2.x",
     "vtex.category-menu": "2.x",
     "vtex.store-components": "3.x",
-    "vtex.address-locator": "1.2.0-beta.1",
+    "vtex.address-locator": "1.2.0-beta.3",
     "vtex.dreamstore-icons": "0.x"
   }
 }
