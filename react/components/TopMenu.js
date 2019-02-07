@@ -1,30 +1,11 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { FormattedMessage } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
-import ResizeDetector from 'react-resize-detector'
-
-
 import { Container } from 'vtex.store-components'
-
-import Logo from './Logo'
-import SearchBar from './SearchBar'
-
 import header from '../store-header.css'
-import withScrollHandler from './ScrollHandler';
-import Icons from './Icons';
-import Collapsible from './Collapsible';
-
-/**
- * Desing Correct
- */
-const ICON_CLASSES = "c-on-base"
-const LABEL_CLASSES = "c-on-base"
-
-const HEIGHTS = {
-  TELEMARKETING: 32,
-  FIXED_CONTENT: 64
-}
+import withScrollHandler from './ScrollHandler'
+import Collapsible from './Collapsible'
+import FixedContent from './FixedContent'
 
 /**
  * To check
@@ -50,7 +31,6 @@ const getTransition = ( targetScale, origin, scroll) => {
 const TopMenu = ({
   extraHeaders,
   leanMode,
-  mobileSearchActive=false,
   logoUrl,
   linkUrl,
   logoTitle,
@@ -58,50 +38,6 @@ const TopMenu = ({
   showSearchBar,
   mobile
 }) => {
-
-  const renderFixedContent = () => (
-    mobileSearchActive ? (
-      <div className="flex justify-start pa2 pr4 pt3 relative w-100">
-        <SearchBar
-          compactMode
-          autoFocus
-          onCancel={() => "HAHA" }
-        />
-      </div>
-    ) : (
-        <React.Fragment>
-          {/**!leanMode && <ExtensionPoint
-        id="category-menu"
-        iconClasses={ICON_CLASSES}
-    /> */}
-
-          { 
-            <Logo
-              src={logoUrl}
-              link={linkUrl}
-              title={logoTitle}
-              mobile={mobile}
-            />
-          }
-
-          {!leanMode && (
-            <div className="dn db-ns flex-grow-1">
-              <SearchBar iconClasses={ICON_CLASSES} />
-            </div>
-          )}
-
-          {
-            <Icons
-              showSearch={showSearchBar}
-              leanMode={leanMode}
-              showLogin={showLogin}
-              iconClasses={ICON_CLASSES}
-              labelClasses={LABEL_CLASSES}
-            />
-           }
-        </React.Fragment>
-      )
-  )
 
   return(
     <Fragment>
@@ -130,7 +66,16 @@ const TopMenu = ({
             style={{
               pointerEvents: 'auto',
             }}>
-              {renderFixedContent()}
+              <FixedContent 
+                mobileSearchActive={false}
+                leanMode={leanMode}
+                logoUrl={logoUrl}
+                linkUrl={linkUrl}
+                logoTitle={logoTitle}
+                mobile={mobile}
+                showSearchBar={showSearchBar}
+                showLogin={showLogin}
+              />
           </div>
         </div>
       </Container>
