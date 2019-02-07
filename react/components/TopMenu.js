@@ -4,8 +4,7 @@ import { FormattedMessage } from 'react-intl'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import ResizeDetector from 'react-resize-detector'
 
-import { ButtonWithIcon } from 'vtex.styleguide'
-import { IconSearch } from 'vtex.dreamstore-icons'
+
 import { Container } from 'vtex.store-components'
 
 import Logo from './Logo'
@@ -13,6 +12,7 @@ import SearchBar from './SearchBar'
 
 import header from '../store-header.css'
 import withScrollHandler from './ScrollHandler';
+import Icons from './Icons';
 
 /**
  * Desing Correct
@@ -58,59 +58,7 @@ const TopMenu = ({
   mobile
 }) => {
 
-  const renderIcons = () => (
-      <div className={`${header.topMenuIcons} flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}>
-        {/**
-          * Both desktop and mobile icons are rendered, and hidden through CSS,
-          * for better server side rendering support
-         **/}
-          {/* Mobile icons */}
-          <div className="flex dn-ns mr3">
-            {showSearchBar && !leanMode && (
-              <div className="o-0 pv2 nl5">
-                <ButtonWithIcon
-                  variation="tertiary"
-                  onClick={() => "ACTIVE MOBILE SEARCH"}
-                >
-                  <IconSearch className={ICON_CLASSES} />
-                </ButtonWithIcon>
-              </div>
-            )}
-            {showLogin && (
-              <ExtensionPoint
-                id="login"
-                iconClasses={ICON_CLASSES}
-                labelClasses={LABEL_CLASSES}
-              />
-            )}
-            {!leanMode && <ExtensionPoint
-              id="minicart"
-              iconClasses={ICON_CLASSES}
-              labelClasses={LABEL_CLASSES}
-            />}
-          </div>
-
-          {/** Desktop icons */}
-          <div className="dn flex-ns">
-            {showLogin && (
-              <ExtensionPoint
-                id="login"
-                iconClasses={ICON_CLASSES}
-                labelClasses={LABEL_CLASSES}
-                iconLabel={<FormattedMessage id="header.topMenu.login.icon.label" />}
-              />
-            )}
-            {!leanMode && (
-              <ExtensionPoint
-                id="minicart"
-                iconClasses={ICON_CLASSES}
-                labelClasses={LABEL_CLASSES}
-                iconLabel={<FormattedMessage id="header.topMenu.minicart.icon.label" />}
-              />
-            )}
-          </div>
-      </div> 
-  )
+  
 
   const renderCategoryMenu = () => (
     <ExtensionPoint
@@ -147,7 +95,15 @@ const TopMenu = ({
             </div>
           )}
 
-          { renderIcons() }
+          {
+            <Icons
+              showSearch={showSearchBar}
+              leanMode={leanMode}
+              showLogin={showLogin}
+              iconClasses={ICON_CLASSES}
+              labelClasses={LABEL_CLASSES}
+            />
+           }
         </React.Fragment>
       )
   )
@@ -155,11 +111,6 @@ const TopMenu = ({
   const renderCollapsibleContent = () => (
     <div className="relative z-2 bg-base" style={{ top: HEIGHTS.FIXED_CONTENT + HEIGHTS.TELEMARKETING }}>
       <ExtensionPoint id="category-menu" />
-      { showSearchBar && (
-        <div className="dn-m">
-          <SearchBar />
-        </div>
-      )}
     </div>
   )
 
