@@ -13,6 +13,7 @@ import SearchBar from './SearchBar'
 import header from '../store-header.css'
 import withScrollHandler from './ScrollHandler';
 import Icons from './Icons';
+import Collapsible from './Collapsible';
 
 /**
  * Desing Correct
@@ -58,15 +59,6 @@ const TopMenu = ({
   mobile
 }) => {
 
-  
-
-  const renderCategoryMenu = () => (
-    <ExtensionPoint
-        id="category-menu"
-        iconClasses={ICON_CLASSES}
-    />
-  )
-
   const renderFixedContent = () => (
     mobileSearchActive ? (
       <div className="flex justify-start pa2 pr4 pt3 relative w-100">
@@ -78,7 +70,10 @@ const TopMenu = ({
       </div>
     ) : (
         <React.Fragment>
-          {/**!leanMode && renderCategoryMenu() */}
+          {/**!leanMode && <ExtensionPoint
+        id="category-menu"
+        iconClasses={ICON_CLASSES}
+    /> */}
 
           { 
             <Logo
@@ -106,12 +101,6 @@ const TopMenu = ({
            }
         </React.Fragment>
       )
-  )
-
-  const renderCollapsibleContent = () => (
-    <div className="relative z-2 bg-base" style={{ top: HEIGHTS.FIXED_CONTENT + HEIGHTS.TELEMARKETING }}>
-      <ExtensionPoint id="category-menu" />
-    </div>
   )
 
   return(
@@ -146,7 +135,11 @@ const TopMenu = ({
         </div>
       </Container>
 
-      {!leanMode && renderCollapsibleContent()}
+      { !leanMode && 
+        <Collapsible top={96}>
+          <ExtensionPoint id="category-menu" />
+        </Collapsible>
+      }
 
     </Fragment>
   )
