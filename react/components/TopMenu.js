@@ -50,6 +50,7 @@ const TopMenu = ({
         className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 fixed h3`}
         style={{
           top: 32,
+          transform: 'translateZ(0)'
         }}
       >
         <div
@@ -79,12 +80,10 @@ const TopMenu = ({
           </div>
         </div>
       </Container>
-
-      { !leanMode && 
-        <Collapsible top={96}>
-          <ExtensionPoint id="category-menu" />
-        </Collapsible>
-      }
+  
+      <Collapsible top={96} leanMode={leanMode} >
+        <ExtensionPoint id="category-menu" />
+      </Collapsible>
 
     </Fragment>
   )
