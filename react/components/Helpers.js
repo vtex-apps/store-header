@@ -1,18 +1,18 @@
 import React from 'react'
 
-export const Spacer = ({vertical=0, horizontal=0, index=1}) => (
+export const Spacer = ({height=0, width=0, index=1}) => (
     <div
       className={`bg-base w-100 z-${index} relative`}
       style={{
-        height: vertical,
-        width: horizontal,
+        height: height,
+        width: width,
       }}
     />
 )
   
-export const Border = ({fixed, top}) => (
+export const Border = ({ fixed, top }) => (
     <div
-      className={`${fixed && 'fixed top-0 left-0 w-100 z-999'} bb bw1 b--muted-4`}
+      className={`${fixed && 'fixed top-0 left-0 w-100 z-2'} bb bw1 b--muted-4`}
       style={{
         top: top || 'inherit',
         boxSizing: 'content-box',

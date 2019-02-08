@@ -6,11 +6,9 @@ import header from '../store-header.css'
 import withScrollHandler from './ScrollHandler'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
+import { Border, Spacer } from './Helpers';
 
-/**
- * To check
- */
-const SCROLL_HOOK = 80
+const SCROLL_HOOK = 45
 
 const getTransition = ( targetScale, origin, scroll) => {
     
@@ -36,21 +34,28 @@ const TopMenu = ({
   logoTitle,
   showLogin,
   showSearchBar,
-  mobile
+  mobile,
+  scroll
 }) => {
+
+  const tbreak = scroll >= SCROLL_HOOK
 
   return(
     <Fragment>
       
-      <div className="fixed top-0 left-0 w-100 z-4 h2" style={{ transform: 'translateZ(0)' }}>
+      <div 
+        className="fixed top-0 left-0 w-100 z-4 h2"
+        style={{ 
+          transform: 'translateZ(0)' //Avoid shaking
+        }}
+      >
         {extraHeaders}
       </div>
 
       <Container
-        className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 fixed h3`}
+        className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 fixed h3 top-2`}
         style={{
-          top: 32,
-          transform: 'translateZ(0)'
+          transform: 'translateZ(0)' //Avoid shaking
         }}
       >
         <div
@@ -76,14 +81,19 @@ const TopMenu = ({
                 mobile={mobile}
                 showSearchBar={showSearchBar}
                 showLogin={showLogin}
+                tbreak={tbreak}
               />
           </div>
         </div>
       </Container>
-  
-      <Collapsible top={96} leanMode={leanMode} >
+      
+      <Border fixed top={96} />
+
+      <Collapsible top={96} leanMode={leanMode} tbreak={tbreak} >
         <ExtensionPoint id="category-menu" />
       </Collapsible>
+
+      <Spacer height={ 96 + 64 } />
 
     </Fragment>
   )
