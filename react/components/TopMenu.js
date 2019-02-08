@@ -15,7 +15,6 @@ const TopMenu = ({
   logoTitle,
   showLogin,
   showSearchBar,
-  mobile,
 }) => {
 
   return(
@@ -56,7 +55,6 @@ const TopMenu = ({
                 logoUrl={logoUrl}
                 linkUrl={linkUrl}
                 logoTitle={logoTitle}
-                mobile={mobile}
                 showSearchBar={showSearchBar}
                 showLogin={showLogin}
               />

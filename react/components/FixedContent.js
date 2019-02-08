@@ -2,9 +2,7 @@ import React, { Fragment } from 'react'
 import Logo from './Logo'
 import SearchBar from './SearchBar'
 import Icons from './Icons'
-
-const ICON_CLASSES = "c-on-base"
-const LABEL_CLASSES = "c-on-base"
+import { CONSTANTS } from './Helpers'
 
 const FixedContent = ({
     mobileSearchActive,
@@ -12,9 +10,8 @@ const FixedContent = ({
     logoUrl,
     linkUrl,
     logoTitle,
-    mobile,
     showSearchBar,
-    showLogin
+    showLogin,
 }) => (
     mobileSearchActive ? (
       <div className="flex justify-start pa2 pr4 pt3 relative w-100">
@@ -36,13 +33,12 @@ const FixedContent = ({
               src={logoUrl}
               link={linkUrl}
               title={logoTitle}
-              mobile={mobile}
             />
           }
 
           {!leanMode && (
             <div className="dn db-ns flex-grow-1">
-              <SearchBar iconClasses={ICON_CLASSES} />
+              <SearchBar iconClasses={ CONSTANTS.ICON_CLASSES} />
             </div>
           )}
 
@@ -51,8 +47,8 @@ const FixedContent = ({
               showSearch={showSearchBar}
               leanMode={leanMode}
               showLogin={showLogin}
-              iconClasses={ICON_CLASSES}
-              labelClasses={LABEL_CLASSES}
+              iconClasses={CONSTANTS.ICON_CLASSES}
+              labelClasses={CONSTANTS.LABEL_CLASSES}
             />
            }
         </Fragment>

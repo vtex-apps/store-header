@@ -1,5 +1,14 @@
 import React from 'react'
 
+export const CONSTANTS = {
+  ICON_CLASSES: 'c-on-base',
+  LABEL_CLASSES: 'c-on-base',
+  LOGO_WIDTH_MOBILE: 90,
+  LOGO_HEIGHT_MOBILE: 40,
+  LOGO_WIDTH_DESKTOP: 132,
+  LOGO_HEIGHT_DESKTOP: 40,
+}
+
 export const Spacer = ({height=0, width=0, index=1}) => (
     <div
       className={`bg-base w-100 z-${index} relative`}

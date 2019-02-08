@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
 
 /**
- * 
- * @param {*} anchor 
- * @param {*} reverse 
- * @param {*} speed 
- * @param {*} onScrollDown 
- * @param {*} onScrollUp 
+ * HOC to that generates a component capable of toggle animations
+ * @param {*} anchor // Scroll value that marks the animations switch
+ * @param {*} reverse // If should animate on scrollUp
+ * @param {*} speed // Animation speed
+ * @param {*} onScrollDown // Animation on scroll down
+ * @param {*} onScrollUp  // Animation on scroll up
  */
 const withScrollAnimation = (
   
@@ -59,4 +59,4 @@ const withScrollAnimation = (
   }
 )
 
-export default withScrollAnimation;
+export default withScrollAnimation

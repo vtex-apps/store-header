@@ -1,21 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ExtensionPoint, Link } from 'vtex.render-runtime'
+import { ExtensionPoint, Link, withRuntimeContext } from 'vtex.render-runtime'
 import ReactResizeDetector from 'react-resize-detector'
+import { CONSTANTS } from './Helpers'
 
 import header from '../store-header.css'
 
-const SIZE_MOBILE = {
-  width: 90,
-  height: 40,
-}
-
-const SIZE_DESKTOP = {
-  width: 132,
-  height: 40,
-}
-
-const Logo = ({ link, src, title, mobile, onResize }) => (
+const Logo = ({
+  link,
+  src,
+  title,
+  onResize,
+  runtime: { hints: mobile, desktop }
+}) => (
   <div className={`${header.topMenuLogo} pv2 mr5`}>
     <ReactResizeDetector handleHeight onResize={onResize}>
       <Link
@@ -25,27 +22,27 @@ const Logo = ({ link, src, title, mobile, onResize }) => (
         // but the cause should be investigated
         className={`outline-0 ${header.logoLink}`}
       >
-        {mobile && (
+        { mobile && (
           <div className="db dn-ns">
             <ExtensionPoint
               id="logo"
               url={src}
               title={title}
-              width={SIZE_MOBILE.width}
-              height={SIZE_MOBILE.height}
+              width={CONSTANTS.LOGO_WIDTH_MOBILE}
+              height={CONSTANTS.LOGO_HEIGHT_MOBILE}
               isMobile={true}
             />
           </div>
         )}
 
-        {!mobile && (
+        { desktop && (
           <div className="dn db-ns">
             <ExtensionPoint
               id="logo"
               url={src}
               title={title}
-              width={SIZE_DESKTOP.width}
-              height={SIZE_DESKTOP.height}
+              width={CONSTANTS.LOGO_WIDTH_DESKTOP}
+              height={CONSTANTS.LOGO_HEIGHT_DESKTOP}
               isMobile={false}
             />
           </div>
@@ -68,4 +65,4 @@ Logo.defaultProps = {
   onResize: () => { },
 }
 
-export default Logo
+export default withRuntimeContext(Logo)
