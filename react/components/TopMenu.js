@@ -3,28 +3,9 @@ import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { Container } from 'vtex.store-components'
 import header from '../store-header.css'
-import withScrollHandler from './ScrollHandler'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
-import { Border, Spacer } from './Helpers';
-
-const SCROLL_HOOK = 45
-
-const getTransition = ( targetScale, origin, scroll) => {
-    
-  const applyWhen = scroll>= SCROLL_HOOK
-
-  return({
-    
-    transform: applyWhen 
-      ? `scale(${targetScale})` 
-      : `scale(1)`,
-
-    transition: 'all 500ms ease-in-out',
-    transformOrigin: origin,
-    willChange: 'transform'
-  })
-}
+import { Border, Spacer } from './Helpers'
 
 const TopMenu = ({
   extraHeaders,
@@ -35,10 +16,7 @@ const TopMenu = ({
   showLogin,
   showSearchBar,
   mobile,
-  scroll
 }) => {
-
-  const tbreak = scroll >= SCROLL_HOOK
 
   return(
     <Fragment>
@@ -81,7 +59,6 @@ const TopMenu = ({
                 mobile={mobile}
                 showSearchBar={showSearchBar}
                 showLogin={showLogin}
-                tbreak={tbreak}
               />
           </div>
         </div>
@@ -89,7 +66,7 @@ const TopMenu = ({
       
       <Border fixed top={96} />
 
-      <Collapsible top={96} leanMode={leanMode} tbreak={tbreak} >
+      <Collapsible top={96} leanMode={leanMode} >
         <ExtensionPoint id="category-menu" />
       </Collapsible>
 
@@ -117,4 +94,4 @@ TopMenu.defaultProps = {
   onUpdateDimensions: () => { },
 }
 
-export default withScrollHandler(TopMenu)
+export default TopMenu

@@ -1,19 +1,25 @@
 import React from 'react'
-import { number } from 'prop-types'
+import { number, string, bool } from 'prop-types'
 import { withRuntimeContext } from 'vtex.render-runtime'
-import { Border } from './Helpers';
+
+import withScrollAnimation from './ScrollAnimation'
+import { Border } from './Helpers'
+import { compose } from 'ramda'
 
 const Collapsible = ({
   children,
   top,
   leanMode,
-  tbreak,
+  animation,
   runtime: { hints: desktop } 
 }) => (
   desktop && !leanMode ? (
     <div
-      className={`fixed z-2 w-100 bg-base justify-center animated faster ${ tbreak ? 'slideOutUp' : 'slideInDown' }`}
-      style={{ top: top }}
+      className={`${animation} fixed z-2 w-100 bg-base`}
+      style={{
+        top: top,
+        willChange: 'transform' // Better performance when animating
+      }}
     >
       { children }
       <Border />
@@ -24,11 +30,21 @@ const Collapsible = ({
 )
 
 Collapsible.defaultProps = {
-    top: 0
+  top: 0,
 }
 
 Collapsible.propTypes = {
-    top: number
+  /** Distance from top */
+  top: number,
+  /** Combination of animation classes */
+  animation: string,
+  /** If is leanMode */
+  leanMode: bool,
+  /** If is desktop version */
+  desktop: bool
 }
 
-export  default withRuntimeContext(Collapsible)
+export  default compose(
+  withRuntimeContext,
+  withScrollAnimation(100)
+)(Collapsible)
