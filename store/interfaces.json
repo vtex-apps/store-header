@@ -15,10 +15,6 @@
     "component": "index"
   },
   "header.full": {
-    "allowed": [
-      "menu-link",
-      "theme"
-    ],
     "required": [
       "telemarketing",
       "logo",
