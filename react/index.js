@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
 
@@ -62,11 +62,12 @@ class Header extends Component {
           {...topMenuOptions}
           leanMode={leanMode}
           extraHeaders={(
-            <ExtensionPoint id="telemarketing" />
-            // TODO: either add support or remove menu-link
-            // <div className="z-2 items-center w-100 top-0 bg-base tl">
-            //   <ExtensionPoint id="menu-link" />
-            // </div>
+            <Fragment>
+              <ExtensionPoint id="telemarketing" />
+              <div className="z-2 items-center w-100 top-0 bg-base tl">
+                <ExtensionPoint id="menu-link" />
+              </div>
+            </Fragment>
           )}
         />
       </div>

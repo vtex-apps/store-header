@@ -8,6 +8,7 @@
   "header.full": {
     "blocks": [
       "telemarketing",
+      "menu-link",
       "logo",
       "minicart",
       "login",
