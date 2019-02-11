@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ExtensionPoint } from 'vtex.render-runtime'
+import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import { FormattedMessage } from 'react-intl'
 import { ButtonWithIcon } from 'vtex.styleguide'
 import { IconSearch } from 'vtex.dreamstore-icons'
@@ -14,57 +14,66 @@ const Icons = ({
   showLogin,
   labelClasses,
   onActiveSearch
-}) => (
+}) => {
+  
+  const { hints : { mobile, desktop } } = useRuntime()
+  
+  return(
     <div className={`${header.topMenuIcons} flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}>
-      {/* Mobile icons */}
-      <div className="flex dn-ns mr3">
-        { showSearchIcon && !leanMode &&
-          <ButtonWithIcon
-            icon={<IconSearch className={iconClasses} />}
-            variation="tertiary"
-            onClick={onActiveSearch}
-          />
-        }
+      
+      { mobile && 
+        <div className="flex mr3">
+          { showSearchIcon && !leanMode &&
+            <ButtonWithIcon
+              icon={<IconSearch className={iconClasses} />}
+              variation="tertiary"
+              onClick={onActiveSearch}
+            />
+          }
 
-        { showLogin && 
-          <ExtensionPoint
-            id="login"
-            iconClasses={iconClasses}
-            labelClasses={labelClasses}
-          />
-        }
+          { showLogin && 
+            <ExtensionPoint
+              id="login"
+              iconClasses={iconClasses}
+              labelClasses={labelClasses}
+            />
+          }
 
-        { !leanMode && 
-          <ExtensionPoint
-            id="minicart"
-            iconClasses={iconClasses}
-            labelClasses={labelClasses}
-          />
-        }
-      </div>
+          { !leanMode && 
+            <ExtensionPoint
+              id="minicart"
+              iconClasses={iconClasses}
+              labelClasses={labelClasses}
+            />
+          }
+        </div>
+      }
 
-      {/** Desktop icons */}
-      <div className="dn flex-ns">
-        { showLogin &&
-          <ExtensionPoint
-            id="login"
-            iconClasses={iconClasses}
-            labelClasses={labelClasses}
-            iconLabel={<FormattedMessage id="header.topMenu.login.icon.label" />}
-          />
-        }
+      { desktop &&
+        <div className="flex-ns">
+          { showLogin &&
+            <ExtensionPoint
+              id="login"
+              iconClasses={iconClasses}
+              labelClasses={labelClasses}
+              iconLabel={<FormattedMessage id="header.topMenu.login.icon.label" />}
+            />
+          }
 
-        { !leanMode &&
-          <ExtensionPoint
-            id="minicart"
-            iconClasses={iconClasses}
-            labelClasses={labelClasses}
-            iconLabel={<FormattedMessage id="header.topMenu.minicart.icon.label" />}
-          />
-        }
-      </div>
-  </div> 
-)
+          { !leanMode &&
+            <ExtensionPoint
+              id="minicart"
+              iconClasses={iconClasses}
+              labelClasses={labelClasses}
+              iconLabel={<FormattedMessage id="header.topMenu.minicart.icon.label" />}
+            />
+          }
+        </div>
+      }
+      
+    </div> 
+  ) 
+}
 
 Icons.propTypes = {
     showSearch: PropTypes.bool,
