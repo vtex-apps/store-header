@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
 import Logo from './Logo'
@@ -13,92 +13,84 @@ import header from '../store-header.css'
  * Also handles the toggle between mobile search and mobile navbar.
  * TODO: Change to hooks when it's available at render.
  */
-class FixedContent extends PureComponent {
+const FixedContent = ({
+  leanMode,
+  logoUrl,
+  linkUrl,
+  logoTitle,
+  showSearchBar,
+  showLogin,
+  iconClasses,
+  runtime: { hints: { mobile, desktop } }
+}) => {
 
-  state = {
-    mobileSearchActive: false
-  }
+  const [mobileSearchActive, toggleSearch] = useState(false);
 
-  render() {
-    const {
-      leanMode,
-      logoUrl,
-      linkUrl,
-      logoTitle,
-      showSearchBar,
-      showLogin,
-      iconClasses,
-      runtime: { hints: { mobile, desktop } }
-    } = this.props;
-
-    const { mobileSearchActive } = this.state
-
-    return(
-      <Container
-        className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 fixed h3 top-2`}
+  return(
+    <Container
+      className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 fixed h3 top-2`}
+      style={{
+        transform: 'translateZ(0)' //Avoid shaking
+      }}
+    >
+      <div
+        className={`w-100 mw9 flex justify-center ${ leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
         style={{
-          transform: 'translateZ(0)' //Avoid shaking
+          /** Prevents the empty margins of this element from blocking the users clicks
+            * TODO: create a tachyons class for pointer events and remove this style
+            * @author lbebber */
+          pointerEvents: 'none',
         }}
       >
         <div
-          className={`w-100 mw9 flex justify-center ${ leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
+          className="flex w-100 justify-between-m items-center pv3"
           style={{
-            /** Prevents the empty margins of this element from blocking the users clicks
-              * TODO: create a tachyons class for pointer events and remove this style
-              * @author lbebber */
-            pointerEvents: 'none',
+            pointerEvents: 'auto',
           }}
         >
-          <div
-            className="flex w-100 justify-between-m items-center pv3"
-            style={{
-              pointerEvents: 'auto',
-            }}
-          >
-            { mobileSearchActive ? (
-              mobile && (
-                <div className="flex justify-start pa2 relative w-100">
-                  <SearchBar
-                    autoFocus
-                    onCancel={() => this.setState({ mobileSearchActive: false })}
-                  />
-                </div>
-              )
-            ) : (
-              <Fragment>
-                { !leanMode && mobile &&
-                  <ExtensionPoint
-                    id="category-menu"
-                    mobileMode
-                    iconClasses={iconClasses}
-                  />
-                }
+          { mobileSearchActive ? (
+            mobile && (
+              <div className="flex justify-start pa2 relative w-100">
+                <SearchBar
+                  autoFocus
+                  onCancel={() => toggleSearch( false )}
+                />
+              </div>
+            )
+          ) : (
+            <Fragment>
+              { !leanMode && mobile &&
+                <ExtensionPoint
+                  id="category-menu"
+                  mobileMode
+                  iconClasses={iconClasses}
+                />
+              }
 
-                <Logo
-                  src={logoUrl}
-                  link={linkUrl}
-                  title={logoTitle}
-                />
+              <Logo
+                src={logoUrl}
+                link={linkUrl}
+                title={logoTitle}
+              />
         
-                { !leanMode && desktop &&
-                  <div className="dn db-ns flex-grow-1">
-                    <SearchBar />
-                  </div>
-                }
+              { !leanMode && desktop &&
+                <div className="dn db-ns flex-grow-1">
+                  <SearchBar />
+                </div>
+              }
                 
-                <Icons
-                  showSearchIcon={showSearchBar}
-                  leanMode={leanMode}
-                  showLogin={showLogin}
-                  onActiveSearch={() => this.setState({ mobileSearchActive: true })}
-                />
-              </Fragment>
-            )}
-          </div>
+              <Icons
+                showSearchIcon={showSearchBar}
+                leanMode={leanMode}
+                showLogin={showLogin}
+                onActiveSearch={() => toggleSearch( true )}
+              />
+            </Fragment>
+          )}
         </div>
-      </Container>
-    )
-  }
+      </div>
+    </Container>
+  )
 }
 
 FixedContent.propTypes = {
