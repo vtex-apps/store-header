@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
-import { ExtensionPoint } from 'vtex.render-runtime'
+import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
 import ResizeDetector from 'react-resize-detector'
 
 import { ButtonWithIcon } from 'vtex.styleguide'
@@ -66,7 +66,10 @@ class TopMenu extends Component {
 
     if (typeof scroll !== 'number') return
 
-    const scrollValue = Math.min(1, scroll / Math.max(this.state.heightReduction, this.state.minHeight))
+    const scrollValue = Math.min(
+      1,
+      scroll / Math.max(this.state.heightReduction, this.state.minHeight)
+    )
 
     this.updateMobileSearch(scrollValue)
     this.updateLogoScroll(scrollValue)
@@ -75,7 +78,10 @@ class TopMenu extends Component {
   }
 
   updateMobileSearch = scrollValue => {
-    if (scrollValue <= MOBILE_SEARCH_SCROLL_LIMIT && this.state.mobileSearchActive) {
+    if (
+      scrollValue <= MOBILE_SEARCH_SCROLL_LIMIT &&
+      this.state.mobileSearchActive
+    ) {
       this.setState({ mobileSearchActive: false })
     }
   }
@@ -83,8 +89,11 @@ class TopMenu extends Component {
   updateLogoScroll = scrollValue => {
     const logoElement = this.logoContainer.current
     if (logoElement) {
-      const targetScale = Math.min(1, LOGO_COLLAPSED_HEIGHT / this.state.logoHeight)
-      const scale = 1 - (scrollValue * (1 - targetScale))
+      const targetScale = Math.min(
+        1,
+        LOGO_COLLAPSED_HEIGHT / this.state.logoHeight
+      )
+      const scale = 1 - scrollValue * (1 - targetScale)
       logoElement.style.transform = `scale(${scale})`
     }
   }
@@ -94,12 +103,13 @@ class TopMenu extends Component {
    * position and the position of its contents. This is done for performance
    * (changing height triggers a reflow, which is expensive. Setting transform
    * only triggers a composition, which is cheap)
-  **/
+   **/
   updateTopBarScroll = scrollValue => {
     // This division/rounding/multiplication prevents the position from being a non-integer
     // on either elements, so as to not to become blurry on non-retina displays, and makes both
     // move in tandem, preventing "jumpiness"
-    const currentHeightReduction = Math.round((scrollValue * this.state.heightReduction) / 2) * 2
+    const currentHeightReduction =
+      Math.round((scrollValue * this.state.heightReduction) / 2) * 2
 
     const containerElement = this.container.current
     if (containerElement) {
@@ -124,57 +134,86 @@ class TopMenu extends Component {
   getContentPaddings = () => {
     // Gets the calculated vertical paddings of the content container
     const contentElement = this.content.current
-    const contentComputedStyles = contentElement && window.getComputedStyle && window.getComputedStyle(contentElement, null)
-    return contentComputedStyles ? parseFloat(contentComputedStyles.getPropertyValue('padding-top')) * 2 : 0
+    const contentComputedStyles =
+      contentElement &&
+      window.getComputedStyle &&
+      window.getComputedStyle(contentElement, null)
+    return contentComputedStyles
+      ? parseFloat(contentComputedStyles.getPropertyValue('padding-top')) * 2
+      : 0
   }
 
   handleUpdateIconsDimensions = (width, height) => {
-    this.setState({
-      iconsHeight: height,
-    }, () => {
-      this.handleUpdateDimensions()
-    })
+    this.setState(
+      {
+        iconsHeight: height,
+      },
+      () => {
+        this.handleUpdateDimensions()
+      }
+    )
   }
 
   handleUpdateLogoDimensions = (width, height) => {
-    this.setState({
-      logoHeight: height,
-    }, () => {
-      this.handleUpdateDimensions()
-    })
+    this.setState(
+      {
+        logoHeight: height,
+      },
+      () => {
+        this.handleUpdateDimensions()
+      }
+    )
   }
 
   handleUpdateDimensions = () => {
     const contentPaddings = this.getContentPaddings()
-    const logoReduction = Math.max(0, this.state.logoHeight - Math.max(this.state.iconsHeight, LOGO_COLLAPSED_HEIGHT))
+    const logoReduction = Math.max(
+      0,
+      this.state.logoHeight -
+        Math.max(this.state.iconsHeight, LOGO_COLLAPSED_HEIGHT)
+    )
     const heightReduction = Math.max(0, contentPaddings + logoReduction)
 
-    const maxHeight = (this.container.current ? this.container.current.offsetHeight : 0) + this.state.extraHeadersHeight
+    const maxHeight =
+      (this.container.current ? this.container.current.offsetHeight : 0) +
+      this.state.extraHeadersHeight
     const minHeight = maxHeight - heightReduction - (heightReduction % 2)
 
-    this.setState({
-      heightReduction,
-      maxHeight,
-      minHeight,
-    }, () => {
-      this.saveInitialDimensions()
-      this.props.onUpdateDimensions({ minHeight, maxHeight })
-    })
+    this.setState(
+      {
+        heightReduction,
+        maxHeight,
+        minHeight,
+      },
+      () => {
+        this.saveInitialDimensions()
+        this.props.onUpdateDimensions({ minHeight, maxHeight })
+      }
+    )
   }
 
   handleExtraHeadersResize = (width, height) => {
-    this.setState({
-      extraHeadersHeight: height,
-    }, () => {
-      this.handleUpdateDimensions()
-    })
+    this.setState(
+      {
+        extraHeadersHeight: height,
+      },
+      () => {
+        this.handleUpdateDimensions()
+      }
+    )
   }
 
   renderLogo = () => {
     const { logoUrl, linkUrl, logoTitle, leanMode } = this.props
 
-    const sizeDesktop = { width: LOGO_MAX_WIDTH_DESKTOP, height: LOGO_MAX_HEIGHT_DESKTOP }
-    const sizeMobile = { width: LOGO_MAX_WIDTH_MOBILE, height: LOGO_MAX_HEIGHT_MOBILE }
+    const sizeDesktop = {
+      width: LOGO_MAX_WIDTH_DESKTOP,
+      height: LOGO_MAX_HEIGHT_DESKTOP,
+    }
+    const sizeMobile = {
+      width: LOGO_MAX_WIDTH_MOBILE,
+      height: LOGO_MAX_HEIGHT_MOBILE,
+    }
 
     return (
       <div className="mr5" ref={this.logoContainer}>
@@ -197,63 +236,90 @@ class TopMenu extends Component {
   )
 
   renderIcons() {
-    const { leanMode, showLogin, showSearchBar } = this.props
+    const {
+      leanMode,
+      showLogin,
+      showSearchBar,
+      runtime: {
+        hints: { mobile },
+      },
+    } = this.props
 
     return (
-      <div className={`${header.topMenuIcons} flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}>
+      <div
+        className={`${
+          header.topMenuIcons
+        } flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}
+      >
         {/**
-          * Both desktop and mobile icons are rendered, and hidden through CSS,
-          * for better server side rendering support
+         * Both desktop and mobile icons are rendered, and hidden through CSS,
+         * for better server side rendering support
          **/}
-        <ResizeDetector handleHeight onResize={this.handleUpdateIconsDimensions}>
-          {/* Mobile icons */}
-          <div className="flex dn-ns mr3">
-            {showSearchBar && !leanMode && (
-              <div ref={this.mobileSearchButton} className="o-0 pv2 nl5">
-                <ButtonWithIcon
-                  variation="tertiary"
-                  onClick={() => this.setState(state => ({ mobileSearchActive: !state.mobileSearchActive }))}
-                >
-                  <IconSearch size={ICON_SIZE_MOBILE} className="c-muted-1" />
-                </ButtonWithIcon>
-              </div>
-            )}
-            {showLogin && (
-              <ExtensionPoint
-                id="login"
-                iconClasses="c-muted-1"
-                labelClasses="c-muted-1"
-                iconSize={ICON_SIZE_MOBILE}
-              />
-            )}
-            {!leanMode && <ExtensionPoint
-              id="minicart"
-              iconClasses="c-muted-1"
-              labelClasses="c-muted-1"
-              iconSize={ICON_SIZE_MOBILE}
-            />}
-          </div>
-          {/** Desktop icons */}
-          <div className="dn flex-ns">
-            {showLogin && (
-              <ExtensionPoint
-                id="login"
-                iconClasses="c-muted-1"
-                labelClasses="c-muted-1"
-                iconSize={ICON_SIZE_DESKTOP}
-                iconLabel={<FormattedMessage id="header.topMenu.login.icon.label" />}
-              />
-            )}
-            {!leanMode && (
-              <ExtensionPoint
-                id="minicart"
-                iconClasses="c-muted-1"
-                labelClasses="c-muted-1"
-                iconSize={ICON_SIZE_DESKTOP}
-                iconLabel={<FormattedMessage id="header.topMenu.minicart.icon.label" />}
-              />
-            )}
-          </div>
+        <ResizeDetector
+          handleHeight
+          onResize={this.handleUpdateIconsDimensions}
+        >
+          {mobile ? (
+            /* Mobile icons */
+            <div className="flex mr3">
+              {showSearchBar && !leanMode && (
+                <div ref={this.mobileSearchButton} className="o-0 pv2 nl5">
+                  <ButtonWithIcon
+                    variation="tertiary"
+                    onClick={() =>
+                      this.setState(state => ({
+                        mobileSearchActive: !state.mobileSearchActive,
+                      }))
+                    }
+                  >
+                    <IconSearch size={ICON_SIZE_MOBILE} className="c-muted-1" />
+                  </ButtonWithIcon>
+                </div>
+              )}
+              {showLogin && (
+                <ExtensionPoint
+                  id="login"
+                  iconClasses="c-muted-1"
+                  labelClasses="c-muted-1"
+                  iconSize={ICON_SIZE_MOBILE}
+                />
+              )}
+              {!leanMode && (
+                <ExtensionPoint
+                  id="minicart"
+                  iconClasses="c-muted-1"
+                  labelClasses="c-muted-1"
+                  iconSize={ICON_SIZE_MOBILE}
+                />
+              )}
+            </div>
+          ) : (
+            /** Desktop icons */
+            <div className="dn flex-ns">
+              {showLogin && (
+                <ExtensionPoint
+                  id="login"
+                  iconClasses="c-muted-1"
+                  labelClasses="c-muted-1"
+                  iconSize={ICON_SIZE_DESKTOP}
+                  iconLabel={
+                    <FormattedMessage id="header.topMenu.login.icon.label" />
+                  }
+                />
+              )}
+              {!leanMode && (
+                <ExtensionPoint
+                  id="minicart"
+                  iconClasses="c-muted-1"
+                  labelClasses="c-muted-1"
+                  iconSize={ICON_SIZE_DESKTOP}
+                  iconLabel={
+                    <FormattedMessage id="header.topMenu.minicart.icon.label" />
+                  }
+                />
+              )}
+            </div>
+          )}
         </ResizeDetector>
       </div>
     )
@@ -272,17 +338,17 @@ class TopMenu extends Component {
         />
       </div>
     ) : (
-        <React.Fragment>
-          {!leanMode && this.renderMobileCategoryMenu()}
-          {this.renderLogo()}
-          {!leanMode && (
-            <div className="dn db-ns flex-grow-1">
-              <SearchBar />
-            </div>
-          )}
-          {this.renderIcons()}
-        </React.Fragment>
-      )
+      <React.Fragment>
+        {!leanMode && this.renderMobileCategoryMenu()}
+        {this.renderLogo()}
+        {!leanMode && (
+          <div className="dn db-ns flex-grow-1">
+            <SearchBar />
+          </div>
+        )}
+        {this.renderIcons()}
+      </React.Fragment>
+    )
   }
 
   renderCollapsibleContent = () => (
@@ -307,10 +373,12 @@ class TopMenu extends Component {
     if (!hasLocalStorage) return
 
     try {
-      const headerDimensions = JSON.parse(localStorage.getItem('headerDimensions'))
+      const headerDimensions = JSON.parse(
+        localStorage.getItem('headerDimensions')
+      )
 
       this.setState({
-        ...headerDimensions
+        ...headerDimensions,
       })
     } catch (error) {
       // Unable to parse JSON. Skipping.
@@ -322,13 +390,16 @@ class TopMenu extends Component {
     if (!hasLocalStorage) return
 
     try {
-      localStorage.setItem('headerDimensions', JSON.stringify({
-        extraHeadersHeight: this.state.extraHeadersHeight,
-        minHeight: this.state.minHeight,
-        maxHeight: this.state.maxHeight,
-        logoHeight: this.state.logoHeight,
-        iconsHeight: this.state.iconsHeight,
-      }))
+      localStorage.setItem(
+        'headerDimensions',
+        JSON.stringify({
+          extraHeadersHeight: this.state.extraHeadersHeight,
+          minHeight: this.state.minHeight,
+          maxHeight: this.state.maxHeight,
+          logoHeight: this.state.logoHeight,
+          iconsHeight: this.state.iconsHeight,
+        })
+      )
     } catch (error) {
       // Unable to save to localStorage. Skipping.
     }
@@ -348,14 +419,20 @@ class TopMenu extends Component {
           </ResizeDetector>
         </div>
         <Container
-          className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 ${hasCalculatedMenuHeight ? 'fixed' : 'relative'}`}
+          className={`${
+            header.topMenuContainer
+          } flex justify-center w-100 bg-base left-0 z-3 ${
+            hasCalculatedMenuHeight ? 'fixed' : 'relative'
+          }`}
           ref={this.container}
           style={{
             top: extraHeadersHeight,
           }}
         >
           <div
-            className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
+            className={`w-100 mw9 flex justify-center ${
+              leanMode ? 'pv0' : 'pv6-l pv2-m'
+            }`}
             ref={this.content}
             style={{
               /** Prevents the empty margins of this element from blocking the users clicks
@@ -368,7 +445,8 @@ class TopMenu extends Component {
               className="flex w-100 justify-between-m items-center pv3"
               style={{
                 pointerEvents: 'auto',
-              }}>
+              }}
+            >
               {this.renderFixedContent()}
             </div>
           </div>
@@ -415,12 +493,13 @@ TopMenu.propTypes = {
   leanMode: PropTypes.bool,
   onUpdateDimensions: PropTypes.func,
   extraHeaders: PropTypes.node,
+  runtime: PropTypes.object.isRequired,
 }
 
 TopMenu.defaultProps = {
   showSearchBar: true,
   showLogin: true,
-  onUpdateDimensions: () => { },
+  onUpdateDimensions: () => {},
 }
 
-export default TopMenu
+export default withRuntimeContext(TopMenu)
