@@ -7,21 +7,22 @@ import { IconSearch } from 'vtex.dreamstore-icons'
 
 import header from '../store-header.css'
 
-const Icons = ({ showSearch, leanMode, iconClasses, showLogin, labelClasses } ) => (
+const Icons = ({ 
+  showSearchIcon,
+  leanMode,
+  iconClasses,
+  showLogin,
+  labelClasses,
+  onActiveSearch
+}) => (
     <div className={`${header.topMenuIcons} flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}>
-      {/**
-        * Both desktop and mobile icons are rendered, and hidden through CSS,
-        * for better server side rendering support
-       **/
-      }
-
-        {/* Mobile icons */}
-        <div className="flex dn-ns mr3">
-          {showSearch && !leanMode && (
-            <div className="o-0 pv2 nl5">
+      {/* Mobile icons */}
+      <div className="flex dn-ns mr3">
+        { showSearchIcon && !leanMode && (
+          <div className="pv2 nl5">
               <ButtonWithIcon
                 variation="tertiary"
-                onClick={() => "ACTIVE MOBILE SEARCH"}
+                onClick={onActiveSearch}
               >
                 <IconSearch className={iconClasses} />
               </ButtonWithIcon>

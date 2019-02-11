@@ -36,7 +36,7 @@ const TopMenu = ({
         }}
       >
         <div
-          className={`w-100 mw9 flex justify-center ${leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
+          className={`w-100 mw9 flex justify-center ${ leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
           style={{
             /** Prevents the empty margins of this element from blocking the users clicks
               * TODO: create a tachyons class for pointer events and remove this style

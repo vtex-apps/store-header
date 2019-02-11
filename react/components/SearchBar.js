@@ -2,13 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { Adopt } from 'react-adopt'
-import { ExtensionPoint } from 'vtex.render-runtime'
+import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
 import { Button } from 'vtex.styleguide'
 
 import header from '../store-header.css'
 
-const SearchBar = ({ isMobile, autoFocus, onCancel, height, iconClasses }) => (
-  <div className={`${header.topMenuSearchBar} flex pa2-m flex-grow-1 justify-${ isMobile ? 'between' : 'center' }`}>
+const SearchBar = ({
+  autoFocus,
+  onCancel,
+  mobile,
+  iconClasses,
+  runtime, 
+}) => (
+  <div className={`${header.topMenuSearchBar} flex pa2-m flex-grow-1 justify-${ runtime.hints.mobile ? 'between' : 'center' }`}>
     <div className="w-75">
       <Adopt
         mapper={{
@@ -22,13 +28,13 @@ const SearchBar = ({ isMobile, autoFocus, onCancel, height, iconClasses }) => (
             placeholder={placeholder}
             emptyPlaceholder={emptyPlaceholder}
             autoFocus={autoFocus}
-            hasIconLeft={isMobile}
+            hasIconLeft={runtime.hints.mobile}
             iconClasses={iconClasses}
           />
         )}
       </Adopt>
     </div>
-    {isMobile && (
+    { runtime.hints.mobile && (
       <div className="w-25 pa2-m pt2-s">
         <Button size="small" variation="tertiary" onClick={onCancel}>
           <span className='near-black ttl'><FormattedMessage id="header.search-cancel" /></span>
@@ -51,4 +57,4 @@ SearchBar.defaultProps = {
   onCancel: () => { },
 }
 
-export default SearchBar
+export default withRuntimeContext(SearchBar)
