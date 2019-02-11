@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
-import { Container } from 'vtex.store-components'
-import header from '../store-header.css'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
 import { Border, Spacer } from './Helpers'
@@ -28,38 +26,15 @@ const TopMenu = ({
       >
         {extraHeaders}
       </div>
-
-      <Container
-        className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 fixed h3 top-2`}
-        style={{
-          transform: 'translateZ(0)' //Avoid shaking
-        }}
-      >
-        <div
-          className={`w-100 mw9 flex justify-center ${ leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
-          style={{
-            /** Prevents the empty margins of this element from blocking the users clicks
-              * TODO: create a tachyons class for pointer events and remove this style
-              * @author lbebber */
-            pointerEvents: 'none',
-          }}
-        >
-          <div
-            className="flex w-100 justify-between-m items-center pv3"
-            style={{
-              pointerEvents: 'auto',
-            }}>
-              <FixedContent 
-                leanMode={leanMode}
-                logoUrl={logoUrl}
-                linkUrl={linkUrl}
-                logoTitle={logoTitle}
-                showSearchBar={showSearchBar}
-                showLogin={showLogin}
-              />
-          </div>
-        </div>
-      </Container>
+      
+      <FixedContent 
+        leanMode={leanMode}
+        logoUrl={logoUrl}
+        linkUrl={linkUrl}
+        logoTitle={logoTitle}
+        showSearchBar={showSearchBar}
+        showLogin={showLogin}
+      />
       
       <Border fixed top={96} />
 
@@ -80,15 +55,12 @@ TopMenu.propTypes = {
   showSearchBar: PropTypes.bool,
   showLogin: PropTypes.bool,
   leanMode: PropTypes.bool,
-  onUpdateDimensions: PropTypes.func,
   extraHeaders: PropTypes.node,
-  mobile: PropTypes.bool
 }
 
 TopMenu.defaultProps = {
   showSearchBar: true,
   showLogin: true,
-  onUpdateDimensions: () => { },
 }
 
 export default TopMenu
