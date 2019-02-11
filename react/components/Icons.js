@@ -1,5 +1,5 @@
 import React from 'react'
-import {string, bool, func} from 'prop-types'
+import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { FormattedMessage } from 'react-intl'
 import { ButtonWithIcon } from 'vtex.styleguide'
@@ -67,15 +67,18 @@ const Icons = ({
 )
 
 Icons.propTypes = {
-    showSearch: bool,
-    showLogin: bool,
-    leanMode: bool,
-    iconClasses: string,
-    labelClasses: string,
-    onActiveSearch: func,
+    showSearch: PropTypes.bool,
+    showLogin: PropTypes.bool,
+    leanMode: PropTypes.bool,
+    iconClasses: PropTypes.string,
+    labelClasses: PropTypes.string,
+    onActiveSearch: PropTypes.func,
 }
 
 Icons.defaultProps = {
+  showSearch: true,
+  showLogin: true,
+  leanMode: false,
   iconClasses: CONSTANTS.ICON.CLASS,
   labelClasses: CONSTANTS.LABEL.CLASS,
   onActiveSearch: () => {},

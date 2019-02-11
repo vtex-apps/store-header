@@ -1,5 +1,5 @@
 import React from 'react'
-import { string, bool, shape } from 'prop-types'
+import PropTypes from 'prop-types'
 import { ExtensionPoint, Link, withRuntimeContext } from 'vtex.render-runtime'
 import { CONSTANTS } from './Helpers'
 
@@ -47,25 +47,30 @@ const Logo = ({
 )
 
 Logo.propTypes = {
-  src: string.isRequired,
-  link: string,
-  title: string,
-  mobile: bool,
-  desktop: bool,
-  size: shape({
-    desktop: shape({
-      width: string,
-      height: string
+  src: PropTypes.string.isRequired,
+  runtime: PropTypes.shape({
+    hints: PropTypes.shape({
+      desktop: PropTypes.bool.isRequired,
+      mobile: PropTypes.bool.isRequired
+    })
+  }),
+  link: PropTypes.string,
+  title: PropTypes.string,
+  size: PropTypes.shape({
+    desktop: PropTypes.shape({
+      width: PropTypes.number,
+      height: PropTypes.number
     }),
-    mobile: shape({
-      width: string,
-      height: string
+    mobile: PropTypes.shape({
+      width: PropTypes.number,
+      height: PropTypes.number
     })
   })
 }
 
 Logo.defaultProps = {
   link: '/',
+  title: '',
   size: {
     desktop: {
       width: CONSTANTS.LOGO.DESKTOP.WIDTH,

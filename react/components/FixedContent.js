@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react'
-import { bool, string } from 'prop-types'
+import PropTypes from 'prop-types'
 import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
 import Logo from './Logo'
 import SearchBar from './SearchBar'
@@ -14,22 +14,6 @@ import header from '../store-header.css'
  * TODO: Change to hooks when it's available at render.
  */
 class FixedContent extends PureComponent {
-
-  static propTypes = {
-    leanMode: bool,
-    logoUrl: string,
-    linkUrl: string,
-    logoTitle: string,
-    showSearchBar: bool,
-    showLogin: bool,
-    iconClasses: string,
-    mobile: bool,
-    desktop: bool
-  }
-
-  static defaultProps = {
-    iconClasses: CONSTANTS.ICON.CLASS,
-  }
 
   state = {
     mobileSearchActive: false
@@ -115,6 +99,32 @@ class FixedContent extends PureComponent {
       </Container>
     )
   }
+}
+
+FixedContent.propTypes = {
+  runtime: PropTypes.shape({
+    hints: PropTypes.shape({
+      desktop: PropTypes.bool.isRequired,
+      mobile: PropTypes.bool.isRequired
+    })
+  }),
+  leanMode: PropTypes.bool,
+  logoUrl: PropTypes.string,
+  linkUrl: PropTypes.string,
+  logoTitle: PropTypes.string,
+  showSearchBar: PropTypes.bool,
+  showLogin: PropTypes.bool,
+  iconClasses: PropTypes.string,
+}
+
+FixedContent.defaultProps = {
+  leanMode: false,
+  logoUrl: '',
+  linkUrl: '',
+  logoTitle: '',
+  showSearchBar: true,
+  showLogin: true,
+  iconClasses: CONSTANTS.ICON.CLASS,
 }
 
 export default withRuntimeContext(FixedContent)

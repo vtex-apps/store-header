@@ -28,19 +28,21 @@ const Collapsible = ({
   )
 )
 
-Collapsible.defaultProps = {
-  top: 0,
+Collapsible.propTypes = {
+  runtime: PropTypes.shape({
+    hints: PropTypes.shape({
+      desktop: PropTypes.bool.isRequired,
+      mobile: PropTypes.bool.isRequired
+    })
+  }),
+  animation: PropTypes.string.isRequired,
+  leanMode: PropTypes.bool,
+  top: number,
 }
 
-Collapsible.propTypes = {
-  /** Distance from top */
-  top: number,
-  /** Combination of animation classes */
-  animation: string,
-  /** If is leanMode */
-  leanMode: bool,
-  /** If is desktop version */
-  desktop: bool
+Collapsible.defaultProps = {
+  top: 0,
+  leanMode: false
 }
 
 export  default compose(

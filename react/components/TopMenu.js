@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { bool, string, node } from 'prop-types'
+import PropTypes from 'prop-types'
 import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
@@ -55,14 +55,14 @@ const TopMenu = ({
 }
 
 TopMenu.propTypes = {
-  linkUrl: string,
-  logoUrl: string,
-  logoTitle: string,
-  showSearchBar: bool,
-  showLogin: bool,
-  leanMode: bool,
-  extraHeaders: node,
-  desktop: bool
+  linkUrl: PropTypes.string,
+  logoUrl: PropTypes.string,
+  logoTitle: PropTypes.string,
+  showSearchBar: PropTypes.bool,
+  showLogin: PropTypes.bool,
+  leanMode: PropTypes.bool,
+  extraHeaders: PropTypes.node,
+  desktop: PropTypes.bool
 }
 
 TopMenu.defaultProps = {

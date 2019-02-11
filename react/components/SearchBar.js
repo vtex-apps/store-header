@@ -1,5 +1,5 @@
 import React from 'react'
-import { func, bool, string } from 'prop-types'
+import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { Adopt } from 'react-adopt'
 import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
@@ -55,15 +55,21 @@ const SearchBar = ({
 }
 
 SearchBar.propTypes = {
-  onCancel: func,
-  autoFocus: bool,
-  iconClasses: string,
-  mobile: bool
+  runtime: PropTypes.shape({
+    hints: PropTypes.shape({
+      desktop: PropTypes.bool.isRequired,
+      mobile: PropTypes.bool.isRequired
+    })
+  }),
+  onCancel: PropTypes.func,
+  autoFocus: PropTypes.bool,
+  iconClasses: PropTypes.string 
 }
 
 SearchBar.defaultProps = {
-  iconClasses: CONSTANTS.ICON.CLASS,
   onCancel: () => { },
+  autoFocus: false,
+  iconClasses: CONSTANTS.ICON.CLASS,
 }
 
 export default withRuntimeContext(SearchBar)
