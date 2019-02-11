@@ -1,9 +1,8 @@
 import React from 'react'
 import { number, string, bool } from 'prop-types'
 import { withRuntimeContext } from 'vtex.render-runtime'
-
 import withScrollAnimation from './ScrollAnimation'
-import { Border } from './Helpers'
+import { Border, CONSTANTS } from './Helpers'
 import { compose } from 'ramda'
 
 const Collapsible = ({
@@ -46,5 +45,5 @@ Collapsible.propTypes = {
 
 export  default compose(
   withRuntimeContext,
-  withScrollAnimation(100)
+  withScrollAnimation(CONSTANTS.SCROLL_LIMIT)
 )(Collapsible)

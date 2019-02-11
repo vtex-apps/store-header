@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from 'react'
+import { bool, string } from 'prop-types'
 import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
 import Logo from './Logo'
 import SearchBar from './SearchBar'
@@ -12,12 +13,27 @@ import { CONSTANTS } from './Helpers'
  */
 class FixedContent extends PureComponent {
 
+  static propTypes = {
+    leanMode: bool,
+    logoUrl: string,
+    linkUrl: string,
+    logoTitle: string,
+    showSearchBar: bool,
+    showLogin: bool,
+    iconClasses: string,
+    mobile: bool,
+    desktop: bool
+  }
+
+  static defaultProps = {
+    iconClasses: CONSTANTS.ICON_CLASSES,
+  }
+
   state = {
     mobileSearchActive: false
   }
 
   render() {
-    
     const {
       leanMode,
       logoUrl,
@@ -25,6 +41,7 @@ class FixedContent extends PureComponent {
       logoTitle,
       showSearchBar,
       showLogin,
+      iconClasses,
       runtime: { hints: { mobile, desktop } }
     } = this.props;
 
@@ -36,44 +53,39 @@ class FixedContent extends PureComponent {
           <div className="flex justify-start pa2 relative w-100">
             <SearchBar
               autoFocus
-              iconClasses={CONSTANTS.ICON_CLASSES}
               onCancel={() => this.setState({ mobileSearchActive: false })}
             />
           </div>
         )
       ) : (
-          <Fragment>
-            { !leanMode && mobile &&
-              <ExtensionPoint
-                id="category-menu"
-                mobileMode
-                iconClasses={CONSTANTS.ICON_CLASSES}
-              />
-            }
-
-            <Logo
-              src={logoUrl}
-              link={linkUrl}
-              title={logoTitle}
+        <Fragment>
+          { !leanMode && mobile &&
+            <ExtensionPoint
+              id="category-menu"
+              mobileMode
+              iconClasses={iconClasses}
             />
-  
-            { !leanMode && desktop &&
-              <div className="dn db-ns flex-grow-1">
-                <SearchBar />
-              </div>
-            }
-  
-            
-            <Icons
-              showSearchIcon={showSearchBar}
-              leanMode={leanMode}
-              showLogin={showLogin}
-              iconClasses={CONSTANTS.ICON_CLASSES}
-              labelClasses={CONSTANTS.LABEL_CLASSES}
-              onActiveSearch={() => this.setState({ mobileSearchActive: true })}
-            />
+          }
 
-          </Fragment>
+          <Logo
+            src={logoUrl}
+            link={linkUrl}
+            title={logoTitle}
+          />
+  
+          { !leanMode && desktop &&
+            <div className="dn db-ns flex-grow-1">
+              <SearchBar />
+            </div>
+          }
+          
+          <Icons
+            showSearchIcon={showSearchBar}
+            leanMode={leanMode}
+            showLogin={showLogin}
+            onActiveSearch={() => this.setState({ mobileSearchActive: true })}
+          />
+        </Fragment>
       )
     )
   }

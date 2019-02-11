@@ -50,7 +50,6 @@ const TopMenu = ({
               pointerEvents: 'auto',
             }}>
               <FixedContent 
-                mobileSearchActive={false}
                 leanMode={leanMode}
                 logoUrl={logoUrl}
                 linkUrl={linkUrl}

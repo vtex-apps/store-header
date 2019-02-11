@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { string, bool, shape } from 'prop-types'
 import { ExtensionPoint, Link, withRuntimeContext } from 'vtex.render-runtime'
 import { CONSTANTS } from './Helpers'
 
@@ -9,14 +9,12 @@ const Logo = ({
   link,
   src,
   title,
+  size,
   runtime: { hints: { mobile, desktop } }
 }) => (
   <div className={`${header.topMenuLogo} pv2 mr5`}>
     <Link
       to={link}
-      // there is a weird bottom padding being added
-      // below the image. This fixes the issue,
-      // but the cause should be investigated
       className={`outline-0 ${header.logoLink}`}
     >
       { mobile && (
@@ -25,8 +23,8 @@ const Logo = ({
             id="logo"
             url={src}
             title={title}
-            width={CONSTANTS.LOGO_WIDTH_MOBILE}
-            height={CONSTANTS.LOGO_HEIGHT_MOBILE}
+            width={size.mobile.width}
+            height={size.mobile.height}
             isMobile={true}
           />
         </div>
@@ -38,8 +36,8 @@ const Logo = ({
             id="logo"
             url={src}
             title={title}
-            width={CONSTANTS.LOGO_WIDTH_DESKTOP}
-            height={CONSTANTS.LOGO_HEIGHT_DESKTOP}
+            width={size.desktop.width}
+            height={size.desktop.height}
             isMobile={false}
           />
         </div>
@@ -49,15 +47,35 @@ const Logo = ({
 )
 
 Logo.propTypes = {
-  src: PropTypes.string.isRequired,
-  link: PropTypes.string,
-  title: PropTypes.string,
-  mobile: PropTypes.bool,
-  desktop: PropTypes.bool
+  src: string.isRequired,
+  link: string,
+  title: string,
+  mobile: bool,
+  desktop: bool,
+  size: shape({
+    desktop: shape({
+      width: string,
+      height: string
+    }),
+    mobile: shape({
+      width: string,
+      height: string
+    })
+  })
 }
 
 Logo.defaultProps = {
   link: '/',
+  size: {
+    desktop: {
+      width: CONSTANTS.LOGO_WIDTH_DESKTOP,
+      height: CONSTANTS.LOGO_HEIGHT_DESKTOP
+    },
+    mobile: {
+      width: CONSTANTS.LOGO_WIDTH_MOBILE,
+      height: CONSTANTS.LOGO_HEIGHT_MOBILE 
+    }
+  }
 }
 
 export default withRuntimeContext(Logo)
