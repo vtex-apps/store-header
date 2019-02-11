@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
+import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
 import { Border, Spacer, CONSTANTS } from './Helpers'
@@ -13,8 +13,9 @@ const TopMenu = ({
   logoTitle,
   showLogin,
   showSearchBar,
-  runtime: { hints: { desktop }}
 }) => {
+
+  const { hints : { desktop } } = useRuntime()
 
   return(
     <Fragment>
@@ -55,19 +56,22 @@ const TopMenu = ({
 }
 
 TopMenu.propTypes = {
+  extraHeaders: PropTypes.node.isRequired,
   linkUrl: PropTypes.string,
   logoUrl: PropTypes.string,
   logoTitle: PropTypes.string,
   showSearchBar: PropTypes.bool,
   showLogin: PropTypes.bool,
   leanMode: PropTypes.bool,
-  extraHeaders: PropTypes.node,
-  desktop: PropTypes.bool
 }
 
 TopMenu.defaultProps = {
+  linkUrl: '',
+  logoUrl: '',
+  logoTitle: '',
   showSearchBar: true,
   showLogin: true,
+  leanMode: false
 }
 
-export default withRuntimeContext(TopMenu)
+export default TopMenu

@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
-import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
+import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import Logo from './Logo'
 import SearchBar from './SearchBar'
 import Icons from './Icons'
@@ -21,10 +21,10 @@ const FixedContent = ({
   showSearchBar,
   showLogin,
   iconClasses,
-  runtime: { hints: { mobile, desktop } }
 }) => {
 
-  const [mobileSearchActive, toggleSearch] = useState(false);
+  const [mobileSearchActive, toggleSearch] = useState(false)
+  const { hints : { mobile, desktop } } = useRuntime()
 
   return(
     <Container
@@ -94,12 +94,6 @@ const FixedContent = ({
 }
 
 FixedContent.propTypes = {
-  runtime: PropTypes.shape({
-    hints: PropTypes.shape({
-      desktop: PropTypes.bool.isRequired,
-      mobile: PropTypes.bool.isRequired
-    })
-  }),
   leanMode: PropTypes.bool,
   logoUrl: PropTypes.string,
   linkUrl: PropTypes.string,
@@ -119,4 +113,4 @@ FixedContent.defaultProps = {
   iconClasses: CONSTANTS.ICON.CLASS,
 }
 
-export default withRuntimeContext(FixedContent)
+export default FixedContent

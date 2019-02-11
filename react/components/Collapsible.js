@@ -1,18 +1,19 @@
 import React from 'react'
-import { number, string, bool } from 'prop-types'
-import { withRuntimeContext } from 'vtex.render-runtime'
+import PropTypes from 'prop-types'
+import { useRuntime } from 'vtex.render-runtime'
 import withScrollAnimation from './ScrollAnimation'
 import { Border } from './Helpers'
-import { compose } from 'ramda'
 
 const Collapsible = ({
   children,
   top,
   leanMode,
   animation,
-  runtime: { hints: desktop } 
-}) => (
-  desktop && !leanMode ? (
+}) => {
+
+  const { hints : { desktop } } = useRuntime()
+
+  return desktop && !leanMode ? (
     <div
       className={`${animation} fixed z-2 w-100 bg-base`}
       style={{
@@ -26,18 +27,12 @@ const Collapsible = ({
   ):(
     <Border fixed top={top} />
   )
-)
+}
 
 Collapsible.propTypes = {
-  runtime: PropTypes.shape({
-    hints: PropTypes.shape({
-      desktop: PropTypes.bool.isRequired,
-      mobile: PropTypes.bool.isRequired
-    })
-  }),
   animation: PropTypes.string.isRequired,
   leanMode: PropTypes.bool,
-  top: number,
+  top: PropTypes.number,
 }
 
 Collapsible.defaultProps = {
@@ -45,7 +40,4 @@ Collapsible.defaultProps = {
   leanMode: false
 }
 
-export  default compose(
-  withRuntimeContext,
-  withScrollAnimation()
-)(Collapsible)
+export  default withScrollAnimation()(Collapsible)

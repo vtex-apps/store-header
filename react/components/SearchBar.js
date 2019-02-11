@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { Adopt } from 'react-adopt'
-import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
+import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import { Button } from 'vtex.styleguide'
 import classNames from 'classnames'
 import header from '../store-header.css'
@@ -12,8 +12,9 @@ const SearchBar = ({
   autoFocus,
   onCancel,
   iconClasses,
-  runtime: { hints: { mobile, desktop } } 
 }) => {
+
+  const { hints : { mobile, desktop } } = useRuntime()
 
   const searchBarClassNames = classNames(`${header.topMenuSearchBar} flex pa2-m flex-grow-1`, {
     'justify-between': mobile,
@@ -55,12 +56,6 @@ const SearchBar = ({
 }
 
 SearchBar.propTypes = {
-  runtime: PropTypes.shape({
-    hints: PropTypes.shape({
-      desktop: PropTypes.bool.isRequired,
-      mobile: PropTypes.bool.isRequired
-    })
-  }),
   onCancel: PropTypes.func,
   autoFocus: PropTypes.bool,
   iconClasses: PropTypes.string 
@@ -72,4 +67,4 @@ SearchBar.defaultProps = {
   iconClasses: CONSTANTS.ICON.CLASS,
 }
 
-export default withRuntimeContext(SearchBar)
+export default SearchBar
