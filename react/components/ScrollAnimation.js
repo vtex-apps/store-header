@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { CONSTANTS } from './Helpers';
 
 /**
  * HOC to that generates a component capable of toggle animations
@@ -9,13 +10,11 @@ import React, { Component } from 'react'
  * @param {*} onScrollUp  // Animation on scroll up
  */
 const withScrollAnimation = (
-  
-  anchor=45,
-  reverse=false,
-  speed='faster',
-  onScrollDown='slideOutUp',
-  onScrollUp='slideInDown',
-
+  anchor = CONSTANTS.SCROLL_ANIMATION.ANCHOR,
+  reverse = CONSTANTS.SCROLL_ANIMATION.REVERSE,
+  speed = CONSTANTS.SCROLL_ANIMATION.SPEED,
+  onScrollDown = CONSTANTS.SCROLL_ANIMATION.ON_SCROLL_DOWN,
+  onScrollUp = CONSTANTS.SCROLL_ANIMATION.ON_SCROLL_UP,
 ) => (WrappedComponent) => (
   class AnimatedOnScroll extends Component {
     

@@ -28,7 +28,7 @@ class FixedContent extends PureComponent {
   }
 
   static defaultProps = {
-    iconClasses: CONSTANTS.ICON_CLASSES,
+    iconClasses: CONSTANTS.ICON.CLASS,
   }
 
   state = {

@@ -76,8 +76,8 @@ Icons.propTypes = {
 }
 
 Icons.defaultProps = {
-  iconClasses: CONSTANTS.ICON_CLASSES,
-  labelClasses: CONSTANTS.LABEL_CLASSES,
+  iconClasses: CONSTANTS.ICON.CLASS,
+  labelClasses: CONSTANTS.LABEL.CLASS,
   onActiveSearch: () => {},
 }
 

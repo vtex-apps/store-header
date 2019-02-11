@@ -68,12 +68,12 @@ Logo.defaultProps = {
   link: '/',
   size: {
     desktop: {
-      width: CONSTANTS.LOGO_WIDTH_DESKTOP,
-      height: CONSTANTS.LOGO_HEIGHT_DESKTOP
+      width: CONSTANTS.LOGO.DESKTOP.WIDTH,
+      height: CONSTANTS.LOGO.DESKTOP.HEIGHT
     },
     mobile: {
-      width: CONSTANTS.LOGO_WIDTH_MOBILE,
-      height: CONSTANTS.LOGO_HEIGHT_MOBILE 
+      width: CONSTANTS.LOGO.MOBILE.WIDTH,
+      height: CONSTANTS.LOGO.MOBILE.HEIGHT 
     }
   }
 }

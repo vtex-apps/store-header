@@ -61,9 +61,8 @@ SearchBar.propTypes = {
   mobile: bool
 }
 
-
 SearchBar.defaultProps = {
-  iconClasses: CONSTANTS.ICON_CLASSES,
+  iconClasses: CONSTANTS.ICON.CLASS,
   onCancel: () => { },
 }
 
