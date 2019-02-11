@@ -36,7 +36,7 @@ export const CONSTANTS = {
   }
 }
 
-export const Spacer = ({ height=0, width=0, index=1 }) => (
+export const Spacer = ({ height = 0, width = 0, index = 1 }) => (
   <div
     className={`z-${index} bg-base w-100 relative`}
     style={{

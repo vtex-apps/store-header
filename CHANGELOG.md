@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Adjust style in order to match the new design.
+- Break into multiple components for better maintenance.
+- Detach the scroll/animation logic from the component to improve reusability.
 
 ## [2.7.1] - 2019-02-01
 
