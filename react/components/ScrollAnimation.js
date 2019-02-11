@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 
 /**
  * HOC to that generates a component capable of toggle animations
@@ -17,15 +17,15 @@ const withScrollAnimation = (
   onScrollUp='slideInDown',
 
 ) => (WrappedComponent) => (
-  class AnimatedOnScroll extends PureComponent {
+  class AnimatedOnScroll extends Component {
     
     animation = `animated ${speed} ${onScrollDown}`
     reverseAnimation = `animated ${speed} ${onScrollUp}`
 
     state = {
-      animation: this.reverseAnimation
+      animation: '',
+      trigger: false
     }
-
     
     componentDidMount() {
       document.addEventListener('scroll', this.handleScroll)
@@ -35,8 +35,15 @@ const withScrollAnimation = (
       document.removeEventListener('scroll', this.handleScroll)
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+      return this.state.trigger 
+    }
+
     getAnimation = scroll => {
-      return scroll >= anchor && !reverse
+      const shouldAnimate = scroll >= anchor && !reverse
+      if ( shouldAnimate ) this.setState({ trigger:true })
+      
+      return shouldAnimate
         ? this.animation
         : this.reverseAnimation
     } 
