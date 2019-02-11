@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
-import { ExtensionPoint } from 'vtex.render-runtime'
+import { bool, string, node } from 'prop-types'
+import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
-import { Border, Spacer } from './Helpers'
+import { Border, Spacer, CONSTANTS } from './Helpers'
 
 const TopMenu = ({
   extraHeaders,
@@ -13,6 +13,7 @@ const TopMenu = ({
   logoTitle,
   showLogin,
   showSearchBar,
+  runtime: { hints: { desktop }}
 }) => {
 
   return(
@@ -36,26 +37,32 @@ const TopMenu = ({
         showLogin={showLogin}
       />
       
-      <Border fixed top={96} />
+      <Border fixed top={CONSTANTS.COLLAPSIBLE.TOP} />
 
-      <Collapsible top={96} leanMode={leanMode} >
+      <Collapsible top={CONSTANTS.COLLAPSIBLE.TOP} leanMode={leanMode} >
         <ExtensionPoint id="category-menu" />
       </Collapsible>
 
-      <Spacer height={ 96 + 64 } />
+      <Spacer 
+        height={ desktop 
+          ? CONSTANTS.SPACER.DESKTOP
+          : CONSTANTS.SPACER.MOBILE
+        }
+      />
 
     </Fragment>
   )
 }
 
 TopMenu.propTypes = {
-  linkUrl: PropTypes.string,
-  logoUrl: PropTypes.string,
-  logoTitle: PropTypes.string,
-  showSearchBar: PropTypes.bool,
-  showLogin: PropTypes.bool,
-  leanMode: PropTypes.bool,
-  extraHeaders: PropTypes.node,
+  linkUrl: string,
+  logoUrl: string,
+  logoTitle: string,
+  showSearchBar: bool,
+  showLogin: bool,
+  leanMode: bool,
+  extraHeaders: node,
+  desktop: bool
 }
 
 TopMenu.defaultProps = {
@@ -63,4 +70,4 @@ TopMenu.defaultProps = {
   showLogin: true,
 }
 
-export default TopMenu
+export default withRuntimeContext(TopMenu)

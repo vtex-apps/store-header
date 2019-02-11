@@ -26,6 +26,13 @@ export const CONSTANTS = {
     SPEED: 'faster',
     ON_SCROLL_DOWN: 'slideOutUp',
     ON_SCROLL_UP: 'slideInDown'
+  },
+  SPACER: {
+    MOBILE: 96,
+    DESKTOP: 160
+  },
+  COLLAPSIBLE: {
+    TOP: 96
   }
 }
 
