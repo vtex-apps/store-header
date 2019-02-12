@@ -6,7 +6,7 @@ import { ButtonWithIcon } from 'vtex.styleguide'
 import { IconSearch } from 'vtex.dreamstore-icons'
 import header from '../store-header.css'
 import { CONSTANTS } from './Helpers'
-import useDevice from './Resize'
+import useDevice from '../hooks/useDevice'
 
 const Icons = ({ 
   showSearchIcon,

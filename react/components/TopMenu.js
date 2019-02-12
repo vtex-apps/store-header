@@ -4,7 +4,7 @@ import { ExtensionPoint } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
 import { Border, Spacer, CONSTANTS } from './Helpers'
-import useDevice from './Resize';
+import useDevice from '../hooks/useDevice'
 
 const TopMenu = ({
   extraHeaders,

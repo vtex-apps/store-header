@@ -7,7 +7,7 @@ import Icons from './Icons'
 import { CONSTANTS } from './Helpers'
 import { Container } from 'vtex.store-components'
 import header from '../store-header.css'
-import useDevice from './Resize'
+import useDevice from '../hooks/useDevice'
 
 /**
  * Component that deals with content thats always fixed on top.

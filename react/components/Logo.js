@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ExtensionPoint, Link } from 'vtex.render-runtime'
 import { CONSTANTS } from './Helpers'
-import useDevice from './Resize';
+import useDevice from '../hooks/useDevice';
 
 import header from '../store-header.css'
 

@@ -7,7 +7,7 @@ import { Button } from 'vtex.styleguide'
 import classNames from 'classnames'
 import header from '../store-header.css'
 import { CONSTANTS } from './Helpers'
-import useDevice from './Resize';
+import useDevice from '../hooks/useDevice'
 
 const SearchBar = ({
   autoFocus,

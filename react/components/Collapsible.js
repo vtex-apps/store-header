@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withScrollAnimation from './ScrollAnimation'
 import { Border } from './Helpers'
-import useDevice from './Resize'
+import useDevice from '../hooks/useDevice'
 
 const Collapsible = ({
   children,
