@@ -17,6 +17,13 @@ const TopMenu = ({
 }) => {
 
   const { desktop } = useDevice()
+  const hasExtraHeaders = !!extraHeaders
+  const distanceIncrement = hasExtraHeaders ? CONSTANTS.EXTRA_HEADERS.HEIGHT : 0
+  
+  const topDistance = CONSTANTS.COLLAPSIBLE.TOP + distanceIncrement
+  const spacerHeight = desktop 
+    ? CONSTANTS.SPACER.DESKTOP + distanceIncrement
+    : CONSTANTS.SPACER.MOBILE + distanceIncrement
 
   return(
     <Fragment>
@@ -37,27 +44,23 @@ const TopMenu = ({
         logoTitle={logoTitle}
         showSearchBar={showSearchBar}
         showLogin={showLogin}
+        hasExtraHeaders={hasExtraHeaders}
       />
       
-      <Border fixed top={CONSTANTS.COLLAPSIBLE.TOP} />
+      <Border fixed top={ topDistance } />
 
-      <Collapsible top={CONSTANTS.COLLAPSIBLE.TOP} leanMode={leanMode} >
+      <Collapsible top={ topDistance } leanMode={leanMode} >
         <ExtensionPoint id="category-menu" />
       </Collapsible>
 
-      <Spacer 
-        height={ desktop 
-          ? CONSTANTS.SPACER.DESKTOP
-          : CONSTANTS.SPACER.MOBILE
-        }
-      />
+      <Spacer height={ spacerHeight }/>
 
     </Fragment>
   )
 }
 
 TopMenu.propTypes = {
-  extraHeaders: PropTypes.node.isRequired,
+  extraHeaders: PropTypes.node,
   linkUrl: PropTypes.string,
   logoUrl: PropTypes.string,
   logoTitle: PropTypes.string,

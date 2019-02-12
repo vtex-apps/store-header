@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import Logo from './Logo'
@@ -8,6 +8,7 @@ import { CONSTANTS } from './Helpers'
 import { Container } from 'vtex.store-components'
 import header from '../store-header.css'
 import useDevice from '../hooks/useDevice'
+import classNames from 'classnames'
 
 /**
  * Component that deals with content thats always fixed on top.
@@ -21,14 +22,18 @@ const FixedContent = ({
   showSearchBar,
   showLogin,
   iconClasses,
+  hasExtraHeaders
 }) => {
 
   const [mobileSearchActive, toggleSearch] = useState(false)
   const { mobile, desktop } = useDevice()
+  const containerClassNames = classNames(`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 fixed h3`, {
+    'top-2': hasExtraHeaders
+  })
 
   return(
     <Container
-      className={`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 fixed h3 top-2`}
+      className={containerClassNames}
       style={{
         transform: 'translateZ(0)' //Avoid shaking
       }}
@@ -101,6 +106,7 @@ FixedContent.propTypes = {
   showSearchBar: PropTypes.bool,
   showLogin: PropTypes.bool,
   iconClasses: PropTypes.string,
+  hasExtraHeaders: PropTypes.bool
 }
 
 FixedContent.defaultProps = {
@@ -111,6 +117,7 @@ FixedContent.defaultProps = {
   showSearchBar: true,
   showLogin: true,
   iconClasses: CONSTANTS.ICON.CLASS,
+  hasExtraHeaders: true
 }
 
 export default FixedContent

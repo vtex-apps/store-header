@@ -28,14 +28,17 @@ export const CONSTANTS = {
     ON_SCROLL_UP: 'slideInDown'
   },
   SPACER: {
-    MOBILE: 96,
-    DESKTOP: 160
+    MOBILE: 64,
+    DESKTOP: 128
   },
   COLLAPSIBLE: {
-    TOP: 96
+    TOP: 64
   },
   RESIZE_BREAKPOINTS: {
     MOBILE: 640
+  },
+  EXTRA_HEADERS: {
+    HEIGHT: 32
   }
 }
 
