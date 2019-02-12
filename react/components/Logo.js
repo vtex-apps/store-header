@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ExtensionPoint, Link, useRuntime } from 'vtex.render-runtime'
+import { ExtensionPoint, Link } from 'vtex.render-runtime'
 import { CONSTANTS } from './Helpers'
+import useDevice from './Resize';
 
 import header from '../store-header.css'
 
@@ -12,7 +13,7 @@ const Logo = ({
   size,
 }) => {
 
-  const { hints : { mobile, desktop } } = useRuntime()
+  const { mobile, desktop } = useDevice()
 
   return(
     <div className={`${header.topMenuLogo} pv2 mr5`}>

@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
+import { ExtensionPoint } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
 import { Border, Spacer, CONSTANTS } from './Helpers'
+import useDevice from './Resize';
 
 const TopMenu = ({
   extraHeaders,
@@ -15,7 +16,7 @@ const TopMenu = ({
   showSearchBar,
 }) => {
 
-  const { hints : { desktop } } = useRuntime()
+  const { desktop } = useDevice()
 
   return(
     <Fragment>

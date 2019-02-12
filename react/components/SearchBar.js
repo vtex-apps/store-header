@@ -2,11 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { Adopt } from 'react-adopt'
-import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
+import { ExtensionPoint } from 'vtex.render-runtime'
 import { Button } from 'vtex.styleguide'
 import classNames from 'classnames'
 import header from '../store-header.css'
 import { CONSTANTS } from './Helpers'
+import useDevice from './Resize';
 
 const SearchBar = ({
   autoFocus,
@@ -14,7 +15,7 @@ const SearchBar = ({
   iconClasses,
 }) => {
 
-  const { hints : { mobile, desktop } } = useRuntime()
+  const { mobile, desktop } = useDevice()
 
   const searchBarClassNames = classNames(`${header.topMenuSearchBar} flex pa2-m flex-grow-1`, {
     'justify-between': mobile,

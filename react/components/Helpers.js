@@ -33,6 +33,9 @@ export const CONSTANTS = {
   },
   COLLAPSIBLE: {
     TOP: 96
+  },
+  RESIZE_BREAKPOINTS: {
+    MOBILE: 640
   }
 }
 

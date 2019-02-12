@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
+import { ExtensionPoint } from 'vtex.render-runtime'
 import { FormattedMessage } from 'react-intl'
 import { ButtonWithIcon } from 'vtex.styleguide'
 import { IconSearch } from 'vtex.dreamstore-icons'
 import header from '../store-header.css'
-import { CONSTANTS } from './Helpers';
+import { CONSTANTS } from './Helpers'
+import useDevice from './Resize'
 
 const Icons = ({ 
   showSearchIcon,
@@ -16,7 +17,7 @@ const Icons = ({
   onActiveSearch
 }) => {
   
-  const { hints : { mobile, desktop } } = useRuntime()
+  const { mobile, desktop } = useDevice()
   
   return(
     <div className={`${header.topMenuIcons} flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}>

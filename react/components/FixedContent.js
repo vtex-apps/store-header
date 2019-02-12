@@ -1,12 +1,13 @@
 import React, { PureComponent, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
-import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
+import { ExtensionPoint } from 'vtex.render-runtime'
 import Logo from './Logo'
 import SearchBar from './SearchBar'
 import Icons from './Icons'
 import { CONSTANTS } from './Helpers'
 import { Container } from 'vtex.store-components'
 import header from '../store-header.css'
+import useDevice from './Resize'
 
 /**
  * Component that deals with content thats always fixed on top.
@@ -23,7 +24,7 @@ const FixedContent = ({
 }) => {
 
   const [mobileSearchActive, toggleSearch] = useState(false)
-  const { hints : { mobile, desktop } } = useRuntime()
+  const { mobile, desktop } = useDevice()
 
   return(
     <Container

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useRuntime } from 'vtex.render-runtime'
 import withScrollAnimation from './ScrollAnimation'
 import { Border } from './Helpers'
+import useDevice from './Resize'
 
 const Collapsible = ({
   children,
@@ -11,7 +11,7 @@ const Collapsible = ({
   animation,
 }) => {
 
-  const { hints : { desktop } } = useRuntime()
+  const { desktop } = useDevice()
 
   return desktop && !leanMode ? (
     <div
