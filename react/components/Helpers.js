@@ -4,42 +4,42 @@ import classNames from 'classnames'
 export const CONSTANTS = {
   ICON: {
     CLASS: 'c-on-base',
-    ANIMATION: 'animated faster zoomIn'
+    ANIMATION: 'animated faster zoomIn',
   },
   LABEL: {
     CLASS: 'c-on-base',
-    ANIMATION: 'animated faster fadeIn'
+    ANIMATION: 'animated faster fadeIn',
   },
   LOGO: {
     MOBILE: {
       WIDTH: 90,
-      HEIGHT: 40
+      HEIGHT: 40,
     },
     DESKTOP: {
       WIDTH: 132,
-      HEIGHT: 40
-    }
+      HEIGHT: 40,
+    },
   },
   SCROLL_ANIMATION: {
     ANCHOR: 100,
     REVERSE: false,
     SPEED: 'faster',
     ON_SCROLL_DOWN: 'slideOutUp',
-    ON_SCROLL_UP: 'slideInDown'
+    ON_SCROLL_UP: 'slideInDown',
   },
   SPACER: {
     MOBILE: 64,
-    DESKTOP: 128
+    DESKTOP: 128,
   },
   COLLAPSIBLE: {
-    TOP: 64
+    TOP: 64,
   },
   RESIZE_BREAKPOINTS: {
-    MOBILE: 640
+    MOBILE: 640,
   },
   EXTRA_HEADERS: {
-    HEIGHT: 32
-  }
+    HEIGHT: 32,
+  },
 }
 
 export const Spacer = ({ height = 0, width = 0, index = 1 }) => (
@@ -51,11 +51,10 @@ export const Spacer = ({ height = 0, width = 0, index = 1 }) => (
     }}
   />
 )
-  
+
 export const Border = ({ fixed, top }) => {
-  
   const borderClassNames = classNames(`bb bw1 b--muted-4 `, {
-    'fixed top-0 left-0 w-100 z-2' : fixed
+    'fixed top-0 left-0 w-100 z-2': fixed,
   })
 
   return (

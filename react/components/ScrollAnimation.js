@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { CONSTANTS } from './Helpers';
+import { CONSTANTS } from './Helpers'
 
 /**
  * HOC to that generates a component capable of toggle animations
@@ -14,19 +14,18 @@ const withScrollAnimation = (
   reverse = CONSTANTS.SCROLL_ANIMATION.REVERSE,
   speed = CONSTANTS.SCROLL_ANIMATION.SPEED,
   onScrollDown = CONSTANTS.SCROLL_ANIMATION.ON_SCROLL_DOWN,
-  onScrollUp = CONSTANTS.SCROLL_ANIMATION.ON_SCROLL_UP,
-) => (WrappedComponent) => (
+  onScrollUp = CONSTANTS.SCROLL_ANIMATION.ON_SCROLL_UP
+) => WrappedComponent =>
   class AnimatedOnScroll extends Component {
-    
     animation = `animated ${speed} ${onScrollDown}`
     reverseAnimation = `animated ${speed} ${onScrollUp}`
 
     state = {
       animation: '',
       lastScrollPos: 0,
-      trigger: false
+      trigger: false,
     }
-    
+
     componentDidMount() {
       document.addEventListener('scroll', this.handleScroll)
     }
@@ -36,22 +35,24 @@ const withScrollAnimation = (
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-      return this.state.trigger 
+      return this.state.trigger
     }
 
     animate(scroll) {
       const scrollingUp = this.state.lastScrollPos > scroll
       const scrollingDown = this.state.lastScrollPos < scroll
 
-      scrollingUp && this.setState({
-        animation: this.reverseAnimation,
-        lastScrollPos: scroll
-      })
+      scrollingUp &&
+        this.setState({
+          animation: this.reverseAnimation,
+          lastScrollPos: scroll,
+        })
 
-      scrollingDown && this.setState({
-        animation: this.animation,
-        lastScrollPos: scroll
-      })
+      scrollingDown &&
+        this.setState({
+          animation: this.animation,
+          lastScrollPos: scroll,
+        })
     }
 
     handleScroll = () => {
@@ -63,13 +64,9 @@ const withScrollAnimation = (
 
     render() {
       return (
-        <WrappedComponent 
-          {...this.props}
-          animation={this.state.animation}
-        />
-      );
+        <WrappedComponent {...this.props} animation={this.state.animation} />
+      )
     }
   }
-)
 
 export default withScrollAnimation

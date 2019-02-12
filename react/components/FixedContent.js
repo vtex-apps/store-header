@@ -22,28 +22,34 @@ const FixedContent = ({
   showSearchBar,
   showLogin,
   iconClasses,
-  hasExtraHeaders
+  hasExtraHeaders,
 }) => {
-
   const [mobileSearchActive, toggleSearch] = useState(false)
   const { mobile, desktop } = useDevice()
-  const containerClassNames = classNames(`${header.topMenuContainer} flex justify-center w-100 bg-base left-0 z-3 fixed h3`, {
-    'top-2': hasExtraHeaders
-  })
+  const containerClassNames = classNames(
+    `${
+      header.topMenuContainer
+    } flex justify-center w-100 bg-base left-0 z-3 fixed h3`,
+    {
+      'top-2': hasExtraHeaders,
+    }
+  )
 
-  return(
+  return (
     <Container
       className={containerClassNames}
       style={{
-        transform: 'translateZ(0)' //Avoid shaking
+        transform: 'translateZ(0)', //Avoid shaking
       }}
     >
       <div
-        className={`w-100 mw9 flex justify-center ${ leanMode ? 'pv0' : 'pv6-l pv2-m'}`}
+        className={`w-100 mw9 flex justify-center ${
+          leanMode ? 'pv0' : 'pv6-l pv2-m'
+        }`}
         style={{
           /** Prevents the empty margins of this element from blocking the users clicks
-            * TODO: create a tachyons class for pointer events and remove this style
-            * @author lbebber */
+           * TODO: create a tachyons class for pointer events and remove this style
+           * @author lbebber */
           pointerEvents: 'none',
         }}
       >
@@ -53,42 +59,35 @@ const FixedContent = ({
             pointerEvents: 'auto',
           }}
         >
-          { mobileSearchActive ? (
+          {mobileSearchActive ? (
             mobile && (
               <div className="flex justify-start pa2 relative w-100">
-                <SearchBar
-                  autoFocus
-                  onCancel={() => toggleSearch( false )}
-                />
+                <SearchBar autoFocus onCancel={() => toggleSearch(false)} />
               </div>
             )
           ) : (
             <Fragment>
-              { !leanMode && mobile &&
+              {!leanMode && mobile && (
                 <ExtensionPoint
                   id="category-menu"
                   mobileMode
                   iconClasses={iconClasses}
                 />
-              }
+              )}
 
-              <Logo
-                src={logoUrl}
-                link={linkUrl}
-                title={logoTitle}
-              />
-        
-              { !leanMode && desktop &&
+              <Logo src={logoUrl} link={linkUrl} title={logoTitle} />
+
+              {!leanMode && desktop && (
                 <div className="dn db-ns flex-grow-1">
                   <SearchBar />
                 </div>
-              }
-                
+              )}
+
               <Icons
                 showSearchIcon={showSearchBar}
                 leanMode={leanMode}
                 showLogin={showLogin}
-                onActiveSearch={() => toggleSearch( true )}
+                onActiveSearch={() => toggleSearch(true)}
               />
             </Fragment>
           )}
@@ -106,7 +105,7 @@ FixedContent.propTypes = {
   showSearchBar: PropTypes.bool,
   showLogin: PropTypes.bool,
   iconClasses: PropTypes.string,
-  hasExtraHeaders: PropTypes.bool
+  hasExtraHeaders: PropTypes.bool,
 }
 
 FixedContent.defaultProps = {
@@ -117,7 +116,7 @@ FixedContent.defaultProps = {
   showSearchBar: true,
   showLogin: true,
   iconClasses: CONSTANTS.ICON.CLASS,
-  hasExtraHeaders: true
+  hasExtraHeaders: true,
 }
 
 export default FixedContent
