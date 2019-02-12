@@ -50,7 +50,7 @@ const Icons = ({
       }
 
       { desktop &&
-        <div className="flex-ns">
+        <div className="flex">
           { showLogin &&
             <ExtensionPoint
               id="login"

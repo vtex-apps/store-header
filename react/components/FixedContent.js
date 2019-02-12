@@ -11,7 +11,6 @@ import header from '../store-header.css'
 /**
  * Component that deals with content thats always fixed on top.
  * Also handles the toggle between mobile search and mobile navbar.
- * TODO: Change to hooks when it's available at render.
  */
 const FixedContent = ({
   leanMode,
