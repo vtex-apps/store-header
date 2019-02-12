@@ -56,7 +56,7 @@ class Header extends Component {
 
     return (
       <div
-        className={`${header.container} relative z-2 ${leanMode ? `${header.leanMode}` : ''}`}
+        className={`${header.container} z-2 ${leanMode ? `${header.leanMode}` : ''}`}
       >
         <TopMenu
           {...topMenuOptions}

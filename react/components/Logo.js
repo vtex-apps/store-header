@@ -1,67 +1,85 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ExtensionPoint, Link } from 'vtex.render-runtime'
-import ReactResizeDetector from 'react-resize-detector'
+import { CONSTANTS } from './Helpers'
+import useDevice from '../hooks/useDevice';
 
 import header from '../store-header.css'
 
-const Logo = ({ link, src, title, sizeMobile, sizeDesktop, onResize }) => (
-  <div className={`${header.topMenuLogo} pv2`}>
-    <ReactResizeDetector handleHeight onResize={onResize}>
+const Logo = ({
+  link,
+  src,
+  title,
+  size,
+}) => {
+
+  const { mobile, desktop } = useDevice()
+
+  return(
+    <div className={`${header.topMenuLogo} pv2 mr5`}>
       <Link
         to={link}
-        // there is a weird bottom padding being added
-        // below the image. This fixes the issue,
-        // but the cause should be investigated
         className={`outline-0 ${header.logoLink}`}
       >
-        {sizeMobile && (
+        { mobile && (
           <div className="db dn-ns">
             <ExtensionPoint
               id="logo"
               url={src}
               title={title}
-              width={sizeMobile.width}
-              height={sizeMobile.height}
+              width={size.mobile.width}
+              height={size.mobile.height}
               isMobile={true}
             />
           </div>
         )}
-        {sizeDesktop && (
+
+        { desktop && (
           <div className="dn db-ns">
             <ExtensionPoint
               id="logo"
               url={src}
               title={title}
-              width={sizeDesktop.width}
-              height={sizeDesktop.height}
+              width={size.desktop.width}
+              height={size.desktop.height}
               isMobile={false}
             />
           </div>
         )}
       </Link>
-    </ReactResizeDetector>
-  </div>
-)
+    </div>
+  ) 
+}
 
 Logo.propTypes = {
   src: PropTypes.string.isRequired,
   link: PropTypes.string,
   title: PropTypes.string,
-  onResize: PropTypes.func,
-  sizeMobile: PropTypes.shape({
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-  }),
-  sizeDesktop: PropTypes.shape({
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-  }),
+  size: PropTypes.shape({
+    desktop: PropTypes.shape({
+      width: PropTypes.number,
+      height: PropTypes.number
+    }),
+    mobile: PropTypes.shape({
+      width: PropTypes.number,
+      height: PropTypes.number
+    })
+  })
 }
 
 Logo.defaultProps = {
   link: '/',
-  onResize: () => { },
+  title: '',
+  size: {
+    desktop: {
+      width: CONSTANTS.LOGO.DESKTOP.WIDTH,
+      height: CONSTANTS.LOGO.DESKTOP.HEIGHT
+    },
+    mobile: {
+      width: CONSTANTS.LOGO.MOBILE.WIDTH,
+      height: CONSTANTS.LOGO.MOBILE.HEIGHT 
+    }
+  }
 }
 
 export default Logo

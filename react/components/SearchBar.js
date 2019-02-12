@@ -4,49 +4,68 @@ import { FormattedMessage } from 'react-intl'
 import { Adopt } from 'react-adopt'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { Button } from 'vtex.styleguide'
-
+import classNames from 'classnames'
 import header from '../store-header.css'
+import { CONSTANTS } from './Helpers'
+import useDevice from '../hooks/useDevice'
 
-const SearchBar = ({ compactMode, autoFocus, onCancel }) => {
+const SearchBar = ({
+  autoFocus,
+  onCancel,
+  iconClasses,
+}) => {
+
+  const { mobile, desktop } = useDevice()
+
+  const searchBarClassNames = classNames(`${header.topMenuSearchBar} flex pa2-m flex-grow-1`, {
+    'justify-between': mobile,
+    'justify-center': desktop
+  })
+
+  const cancelClassNames = classNames(`${iconClasses} ttl`)
+
   return (
-    <React.Fragment>
-      <div className={`${header.topMenuSearchBar} flex pa2-m flex-grow-1 justify-center`}>
-        <div className="w-100 mw7">
-          <Adopt
-            mapper={{
-              placeholder: <FormattedMessage id='header.search-placeholder' />,
-              emptyPlaceholder: <FormattedMessage id='header.search-emptyPlaceholder' />,
-            }}
-          >
-            {({ placeholder, emptyPlaceholder }) => (
-              <ExtensionPoint
-                id="search-bar"
-                placeholder={placeholder}
-                emptyPlaceholder={emptyPlaceholder}
-                compactMode={compactMode}
-                autoFocus={autoFocus}
-              />
-            )}
-          </Adopt>
-        </div>
+    <div className={searchBarClassNames}>
+      <div className="w-75">
+        <Adopt
+          mapper={{
+            placeholder: <FormattedMessage id='header.search-placeholder' />,
+            emptyPlaceholder: <FormattedMessage id='header.search-emptyPlaceholder' />,
+          }}
+        >
+          {({ placeholder, emptyPlaceholder }) => (
+            <ExtensionPoint
+              id="search-bar"
+              placeholder={placeholder}
+              emptyPlaceholder={emptyPlaceholder}
+              autoFocus={autoFocus}
+              hasIconLeft={mobile}
+              iconClasses={iconClasses}
+            />
+          )}
+        </Adopt>
       </div>
-      {compactMode && (
-        <Button size="small" variation="tertiary" onClick={onCancel}>
-          <FormattedMessage id="header.search-cancel" />
-        </Button>
+      { mobile && (
+        <div className="w-25 pa2-m pt2-s">
+          <Button size="small" variation="tertiary" onClick={onCancel}>
+            <span className={cancelClassNames}><FormattedMessage id="header.search-cancel" /></span>
+          </Button>
+        </div>
       )}
-    </React.Fragment>
+    </div>
   )
 }
 
 SearchBar.propTypes = {
   onCancel: PropTypes.func,
-  compactMode: PropTypes.bool,
   autoFocus: PropTypes.bool,
+  iconClasses: PropTypes.string 
 }
 
 SearchBar.defaultProps = {
   onCancel: () => { },
+  autoFocus: false,
+  iconClasses: CONSTANTS.ICON.CLASS,
 }
 
 export default SearchBar

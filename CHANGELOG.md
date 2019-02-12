@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.9.0] - 2019-02-12
+### Changed
+- Adjust style in order to match the new design.
+- Break into multiple components for better maintenance.
+- Detach the scroll/animation logic from the component to improve reusability.
+- Add animation when user scrolls up and down.
+
 ## [2.7.1] - 2019-02-01
 
 ## [2.7.0] - 2019-01-30
