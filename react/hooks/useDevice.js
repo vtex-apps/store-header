@@ -21,7 +21,7 @@ const useDevice = (mobileBreakpoint = CONSTANTS.RESIZE_BREAKPOINTS.MOBILE) => {
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  }, [])
+  }, [mobileBreakpoint])
 
   return {
     mobile,
