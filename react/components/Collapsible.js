@@ -4,8 +4,15 @@ import withScrollAnimation from './ScrollAnimation'
 import { Border } from './Helpers'
 import useDevice from '../hooks/useDevice'
 
-const Collapsible = ({ children, top, leanMode, animation }) => {
+const Collapsible = ({
+  children,
+  leanMode,
+  animation,
+  didAnimate,
+  onAnimate,
+}) => {
   const { desktop } = useDevice()
+  onAnimate(didAnimate)
 
   return desktop && !leanMode ? (
     <div
@@ -16,6 +23,7 @@ const Collapsible = ({ children, top, leanMode, animation }) => {
       }}
     >
       {children}
+      <Border />
     </div>
   ) : (
     <Border />
@@ -25,11 +33,9 @@ const Collapsible = ({ children, top, leanMode, animation }) => {
 Collapsible.propTypes = {
   animation: PropTypes.string.isRequired,
   leanMode: PropTypes.bool,
-  top: PropTypes.number,
 }
 
 Collapsible.defaultProps = {
-  top: 0,
   leanMode: false,
 }
 
