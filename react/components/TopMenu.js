@@ -28,9 +28,8 @@ const TopMenu = ({
         logoTitle={logoTitle}
         showSearchBar={showSearchBar}
         showLogin={showLogin}
+        showBorder={didAnimate && desktop}
       />
-
-      <Border underneath animated show={didAnimate && desktop} />
 
       <Collapsible leanMode={leanMode} onAnimate={onAnimate}>
         <ExtensionPoint id="category-menu" />

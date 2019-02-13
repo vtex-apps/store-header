@@ -46,11 +46,9 @@ export const Spacer = ({ height = 0, width = 0, index = 1 }) => (
   />
 )
 
-export const Border = ({ fixed, top, show = true, underneath, animated }) => {
+export const Border = ({ fixed, top }) => {
   const borderClassNames = classNames(`bb bw1 b--muted-4`, {
     'fixed top-0 left-0 w-100 z-2': fixed,
-    dn: !show,
-    'animated fadeInUp slower': show && animated,
   })
 
   return (
@@ -59,7 +57,6 @@ export const Border = ({ fixed, top, show = true, underneath, animated }) => {
       style={{
         top: top || 'inherit',
         boxSizing: 'content-box',
-        zIndex: underneath && -2,
       }}
     />
   )

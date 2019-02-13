@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import TopMenu from './components/TopMenu'
 import header from './store-header.css'
-import { Spacer, Border } from './components/Helpers'
+import { Spacer } from './components/Helpers'
 import useDevice from './hooks/useDevice'
 import { CONSTANTS } from './components/Helpers'
 

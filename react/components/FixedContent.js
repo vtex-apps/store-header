@@ -22,11 +22,15 @@ const FixedContent = ({
   showSearchBar,
   showLogin,
   iconClasses,
+  showBorder,
 }) => {
   const [mobileSearchActive, toggleSearch] = useState(false)
   const { mobile, desktop } = useDevice()
   const containerClassNames = classNames(
-    `${header.topMenuContainer} flex justify-center bg-base h3`
+    `${header.topMenuContainer} flex justify-center bg-base h3 bb bw0 b--white`,
+    {
+      'bb bw1 b--muted-4': showBorder,
+    }
   )
 
   return (
@@ -34,6 +38,8 @@ const FixedContent = ({
       className={containerClassNames}
       style={{
         transform: 'translateZ(0)', //Avoid shaking
+        transition: 'all 500ms cubic-bezier(0.99, 0.26, 1, 1) 0ms',
+        willChange: 'border-bottom',
       }}
     >
       <div
@@ -99,6 +105,7 @@ FixedContent.propTypes = {
   showSearchBar: PropTypes.bool,
   showLogin: PropTypes.bool,
   iconClasses: PropTypes.string,
+  showBorder: PropTypes.bool,
 }
 
 FixedContent.defaultProps = {
@@ -109,6 +116,7 @@ FixedContent.defaultProps = {
   showSearchBar: true,
   showLogin: true,
   iconClasses: CONSTANTS.ICON.CLASS,
+  showBorder: false,
 }
 
 export default FixedContent
