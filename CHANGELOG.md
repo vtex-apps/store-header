@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.9.1] - 2019-02-13
+### Fixed
+- Adjust top distance when extra headers do not exist.
+
 ## [2.9.0] - 2019-02-12
 ### Changed
 - Adjust style in order to match the new design.

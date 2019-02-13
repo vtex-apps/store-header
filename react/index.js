@@ -29,7 +29,7 @@ class Header extends Component {
   /** Determines an unmatching regex for default behavior of the leanMode */
   static defaultProps = {
     leanWhen: 'a^',
-    linkUrl: "/"
+    linkUrl: '/',
   }
 
   isLeanMode = () => {
@@ -56,18 +56,20 @@ class Header extends Component {
 
     return (
       <div
-        className={`${header.container} z-2 ${leanMode ? `${header.leanMode}` : ''}`}
+        className={`${header.container} z-2 ${
+          leanMode ? `${header.leanMode}` : ''
+        }`}
       >
         <TopMenu
           {...topMenuOptions}
           leanMode={leanMode}
-          extraHeaders={(
+          extraHeaders={
             <ExtensionPoint id="telemarketing" />
             // TODO: either add support or remove menu-link
             // <div className="z-2 items-center w-100 top-0 bg-base tl">
             //   <ExtensionPoint id="menu-link" />
             // </div>
-          )}
+          }
         />
       </div>
     )
@@ -84,7 +86,7 @@ Header.schema = {
       title: 'editor.header.logo.image',
       widget: {
         'ui:widget': 'image-uploader',
-      }
+      },
     },
     linkUrl: {
       type: 'string',
@@ -101,8 +103,8 @@ Header.schema = {
       type: 'boolean',
       default: true,
       isLayout: true,
-    }
-  }
+    },
+  },
 }
 
 export default withRuntimeContext(Header)

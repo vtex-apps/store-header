@@ -2,26 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ExtensionPoint, Link } from 'vtex.render-runtime'
 import { CONSTANTS } from './Helpers'
-import useDevice from '../hooks/useDevice';
+import useDevice from '../hooks/useDevice'
 
 import header from '../store-header.css'
 
-const Logo = ({
-  link,
-  src,
-  title,
-  size,
-}) => {
-
+const Logo = ({ link, src, title, size }) => {
   const { mobile, desktop } = useDevice()
 
-  return(
+  return (
     <div className={`${header.topMenuLogo} pv2 mr5`}>
-      <Link
-        to={link}
-        className={`outline-0 ${header.logoLink}`}
-      >
-        { mobile && (
+      <Link to={link} className={`outline-0 ${header.logoLink}`}>
+        {mobile && (
           <div className="db dn-ns">
             <ExtensionPoint
               id="logo"
@@ -34,7 +25,7 @@ const Logo = ({
           </div>
         )}
 
-        { desktop && (
+        {desktop && (
           <div className="dn db-ns">
             <ExtensionPoint
               id="logo"
@@ -48,7 +39,7 @@ const Logo = ({
         )}
       </Link>
     </div>
-  ) 
+  )
 }
 
 Logo.propTypes = {
@@ -58,13 +49,13 @@ Logo.propTypes = {
   size: PropTypes.shape({
     desktop: PropTypes.shape({
       width: PropTypes.number,
-      height: PropTypes.number
+      height: PropTypes.number,
     }),
     mobile: PropTypes.shape({
       width: PropTypes.number,
-      height: PropTypes.number
-    })
-  })
+      height: PropTypes.number,
+    }),
+  }),
 }
 
 Logo.defaultProps = {
@@ -73,13 +64,13 @@ Logo.defaultProps = {
   size: {
     desktop: {
       width: CONSTANTS.LOGO.DESKTOP.WIDTH,
-      height: CONSTANTS.LOGO.DESKTOP.HEIGHT
+      height: CONSTANTS.LOGO.DESKTOP.HEIGHT,
     },
     mobile: {
       width: CONSTANTS.LOGO.MOBILE.WIDTH,
-      height: CONSTANTS.LOGO.MOBILE.HEIGHT 
-    }
-  }
+      height: CONSTANTS.LOGO.MOBILE.HEIGHT,
+    },
+  },
 }
 
 export default Logo

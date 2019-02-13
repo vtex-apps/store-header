@@ -4,13 +4,7 @@ import withScrollAnimation from './ScrollAnimation'
 import { Border } from './Helpers'
 import useDevice from '../hooks/useDevice'
 
-const Collapsible = ({
-  children,
-  top,
-  leanMode,
-  animation,
-}) => {
-
+const Collapsible = ({ children, top, leanMode, animation }) => {
   const { desktop } = useDevice()
 
   return desktop && !leanMode ? (
@@ -18,13 +12,13 @@ const Collapsible = ({
       className={`${animation} fixed z-2 w-100 bg-base`}
       style={{
         top: top,
-        willChange: 'transform' // Better performance when animating
+        willChange: 'transform', // Better performance when animating
       }}
     >
-      { children }
+      {children}
       <Border />
     </div>
-  ):(
+  ) : (
     <Border fixed top={top} />
   )
 }
@@ -37,7 +31,7 @@ Collapsible.propTypes = {
 
 Collapsible.defaultProps = {
   top: 0,
-  leanMode: false
+  leanMode: false,
 }
 
-export  default withScrollAnimation()(Collapsible)
+export default withScrollAnimation()(Collapsible)

@@ -9,18 +9,16 @@ import header from '../store-header.css'
 import { CONSTANTS } from './Helpers'
 import useDevice from '../hooks/useDevice'
 
-const SearchBar = ({
-  autoFocus,
-  onCancel,
-  iconClasses,
-}) => {
-
+const SearchBar = ({ autoFocus, onCancel, iconClasses }) => {
   const { mobile, desktop } = useDevice()
 
-  const searchBarClassNames = classNames(`${header.topMenuSearchBar} flex pa2-m flex-grow-1`, {
-    'justify-between': mobile,
-    'justify-center': desktop
-  })
+  const searchBarClassNames = classNames(
+    `${header.topMenuSearchBar} flex pa2-m flex-grow-1`,
+    {
+      'justify-between': mobile,
+      'justify-center': desktop,
+    }
+  )
 
   const cancelClassNames = classNames(`${iconClasses} ttl`)
 
@@ -29,8 +27,10 @@ const SearchBar = ({
       <div className="w-75">
         <Adopt
           mapper={{
-            placeholder: <FormattedMessage id='header.search-placeholder' />,
-            emptyPlaceholder: <FormattedMessage id='header.search-emptyPlaceholder' />,
+            placeholder: <FormattedMessage id="header.search-placeholder" />,
+            emptyPlaceholder: (
+              <FormattedMessage id="header.search-emptyPlaceholder" />
+            ),
           }}
         >
           {({ placeholder, emptyPlaceholder }) => (
@@ -45,10 +45,12 @@ const SearchBar = ({
           )}
         </Adopt>
       </div>
-      { mobile && (
+      {mobile && (
         <div className="w-25 pa2-m pt2-s">
           <Button size="small" variation="tertiary" onClick={onCancel}>
-            <span className={cancelClassNames}><FormattedMessage id="header.search-cancel" /></span>
+            <span className={cancelClassNames}>
+              <FormattedMessage id="header.search-cancel" />
+            </span>
           </Button>
         </div>
       )}
@@ -59,11 +61,11 @@ const SearchBar = ({
 SearchBar.propTypes = {
   onCancel: PropTypes.func,
   autoFocus: PropTypes.bool,
-  iconClasses: PropTypes.string 
+  iconClasses: PropTypes.string,
 }
 
 SearchBar.defaultProps = {
-  onCancel: () => { },
+  onCancel: () => {},
   autoFocus: false,
   iconClasses: CONSTANTS.ICON.CLASS,
 }
