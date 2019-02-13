@@ -98,13 +98,21 @@ const FixedContent = ({
 }
 
 FixedContent.propTypes = {
+  /** If it is leanMode */
   leanMode: PropTypes.bool,
-  logoUrl: PropTypes.string,
+  /** Address opened when the user clicks the logo */
   linkUrl: PropTypes.string,
+  /** URL of the logo image */
+  logoUrl: PropTypes.string,
+  /** Alt text for the logo */
   logoTitle: PropTypes.string,
+  /** Sets whether the search bar is visible or not */
   showSearchBar: PropTypes.bool,
+  /** Sets whether the login button is displayed or not*/
   showLogin: PropTypes.bool,
+  /** Classes for icons */
   iconClasses: PropTypes.string,
+  /** If it needs to show border bottom */
   showBorder: PropTypes.bool,
 }
 
