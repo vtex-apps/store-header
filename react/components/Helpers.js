@@ -28,17 +28,11 @@ export const CONSTANTS = {
     ON_SCROLL_UP: 'slideInDown',
   },
   SPACER: {
-    MOBILE: 64,
-    DESKTOP: 128,
-  },
-  COLLAPSIBLE: {
-    TOP: 64,
+    MOBILE: 96,
+    DESKTOP: 160,
   },
   RESIZE_BREAKPOINTS: {
     MOBILE: 640,
-  },
-  EXTRA_HEADERS: {
-    HEIGHT: 32,
   },
 }
 
@@ -53,7 +47,7 @@ export const Spacer = ({ height = 0, width = 0, index = 1 }) => (
 )
 
 export const Border = ({ fixed, top }) => {
-  const borderClassNames = classNames(`bb bw1 b--muted-4 `, {
+  const borderClassNames = classNames(`bb bw1 b--muted-4 relative`, {
     'fixed top-0 left-0 w-100 z-2': fixed,
   })
 

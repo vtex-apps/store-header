@@ -9,17 +9,16 @@ const Collapsible = ({ children, top, leanMode, animation }) => {
 
   return desktop && !leanMode ? (
     <div
-      className={`${animation} fixed z-2 w-100 bg-base`}
+      className={`${animation} relative bg-base`}
       style={{
-        top: top,
+        zIndex: -1, // Animate under fixed content
         willChange: 'transform', // Better performance when animating
       }}
     >
       {children}
-      <Border />
     </div>
   ) : (
-    <Border fixed top={top} />
+    <Border />
   )
 }
 

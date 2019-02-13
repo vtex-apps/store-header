@@ -22,17 +22,11 @@ const FixedContent = ({
   showSearchBar,
   showLogin,
   iconClasses,
-  hasExtraHeaders,
 }) => {
   const [mobileSearchActive, toggleSearch] = useState(false)
   const { mobile, desktop } = useDevice()
   const containerClassNames = classNames(
-    `${
-      header.topMenuContainer
-    } flex justify-center w-100 bg-base left-0 z-3 fixed h3`,
-    {
-      'top-2': hasExtraHeaders,
-    }
+    `${header.topMenuContainer} flex justify-center bg-base h3`
   )
 
   return (
@@ -105,7 +99,6 @@ FixedContent.propTypes = {
   showSearchBar: PropTypes.bool,
   showLogin: PropTypes.bool,
   iconClasses: PropTypes.string,
-  hasExtraHeaders: PropTypes.bool,
 }
 
 FixedContent.defaultProps = {
@@ -116,7 +109,6 @@ FixedContent.defaultProps = {
   showSearchBar: true,
   showLogin: true,
   iconClasses: CONSTANTS.ICON.CLASS,
-  hasExtraHeaders: true,
 }
 
 export default FixedContent
