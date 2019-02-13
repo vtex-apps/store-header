@@ -1,79 +1,86 @@
-import React, { Component } from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
-
+import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import TopMenu from './components/TopMenu'
-
 import header from './store-header.css'
+import { Spacer } from './components/Helpers'
+import useDevice from './hooks/useDevice'
+import { CONSTANTS } from './components/Helpers'
 
-class Header extends Component {
-  static propTypes = {
-    /** Address opened when the user clicks the logo */
-    linkUrl: PropTypes.string,
-    /** URL of the logo image */
-    logoUrl: PropTypes.string,
-    /** Alt text for the logo */
-    logoTitle: PropTypes.string,
-    /** Cases in which the menu is in lean mode */
-    leanWhen: PropTypes.string,
-    /** Sets whether the search bar is visible or not */
-    showSearchBar: PropTypes.bool,
-    /** Sets whether the login button is displayed or not*/
-    showLogin: PropTypes.bool,
-    /** Used to receive runtime context */
-    runtime: PropTypes.shape({
-      page: PropTypes.string,
-    }),
+const Header = ({
+  leanWhen,
+  linkUrl,
+  logoUrl,
+  logoTitle,
+  showSearchBar,
+  showLogin,
+}) => {
+  const { page } = useRuntime()
+  const { desktop } = useDevice()
+
+  const topMenuOptions = {
+    linkUrl,
+    logoUrl,
+    logoTitle,
+    showSearchBar,
+    showLogin,
   }
 
-  /** Determines an unmatching regex for default behavior of the leanMode */
-  static defaultProps = {
-    leanWhen: 'a^',
-    linkUrl: '/',
-  }
+  const spacerHeight = desktop
+    ? CONSTANTS.SPACER.DESKTOP
+    : CONSTANTS.SPACER.MOBILE
 
-  isLeanMode = () => {
-    const {
-      leanWhen,
-      runtime: { page },
-    } = this.props
+  const isLeanMode = () => {
     const acceptedPaths = new RegExp(leanWhen)
     return acceptedPaths.test(page)
   }
 
-  render() {
-    const { logoUrl, logoTitle, showSearchBar, showLogin, linkUrl } = this.props
-
-    const leanMode = this.isLeanMode()
-
-    const topMenuOptions = {
-      linkUrl,
-      logoUrl,
-      logoTitle,
-      showSearchBar,
-      showLogin,
-    }
-
-    return (
+  return (
+    <Fragment>
       <div
-        className={`${header.container} z-2 ${
-          leanMode ? `${header.leanMode}` : ''
+        className={`${header.container} fixed top-0 z-4 w-100 ${
+          isLeanMode() ? `${header.leanMode}` : ''
         }`}
       >
         <TopMenu
           {...topMenuOptions}
-          leanMode={leanMode}
+          leanMode={isLeanMode()}
           extraHeaders={
-            <ExtensionPoint id="telemarketing" />
-            // TODO: either add support or remove menu-link
-            // <div className="z-2 items-center w-100 top-0 bg-base tl">
-            //   <ExtensionPoint id="menu-link" />
-            // </div>
+            <div
+              className="left-0 w-100"
+              style={{
+                transform: 'translateZ(0)', //Avoid shaking
+              }}
+            >
+              <ExtensionPoint id="telemarketing" />
+              <ExtensionPoint id="menu-link" />
+            </div>
           }
         />
       </div>
-    )
-  }
+      <Spacer height={spacerHeight} />
+    </Fragment>
+  )
+}
+
+Header.propTypes = {
+  /** Address opened when the user clicks the logo */
+  linkUrl: PropTypes.string,
+  /** URL of the logo image */
+  logoUrl: PropTypes.string,
+  /** Alt text for the logo */
+  logoTitle: PropTypes.string,
+  /** Cases in which the menu is in lean mode */
+  leanWhen: PropTypes.string,
+  /** Sets whether the search bar is visible or not */
+  showSearchBar: PropTypes.bool,
+  /** Sets whether the login button is displayed or not*/
+  showLogin: PropTypes.bool,
+}
+
+Header.defaultProps = {
+  leanWhen: 'a^',
+  linkUrl: '/',
 }
 
 Header.schema = {
@@ -107,4 +114,4 @@ Header.schema = {
   },
 }
 
-export default withRuntimeContext(Header)
+export default Header

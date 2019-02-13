@@ -24,6 +24,7 @@ const withScrollAnimation = (
       animation: '',
       lastScrollPos: 0,
       trigger: false,
+      didAnimate: false,
     }
 
     componentDidMount() {
@@ -46,12 +47,14 @@ const withScrollAnimation = (
         this.setState({
           animation: this.reverseAnimation,
           lastScrollPos: scroll,
+          didAnimate: false,
         })
 
       scrollingDown &&
         this.setState({
           animation: this.animation,
           lastScrollPos: scroll,
+          didAnimate: true,
         })
     }
 
@@ -64,7 +67,11 @@ const withScrollAnimation = (
 
     render() {
       return (
-        <WrappedComponent {...this.props} animation={this.state.animation} />
+        <WrappedComponent
+          {...this.props}
+          animation={this.state.animation}
+          didAnimate={this.state.didAnimate}
+        />
       )
     }
   }

@@ -22,16 +22,14 @@ const FixedContent = ({
   showSearchBar,
   showLogin,
   iconClasses,
-  hasExtraHeaders,
+  showBorder,
 }) => {
   const [mobileSearchActive, toggleSearch] = useState(false)
   const { mobile, desktop } = useDevice()
   const containerClassNames = classNames(
-    `${
-      header.topMenuContainer
-    } flex justify-center w-100 bg-base left-0 z-3 fixed h3`,
+    `${header.topMenuContainer} flex justify-center bg-base h3 bb bw0 b--white`,
     {
-      'top-2': hasExtraHeaders,
+      'bb bw1 b--muted-4': showBorder,
     }
   )
 
@@ -40,6 +38,8 @@ const FixedContent = ({
       className={containerClassNames}
       style={{
         transform: 'translateZ(0)', //Avoid shaking
+        transition: 'all 500ms cubic-bezier(0.99, 0.26, 1, 1) 0ms',
+        willChange: 'border-bottom',
       }}
     >
       <div
@@ -98,14 +98,22 @@ const FixedContent = ({
 }
 
 FixedContent.propTypes = {
+  /** If it is leanMode */
   leanMode: PropTypes.bool,
-  logoUrl: PropTypes.string,
+  /** Address opened when the user clicks the logo */
   linkUrl: PropTypes.string,
+  /** URL of the logo image */
+  logoUrl: PropTypes.string,
+  /** Alt text for the logo */
   logoTitle: PropTypes.string,
+  /** Sets whether the search bar is visible or not */
   showSearchBar: PropTypes.bool,
+  /** Sets whether the login button is displayed or not*/
   showLogin: PropTypes.bool,
+  /** Classes for icons */
   iconClasses: PropTypes.string,
-  hasExtraHeaders: PropTypes.bool,
+  /** If it needs to show border bottom */
+  showBorder: PropTypes.bool,
 }
 
 FixedContent.defaultProps = {
@@ -116,7 +124,7 @@ FixedContent.defaultProps = {
   showSearchBar: true,
   showLogin: true,
   iconClasses: CONSTANTS.ICON.CLASS,
-  hasExtraHeaders: true,
+  showBorder: false,
 }
 
 export default FixedContent

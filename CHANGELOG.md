@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.9.2] - 2019-02-13
+### Changed
+- `Header` as a functional component and using useRuntime hook.
+- Support for `menu-link`.
+- Better support for extra headers.
+
 ## [2.9.1] - 2019-02-13
 ### Fixed
 - Adjust top distance when extra headers do not exist.

@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
-import { Border, Spacer, CONSTANTS } from './Helpers'
+import { Border } from './Helpers'
 import useDevice from '../hooks/useDevice'
 
 const TopMenu = ({
@@ -15,25 +15,11 @@ const TopMenu = ({
   showLogin,
   showSearchBar,
 }) => {
+  const [didAnimate, onAnimate] = useState(false)
   const { desktop } = useDevice()
-  const hasExtraHeaders = !!extraHeaders
-  const distanceIncrement = hasExtraHeaders ? CONSTANTS.EXTRA_HEADERS.HEIGHT : 0
-
-  const topDistance = CONSTANTS.COLLAPSIBLE.TOP + distanceIncrement
-  const spacerHeight = desktop
-    ? CONSTANTS.SPACER.DESKTOP + distanceIncrement
-    : CONSTANTS.SPACER.MOBILE + distanceIncrement
-
   return (
     <Fragment>
-      <div
-        className="fixed top-0 left-0 w-100 z-4 h2"
-        style={{
-          transform: 'translateZ(0)', //Avoid shaking
-        }}
-      >
-        {extraHeaders}
-      </div>
+      {extraHeaders}
 
       <FixedContent
         leanMode={leanMode}
@@ -42,22 +28,18 @@ const TopMenu = ({
         logoTitle={logoTitle}
         showSearchBar={showSearchBar}
         showLogin={showLogin}
-        hasExtraHeaders={hasExtraHeaders}
+        showBorder={didAnimate && desktop}
       />
 
-      <Border fixed top={topDistance} />
-
-      <Collapsible top={topDistance} leanMode={leanMode}>
+      <Collapsible leanMode={leanMode} onAnimate={onAnimate}>
         <ExtensionPoint id="category-menu" />
       </Collapsible>
-
-      <Spacer height={spacerHeight} />
     </Fragment>
   )
 }
 
 TopMenu.propTypes = {
-  extraHeaders: PropTypes.node,
+  extraHeaders: PropTypes.element,
   linkUrl: PropTypes.string,
   logoUrl: PropTypes.string,
   logoTitle: PropTypes.string,
