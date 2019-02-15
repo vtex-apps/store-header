@@ -2,8 +2,7 @@
 
 ## Description
 
-The VTEX Header app is a store component that ..., and this app is used by store theme.
-\*Header is a canonical component that any VTEX app can import.
+The VTEX Header app is a store component that ..., and is used by store theme.
 
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
@@ -60,7 +59,7 @@ Now, select the desired blocks, for example:
 
 ### Blocks API
 
-When implementing this app as a block, various inner blocks may be available. The following interface lists the available blocks within minicart and describes if they are required or optional.
+When implementing apps as a block various inner blocks may be available. The following interface lists the available blocks within `header` and describes if they are required or optional.
 
 ```json
 "header": {
@@ -97,7 +96,11 @@ When implementing this app as a block, various inner blocks may be available. Th
 }
 ```
 
-The minicart has as a required block the `product-summary`. So, any minicart block implementation created must add a product-summary as a block that is inside of minicart. (Similarly, `product-summary` has its own inner block structure that can be configured. There is a link to its API in the next section.)
+It's essential to remark that, the `header` has the default and `full` versions defined as blocks by **`header`** and **`header.full`** respectively.
+
+The **`header.full`** has `telemarketing`, `logo`, `minicart`, `login`, `category-menu` and `search-bar` as required inner-blocks, meanwhile **`header`** only requires `telemarketing` and `logo`. The `menu-link` and `theme` blocks are optional in both versions.
+
+Note that every `header` implementation must append all required blocks within its version. Similarly, each inner block has its own configurable structure. There is a link to its API in the next section.
 
 #### Configuration
 
