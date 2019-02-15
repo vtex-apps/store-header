@@ -2,7 +2,7 @@
 
 ## Description
 
-The VTEX Header app is a store component that ..., and is used by store theme.
+TODO:: The VTEX Header app is a store component that ..., and is used by store theme.
 
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
@@ -104,20 +104,18 @@ Note that every `header` implementation must append all required blocks within i
 
 #### Configuration
 
-Through the Storefront, you can change the minicart's behavior and interface. However, you also can make in your theme app, as Store theme does.
+Through the Storefront, you can change the headers's behavior and interface. However, you also can make in your theme app, as Store theme does.
 
-| Prop name                   | Type      | Description                                          | Default value        |
-| --------------------------- | --------- | ---------------------------------------------------- | -------------------- |
-| `type`                      | `String`  | Define Minicart mode. (values: 'popup' or 'sidebar') | popup                |
-| `showRemoveButton`          | `Boolean` | Shows the remove button in each item                 | true                 |
-| `showDiscount`              | `Boolean` | Shows the total discount of your cart                | true                 |
-| `showSku`                   | `Boolean` | Shows the SKU name of the item                       | true                 |
-| `labelMiniCartEmpty`        | `String`  | Text that is displayed when the cart is empty        | `Your cart is empty` |
-| `labelButtonFinishShopping` | `String`  | Text displayed in the finish shopping button         | `Go to checkout`     |
-| `enableQuantitySelector`    | `Boolean` | Enable the quantity selector component               | false                |
-| `maxQuantity`               | `String`  | Define the maximum quantity of an item in cart       | 10                   |
+| Prop name       | Type      | Description                                       | Default value |
+| --------------- | --------- | ------------------------------------------------- | ------------- |
+| `leanWhen`      | `String`  | Cases in which the menu is in lean mode           | 'a^'          |
+| `linkUrl`       | `String`  | Address opened when the user clicks the logo      | '/'           |
+| `logoUrl`       | `String`  | URL of the logo image                             | ''            |
+| `logoTitle`     | `String`  | Alt text for the logo                             | ''            |
+| `showSearchBar` | `Boolean` | Sets whether the search bar is visible or not     | true          |
+| `showLogin`     | `Boolean` | Sets whether the login button is displayed or not | true          |
 
-Also, you can configure the product summary that is defined on minicart. See [here](https://github.com/vtex-apps/product-summary/blob/master/README.md#configuration) the Product Summary API.
+Also, you can configure the product summary that is defined on header. See [here](https://github.com/vtex-apps/product-summary/blob/master/README.md#configuration) the Product Summary API.
 
 ### Styles API
 
@@ -133,7 +131,7 @@ To use this CSS API, you must add the `styles` builder and create an app styling
   }
 ```
 
-2. Create a file called `vtex.minicart.css` inside the `styles/css` folder. Add your custom styles:
+2. Create a file called `vtex.header.css` inside the `styles/css` folder. Add your custom styles:
 
 ```css
 .container {
