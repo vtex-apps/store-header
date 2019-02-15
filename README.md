@@ -113,7 +113,7 @@ Through the Storefront, you can change the headers's behavior and interface. How
 | `showSearchBar` | `Boolean` | Sets whether the search bar is visible or not     | true          |
 | `showLogin`     | `Boolean` | Sets whether the login button is displayed or not | true          |
 
-Also, you can configure the product summary that is defined on header. See [here](https://github.com/vtex-apps/product-summary/blob/master/README.md#configuration) the Product Summary API.
+Also, you can configure the blocks [telemarketing](https://github.com/vtex-apps/telemarketing), [logo](https://github.com/vtex-apps/store-components/blob/master/react/components/Logo/README.md), [login](https://github.com/vtex-apps/login), [category-menu](https://github.com/vtex-apps/category-menu), [search-bar](https://github.com/vtex-apps/store-components/blob/master/react/components/SearchBar/README.md) and [menu-link](https://github.com/vtex-apps/menu) defined on header.
 
 ### Styles API
 
