@@ -139,24 +139,17 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 #### CSS namespaces
 
-Below, we describe the namespaces that are defined in the minicart.
+Below, we describe the namespaces that are defined in the header.
 
-| Class name        | Description                                                  | Component Source                                        |
-| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------- |
-| `container`       | The main container of minicart                               | [index](/react/index.js)                                |
-| `label`           | Minicart icon label                                          | [index](/react/index.js)                                |
-| `badge`           | Minicart badge with the product quantity on it               | [index](/react/index.js)                                |
-| `arrowUp`         | Popup box arrow                                              | [Popup](/react/components/Popup.js)                     |
-| `box`             | The main container of the popup                              | [Popup](/react/components/Popup.js)                     |
-| `sidebarHeader`   | Minicart sidebar header container                            | [Sidebar](/react/components/Sidebar.js)                 |
-| `sidebar`         | Minicart sidebar main container                              | [Sidebar](/react/components/Sidebar.js)                 |
-| `sidebarOpen`     | Active when the sidebar is opened                            | [Sidebar](/react/components/Sidebar.js)                 |
-| `content`         | The container for the Minicart contents                      | [MinicartContent](/react/components/MinicartContent.js) |
-| `contentSmall`    | The container for the minicart contents when on desktop size | [MinicartContent](/react/components/MinicartContent.js) |
-| `contentLarge`    | The container for the minicart contents when on mobile size  | [MinicartContent](/react/components/MinicartContent.js) |
-| `contentDiscount` | The total discount on the minicart footer                    | [MinicartFooter](/react/components/MinicartFooter.js)   |
-| `contentPrice`    | Total price of the products on the minicart footer           | [MinicartFooter](/react/components/MinicartFooter.js)   |
-| `contentFooter`   | The minicart footer main container                           | [MinicartFooter](/react/components/MinicartFooter.js)   |
+| Class name           | Description                                     | Component Source                            |
+| -------------------- | ----------------------------------------------- | ------------------------------------------- |
+| `container`          | The main container of header                    | [index](/react/index.js)                    |
+| `leanMode`           | The main container of header on lean mode       | [index](/react/index.js)                    |
+| `topMenuContainer`   | The container of `fixed` top menu               | [index](/react/components/FixedContent.js)  |
+| `topMenuLogo`        | The container of logo in `fixed` top menu       | [Popup](/react/components/Logo.js)          |
+| `topMenuSearchBar`   | The container of search bar in `fixed` top menu | [Popup](/react/components/SearchBar.js)     |
+| `topMenuIcons`       | The container of icons on `fixed` top menu      | [Sidebar](/react/components/Icons.js)       |
+| `topMenuCollapsible` | The container of `collapsible` top menu         | [Sidebar](/react/components/Collapsible.js) |
 
 ## Troubleshooting
 
