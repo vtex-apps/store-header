@@ -108,8 +108,8 @@ Through the Storefront, you can change the headers's behavior and interface. How
 | --------------- | --------- | ------------------------------------------------- | ------------- |
 | `leanWhen`      | `String`  | Cases in which the menu is in lean mode           | 'a^'          |
 | `linkUrl`       | `String`  | Address opened when the user clicks the logo      | '/'           |
-| `logoUrl`       | `String`  | URL of the logo image                             | ''            |
-| `logoTitle`     | `String`  | Alt text for the logo                             | ''            |
+| `logoUrl`       | `String`  | URL of the logo image                             | -             |
+| `logoTitle`     | `String`  | Alt text for the logo                             | -             |
 | `showSearchBar` | `Boolean` | Sets whether the search bar is visible or not     | true          |
 | `showLogin`     | `Boolean` | Sets whether the login button is displayed or not | true          |
 
