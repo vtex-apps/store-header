@@ -2,7 +2,7 @@
 
 ## Description
 
-The VTEX Header app is a store component that represents a top fixed navgation bar, and is used by store theme.
+The VTEX Header app is a store component that represents a top fixed navigation bar, and is used by store theme.
 
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
@@ -27,7 +27,9 @@ See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for mor
 
 ## Usage
 
-This app uses our store builder with the blocks architecture. To know more about Store Builder [click here.](https://help.vtex.com/en/tutorial/understanding-storebuilder-and-stylesbuilder#structuring-and-configuring-our-store-with-object-object)
+This app uses our store builder with the blocks architecture. To know more about Store Builder [click here.](https://help.vtex.com/en/tutorial/understanding-storebuilder-and-stylesbuilder#structuring-and-configuring-our-store-with-object-object).
+
+We add the header as a block in our [Store](https://github.com/vtex-apps/store/blob/master/store/interfaces.json).
 
 To configure or customize this app, you need to import it in your dependencies in `manifest.json`.
 
