@@ -2,7 +2,7 @@
 
 ## Description
 
-The VTEX Header app is a store component used to display logo, minicart, search bar, telemarketing , category menu, menu link and login. This app is used by store theme.
+The VTEX Header app is a store component that represents a top fixed navgation bar, and is used by store theme.
 
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
@@ -108,8 +108,8 @@ Through the Storefront, you can change the headers's behavior and interface. How
 | --------------- | --------- | ------------------------------------------------- | ------------- |
 | `leanWhen`      | `String`  | Cases in which the menu is in lean mode           | 'a^'          |
 | `linkUrl`       | `String`  | Address opened when the user clicks the logo      | '/'           |
-| `logoUrl`       | `String`  | URL of the logo image                             | -             |
-| `logoTitle`     | `String`  | Alt text for the logo                             | -             |
+| `logoUrl`       | `String`  | URL of the logo image                             | N/A           |
+| `logoTitle`     | `String`  | Alt text for the logo                             | N/A           |
 | `showSearchBar` | `Boolean` | Sets whether the search bar is visible or not     | true          |
 | `showLogin`     | `Boolean` | Sets whether the login button is displayed or not | true          |
 
@@ -141,19 +141,19 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 Below, we describe the namespaces that are defined in the header.
 
-| Class name           | Description                                     | Component Source                            |
-| -------------------- | ----------------------------------------------- | ------------------------------------------- |
-| `container`          | The main container of header                    | [index](/react/index.js)                    |
-| `leanMode`           | The main container of header on lean mode       | [index](/react/index.js)                    |
-| `topMenuContainer`   | The container of `fixed` top menu               | [index](/react/components/FixedContent.js)  |
-| `topMenuLogo`        | The container of logo in `fixed` top menu       | [Popup](/react/components/Logo.js)          |
-| `topMenuSearchBar`   | The container of search bar in `fixed` top menu | [Popup](/react/components/SearchBar.js)     |
-| `topMenuIcons`       | The container of icons on `fixed` top menu      | [Sidebar](/react/components/Icons.js)       |
-| `topMenuCollapsible` | The container of `collapsible` top menu         | [Sidebar](/react/components/Collapsible.js) |
+| Class name           | Description                                     | Component Source                                  |
+| -------------------- | ----------------------------------------------- | ------------------------------------------------- |
+| `container`          | The main container of header                    | [index](/react/index.js)                          |
+| `leanMode`           | The main container of header on lean mode       | [index](/react/index.js)                          |
+| `topMenuContainer`   | The container of `fixed` top menu               | [FixedContent](/react/components/FixedContent.js) |
+| `topMenuLogo`        | The container of logo in `fixed` top menu       | [Logo](/react/components/Logo.js)                 |
+| `topMenuSearchBar`   | The container of search bar in `fixed` top menu | [SearchBar](/react/components/SearchBar.js)       |
+| `topMenuIcons`       | The container of icons on `fixed` top menu      | [Icons](/react/components/Icons.js)               |
+| `topMenuCollapsible` | The container of `collapsible` top menu         | [Collapsible](/react/components/Collapsible.js)   |
 
 ## Troubleshooting
 
-You can check if others are passing through similar issues [here](https://github.com/vtex-apps/minicart/issues). Also feel free to [open issues](https://github.com/vtex-apps/minicart/issues/new) or contribute with pull requests.
+You can check if others are passing through similar issues [here](https://github.com/vtex-apps/store-header/issues). Also feel free to [open issues](https://github.com/vtex-apps/store-header/issues/new) or contribute with pull requests.
 
 ## Tests
 
