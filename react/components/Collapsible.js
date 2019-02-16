@@ -1,46 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import withScrollAnimation from './ScrollAnimation'
-import { Border } from './Helpers'
+import { useSpring, animated } from 'react-spring'
 import useDevice from '../hooks/useDevice'
+import useScrollTracker from '../hooks/useScrollTracker'
+import { Border } from './Helpers'
 
 import header from '../store-header.css'
 
-const Collapsible = ({
-  children,
-  leanMode,
-  animation,
-  didAnimate,
-  onAnimate,
-}) => {
+const Collapsible = ({ children, leanMode }) => {
   const { desktop } = useDevice()
-  onAnimate(didAnimate)
+  const { scroll } = useScrollTracker()
+  const props = useSpring({ height: scroll <= 100 ? 64 : 0 })
 
   const collapsibleClassnames = classNames(
-    animation,
     header.topMenuCollapsible,
-    'relative bg-base'
+    'bg-base relative'
   )
 
   return desktop && !leanMode ? (
-    <div
+    <animated.div
       className={collapsibleClassnames}
-      style={{
-        zIndex: -1, // Animate under fixed content
-        willChange: 'transform', // Better performance when animating
-      }}
+      style={{ ...props, display: 'grid' }}
     >
       {children}
       <Border />
-    </div>
+    </animated.div>
   ) : (
     <Border />
   )
 }
 
 Collapsible.propTypes = {
-  animation: PropTypes.string.isRequired,
   leanMode: PropTypes.bool,
 }
 
@@ -48,4 +39,4 @@ Collapsible.defaultProps = {
   leanMode: false,
 }
 
-export default withScrollAnimation()(Collapsible)
+export default Collapsible

@@ -28,7 +28,6 @@ const TopMenu = ({
         logoTitle={logoTitle}
         showSearchBar={showSearchBar}
         showLogin={showLogin}
-        showBorder={didAnimate && desktop}
       />
 
       <Collapsible leanMode={leanMode} onAnimate={onAnimate}>

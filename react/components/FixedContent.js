@@ -22,15 +22,11 @@ const FixedContent = ({
   showSearchBar,
   showLogin,
   iconClasses,
-  showBorder,
 }) => {
   const [mobileSearchActive, toggleSearch] = useState(false)
   const { mobile, desktop } = useDevice()
   const containerClassNames = classNames(
-    `${header.topMenuContainer} flex justify-center bg-base h3 bb bw0 b--white`,
-    {
-      'bb bw1 b--muted-4': showBorder,
-    }
+    `${header.topMenuContainer} flex justify-center bg-base h3 bb bw0 b--white`
   )
 
   return (

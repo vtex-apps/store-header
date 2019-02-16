@@ -10,7 +10,8 @@
     "react-adopt": "^0.6.0",
     "react-dom": "^16.3.2",
     "react-intl": "^2.4.0",
-    "react-resize-detector": "^3.0.1"
+    "react-resize-detector": "^3.0.1",
+    "react-spring": "^8.0.7"
   },
   "devDependencies": {
     "enzyme": "^3.3.0",
