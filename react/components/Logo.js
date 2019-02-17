@@ -1,25 +1,24 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { ExtensionPoint, Link } from 'vtex.render-runtime'
-import { CONSTANTS } from './Helpers'
 import useDevice from '../hooks/useDevice'
+import { logo } from '../defaults'
 
 import header from '../store-header.css'
 
-const Logo = ({ link, src, title, size }) => {
+const Logo = ({ logoUrl, logoTitle, linkUrl, logoSize }) => {
   const { mobile, desktop } = useDevice()
 
   return (
     <div className={`${header.topMenuLogo} pv2 mr5`}>
-      <Link to={link} className={`outline-0 ${header.logoLink}`}>
+      <Link to={linkUrl} className={`outline-0 ${header.logoLink}`}>
         {mobile && (
           <div className="db dn-ns">
             <ExtensionPoint
               id="logo"
-              url={src}
-              title={title}
-              width={size.mobile.width}
-              height={size.mobile.height}
+              url={logoUrl}
+              title={logoTitle}
+              width={logoSize.mobile.width}
+              height={logoSize.mobile.height}
               isMobile={true}
             />
           </div>
@@ -29,10 +28,10 @@ const Logo = ({ link, src, title, size }) => {
           <div className="dn db-ns">
             <ExtensionPoint
               id="logo"
-              url={src}
-              title={title}
-              width={size.desktop.width}
-              height={size.desktop.height}
+              url={logoUrl}
+              title={logoTitle}
+              width={logoSize.desktop.width}
+              height={logoSize.desktop.height}
               isMobile={false}
             />
           </div>
@@ -43,34 +42,11 @@ const Logo = ({ link, src, title, size }) => {
 }
 
 Logo.propTypes = {
-  src: PropTypes.string.isRequired,
-  link: PropTypes.string,
-  title: PropTypes.string,
-  size: PropTypes.shape({
-    desktop: PropTypes.shape({
-      width: PropTypes.number,
-      height: PropTypes.number,
-    }),
-    mobile: PropTypes.shape({
-      width: PropTypes.number,
-      height: PropTypes.number,
-    }),
-  }),
+  ...logo.propTypes,
 }
 
 Logo.defaultProps = {
-  link: '/',
-  title: '',
-  size: {
-    desktop: {
-      width: CONSTANTS.LOGO.DESKTOP.WIDTH,
-      height: CONSTANTS.LOGO.DESKTOP.HEIGHT,
-    },
-    mobile: {
-      width: CONSTANTS.LOGO.MOBILE.WIDTH,
-      height: CONSTANTS.LOGO.MOBILE.HEIGHT,
-    },
-  },
+  ...logo.defaultProps,
 }
 
 export default Logo

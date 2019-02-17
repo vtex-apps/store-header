@@ -9,6 +9,7 @@ import { Container } from 'vtex.store-components'
 import header from '../store-header.css'
 import useDevice from '../hooks/useDevice'
 import classNames from 'classnames'
+import { logo } from '../defaults'
 
 /**
  * Component that deals with content thats always fixed on top.
@@ -22,6 +23,7 @@ const FixedContent = ({
   showSearchBar,
   showLogin,
   iconClasses,
+  logoSize,
 }) => {
   const [mobileSearchActive, toggleSearch] = useState(false)
   const { mobile, desktop } = useDevice()
@@ -69,7 +71,12 @@ const FixedContent = ({
                 />
               )}
 
-              <Logo src={logoUrl} link={linkUrl} title={logoTitle} />
+              <Logo
+                logoUrl={logoUrl}
+                logoTitle={logoTitle}
+                linkUrl={linkUrl}
+                logoSize={logoSize}
+              />
 
               {!leanMode && desktop && (
                 <div className="dn db-ns flex-grow-1">
@@ -94,12 +101,8 @@ const FixedContent = ({
 FixedContent.propTypes = {
   /** If it is leanMode */
   leanMode: PropTypes.bool,
-  /** Address opened when the user clicks the logo */
-  linkUrl: PropTypes.string,
-  /** URL of the logo image */
-  logoUrl: PropTypes.string,
-  /** Alt text for the logo */
-  logoTitle: PropTypes.string,
+  ...logo.propTypes,
+
   /** Sets whether the search bar is visible or not */
   showSearchBar: PropTypes.bool,
   /** Sets whether the login button is displayed or not*/
@@ -112,9 +115,7 @@ FixedContent.propTypes = {
 
 FixedContent.defaultProps = {
   leanMode: false,
-  logoUrl: '',
-  linkUrl: '',
-  logoTitle: '',
+  ...logo.defaultProps,
   showSearchBar: true,
   showLogin: true,
   iconClasses: CONSTANTS.ICON.CLASS,

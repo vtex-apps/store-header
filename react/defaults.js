@@ -1,5 +1,44 @@
 import PropTypes from 'prop-types'
 
+export const logo = {
+  propTypes: {
+    /** Address opened when the user clicks the logo */
+    linkUrl: PropTypes.string,
+    /** URL of the logo image */
+    logoUrl: PropTypes.string,
+    /** Alt text for the logo */
+    logoTitle: PropTypes.string,
+    /** Size of the logo */
+    logoSize: PropTypes.shape({
+      /** Size on desktop */
+      desktop: PropTypes.shape({
+        width: PropTypes.number,
+        height: PropTypes.number,
+      }),
+      /** Size on mobile */
+      mobile: PropTypes.shape({
+        width: PropTypes.number,
+        height: PropTypes.number,
+      }),
+    }),
+  },
+  defaultProps: {
+    linkUrl: '/',
+    logoUrl: '',
+    logoTitle: '',
+    logoSize: {
+      desktop: {
+        width: 132,
+        height: 40,
+      },
+      mobile: {
+        width: 90,
+        height: 40,
+      },
+    },
+  },
+}
+
 export const collapsible = {
   propTypes: {
     collapsibleAnimation: PropTypes.shape({
