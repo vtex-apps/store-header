@@ -6,6 +6,7 @@ import header from './store-header.css'
 import { Spacer } from './components/Helpers'
 import useDevice from './hooks/useDevice'
 import { CONSTANTS } from './components/Helpers'
+import { collapsible } from './defaults'
 
 const Header = ({
   leanWhen,
@@ -14,6 +15,7 @@ const Header = ({
   logoTitle,
   showSearchBar,
   showLogin,
+  collapsibleAnimation,
 }) => {
   const { page } = useRuntime()
   const { desktop } = useDevice()
@@ -24,6 +26,7 @@ const Header = ({
     logoTitle,
     showSearchBar,
     showLogin,
+    collapsibleAnimation,
   }
 
   const spacerHeight = desktop
@@ -76,11 +79,13 @@ Header.propTypes = {
   showSearchBar: PropTypes.bool,
   /** Sets whether the login button is displayed or not*/
   showLogin: PropTypes.bool,
+  ...collapsible.propTypes,
 }
 
 Header.defaultProps = {
   leanWhen: 'a^',
   linkUrl: '/',
+  ...collapsible.defaultProps,
 }
 
 Header.schema = {

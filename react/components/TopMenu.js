@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
+import { collapsible } from '../defaults'
 
 const TopMenu = ({
   extraHeaders,
@@ -12,6 +13,7 @@ const TopMenu = ({
   logoTitle,
   showLogin,
   showSearchBar,
+  collapsibleAnimation,
 }) => {
   return (
     <Fragment>
@@ -26,7 +28,10 @@ const TopMenu = ({
         showLogin={showLogin}
       />
 
-      <Collapsible leanMode={leanMode}>
+      <Collapsible
+        collapsibleAnimation={collapsibleAnimation}
+        leanMode={leanMode}
+      >
         <ExtensionPoint id="category-menu" />
       </Collapsible>
     </Fragment>
@@ -41,6 +46,7 @@ TopMenu.propTypes = {
   showSearchBar: PropTypes.bool,
   showLogin: PropTypes.bool,
   leanMode: PropTypes.bool,
+  ...collapsible.propTypes,
 }
 
 TopMenu.defaultProps = {
@@ -50,6 +56,7 @@ TopMenu.defaultProps = {
   showSearchBar: true,
   showLogin: true,
   leanMode: false,
+  ...collapsible.defaultProps,
 }
 
 export default TopMenu

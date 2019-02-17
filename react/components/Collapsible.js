@@ -5,13 +5,22 @@ import { useSpring, animated, config as springPresets } from 'react-spring'
 import useDevice from '../hooks/useDevice'
 import useScrollDirection from '../hooks/useScrollDirection'
 import { Border } from './Helpers'
+import { collapsible } from '../defaults'
 
 import header from '../store-header.css'
 
-const Collapsible = ({ children, leanMode, animate }) => {
+const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
   const { desktop } = useDevice()
   const { scroll, scrollingUp } = useScrollDirection()
-  const { onScroll, anchor, always, from, to, preset, config } = animate
+  const {
+    onScroll,
+    anchor,
+    always,
+    from,
+    to,
+    preset,
+    config,
+  } = collapsibleAnimation
 
   let animationTrigger = true
 
@@ -45,44 +54,12 @@ const Collapsible = ({ children, leanMode, animate }) => {
 
 Collapsible.propTypes = {
   leanMode: PropTypes.bool,
-  animate: PropTypes.shape({
-    onScroll: PropTypes.bool,
-    always: PropTypes.bool,
-    anchor: PropTypes.number,
-    from: PropTypes.number,
-    to: PropTypes.number,
-    preset: PropTypes.oneOf([
-      'default',
-      'gentle',
-      'wobbly',
-      'stiff',
-      'slow',
-      'molasses',
-    ]),
-    config: PropTypes.shape({
-      mass: PropTypes.number,
-      tension: PropTypes.number,
-      friction: PropTypes.number,
-      clamp: PropTypes.bool,
-      precision: PropTypes.number,
-      velocity: PropTypes.number,
-      duration: PropTypes.number,
-      easing: PropTypes.func,
-    }),
-  }),
+  ...collapsible.propTypes,
 }
 
 Collapsible.defaultProps = {
   leanMode: false,
-  animate: {
-    onScroll: true,
-    always: true,
-    anchor: 100,
-    from: 64,
-    to: 0,
-    preset: 'default',
-    config: {},
-  },
+  ...collapsible.defaultProps,
 }
 
 export default Collapsible
