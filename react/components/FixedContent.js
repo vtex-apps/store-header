@@ -34,8 +34,6 @@ const FixedContent = ({
       className={containerClassNames}
       style={{
         transform: 'translateZ(0)', //Avoid shaking
-        transition: 'all 500ms cubic-bezier(0.99, 0.26, 1, 1) 0ms',
-        willChange: 'border-bottom',
       }}
     >
       <div

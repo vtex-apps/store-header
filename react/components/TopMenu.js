@@ -1,10 +1,8 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
-import { Border } from './Helpers'
-import useDevice from '../hooks/useDevice'
 
 const TopMenu = ({
   extraHeaders,
@@ -15,8 +13,6 @@ const TopMenu = ({
   showLogin,
   showSearchBar,
 }) => {
-  const [didAnimate, onAnimate] = useState(false)
-  const { desktop } = useDevice()
   return (
     <Fragment>
       {extraHeaders}
@@ -30,7 +26,7 @@ const TopMenu = ({
         showLogin={showLogin}
       />
 
-      <Collapsible leanMode={leanMode} onAnimate={onAnimate}>
+      <Collapsible leanMode={leanMode}>
         <ExtensionPoint id="category-menu" />
       </Collapsible>
     </Fragment>
