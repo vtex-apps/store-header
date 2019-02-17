@@ -1,6 +1,9 @@
 import { useState, useLayoutEffect } from 'react'
 import useScroll from './useScroll'
 
+/**
+ * Hook that returns if the client is scrolling up or down
+ */
 const useScrollDirection = () => {
   const { scroll } = useScroll()
   const [scrollingUp, setScrollingUp] = useState(false)
