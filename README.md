@@ -106,15 +106,32 @@ Note that every `header` implementation must append all required blocks within i
 
 Through the Storefront, you can change the headers's behavior and interface. However, you also can make in your theme app, as Store theme does.
 
-| Prop name       | Type      | Description                                       | Default value                         |
-| --------------- | --------- | ------------------------------------------------- | ------------------------------------- |
-| `leanWhen`      | `String`  | Cases in which the menu is in lean mode           | 'a^'                                  |
-| `linkUrl`       | `String`  | Address opened when the user clicks the logo      | '/'                                   |
-| `logoUrl`       | `String`  | URL of the logo image                             | N/A                                   |
-| `logoTitle`     | `String`  | Alt text for the logo                             | N/A                                   |
-| `logoSize`      | `Object`  | Sizes of logo in desktop and mobile               | `desktop: { width: 132, height: 40 }` |
-| `showSearchBar` | `Boolean` | Sets whether the search bar is visible or not     | true                                  |
-| `showLogin`     | `Boolean` | Sets whether the login button is displayed or not | true                                  |
+| Prop name              | Type      | Description                                       | Default value                                                            |
+| ---------------------- | --------- | ------------------------------------------------- | ------------------------------------------------------------------------ |
+| `leanWhen`             | `String`  | Cases in which the menu is in lean mode           | 'a^'                                                                     |
+| `linkUrl`              | `String`  | Address opened when the user clicks the logo      | '/'                                                                      |
+| `logoUrl`              | `String`  | URL of the logo image                             | N/A                                                                      |
+| `logoTitle`            | `String`  | Alt text for the logo                             | N/A                                                                      |
+| `logoSize`             | `Object`  | Sizes of logo in desktop and mobile               | `desktop: { width: 132, height: 40 }, mobile: { width: 90, height: 40 }` |
+| `showSearchBar`        | `Boolean` | Sets whether the search bar is visible or not     | true                                                                     |
+| `showLogin`            | `Boolean` | Sets whether the login button is displayed or not | true                                                                     |
+| `iconClasses`          | `String`  | Classes for icons                                 | 'c-on-base'                                                              |
+| `labelClasses`         | `String`  | Classes for labels                                | 'c-on-base'                                                              |
+| `collapsibleAnimation` | `Object`  | Collapsible animation controlling                 | [Collapsible Animation](#collapsible-animation)                          |
+
+##### Collapsible Animation
+
+The Collapsible content can display animations on page scroll up or down, that can be configured through `collapsibleAnimation`, which is an object with the properties:
+
+| Prop name  | Type      | Description                                                                                       | Default value |
+| ---------- | --------- | ------------------------------------------------------------------------------------------------- | ------------- |
+| `onScroll` | `Boolean` | If should animate on scroll                                                                       | true          |
+| `always`   | `Boolean` | If should animate on every scroll up or down                                                      | true          |
+| `anchor`   | `Boolean` | Scroll value that animation starts to be active                                                   | 100           |
+| `from`     | `Boolean` | Initial height before animation                                                                   | 64            |
+| `to`       | `Boolean` | Target height after animation                                                                     | 0             |
+| `preset`   | `String`  | Animation configuration preset: [more @ react-spring](https://www.react-spring.io/docs/hooks/api) | 'default'     |
+| `config`   | `Boolean` | Animation configuration: [more @ react-spring](https://www.react-spring.io/docs/hooks/api)        | {}            |
 
 Also, you can configure the blocks [telemarketing](https://github.com/vtex-apps/telemarketing), [logo](https://github.com/vtex-apps/store-components/blob/master/react/components/Logo/README.md), [login](https://github.com/vtex-apps/login), [category-menu](https://github.com/vtex-apps/category-menu), [search-bar](https://github.com/vtex-apps/store-components/blob/master/react/components/SearchBar/README.md) and [menu-link](https://github.com/vtex-apps/menu) defined on header.
 
