@@ -120,3 +120,20 @@ export const collapsible = {
     },
   },
 }
+
+export const spacer = {
+  propTypes: {
+    /** Height on mobile mode */
+    spacerHeightMobile: PropTypes.number,
+    /** Height on desktop mode */
+    spacerHeightDesktop: PropTypes.number,
+    /** Width on mobile and desktop */
+    spacerWidth: PropTypes.number,
+  },
+
+  defaultProps: {
+    spacerHeightMobile: 96,
+    spacerHeightDesktop: 160,
+    spacerWidth: 0,
+  },
+}

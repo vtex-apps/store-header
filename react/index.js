@@ -4,8 +4,6 @@ import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import TopMenu from './components/TopMenu'
 import header from './store-header.css'
 import { Spacer } from './components/Helpers'
-import useDevice from './hooks/useDevice'
-import { CONSTANTS } from './components/constants'
 import { logo, collapsible } from './defaults'
 
 const Header = ({
@@ -18,7 +16,6 @@ const Header = ({
   collapsibleAnimation,
 }) => {
   const { page } = useRuntime()
-  const { desktop } = useDevice()
 
   const topMenuOptions = {
     linkUrl,
@@ -28,10 +25,6 @@ const Header = ({
     showLogin,
     collapsibleAnimation,
   }
-
-  const spacerHeight = desktop
-    ? CONSTANTS.SPACER.DESKTOP
-    : CONSTANTS.SPACER.MOBILE
 
   const isLeanMode = () => {
     const acceptedPaths = new RegExp(leanWhen)
@@ -61,7 +54,7 @@ const Header = ({
           }
         />
       </div>
-      <Spacer height={spacerHeight} />
+      <Spacer />
     </Fragment>
   )
 }
