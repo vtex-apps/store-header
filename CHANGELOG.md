@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Changed
 - `Collapsible` animation changed from timing to spring based.
+- Improve project structure to reuse proptypes and defaultProps declarations on multiple components.
+- Make `Icons`, `Logo`, and `Collapsible` configurable through `Header`.
 
 ### Added
 - Missing css namespaces for `Collapsible`
