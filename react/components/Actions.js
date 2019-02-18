@@ -11,7 +11,7 @@ import styles from '../store-header.css'
 /**
  * Represents the header icon buttons
  */
-const Buttons = ({
+const Actions = ({
   showSearchBar,
   leanMode,
   iconClasses,
@@ -84,7 +84,7 @@ const Buttons = ({
   )
 }
 
-Buttons.propTypes = {
+Actions.propTypes = {
   /** Callback function for search active */
   onActiveSearch: PropTypes.func,
   ...lean.propTypes,
@@ -93,7 +93,7 @@ Buttons.propTypes = {
   ...icons.propTypes,
 }
 
-Buttons.defaultProps = {
+Actions.defaultProps = {
   onActiveSearch: () => {},
   ...lean.defaultProps,
   ...login.defaultProps,
@@ -101,4 +101,4 @@ Buttons.defaultProps = {
   ...icons.defaultProps,
 }
 
-export default Buttons
+export default Actions
