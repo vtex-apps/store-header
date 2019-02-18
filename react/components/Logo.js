@@ -3,14 +3,14 @@ import { ExtensionPoint, Link } from 'vtex.render-runtime'
 import useDevice from '../hooks/useDevice'
 import { logo } from '../defaults'
 
-import header from '../store-header.css'
+import styles from '../store-header.css'
 
 const Logo = ({ logoUrl, logoTitle, linkUrl, logoSize }) => {
   const { mobile, desktop } = useDevice()
 
   return (
-    <div className={`${header.topMenuLogo} pv2 mr5`}>
-      <Link to={linkUrl} className={`outline-0 ${header.logoLink}`}>
+    <div className={`${styles.topMenuLogo} pv2 mr5`}>
+      <Link to={linkUrl} className={`outline-0 ${styles.logoLink}`}>
         {mobile && (
           <div className="db dn-ns">
             <ExtensionPoint

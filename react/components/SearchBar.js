@@ -5,15 +5,15 @@ import { Adopt } from 'react-adopt'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { Button } from 'vtex.styleguide'
 import classNames from 'classnames'
-import header from '../store-header.css'
 import { CONSTANTS } from './constants'
 import useDevice from '../hooks/useDevice'
+import styles from '../store-header.css'
 
 const SearchBar = ({ autoFocus, onCancel, iconClasses }) => {
   const { mobile, desktop } = useDevice()
 
   const searchBarClassNames = classNames(
-    `${header.topMenuSearchBar} flex pa2-m flex-grow-1`,
+    `${styles.topMenuSearchBar} flex pa2-m flex-grow-1`,
     {
       'justify-between': mobile,
       'justify-center': desktop,

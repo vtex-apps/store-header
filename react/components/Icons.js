@@ -6,7 +6,7 @@ import { IconSearch } from 'vtex.dreamstore-icons'
 import useDevice from '../hooks/useDevice'
 import { lean, icons } from '../defaults'
 
-import header from '../store-header.css'
+import styles from '../store-header.css'
 
 const Icons = ({
   showSearch,
@@ -21,7 +21,7 @@ const Icons = ({
   return (
     <div
       className={`${
-        header.topMenuIcons
+        styles.topMenuIcons
       } flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}
     >
       {mobile && (

@@ -8,7 +8,7 @@ import Icons from './Icons'
 import useDevice from '../hooks/useDevice'
 import { logo, icons, lean } from '../defaults'
 
-import header from '../store-header.css'
+import styles from '../store-header.css'
 
 /**
  * Component that deals with content thats always fixed on top.
@@ -27,7 +27,7 @@ const FixedContent = ({
   const [mobileSearchActive, toggleSearch] = useState(false)
   const { mobile, desktop } = useDevice()
   const containerClassNames = classNames(
-    `${header.topMenuContainer} flex justify-center bg-base h3 bb bw0 b--white`
+    `${styles.topMenuContainer} flex justify-center bg-base h3 bb bw0 b--white`
   )
 
   return (

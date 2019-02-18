@@ -2,9 +2,10 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import TopMenu from './components/TopMenu'
-import header from './store-header.css'
 import { Spacer } from './components/Helpers'
 import { logo, collapsible } from './defaults'
+
+import styles from './store-header.css'
 
 const Header = ({
   leanWhen,
@@ -34,8 +35,8 @@ const Header = ({
   return (
     <Fragment>
       <div
-        className={`${header.container} fixed top-0 z-4 w-100 ${
-          isLeanMode() ? `${header.leanMode}` : ''
+        className={`${styles.container} fixed top-0 z-4 w-100 ${
+          isLeanMode() ? `${styles.leanMode}` : ''
         }`}
       >
         <TopMenu

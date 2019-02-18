@@ -6,7 +6,7 @@ import useScrollDirection from '../hooks/useScrollDirection'
 import { Border } from './Helpers'
 import { collapsible, lean } from '../defaults'
 
-import header from '../store-header.css'
+import styles from '../store-header.css'
 
 const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
   const { desktop } = useDevice()
@@ -35,7 +35,7 @@ const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
   })
 
   const collapsibleClassnames = classNames(
-    header.topMenuCollapsible,
+    styles.topMenuCollapsible,
     'bg-base relative flex'
   )
 
