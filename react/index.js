@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import TopMenu from './components/TopMenu'
@@ -51,13 +52,15 @@ const Header = ({
     return acceptedPaths.test(page)
   }
 
+  const containerClasses = classNames(
+    styles.container,
+    'fixed top-0 z-4 w-100',
+    isLeanMode() ? styles.leanMode : ''
+  )
+
   return (
     <Fragment>
-      <div
-        className={`${styles.container} fixed top-0 z-4 w-100 ${
-          isLeanMode() ? `${styles.leanMode}` : ''
-        }`}
-      >
+      <div className={containerClasses}>
         <TopMenu
           {...topMenuOptions}
           leanMode={isLeanMode()}

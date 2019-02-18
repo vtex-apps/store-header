@@ -36,21 +36,23 @@ const FixedContent = ({
 }) => {
   const [mobileSearchActive, toggleSearch] = useState(false)
   const { mobile, desktop } = useDevice()
-  const containerClassNames = classNames(
+  const containerClasses = classNames(
     `${styles.topMenuContainer} flex justify-center bg-base h3 bb bw0 b--white`
+  )
+  const contentClasses = classNames(
+    'w-100 mw9 flex justify-center',
+    leanMode ? 'pv0' : 'pv6-l pv2-m'
   )
 
   return (
     <Container
-      className={containerClassNames}
+      className={containerClasses}
       style={{
         transform: 'translateZ(0)', //Avoid shaking
       }}
     >
       <div
-        className={`w-100 mw9 flex justify-center ${
-          leanMode ? 'pv0' : 'pv6-l pv2-m'
-        }`}
+        className={contentClasses}
         style={{
           /** Prevents the empty margins of this element from blocking the users clicks
            * TODO: create a tachyons class for pointer events and remove this style
