@@ -127,11 +127,11 @@ The Collapsible content can display animations on page scroll up or down, that c
 | ---------- | --------- | ------------------------------------------------------------------------------------------------- | ------------- |
 | `onScroll` | `Boolean` | If should animate on scroll                                                                       | true          |
 | `always`   | `Boolean` | If should animate on every scroll up or down                                                      | true          |
-| `anchor`   | `Boolean` | Scroll value that animation starts to be active                                                   | 100           |
-| `from`     | `Boolean` | Initial height before animation                                                                   | 64            |
-| `to`       | `Boolean` | Target height after animation                                                                     | 0             |
+| `anchor`   | `Number`  | Scroll value that animation starts to be active                                                   | 100           |
+| `from`     | `Number`  | Initial height before animation                                                                   | 64            |
+| `to`       | `Number`  | Target height after animation                                                                     | 0             |
 | `preset`   | `String`  | Animation configuration preset: [more @ react-spring](https://www.react-spring.io/docs/hooks/api) | 'default'     |
-| `config`   | `Boolean` | Animation configuration: [more @ react-spring](https://www.react-spring.io/docs/hooks/api)        | {}            |
+| `config`   | `Object`  | Animation configuration: [more @ react-spring](https://www.react-spring.io/docs/hooks/api)        | {}            |
 
 Also, you can configure the blocks [telemarketing](https://github.com/vtex-apps/telemarketing), [logo](https://github.com/vtex-apps/store-components/blob/master/react/components/Logo/README.md), [login](https://github.com/vtex-apps/login), [category-menu](https://github.com/vtex-apps/category-menu), [search-bar](https://github.com/vtex-apps/store-components/blob/master/react/components/SearchBar/README.md) and [menu-link](https://github.com/vtex-apps/menu) defined on header.
 
