@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import TopMenu from './components/TopMenu'
 import { Spacer } from './components/Helpers'
-import { logo, collapsible } from './defaults'
+import { logo, collapsible, icons, searchBar } from './defaults'
 
 import styles from './store-header.css'
 
@@ -63,16 +63,16 @@ const Header = ({
 Header.propTypes = {
   /** Cases in which the menu is in lean mode */
   leanWhen: PropTypes.string,
-  /** Sets whether the search bar is visible or not */
-  showSearchBar: PropTypes.bool,
-  /** Sets whether the login button is displayed or not*/
-  showLogin: PropTypes.bool,
+  ...searchBar.propTypes,
+  ...icons.propTypes,
   ...logo.propTypes,
   ...collapsible.propTypes,
 }
 
 Header.defaultProps = {
   leanWhen: 'a^',
+  ...searchBar.defaultProps,
+  ...icons.defaultProps,
   ...logo.defaultProps,
   ...collapsible.defaultProps,
 }

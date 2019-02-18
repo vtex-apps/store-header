@@ -4,12 +4,12 @@ import { FormattedMessage } from 'react-intl'
 import { ButtonWithIcon } from 'vtex.styleguide'
 import { IconSearch } from 'vtex.dreamstore-icons'
 import useDevice from '../hooks/useDevice'
-import { lean, icons } from '../defaults'
+import { lean, icons, searchBar } from '../defaults'
 
 import styles from '../store-header.css'
 
 const Icons = ({
-  showSearch,
+  showSearchBar,
   leanMode,
   iconClasses,
   showLogin,
@@ -26,7 +26,7 @@ const Icons = ({
     >
       {mobile && (
         <div className="flex mr3">
-          {showSearch && !leanMode && (
+          {showSearchBar && !leanMode && (
             <ButtonWithIcon
               icon={<IconSearch className={iconClasses} />}
               variation="tertiary"
@@ -82,12 +82,17 @@ const Icons = ({
 }
 
 Icons.propTypes = {
+  /** Callback function for search active */
+  onActiveSearch: PropTypes.func,
   ...lean.propTypes,
+  ...searchBar.propTypes,
   ...icons.propTypes,
 }
 
 Icons.defaultProps = {
+  onActiveSearch: () => {},
   ...lean.defaultProps,
+  ...searchBar.defaultProps,
   ...icons.defaultProps,
 }
 

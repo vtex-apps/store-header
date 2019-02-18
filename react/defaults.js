@@ -49,26 +49,29 @@ export const logo = {
   },
 }
 
-export const icons = {
+export const searchBar = {
   propTypes: {
     /** Sets whether the search bar is visible or not */
-    showSearch: PropTypes.bool,
+    showSearchBar: PropTypes.bool,
+  },
+  defaultProps: {
+    showSearchBar: true,
+  },
+}
+
+export const icons = {
+  propTypes: {
     /** Sets whether the login button is displayed or not*/
     showLogin: PropTypes.bool,
     /** Classes for icons */
     iconClasses: PropTypes.string,
     /** Classes for labels */
     labelClasses: PropTypes.string,
-    /** Callback function for search active */
-    onActiveSearch: PropTypes.func,
   },
   defaultProps: {
-    showSearch: true,
     showLogin: true,
-    leanMode: false,
     iconClasses: 'c-on-base',
     labelClasses: 'c-on-base',
-    onActiveSearch: () => {},
   },
 }
 

@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useRuntime } from 'vtex.render-runtime'
-import { CONSTANTS } from '../components/constants'
 
 /**
  * Hook that handles dynamic device change on resize
  * @param {*} mobileBreakpoint : Break point of mobile change
  */
-const useDevice = (mobileBreakpoint = CONSTANTS.RESIZE_BREAKPOINTS.MOBILE) => {
+const useDevice = (mobileBreakpoint = 640) => {
   const { hints } = useRuntime()
   const [mobile, setMobile] = useState(hints.mobile)
   const [desktop, setDesktop] = useState(hints.desktop)

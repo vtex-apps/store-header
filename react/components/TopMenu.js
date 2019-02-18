@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
-import { logo, collapsible, icons, lean } from '../defaults'
+import { logo, collapsible, icons, lean, searchBar } from '../defaults'
 
 const TopMenu = ({
   extraHeaders,
@@ -43,6 +43,7 @@ const TopMenu = ({
 TopMenu.propTypes = {
   extraHeaders: PropTypes.element,
   ...lean.propTypes,
+  ...searchBar.propTypes,
   ...logo.propTypes,
   ...icons.propTypes,
   ...collapsible.propTypes,
@@ -50,6 +51,7 @@ TopMenu.propTypes = {
 
 TopMenu.defaultProps = {
   ...lean.defaultProps,
+  ...searchBar.defaultProps,
   ...logo.defaultProps,
   ...icons.defaultProps,
   ...collapsible.defaultProps,
