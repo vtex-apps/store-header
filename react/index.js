@@ -5,7 +5,7 @@ import TopMenu from './components/TopMenu'
 import header from './store-header.css'
 import { Spacer } from './components/Helpers'
 import useDevice from './hooks/useDevice'
-import { CONSTANTS } from './components/Helpers'
+import { CONSTANTS } from './components/constants'
 import { logo, collapsible } from './defaults'
 
 const Header = ({

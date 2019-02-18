@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useRuntime } from 'vtex.render-runtime'
-import { CONSTANTS } from '../components/Helpers'
+import { CONSTANTS } from '../components/constants'
 
 /**
  * Hook that handles dynamic device change on resize

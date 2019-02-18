@@ -6,7 +6,7 @@ import { ExtensionPoint } from 'vtex.render-runtime'
 import { Button } from 'vtex.styleguide'
 import classNames from 'classnames'
 import header from '../store-header.css'
-import { CONSTANTS } from './Helpers'
+import { CONSTANTS } from './constants'
 import useDevice from '../hooks/useDevice'
 
 const SearchBar = ({ autoFocus, onCancel, iconClasses }) => {

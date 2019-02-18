@@ -9,7 +9,7 @@ import { lean, icons } from '../defaults'
 import header from '../store-header.css'
 
 const Icons = ({
-  showSearchIcon,
+  showSearch,
   leanMode,
   iconClasses,
   showLogin,
@@ -26,7 +26,7 @@ const Icons = ({
     >
       {mobile && (
         <div className="flex mr3">
-          {showSearchIcon && !leanMode && (
+          {showSearch && !leanMode && (
             <ButtonWithIcon
               icon={<IconSearch className={iconClasses} />}
               variation="tertiary"
