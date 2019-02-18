@@ -1,12 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { FormattedMessage } from 'react-intl'
 import { ButtonWithIcon } from 'vtex.styleguide'
 import { IconSearch } from 'vtex.dreamstore-icons'
-import header from '../store-header.css'
-import { CONSTANTS } from './Helpers'
 import useDevice from '../hooks/useDevice'
+import { lean, icons } from '../defaults'
+
+import header from '../store-header.css'
 
 const Icons = ({
   showSearchIcon,
@@ -82,21 +82,13 @@ const Icons = ({
 }
 
 Icons.propTypes = {
-  showSearch: PropTypes.bool,
-  showLogin: PropTypes.bool,
-  leanMode: PropTypes.bool,
-  iconClasses: PropTypes.string,
-  labelClasses: PropTypes.string,
-  onActiveSearch: PropTypes.func,
+  ...lean.propTypes,
+  ...icons.propTypes,
 }
 
 Icons.defaultProps = {
-  showSearch: true,
-  showLogin: true,
-  leanMode: false,
-  iconClasses: CONSTANTS.ICON.CLASS,
-  labelClasses: CONSTANTS.LABEL.CLASS,
-  onActiveSearch: () => {},
+  ...lean.defaultProps,
+  ...icons.defaultProps,
 }
 
 export default Icons

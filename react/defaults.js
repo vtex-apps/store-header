@@ -1,5 +1,15 @@
 import PropTypes from 'prop-types'
 
+export const lean = {
+  propTypes: {
+    /** If it is leanMode or not */
+    leanMode: PropTypes.bool,
+  },
+  defaultProps: {
+    leanMode: false,
+  },
+}
+
 export const logo = {
   propTypes: {
     /** Address opened when the user clicks the logo */
@@ -36,6 +46,29 @@ export const logo = {
         height: 40,
       },
     },
+  },
+}
+
+export const icons = {
+  propTypes: {
+    /** Sets whether the search bar is visible or not */
+    showSearch: PropTypes.bool,
+    /** Sets whether the login button is displayed or not*/
+    showLogin: PropTypes.bool,
+    /** Classes for icons */
+    iconClasses: PropTypes.string,
+    /** Classes for labels */
+    labelClasses: PropTypes.string,
+    /** Callback function for search active */
+    onActiveSearch: PropTypes.func,
+  },
+  defaultProps: {
+    showSearch: true,
+    showLogin: true,
+    leanMode: false,
+    iconClasses: 'c-on-base',
+    labelClasses: 'c-on-base',
+    onActiveSearch: () => {},
   },
 }
 

@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { useSpring, animated, config as springPresets } from 'react-spring'
 import useDevice from '../hooks/useDevice'
 import useScrollDirection from '../hooks/useScrollDirection'
 import { Border } from './Helpers'
-import { collapsible } from '../defaults'
+import { collapsible, lean } from '../defaults'
 
 import header from '../store-header.css'
 
@@ -53,12 +52,12 @@ const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
 }
 
 Collapsible.propTypes = {
-  leanMode: PropTypes.bool,
+  ...lean.propTypes,
   ...collapsible.propTypes,
 }
 
 Collapsible.defaultProps = {
-  leanMode: false,
+  ...lean.defaultProps,
   ...collapsible.defaultProps,
 }
 

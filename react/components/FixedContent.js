@@ -1,15 +1,14 @@
 import React, { Fragment, useState } from 'react'
-import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
+import { Container } from 'vtex.store-components'
+import classNames from 'classnames'
 import Logo from './Logo'
 import SearchBar from './SearchBar'
 import Icons from './Icons'
-import { CONSTANTS } from './Helpers'
-import { Container } from 'vtex.store-components'
-import header from '../store-header.css'
 import useDevice from '../hooks/useDevice'
-import classNames from 'classnames'
-import { logo } from '../defaults'
+import { logo, icons, lean } from '../defaults'
+
+import header from '../store-header.css'
 
 /**
  * Component that deals with content thats always fixed on top.
@@ -99,27 +98,15 @@ const FixedContent = ({
 }
 
 FixedContent.propTypes = {
-  /** If it is leanMode */
-  leanMode: PropTypes.bool,
+  ...lean.propTypes,
   ...logo.propTypes,
-
-  /** Sets whether the search bar is visible or not */
-  showSearchBar: PropTypes.bool,
-  /** Sets whether the login button is displayed or not*/
-  showLogin: PropTypes.bool,
-  /** Classes for icons */
-  iconClasses: PropTypes.string,
-  /** If it needs to show border bottom */
-  showBorder: PropTypes.bool,
+  ...icons.propTypes,
 }
 
 FixedContent.defaultProps = {
-  leanMode: false,
+  ...lean.defaultProps,
   ...logo.defaultProps,
-  showSearchBar: true,
-  showLogin: true,
-  iconClasses: CONSTANTS.ICON.CLASS,
-  showBorder: false,
+  ...icons.defaultProps,
 }
 
 export default FixedContent
