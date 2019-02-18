@@ -42,7 +42,7 @@ const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
 
   const collapsibleClassnames = classNames(
     styles.topMenuCollapsible,
-    'bg-base flex'
+    'bg-base flex justify-center'
   )
 
   return desktop && !leanMode ? (
