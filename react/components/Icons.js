@@ -8,12 +8,21 @@ import { lean, icons, searchBar, login } from '../defaults'
 
 import styles from '../store-header.css'
 
+/**
+ * Represents the header icon buttons
+ * @param {Boolean} showSearchBar - if should show searchbar
+ * @param {Boolean} leanMode - if it's leanMode
+ * @param {String} iconClasses - classes for icons
+ * @param {String} labelClasses - classes for labels
+ * @param {Boolean} showLogin - if should show login
+ * @param {Function} onActiveSearch - callback function when search is active
+ */
 const Icons = ({
   showSearchBar,
   leanMode,
   iconClasses,
-  showLogin,
   labelClasses,
+  showLogin,
   onActiveSearch,
 }) => {
   const { mobile, desktop } = useDevice()

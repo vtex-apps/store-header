@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 
 /**
- * Hook that returns the current scroll position
+ * Hook that handles the scroll position
+ * @returns {Number} - scroll position value
  */
 const useScroll = () => {
   const [scroll, setScroll] = useState(0)

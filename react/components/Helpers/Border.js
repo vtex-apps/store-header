@@ -1,5 +1,8 @@
 import React from 'react'
 
+/**
+ * Simple border
+ */
 const Border = () => {
   return (
     <div

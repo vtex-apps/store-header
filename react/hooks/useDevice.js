@@ -3,7 +3,8 @@ import { useRuntime } from 'vtex.render-runtime'
 
 /**
  * Hook that handles dynamic device change on resize
- * @param {*} mobileBreakpoint : Break point of mobile change
+ * @param {Number} mobileBreakpoint - break point of mobile change
+ * @returns {boolean, boolean} - if its mobile or desktop
  */
 const useDevice = (mobileBreakpoint = 640) => {
   const { hints } = useRuntime()

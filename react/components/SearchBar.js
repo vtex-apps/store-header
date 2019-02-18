@@ -10,6 +10,11 @@ import { icons } from '../defaults'
 
 import styles from '../store-header.css'
 
+/**
+ * Represents the search bar of the header
+ * @param {Function} onCancel - Callback function on cancel
+ * @param {String} iconClasses - classes for icons
+ */
 const SearchBar = ({ onCancel, iconClasses }) => {
   const { mobile, desktop } = useDevice()
 
