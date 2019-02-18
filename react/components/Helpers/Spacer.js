@@ -30,4 +30,4 @@ Spacer.defaultProps = {
   ...spacer.defaultProps,
 }
 
-export { Spacer }
+export default Spacer

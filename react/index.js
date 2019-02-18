@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import TopMenu from './components/TopMenu'
-import { Spacer } from './components/Helpers'
+import Spacer from './components/Helpers/Spacer'
 import { logo, collapsible, icons, searchBar, login } from './defaults'
 
 import styles from './store-header.css'

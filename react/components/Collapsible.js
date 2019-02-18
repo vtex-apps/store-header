@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { useSpring, animated, config as springPresets } from 'react-spring'
 import useDevice from '../hooks/useDevice'
 import useScrollDirection from '../hooks/useScrollDirection'
-import { Border } from './Helpers'
+import Border from './Helpers/Border'
 import { collapsible, lean } from '../defaults'
 
 import styles from '../store-header.css'

@@ -15,4 +15,4 @@ const Border = () => {
   )
 }
 
-export { Border }
+export default Border
