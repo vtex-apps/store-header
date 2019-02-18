@@ -34,21 +34,18 @@ const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
 
   const props = useSpring({
     config: preset ? springPresets[preset] : config,
-    height: animationTrigger ? from : to,
+    transform: animationTrigger ? `translateY(${to}rem)` : `translateY(${-from}rem)`,
   })
 
   const collapsibleClassnames = classNames(
     styles.topMenuCollapsible,
-    'bg-base flex justify-center'
+    'bg-base flex justify-center relative bb bw1 b--muted-4'
   )
 
   return desktop && !leanMode ? (
-    <Fragment>
-      <animated.div className={collapsibleClassnames} style={props}>
-        {children}
-      </animated.div>
-      <Border />
-    </Fragment>
+    <animated.div className={collapsibleClassnames} style={{ ...props, zIndex: -1 }}>
+      {children}
+    </animated.div>
   ) : (
     <Border />
   )

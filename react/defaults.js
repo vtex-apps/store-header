@@ -123,7 +123,7 @@ export const collapsible = {
       onScroll: true,
       always: true,
       anchor: 100,
-      from: 64,
+      from: 4,
       to: 0,
       preset: 'default',
       config: {},
