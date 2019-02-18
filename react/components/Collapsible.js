@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import classNames from 'classnames'
+import { NoSSR } from 'vtex.render-runtime'
 import { useSpring, animated, config as springPresets } from 'react-spring'
 import useDevice from '../hooks/useDevice'
 import useScrollDirection from '../hooks/useScrollDirection'
@@ -32,20 +33,31 @@ const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
     animationTrigger = animateWhen || elastic
   }
 
-  const props = useSpring({
-    config: preset ? springPresets[preset] : config,
-    transform: animationTrigger ? `translateY(${to}rem)` : `translateY(${-from}rem)`,
-  })
+  const props =
+    !!window.requestAnimationFrame && // Fix SSR Issues
+    useSpring({
+      config: preset ? springPresets[preset] : config,
+      transform: animationTrigger
+        ? `translate3d(0, ${to}rem, 0)`
+        : `translate3d(0, ${-from}rem, 0)`,
+    })
 
   const collapsibleClassnames = classNames(
     styles.topMenuCollapsible,
     'bg-base flex justify-center relative bb bw1 b--muted-4'
   )
 
+  const fallback = <div className={collapsibleClassnames}>{children}</div>
+
   return desktop && !leanMode ? (
-    <animated.div className={collapsibleClassnames} style={{ ...props, zIndex: -1 }}>
-      {children}
-    </animated.div>
+    <NoSSR onSSR={fallback}>
+      <animated.div
+        className={collapsibleClassnames}
+        style={{ ...props, zIndex: -1 }}
+      >
+        {children}
+      </animated.div>
+    </NoSSR>
   ) : (
     <Border />
   )
