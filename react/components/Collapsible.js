@@ -10,9 +10,6 @@ import styles from '../store-header.css'
 
 /**
  * Represents a collapsible part of the header
- * @param {(Array|Object)} children - collasible content
- * @param {Boolean} leanMode - if it's leanMode
- * @param {Object} collapsibleAnimation - collapsible animation controlling
  */
 const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
   const { desktop } = useDevice()

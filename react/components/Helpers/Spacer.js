@@ -4,9 +4,6 @@ import useDevice from '../../hooks/useDevice'
 
 /**
  * Spacer necessary to content due fixed Header
- * @param {Number} spacerHeightDesktop - height on desktop
- * @param {Number} spacerHeightMobile - height on mobile
- * @param {Number} spacerWidth - width on both mobile and desktop
  */
 const Spacer = ({ spacerHeightDesktop, spacerHeightMobile, spacerWidth }) => {
   const { desktop } = useDevice()

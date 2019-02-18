@@ -7,10 +7,6 @@ import styles from '../store-header.css'
 
 /**
  * Represents the header logo
- * @param {String} logoUrl - url of the logo src
- * @param {String} logoTitle - alt of the logo
- * @param {String} linkUrl - url that logo should redirect
- * @param {Object} logoSize - sizes of logo on mobile and desktop
  */
 const Logo = ({ logoUrl, logoTitle, linkUrl, logoSize }) => {
   const { mobile, desktop } = useDevice()
