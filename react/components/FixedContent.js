@@ -6,7 +6,7 @@ import Logo from './Logo'
 import SearchBar from './SearchBar'
 import Icons from './Icons'
 import useDevice from '../hooks/useDevice'
-import { logo, icons, lean, searchBar } from '../defaults'
+import { logo, icons, lean, searchBar, login } from '../defaults'
 
 import styles from '../store-header.css'
 
@@ -19,10 +19,11 @@ const FixedContent = ({
   logoUrl,
   linkUrl,
   logoTitle,
+  logoSize,
   showSearchBar,
   showLogin,
   iconClasses,
-  logoSize,
+  labelClasses,
 }) => {
   const [mobileSearchActive, toggleSearch] = useState(false)
   const { mobile, desktop } = useDevice()
@@ -58,7 +59,10 @@ const FixedContent = ({
             mobile &&
             showSearchBar && (
               <div className="flex justify-start pa2 relative w-100">
-                <SearchBar autoFocus onCancel={() => toggleSearch(false)} />
+                <SearchBar
+                  iconClasses={iconClasses}
+                  onCancel={() => toggleSearch(false)}
+                />
               </div>
             )
           ) : (
@@ -85,6 +89,8 @@ const FixedContent = ({
               )}
 
               <Icons
+                iconClasses={iconClasses}
+                labelClasses={labelClasses}
                 showSearchBar={showSearchBar}
                 leanMode={leanMode}
                 showLogin={showLogin}
@@ -100,6 +106,7 @@ const FixedContent = ({
 
 FixedContent.propTypes = {
   ...lean.propTypes,
+  ...login.propTypes,
   ...searchBar.propTypes,
   ...logo.propTypes,
   ...icons.propTypes,
@@ -107,6 +114,7 @@ FixedContent.propTypes = {
 
 FixedContent.defaultProps = {
   ...lean.defaultProps,
+  ...login.defaultProps,
   ...searchBar.defaultProps,
   ...logo.defaultProps,
   ...icons.defaultProps,

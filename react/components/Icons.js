@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl'
 import { ButtonWithIcon } from 'vtex.styleguide'
 import { IconSearch } from 'vtex.dreamstore-icons'
 import useDevice from '../hooks/useDevice'
-import { lean, icons, searchBar } from '../defaults'
+import { lean, icons, searchBar, login } from '../defaults'
 
 import styles from '../store-header.css'
 
@@ -85,6 +85,7 @@ Icons.propTypes = {
   /** Callback function for search active */
   onActiveSearch: PropTypes.func,
   ...lean.propTypes,
+  ...login.propTypes,
   ...searchBar.propTypes,
   ...icons.propTypes,
 }
@@ -92,6 +93,7 @@ Icons.propTypes = {
 Icons.defaultProps = {
   onActiveSearch: () => {},
   ...lean.defaultProps,
+  ...login.defaultProps,
   ...searchBar.defaultProps,
   ...icons.defaultProps,
 }

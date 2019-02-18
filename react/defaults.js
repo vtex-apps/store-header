@@ -59,17 +59,24 @@ export const searchBar = {
   },
 }
 
-export const icons = {
+export const login = {
   propTypes: {
     /** Sets whether the login button is displayed or not*/
     showLogin: PropTypes.bool,
+  },
+  defaultProps: {
+    showLogin: true,
+  },
+}
+
+export const icons = {
+  propTypes: {
     /** Classes for icons */
     iconClasses: PropTypes.string,
     /** Classes for labels */
     labelClasses: PropTypes.string,
   },
   defaultProps: {
-    showLogin: true,
     iconClasses: 'c-on-base',
     labelClasses: 'c-on-base',
   },

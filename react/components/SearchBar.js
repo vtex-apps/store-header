@@ -5,11 +5,12 @@ import { Adopt } from 'react-adopt'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { Button } from 'vtex.styleguide'
 import classNames from 'classnames'
-import { CONSTANTS } from './constants'
 import useDevice from '../hooks/useDevice'
+import { icons } from '../defaults'
+
 import styles from '../store-header.css'
 
-const SearchBar = ({ autoFocus, onCancel, iconClasses }) => {
+const SearchBar = ({ onCancel, iconClasses }) => {
   const { mobile, desktop } = useDevice()
 
   const searchBarClassNames = classNames(
@@ -38,7 +39,7 @@ const SearchBar = ({ autoFocus, onCancel, iconClasses }) => {
               id="search-bar"
               placeholder={placeholder}
               emptyPlaceholder={emptyPlaceholder}
-              autoFocus={autoFocus}
+              autoFocus={mobile}
               hasIconLeft={mobile}
               iconClasses={iconClasses}
             />
@@ -59,15 +60,14 @@ const SearchBar = ({ autoFocus, onCancel, iconClasses }) => {
 }
 
 SearchBar.propTypes = {
+  /** Callback function on cancel */
   onCancel: PropTypes.func,
-  autoFocus: PropTypes.bool,
-  iconClasses: PropTypes.string,
+  ...icons.propTypes,
 }
 
 SearchBar.defaultProps = {
   onCancel: () => {},
-  autoFocus: false,
-  iconClasses: CONSTANTS.ICON.CLASS,
+  ...icons.defaultProps,
 }
 
 export default SearchBar
