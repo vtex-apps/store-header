@@ -12,9 +12,9 @@ const useScroll = () => {
     const handleScroll = () => {
       setScroll(window.scrollY)
     }
-    const thorttled = throttle(handleScroll, 100)
-    window.addEventListener('scroll', thorttled)
-    return () => window.removeEventListener('scroll', thorttled)
+    const throttled = throttle(handleScroll, 100)
+    window.addEventListener('scroll', throttled)
+    return () => window.removeEventListener('scroll', throttled)
   }, [])
 
   return { scroll }

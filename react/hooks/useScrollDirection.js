@@ -12,7 +12,7 @@ const useScrollDirection = () => {
 
   useEffect(() => {
     setLastScroll(scroll)
-    scroll >= 1 && setScrollingUp(lastScroll > scroll)
+    setScrollingUp(lastScroll > scroll)
   }, [scroll])
 
   return { scroll, scrollingUp }
