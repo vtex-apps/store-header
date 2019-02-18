@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import throttle from 'lodash.throttle'
 
 /**
  * Hook that handles the scroll position
@@ -11,8 +12,9 @@ const useScroll = () => {
     const handleScroll = () => {
       setScroll(window.scrollY)
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const thorttled = throttle(handleScroll, 100)
+    window.addEventListener('scroll', thorttled)
+    return () => window.removeEventListener('scroll', thorttled)
   }, [])
 
   return { scroll }
