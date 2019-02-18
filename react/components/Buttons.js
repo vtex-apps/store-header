@@ -17,7 +17,7 @@ import styles from '../store-header.css'
  * @param {Boolean} showLogin - if should show login
  * @param {Function} onActiveSearch - callback function when search is active
  */
-const Icons = ({
+const Buttons = ({
   showSearchBar,
   leanMode,
   iconClasses,
@@ -90,7 +90,7 @@ const Icons = ({
   )
 }
 
-Icons.propTypes = {
+Buttons.propTypes = {
   /** Callback function for search active */
   onActiveSearch: PropTypes.func,
   ...lean.propTypes,
@@ -99,7 +99,7 @@ Icons.propTypes = {
   ...icons.propTypes,
 }
 
-Icons.defaultProps = {
+Buttons.defaultProps = {
   onActiveSearch: () => {},
   ...lean.defaultProps,
   ...login.defaultProps,
@@ -107,4 +107,4 @@ Icons.defaultProps = {
   ...icons.defaultProps,
 }
 
-export default Icons
+export default Buttons

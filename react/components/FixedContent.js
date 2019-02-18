@@ -4,7 +4,7 @@ import { Container } from 'vtex.store-components'
 import classNames from 'classnames'
 import Logo from './Logo'
 import SearchBar from './SearchBar'
-import Icons from './Icons'
+import Buttons from './Buttons'
 import useDevice from '../hooks/useDevice'
 import { logo, icons, lean, searchBar, login } from '../defaults'
 
@@ -99,7 +99,7 @@ const FixedContent = ({
                 </div>
               )}
 
-              <Icons
+              <Buttons
                 iconClasses={iconClasses}
                 labelClasses={labelClasses}
                 showSearchBar={showSearchBar}
