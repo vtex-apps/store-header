@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useRuntime } from 'vtex.render-runtime'
+import debouce from 'lodash/debounce'
 
 /**
  * Hook that handles dynamic device change on resize
  * @param {Number} mobileBreakpoint - break point of mobile change
- * @returns {boolean, boolean} - if its mobile or desktop
+ * @returns {Boolean, Boolean} - if its mobile or desktop
  */
 const useDevice = (mobileBreakpoint = 640) => {
   const { hints } = useRuntime()
@@ -16,10 +17,10 @@ const useDevice = (mobileBreakpoint = 640) => {
       setMobile(window.innerWidth <= mobileBreakpoint)
       setDesktop(window.innerWidth > mobileBreakpoint)
     }
-
-    window.addEventListener('resize', handleResize)
+    const debounced = debouce(handleResize, 100)
+    window.addEventListener('resize', debounced)
     return () => {
-      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('resize', debounced)
     }
   }, [mobileBreakpoint])
 
