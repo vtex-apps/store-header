@@ -33,7 +33,7 @@ const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
     animationTrigger = animateWhen || elastic
   }
 
-  const props =
+  const animationStyle =
     !!window.requestAnimationFrame && // Fix SSR Issues
     useSpring({
       config: preset ? springPresets[preset] : config,
@@ -53,7 +53,7 @@ const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
     <NoSSR onSSR={fallback}>
       <animated.div
         className={collapsibleClassnames}
-        style={{ ...props, zIndex: -1 }}
+        style={{ ...animationStyle, zIndex: -1 }}
       >
         {children}
       </animated.div>
