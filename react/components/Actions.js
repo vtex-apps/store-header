@@ -31,7 +31,11 @@ const Actions = ({
         <div className="flex mr3">
           {showSearchBar && !leanMode && (
             <ButtonWithIcon
-              icon={<IconSearch className={iconClasses} />}
+              icon={
+                <span className={iconClasses}>
+                  <IconSearch />
+                </span>
+              }
               variation="tertiary"
               onClick={onActiveSearch}
             />
