@@ -28,7 +28,9 @@ const FixedContent = ({
   const [mobileSearchActive, toggleSearch] = useState(false)
   const { mobile, desktop } = useDevice()
   const containerClasses = classNames(
-    `${styles.topMenuContainer} flex justify-center bg-base h3 bb bw0 b--white`
+    `${
+      styles.topMenuContainer
+    } relative flex justify-center bg-base h3 bb bw0 b--white`
   )
   const contentClasses = classNames(
     'w-100 mw9 flex justify-center',
@@ -40,6 +42,7 @@ const FixedContent = ({
       className={containerClasses}
       style={{
         transform: 'translateZ(0)', //Avoid shaking
+        zIndex: -1, // Allow popups to be on top of it
       }}
     >
       <div

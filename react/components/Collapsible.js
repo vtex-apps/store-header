@@ -53,7 +53,7 @@ const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
     <NoSSR onSSR={fallback}>
       <animated.div
         className={collapsibleClassnames}
-        style={{ ...animationStyle, zIndex: -1 }}
+        style={{ ...animationStyle, zIndex: -2 }}
       >
         {children}
       </animated.div>
