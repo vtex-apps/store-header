@@ -20,6 +20,7 @@ const TopMenu = ({
   iconClasses,
   labelClasses,
   collapsibleAnimation,
+  mobile,
 }) => {
   return (
     <Fragment>
@@ -35,11 +36,13 @@ const TopMenu = ({
         showLogin={showLogin}
         iconClasses={iconClasses}
         labelClasses={labelClasses}
+        mobile={mobile}
       />
 
       <Collapsible
         collapsibleAnimation={collapsibleAnimation}
         leanMode={leanMode}
+        mobile={mobile}
       >
         <ExtensionPoint id="category-menu" />
       </Collapsible>
@@ -48,6 +51,8 @@ const TopMenu = ({
 }
 
 TopMenu.propTypes = {
+  /** If it's mobile mode */
+  mobile: PropTypes.bool.isRequired,
   /** Very top aditional sections */
   extraHeaders: PropTypes.element,
   ...lean.propTypes,

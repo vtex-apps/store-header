@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from 'react'
 import { ExtensionPoint } from 'vtex.render-runtime'
+import PropTypes from 'prop-types'
 import { Container } from 'vtex.store-components'
 import classNames from 'classnames'
 import Logo from './Logo'
 import SearchBar from './SearchBar'
 import Actions from './Actions'
-import useDevice from '../hooks/useDevice'
 import { logo, icons, lean, searchBar, login } from '../defaults'
 
 import styles from '../store-header.css'
@@ -24,9 +24,9 @@ const FixedContent = ({
   showLogin,
   iconClasses,
   labelClasses,
+  mobile,
 }) => {
   const [mobileSearchActive, toggleSearch] = useState(false)
-  const { mobile, desktop } = useDevice()
   const containerClasses = classNames(
     `${
       styles.topMenuContainer
@@ -65,6 +65,7 @@ const FixedContent = ({
             showSearchBar && (
               <div className="flex justify-start pa2 relative w-100">
                 <SearchBar
+                  mobile={mobile}
                   iconClasses={iconClasses}
                   onCancel={() => toggleSearch(false)}
                 />
@@ -85,11 +86,12 @@ const FixedContent = ({
                 logoTitle={logoTitle}
                 linkUrl={linkUrl}
                 logoSize={logoSize}
+                mobile={mobile}
               />
 
-              {!leanMode && desktop && showSearchBar && (
+              {!leanMode && !mobile && showSearchBar && (
                 <div className="dn db-ns flex-grow-1">
-                  <SearchBar />
+                  <SearchBar mobile={mobile} />
                 </div>
               )}
 
@@ -100,6 +102,7 @@ const FixedContent = ({
                 leanMode={leanMode}
                 showLogin={showLogin}
                 onActiveSearch={() => toggleSearch(true)}
+                mobile={mobile}
               />
             </Fragment>
           )}
@@ -110,6 +113,8 @@ const FixedContent = ({
 }
 
 FixedContent.propTypes = {
+  /** If it's mobile mode */
+  mobile: PropTypes.bool.isRequired,
   ...lean.propTypes,
   ...login.propTypes,
   ...searchBar.propTypes,

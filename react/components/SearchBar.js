@@ -5,7 +5,6 @@ import { Adopt } from 'react-adopt'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { Button } from 'vtex.styleguide'
 import classNames from 'classnames'
-import useDevice from '../hooks/useDevice'
 import { icons } from '../defaults'
 
 import styles from '../store-header.css'
@@ -13,15 +12,10 @@ import styles from '../store-header.css'
 /**
  * Represents the search bar of the header
  */
-const SearchBar = ({ onCancel, iconClasses }) => {
-  const { mobile, desktop } = useDevice()
-
+const SearchBar = ({ onCancel, iconClasses, mobile }) => {
   const searchBarClassNames = classNames(
     `${styles.topMenuSearchBar} flex pa2-m flex-grow-1`,
-    {
-      'justify-between': mobile,
-      'justify-center': desktop,
-    }
+    mobile ? 'justify-between' : 'justify-center'
   )
 
   const cancelClassNames = classNames(`${iconClasses} ttl`)
@@ -63,6 +57,8 @@ const SearchBar = ({ onCancel, iconClasses }) => {
 }
 
 SearchBar.propTypes = {
+  /** If it's mobile mode */
+  mobile: PropTypes.bool.isRequired,
   /** Callback function on cancel */
   onCancel: PropTypes.func,
   ...icons.propTypes,

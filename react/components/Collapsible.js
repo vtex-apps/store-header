@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 import { NoSSR } from 'vtex.render-runtime'
+import PropTypes from 'prop-types'
 import { useSpring, animated, config as springPresets } from 'react-spring'
-import useDevice from '../hooks/useDevice'
 import useScrollDirection from '../hooks/useScrollDirection'
 import Border from './Helpers/Border'
 import { collapsible, lean } from '../defaults'
@@ -12,8 +12,7 @@ import styles from '../store-header.css'
 /**
  * Represents a collapsible part of the header
  */
-const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
-  const { desktop } = useDevice()
+const Collapsible = ({ children, leanMode, collapsibleAnimation, mobile }) => {
   const { scroll, scrollingUp } = useScrollDirection()
   const {
     onScroll,
@@ -49,7 +48,7 @@ const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
 
   const fallback = <div className={collapsibleClassnames}>{children}</div>
 
-  return desktop && !leanMode ? (
+  return !mobile && !leanMode ? (
     <NoSSR onSSR={fallback}>
       <animated.div
         className={collapsibleClassnames}
@@ -64,6 +63,8 @@ const Collapsible = ({ children, leanMode, collapsibleAnimation }) => {
 }
 
 Collapsible.propTypes = {
+  /** If it's mobile mode */
+  mobile: PropTypes.bool.isRequired,
   ...lean.propTypes,
   ...collapsible.propTypes,
 }

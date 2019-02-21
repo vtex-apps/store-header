@@ -1,9 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { FormattedMessage } from 'react-intl'
 import { ButtonWithIcon } from 'vtex.styleguide'
 import { IconSearch } from 'vtex.dreamstore-icons'
-import useDevice from '../hooks/useDevice'
 import { lean, icons, searchBar, login } from '../defaults'
 
 import styles from '../store-header.css'
@@ -18,9 +18,8 @@ const Actions = ({
   labelClasses,
   showLogin,
   onActiveSearch,
+  mobile,
 }) => {
-  const { mobile, desktop } = useDevice()
-
   return (
     <div
       className={`${
@@ -59,7 +58,7 @@ const Actions = ({
         </div>
       )}
 
-      {desktop && (
+      {!mobile && (
         <div className="flex">
           {showLogin && (
             <ExtensionPoint
@@ -89,6 +88,8 @@ const Actions = ({
 }
 
 Actions.propTypes = {
+  /** If it's mobile mode */
+  mobile: PropTypes.bool.isRequired,
   /** Callback function for search active */
   onActiveSearch: PropTypes.func,
   ...lean.propTypes,

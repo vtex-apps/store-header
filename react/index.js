@@ -7,6 +7,7 @@ import Spacer from './components/Helpers/Spacer'
 import { logo, collapsible, icons, searchBar, login } from './defaults'
 
 import styles from './store-header.css'
+import useDevice from './hooks/useDevice'
 
 /**
  * Main header component
@@ -24,6 +25,7 @@ const Header = ({
   collapsibleAnimation,
 }) => {
   const { page } = useRuntime()
+  const { mobile } = useDevice()
 
   const topMenuOptions = {
     linkUrl,
@@ -35,6 +37,7 @@ const Header = ({
     iconClasses,
     labelClasses,
     collapsibleAnimation,
+    mobile,
   }
 
   const isLeanMode = () => {
