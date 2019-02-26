@@ -83,6 +83,9 @@ const FixedContent = ({
                 </div>
               )}
 
+              {desktop && (
+                <ExtensionPoint id="user-address" variation="inline" />
+              )}
               <Icons
                 showSearchIcon={showSearchBar}
                 leanMode={leanMode}

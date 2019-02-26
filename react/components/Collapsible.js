@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import withScrollAnimation from './ScrollAnimation'
 import { Border } from './Helpers'
 import useDevice from '../hooks/useDevice'
+import { ExtensionPoint } from 'vtex.render-runtime'
 
 import header from '../store-header.css'
 
@@ -23,19 +24,26 @@ const Collapsible = ({
     'relative bg-base'
   )
 
-  return desktop && !leanMode ? (
-    <div
-      className={collapsibleClassnames}
-      style={{
-        zIndex: -1, // Animate under fixed content
-        willChange: 'transform', // Better performance when animating
-      }}
-    >
-      {children}
-      <Border />
-    </div>
-  ) : (
-    <Border />
+  return (
+    <React.Fragment>
+      {desktop && !leanMode ? (
+        <div
+          className={collapsibleClassnames}
+          style={{
+            zIndex: -1, // Animate under fixed content
+            willChange: 'transform', // Better performance when animating
+          }}
+        >
+          {children}
+          <Border />
+        </div>
+      ) : (
+        <Border />
+      )}
+      {!desktop && !leanMode && (
+        <ExtensionPoint id="user-address" variation="bar" />
+      )}
+    </React.Fragment>
   )
 }
 
