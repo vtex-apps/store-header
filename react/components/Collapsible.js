@@ -15,7 +15,7 @@ const Collapsible = ({
   didAnimate,
   onAnimate,
 }) => {
-  const { desktop } = useDevice()
+  const { desktop, mobile } = useDevice()
   onAnimate(didAnimate)
 
   const collapsibleClassnames = classNames(
@@ -40,7 +40,7 @@ const Collapsible = ({
       ) : (
         <Border />
       )}
-      {!desktop && !leanMode && (
+      {mobile && !leanMode && (
         <ExtensionPoint id="user-address" variation="bar" />
       )}
     </React.Fragment>
