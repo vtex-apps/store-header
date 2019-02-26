@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
-import { Border } from './Helpers'
 import useDevice from '../hooks/useDevice'
 
 const TopMenu = ({
