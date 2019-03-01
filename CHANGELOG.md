@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.10.2] - 2019-03-01
+
 ### Changed
 
 - `Collapsible` animation changed from timing to spring based.
