@@ -3,7 +3,7 @@
 exports[`Header Component should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="container fixed top-0 z-4 w-100 "
+    class="container fixed top-0 z-4 w-100"
   >
     <div
       class="left-0 w-100"
@@ -66,11 +66,6 @@ exports[`Header Component should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="extension-point-mock"
-          >
-            Extension point
-          </div>
-          <div
             class="topMenuIcons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns"
           >
             <div
@@ -88,22 +83,27 @@ exports[`Header Component should match snapshot 1`] = `
               </div>
             </div>
           </div>
+          <div
+            class="extension-point-mock"
+          >
+            Extension point
+          </div>
         </div>
       </div>
     </section>
     <div
-      class="topMenuCollapsible relative bg-base"
-      style="z-index: -1; will-change: transform;"
+      class="no-ssr-mock"
     >
       <div
-        class="extension-point-mock"
+        class="topMenuCollapsible bg-base flex justify-center relative bb bw1 b--muted-4"
+        style="transform: translate3d(0, 0rem, 0); z-index: -2;"
       >
-        Extension point
+        <div
+          class="extension-point-mock"
+        >
+          Extension point
+        </div>
       </div>
-      <div
-        class="bb bw1 b--muted-4"
-        style="box-sizing: content-box;"
-      />
     </div>
   </div>
   <div
