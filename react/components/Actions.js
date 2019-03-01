@@ -4,31 +4,37 @@ import { ExtensionPoint } from 'vtex.render-runtime'
 import { FormattedMessage } from 'react-intl'
 import { ButtonWithIcon } from 'vtex.styleguide'
 import { IconSearch } from 'vtex.store-icons'
-import header from '../store-header.css'
-import { CONSTANTS } from './Helpers'
-import useDevice from '../hooks/useDevice'
+import { lean, icons, searchBar, login } from '../defaults'
 
-const Icons = ({
-  showSearchIcon,
+import styles from '../store-header.css'
+
+/**
+ * Represents the header icon buttons
+ */
+const Actions = ({
+  showSearchBar,
   leanMode,
   iconClasses,
-  showLogin,
   labelClasses,
+  showLogin,
   onActiveSearch,
+  mobile,
 }) => {
-  const { mobile, desktop } = useDevice()
-
   return (
     <div
       className={`${
-        header.topMenuIcons
+        styles.topMenuIcons
       } flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns`}
     >
       {mobile && (
         <div className="flex mr3">
-          {showSearchIcon && !leanMode && (
+          {showSearchBar && !leanMode && (
             <ButtonWithIcon
-              icon={<IconSearch className={iconClasses} />}
+              icon={
+                <span className={iconClasses}>
+                  <IconSearch />
+                </span>
+              }
               variation="tertiary"
               onClick={onActiveSearch}
             />
@@ -52,7 +58,7 @@ const Icons = ({
         </div>
       )}
 
-      {desktop && (
+      {!mobile && (
         <div className="flex">
           {showLogin && (
             <ExtensionPoint
@@ -81,22 +87,23 @@ const Icons = ({
   )
 }
 
-Icons.propTypes = {
-  showSearch: PropTypes.bool,
-  showLogin: PropTypes.bool,
-  leanMode: PropTypes.bool,
-  iconClasses: PropTypes.string,
-  labelClasses: PropTypes.string,
+Actions.propTypes = {
+  /** If it's mobile mode */
+  mobile: PropTypes.bool.isRequired,
+  /** Callback function for search active */
   onActiveSearch: PropTypes.func,
+  ...lean.propTypes,
+  ...login.propTypes,
+  ...searchBar.propTypes,
+  ...icons.propTypes,
 }
 
-Icons.defaultProps = {
-  showSearch: true,
-  showLogin: true,
-  leanMode: false,
-  iconClasses: CONSTANTS.ICON.CLASS,
-  labelClasses: CONSTANTS.LABEL.CLASS,
+Actions.defaultProps = {
   onActiveSearch: () => {},
+  ...lean.defaultProps,
+  ...login.defaultProps,
+  ...searchBar.defaultProps,
+  ...icons.defaultProps,
 }
 
-export default Icons
+export default Actions

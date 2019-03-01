@@ -1971,6 +1971,11 @@ data-urls@^1.0.0:
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
+debounce@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.0.tgz#44a540abc0ea9943018dc0eaa95cce87f65cd131"
+  integrity sha512-mYtLl1xfZLi1m4RtQYlZgJUNQjl4ZxVnHzIR8nLLgi4q1YT8o/WM+MK/f8yfcc9s5Ir5zRaPZyZU6xs1Syoocg==
+
 debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -4181,6 +4186,13 @@ react-resize-detector@^3.0.1:
     prop-types "^15.6.2"
     resize-observer-polyfill "^1.5.1"
 
+react-spring@^8.0.7:
+  version "8.0.9"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.9.tgz#2cf54fe168802986940c16e42fed277d7a2ff8f6"
+  integrity sha512-ii1NhZnKifyser174wH5uJJmGQUdqxl4Fs0ilXXUjKmJbaHF1Cmxv8aabTUh2MzRQ2/tx54JBiF4GTKTinnCzw==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+
 react-testing-library@^5.9.0:
   version "5.9.0"
   resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-5.9.0.tgz#e1c8a586d2f2cbd5f0035474ca90258eef1fece6"
@@ -4850,6 +4862,11 @@ throat@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
   integrity sha1-iQN8vJLFarGJJua6TLsgDhVnKmo=
+
+throttleit@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/throttleit/-/throttleit-1.0.0.tgz#9e785836daf46743145a5984b6268d828528ac6c"
+  integrity sha1-nnhYNtr0Z0MUWlmEtiaNgoUorGw=
 
 tmpl@1.0.x:
   version "1.0.4"

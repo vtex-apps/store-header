@@ -1,51 +1,52 @@
 import React, { Fragment, useState } from 'react'
-import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
+import PropTypes from 'prop-types'
+import { Container } from 'vtex.store-components'
+import classNames from 'classnames'
 import Logo from './Logo'
 import SearchBar from './SearchBar'
-import Icons from './Icons'
-import { CONSTANTS } from './Helpers'
-import { Container } from 'vtex.store-components'
-import header from '../store-header.css'
-import useDevice from '../hooks/useDevice'
-import classNames from 'classnames'
+import Actions from './Actions'
+import { logo, icons, lean, searchBar, login } from '../defaults'
+
+import styles from '../store-header.css'
 
 /**
- * Component that deals with content thats always fixed on top.
- * Also handles the toggle between mobile search and mobile navbar.
+ * Component that deals with content thats always fixed on top
+ * Also handles the toggle between mobile search and mobile navbar
  */
 const FixedContent = ({
   leanMode,
   logoUrl,
   linkUrl,
   logoTitle,
+  logoSize,
   showSearchBar,
   showLogin,
   iconClasses,
-  showBorder,
+  labelClasses,
+  mobile,
 }) => {
   const [mobileSearchActive, toggleSearch] = useState(false)
-  const { mobile, desktop } = useDevice()
-  const containerClassNames = classNames(
-    `${header.topMenuContainer} flex justify-center bg-base h3 bb bw0 b--white`,
-    {
-      'bb bw1 b--muted-4': showBorder,
-    }
+  const containerClasses = classNames(
+    `${
+      styles.topMenuContainer
+    } relative flex justify-center bg-base h3 bb bw0 b--white`
+  )
+  const contentClasses = classNames(
+    'w-100 mw9 flex justify-center',
+    leanMode ? 'pv0' : 'pv6-l pv2-m'
   )
 
   return (
     <Container
-      className={containerClassNames}
+      className={containerClasses}
       style={{
         transform: 'translateZ(0)', //Avoid shaking
-        transition: 'all 500ms cubic-bezier(0.99, 0.26, 1, 1) 0ms',
-        willChange: 'border-bottom',
+        zIndex: -1, // Allow popups to be on top of it
       }}
     >
       <div
-        className={`w-100 mw9 flex justify-center ${
-          leanMode ? 'pv0' : 'pv6-l pv2-m'
-        }`}
+        className={contentClasses}
         style={{
           /** Prevents the empty margins of this element from blocking the users clicks
            * TODO: create a tachyons class for pointer events and remove this style
@@ -60,9 +61,14 @@ const FixedContent = ({
           }}
         >
           {mobileSearchActive ? (
-            mobile && (
+            mobile &&
+            showSearchBar && (
               <div className="flex justify-start pa2 relative w-100">
-                <SearchBar autoFocus onCancel={() => toggleSearch(false)} />
+                <SearchBar
+                  mobile={mobile}
+                  iconClasses={iconClasses}
+                  onCancel={() => toggleSearch(false)}
+                />
               </div>
             )
           ) : (
@@ -75,23 +81,34 @@ const FixedContent = ({
                 />
               )}
 
-              <Logo src={logoUrl} link={linkUrl} title={logoTitle} />
+              <Logo
+                logoUrl={logoUrl}
+                logoTitle={logoTitle}
+                linkUrl={linkUrl}
+                logoSize={logoSize}
+                mobile={mobile}
+              />
 
-              {!leanMode && desktop && (
+              {!leanMode && !mobile && showSearchBar && (
                 <div className="dn db-ns flex-grow-1">
-                  <SearchBar />
+                  <SearchBar mobile={mobile} />
                 </div>
               )}
 
-              {desktop && (
-                <ExtensionPoint id="user-address" variation="inline" />
-              )}
-              <Icons
+              <Actions
+                iconClasses={iconClasses}
+                labelClasses={labelClasses}
+                showSearchBar={showSearchBar}
                 showSearchIcon={showSearchBar}
                 leanMode={leanMode}
                 showLogin={showLogin}
                 onActiveSearch={() => toggleSearch(true)}
+                mobile={mobile}
               />
+
+              {!mobile && (
+                <ExtensionPoint id="user-address" variation="inline" />
+              )}
             </Fragment>
           )}
         </div>
@@ -101,33 +118,21 @@ const FixedContent = ({
 }
 
 FixedContent.propTypes = {
-  /** If it is leanMode */
-  leanMode: PropTypes.bool,
-  /** Address opened when the user clicks the logo */
-  linkUrl: PropTypes.string,
-  /** URL of the logo image */
-  logoUrl: PropTypes.string,
-  /** Alt text for the logo */
-  logoTitle: PropTypes.string,
-  /** Sets whether the search bar is visible or not */
-  showSearchBar: PropTypes.bool,
-  /** Sets whether the login button is displayed or not*/
-  showLogin: PropTypes.bool,
-  /** Classes for icons */
-  iconClasses: PropTypes.string,
-  /** If it needs to show border bottom */
-  showBorder: PropTypes.bool,
+  /** If it's mobile mode */
+  mobile: PropTypes.bool.isRequired,
+  ...lean.propTypes,
+  ...login.propTypes,
+  ...searchBar.propTypes,
+  ...logo.propTypes,
+  ...icons.propTypes,
 }
 
 FixedContent.defaultProps = {
-  leanMode: false,
-  logoUrl: '',
-  linkUrl: '',
-  logoTitle: '',
-  showSearchBar: true,
-  showLogin: true,
-  iconClasses: CONSTANTS.ICON.CLASS,
-  showBorder: false,
+  ...lean.defaultProps,
+  ...login.defaultProps,
+  ...searchBar.defaultProps,
+  ...logo.defaultProps,
+  ...icons.defaultProps,
 }
 
 export default FixedContent

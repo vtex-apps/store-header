@@ -1,42 +1,64 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import withScrollAnimation from './ScrollAnimation'
-import { Border } from './Helpers'
-import useDevice from '../hooks/useDevice'
-import { ExtensionPoint } from 'vtex.render-runtime'
+import { NoSSR, ExtensionPoint } from 'vtex.render-runtime'
+import PropTypes from 'prop-types'
+import { useSpring, animated, config as springPresets } from 'react-spring'
+import useScrollDirection from '../hooks/useScrollDirection'
+import Border from './Helpers/Border'
+import { collapsible, lean } from '../defaults'
 
-import header from '../store-header.css'
+import styles from '../store-header.css'
 
-const Collapsible = ({
-  children,
-  leanMode,
-  animation,
-  didAnimate,
-  onAnimate,
-}) => {
-  const { desktop, mobile } = useDevice()
-  onAnimate(didAnimate)
+/**
+ * Represents a collapsible part of the header
+ */
+const Collapsible = ({ children, leanMode, collapsibleAnimation, mobile }) => {
+  const { scroll, scrollingUp } = useScrollDirection()
+  const {
+    onScroll,
+    anchor,
+    always,
+    from,
+    to,
+    preset,
+    config,
+  } = collapsibleAnimation
+
+  let animationTrigger = true
+
+  if (onScroll) {
+    const animateWhen = scroll < anchor
+    const elastic = always ? scrollingUp : false
+    animationTrigger = animateWhen || elastic
+  }
+
+  const animationStyle =
+    !!window.requestAnimationFrame && // Fix SSR Issues
+    useSpring({
+      config: preset ? springPresets[preset] : config,
+      transform: animationTrigger
+        ? `translate3d(0, ${to}rem, 0)`
+        : `translate3d(0, ${-from}rem, 0)`,
+    })
 
   const collapsibleClassnames = classNames(
-    animation,
-    header.topMenuCollapsible,
-    'relative bg-base'
+    styles.topMenuCollapsible,
+    'bg-base flex justify-center relative bb bw1 b--muted-4'
   )
+
+  const fallback = <div className={collapsibleClassnames}>{children}</div>
 
   return (
     <React.Fragment>
-      {desktop && !leanMode ? (
-        <div
-          className={collapsibleClassnames}
-          style={{
-            zIndex: -1, // Animate under fixed content
-            willChange: 'transform', // Better performance when animating
-          }}
-        >
-          {children}
-          <Border />
-        </div>
+      {!mobile && !leanMode ? (
+        <NoSSR onSSR={fallback}>
+          <animated.div
+            className={collapsibleClassnames}
+            style={{ ...animationStyle, zIndex: -2 }}
+          >
+            {children}
+          </animated.div>
+        </NoSSR>
       ) : (
         <Border />
       )}
@@ -48,12 +70,15 @@ const Collapsible = ({
 }
 
 Collapsible.propTypes = {
-  animation: PropTypes.string.isRequired,
-  leanMode: PropTypes.bool,
+  /** If it's mobile mode */
+  mobile: PropTypes.bool.isRequired,
+  ...lean.propTypes,
+  ...collapsible.propTypes,
 }
 
 Collapsible.defaultProps = {
-  leanMode: false,
+  ...lean.defaultProps,
+  ...collapsible.defaultProps,
 }
 
-export default withScrollAnimation()(Collapsible)
+export default Collapsible

@@ -7,11 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.10.2] - 2019-03-01
+
+### Changed
+
+- `Collapsible` animation changed from timing to spring based.
+- Improve project structure to reuse proptypes and defaultProps declarations on multiple components.
+- Make `Icons`, `Logo`, and `Collapsible` configurable through `Header`.
+
 ## [2.10.1] - 2019-03-01
 
 ### Added
 
 - Add snapshot tests.
+
 ### Changed
 
 - Using `store-icons` instead of `dreamstore-icons`
@@ -293,5 +302,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.0.0] - 2018-09-18
 
 ### Added
+
+# <<<<<<< HEAD
+
+> > > > > > > master
 
 - `Header` component.

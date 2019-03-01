@@ -12,3 +12,7 @@ export const ExtensionPoint = () => (
 export const Link = ({ children }) => (
   <div className="link-mock">{children}</div>
 )
+
+export const NoSSR = ({ children }) => (
+  <div className="no-ssr-mock">{children}</div>
+)

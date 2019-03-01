@@ -1,21 +1,27 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
-import useDevice from '../hooks/useDevice'
+import { logo, collapsible, icons, lean, searchBar, login } from '../defaults'
 
+/**
+ * Top menu that contains the fixed and collapsible parts
+ */
 const TopMenu = ({
   extraHeaders,
   leanMode,
   logoUrl,
   linkUrl,
   logoTitle,
+  logoSize,
   showLogin,
   showSearchBar,
+  iconClasses,
+  labelClasses,
+  collapsibleAnimation,
+  mobile,
 }) => {
-  const [didAnimate, onAnimate] = useState(false)
-  const { desktop } = useDevice()
   return (
     <Fragment>
       {extraHeaders}
@@ -24,13 +30,20 @@ const TopMenu = ({
         leanMode={leanMode}
         logoUrl={logoUrl}
         linkUrl={linkUrl}
+        logoSize={logoSize}
         logoTitle={logoTitle}
         showSearchBar={showSearchBar}
         showLogin={showLogin}
-        showBorder={didAnimate && desktop}
+        iconClasses={iconClasses}
+        labelClasses={labelClasses}
+        mobile={mobile}
       />
 
-      <Collapsible leanMode={leanMode} onAnimate={onAnimate}>
+      <Collapsible
+        collapsibleAnimation={collapsibleAnimation}
+        leanMode={leanMode}
+        mobile={mobile}
+      >
         <ExtensionPoint id="category-menu" />
       </Collapsible>
     </Fragment>
@@ -38,22 +51,25 @@ const TopMenu = ({
 }
 
 TopMenu.propTypes = {
+  /** If it's mobile mode */
+  mobile: PropTypes.bool.isRequired,
+  /** Very top aditional sections */
   extraHeaders: PropTypes.element,
-  linkUrl: PropTypes.string,
-  logoUrl: PropTypes.string,
-  logoTitle: PropTypes.string,
-  showSearchBar: PropTypes.bool,
-  showLogin: PropTypes.bool,
-  leanMode: PropTypes.bool,
+  ...lean.propTypes,
+  ...login.propTypes,
+  ...searchBar.propTypes,
+  ...logo.propTypes,
+  ...icons.propTypes,
+  ...collapsible.propTypes,
 }
 
 TopMenu.defaultProps = {
-  linkUrl: '',
-  logoUrl: '',
-  logoTitle: '',
-  showSearchBar: true,
-  showLogin: true,
-  leanMode: false,
+  ...lean.defaultProps,
+  ...login.defaultProps,
+  ...searchBar.defaultProps,
+  ...logo.defaultProps,
+  ...icons.defaultProps,
+  ...collapsible.defaultProps,
 }
 
 export default TopMenu

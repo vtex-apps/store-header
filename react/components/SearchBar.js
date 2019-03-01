@@ -5,19 +5,17 @@ import { Adopt } from 'react-adopt'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { Button } from 'vtex.styleguide'
 import classNames from 'classnames'
-import header from '../store-header.css'
-import { CONSTANTS } from './Helpers'
-import useDevice from '../hooks/useDevice'
+import { icons } from '../defaults'
 
-const SearchBar = ({ autoFocus, onCancel, iconClasses }) => {
-  const { mobile, desktop } = useDevice()
+import styles from '../store-header.css'
 
+/**
+ * Represents the search bar of the header
+ */
+const SearchBar = ({ onCancel, iconClasses, mobile }) => {
   const searchBarClassNames = classNames(
-    `${header.topMenuSearchBar} flex pa2-m flex-grow-1`,
-    {
-      'justify-between': mobile,
-      'justify-center': desktop,
-    }
+    `${styles.topMenuSearchBar} flex pa2-m flex-grow-1`,
+    mobile ? 'justify-between' : 'justify-center'
   )
 
   const cancelClassNames = classNames(`${iconClasses} ttl`)
@@ -38,7 +36,7 @@ const SearchBar = ({ autoFocus, onCancel, iconClasses }) => {
               id="search-bar"
               placeholder={placeholder}
               emptyPlaceholder={emptyPlaceholder}
-              autoFocus={autoFocus}
+              autoFocus={mobile}
               hasIconLeft={mobile}
               iconClasses={iconClasses}
             />
@@ -59,15 +57,16 @@ const SearchBar = ({ autoFocus, onCancel, iconClasses }) => {
 }
 
 SearchBar.propTypes = {
+  /** If it's mobile mode */
+  mobile: PropTypes.bool.isRequired,
+  /** Callback function on cancel */
   onCancel: PropTypes.func,
-  autoFocus: PropTypes.bool,
-  iconClasses: PropTypes.string,
+  ...icons.propTypes,
 }
 
 SearchBar.defaultProps = {
   onCancel: () => {},
-  autoFocus: false,
-  iconClasses: CONSTANTS.ICON.CLASS,
+  ...icons.defaultProps,
 }
 
 export default SearchBar

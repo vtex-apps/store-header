@@ -1,47 +1,59 @@
 import React, { Fragment } from 'react'
+import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import TopMenu from './components/TopMenu'
-import header from './store-header.css'
-import { Spacer } from './components/Helpers'
-import useDevice from './hooks/useDevice'
-import { CONSTANTS } from './components/Helpers'
+import Spacer from './components/Helpers/Spacer'
+import { logo, collapsible, icons, searchBar, login } from './defaults'
 
+import styles from './store-header.css'
+import useDevice from './hooks/useDevice'
+
+/**
+ * Main header component
+ */
 const Header = ({
   leanWhen,
   linkUrl,
   logoUrl,
   logoTitle,
+  logoSize,
   showSearchBar,
   showLogin,
+  iconClasses,
+  labelClasses,
+  collapsibleAnimation,
 }) => {
   const { page } = useRuntime()
-  const { desktop } = useDevice()
+  const { mobile } = useDevice()
 
   const topMenuOptions = {
     linkUrl,
     logoUrl,
     logoTitle,
+    logoSize,
     showSearchBar,
     showLogin,
+    iconClasses,
+    labelClasses,
+    collapsibleAnimation,
+    mobile,
   }
-
-  const spacerHeight = desktop
-    ? CONSTANTS.SPACER.DESKTOP
-    : CONSTANTS.SPACER.MOBILE
 
   const isLeanMode = () => {
     const acceptedPaths = new RegExp(leanWhen)
     return acceptedPaths.test(page)
   }
 
+  const containerClasses = classNames(
+    styles.container,
+    'fixed top-0 z-4 w-100',
+    isLeanMode() ? styles.leanMode : ''
+  )
+
   return (
     <Fragment>
-      <div
-        className={`${header.container} fixed top-0 z-4 w-100 ${
-          isLeanMode() ? `${header.leanMode}` : ''
-        }`}
-      >
+      <div className={containerClasses}>
         <TopMenu
           {...topMenuOptions}
           leanMode={isLeanMode()}
@@ -58,29 +70,28 @@ const Header = ({
           }
         />
       </div>
-      <Spacer height={spacerHeight} />
+      <Spacer />
     </Fragment>
   )
 }
 
 Header.propTypes = {
-  /** Address opened when the user clicks the logo */
-  linkUrl: PropTypes.string,
-  /** URL of the logo image */
-  logoUrl: PropTypes.string,
-  /** Alt text for the logo */
-  logoTitle: PropTypes.string,
   /** Cases in which the menu is in lean mode */
   leanWhen: PropTypes.string,
-  /** Sets whether the search bar is visible or not */
-  showSearchBar: PropTypes.bool,
-  /** Sets whether the login button is displayed or not*/
-  showLogin: PropTypes.bool,
+  ...login.propTypes,
+  ...searchBar.propTypes,
+  ...icons.propTypes,
+  ...logo.propTypes,
+  ...collapsible.propTypes,
 }
 
 Header.defaultProps = {
   leanWhen: 'a^',
-  linkUrl: '/',
+  ...login.defaultProps,
+  ...searchBar.defaultProps,
+  ...icons.defaultProps,
+  ...logo.defaultProps,
+  ...collapsible.defaultProps,
 }
 
 Header.schema = {
