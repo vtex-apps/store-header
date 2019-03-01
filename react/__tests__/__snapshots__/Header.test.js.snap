@@ -38,13 +38,9 @@ exports[`Header Component should match snapshot 1`] = `
               class="link-mock"
             >
               <div
-                class="dn db-ns"
+                class="extension-point-mock"
               >
-                <div
-                  class="extension-point-mock"
-                >
-                  Extension point
-                </div>
+                Extension point
               </div>
             </div>
           </div>
