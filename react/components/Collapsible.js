@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import { NoSSR } from 'vtex.render-runtime'
+import { NoSSR, ExtensionPoint } from 'vtex.render-runtime'
 import PropTypes from 'prop-types'
 import { useSpring, animated, config as springPresets } from 'react-spring'
 import useScrollDirection from '../hooks/useScrollDirection'
@@ -48,17 +48,24 @@ const Collapsible = ({ children, leanMode, collapsibleAnimation, mobile }) => {
 
   const fallback = <div className={collapsibleClassnames}>{children}</div>
 
-  return !mobile && !leanMode ? (
-    <NoSSR onSSR={fallback}>
-      <animated.div
-        className={collapsibleClassnames}
-        style={{ ...animationStyle, zIndex: -2 }}
-      >
-        {children}
-      </animated.div>
-    </NoSSR>
-  ) : (
-    <Border />
+  return (
+    <React.Fragment>
+      {!mobile && !leanMode ? (
+        <NoSSR onSSR={fallback}>
+          <animated.div
+            className={collapsibleClassnames}
+            style={{ ...animationStyle, zIndex: -2 }}
+          >
+            {children}
+          </animated.div>
+        </NoSSR>
+      ) : (
+        <Border />
+      )}
+      {mobile && !leanMode && (
+        <ExtensionPoint id="user-address" variation="bar" />
+      )}
+    </React.Fragment>
   )
 }
 

@@ -178,3 +178,7 @@ You can check if others are passing through similar issues [here](https://github
 ## Tests
 
 To execute our tests go to `react/` folder and run `yarn test`
+
+### Travis CI
+
+[![Build Status](https://travis-ci.org/vtex-apps/store-header.svg?branch=master)](https://travis-ci.org/vtex-apps/store-header)

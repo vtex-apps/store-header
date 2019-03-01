@@ -99,11 +99,16 @@ const FixedContent = ({
                 iconClasses={iconClasses}
                 labelClasses={labelClasses}
                 showSearchBar={showSearchBar}
+                showSearchIcon={showSearchBar}
                 leanMode={leanMode}
                 showLogin={showLogin}
                 onActiveSearch={() => toggleSearch(true)}
                 mobile={mobile}
               />
+
+              {!mobile && (
+                <ExtensionPoint id="user-address" variation="inline" />
+              )}
             </Fragment>
           )}
         </div>
