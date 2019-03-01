@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { FormattedMessage } from 'react-intl'
 import { ButtonWithIcon } from 'vtex.styleguide'
-import { IconSearch } from 'vtex.dreamstore-icons'
+import { IconSearch } from 'vtex.store-icons'
 import { lean, icons, searchBar, login } from '../defaults'
 
 import styles from '../store-header.css'

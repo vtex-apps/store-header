@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useRuntime } from 'vtex.render-runtime'
 import { debounce } from 'debounce'
 
 /**
@@ -8,9 +7,8 @@ import { debounce } from 'debounce'
  * @returns {Boolean, Boolean} - if its mobile or desktop
  */
 const useDevice = (mobileBreakpoint = 640) => {
-  const { hints } = useRuntime()
-  const [mobile, setMobile] = useState(hints.mobile)
-  const [desktop, setDesktop] = useState(hints.desktop)
+  const [mobile, setMobile] = useState(window.innerWidth <= mobileBreakpoint)
+  const [desktop, setDesktop] = useState(window.innerWidth > mobileBreakpoint)
 
   useEffect(() => {
     const handleResize = () => {
