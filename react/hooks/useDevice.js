@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
+import { useRuntime } from 'vtex.render-runtime'
 import { debounce } from 'debounce'
 
 /**
@@ -7,10 +8,16 @@ import { debounce } from 'debounce'
  * @returns {Boolean, Boolean} - if its mobile or desktop
  */
 const useDevice = (mobileBreakpoint = 640) => {
-  const [mobile, setMobile] = useState(window.innerWidth <= mobileBreakpoint)
-  const [desktop, setDesktop] = useState(window.innerWidth > mobileBreakpoint)
+  const { hints } = useRuntime()
 
-  useEffect(() => {
+  const isMobile = !!window.innerWidth
+    ? window.innerWidth <= mobileBreakpoint
+    : hints.mobile
+
+  const [mobile, setMobile] = useState(isMobile)
+  const [desktop, setDesktop] = useState(!isMobile)
+
+  useLayoutEffect(() => {
     const handleResize = () => {
       setMobile(window.innerWidth <= mobileBreakpoint)
       setDesktop(window.innerWidth > mobileBreakpoint)
