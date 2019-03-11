@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Use useEffect instead of useLayoutEffect on `useDevice`.
+
 ## [2.10.3] - 2019-03-06
 
 ### Fixed
