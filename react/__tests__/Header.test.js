@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'test-utils.js'
+import { render } from '@vtex/test-tools/react'
 import Header from '../index'
 
 describe('Header Component', () => {
