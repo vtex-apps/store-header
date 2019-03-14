@@ -24,5 +24,8 @@
   "devDependencies": {
     "@vtex/test-tools": "^0.1.2",
     "apollo-client": "^2.5.1"
+  },
+  "vtexTestTools": {
+    "defaultLocale": "en"
   }
 }
