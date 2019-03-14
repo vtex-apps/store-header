@@ -30,7 +30,7 @@ const Header = ({
 
   useEffect(() => {
     if (document) {
-      const containerElement = document.getElementsByClassName('vtex-store-header-2-x-container')[0]
+      const containerElement = document.querySelector('.vtex-store-header-2-x-container')
       const elementHeight = containerElement && containerElement.offsetHeight
       setContainerHeight(elementHeight)
     }
