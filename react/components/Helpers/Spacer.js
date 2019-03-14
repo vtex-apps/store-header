@@ -8,7 +8,7 @@ import useDevice from '../../hooks/useDevice'
 const Spacer = ({ spacerHeightDesktop, spacerHeightMobile, spacerWidth, containerHeight }) => {
   const { desktop } = useDevice()
 
-  let height = containerHeight || (desktop ? spacerHeightDesktop : spacerHeightMobile)
+  const height = containerHeight || (desktop ? spacerHeightDesktop : spacerHeightMobile)
 
   return (
     <div
