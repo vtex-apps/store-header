@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useLayoutEffect, useState } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
@@ -26,6 +26,15 @@ const Header = ({
 }) => {
   const { page } = useRuntime()
   const { mobile } = useDevice()
+  const [containerHeight, setContainerHeight] = useState(null)
+
+  useEffect(() => {
+    if (document) {
+      const containerElement = document.querySelector('.vtex-store-header-2-x-container')
+      const elementHeight = containerElement && containerElement.offsetHeight
+      setContainerHeight(elementHeight)
+    }
+  })
 
   const topMenuOptions = {
     linkUrl,
@@ -70,7 +79,7 @@ const Header = ({
           }
         />
       </div>
-      <Spacer />
+      <Spacer containerHeight={containerHeight} />
     </Fragment>
   )
 }

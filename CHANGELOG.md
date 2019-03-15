@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Use useEffect instead of useLayoutEffect on `useDevice`.
 
+## [2.10.5] - 2019-03-14
+
+### Fixed
+- `Header` now queries DOM for its container size and pass it to `Spacer`.
+
+## [2.10.4] - 2019-03-14
+
+### Fixed
+- Remove specific variation from messages files.
+
 ## [2.10.3] - 2019-03-06
 
 ### Fixed

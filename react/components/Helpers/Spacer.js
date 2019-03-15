@@ -5,14 +5,16 @@ import useDevice from '../../hooks/useDevice'
 /**
  * Spacer necessary to content due fixed Header
  */
-const Spacer = ({ spacerHeightDesktop, spacerHeightMobile, spacerWidth }) => {
+const Spacer = ({ spacerHeightDesktop, spacerHeightMobile, spacerWidth, containerHeight }) => {
   const { desktop } = useDevice()
+
+  const height = containerHeight || (desktop ? spacerHeightDesktop : spacerHeightMobile)
 
   return (
     <div
       className="z-1 bg-base w-100 relative"
       style={{
-        height: desktop ? spacerHeightDesktop : spacerHeightMobile,
+        height,
         width: spacerWidth,
       }}
     />

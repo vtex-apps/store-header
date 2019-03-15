@@ -4,8 +4,7 @@
   "license": "ISC",
   "scripts": {
     "pretest": "yarn",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "vtex-test-tools test"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -19,37 +18,14 @@
     "react-spring": "^8.0.7",
     "throttleit": "^1.0.0"
   },
-  "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.0",
-    "babel-jest": "^24.1.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react-app": "^7.0.1",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.1.0",
-    "jest-dom": "^3.1.2",
-    "react-testing-library": "^5.9.0",
-    "regenerator-runtime": "^0.13.1"
-  },
   "vtexScriptsOverride": {
     "srcPath": "."
   },
-  "jest": {
-    "verbose": true,
-    "modulePaths": [
-      "<rootDir>/testUtils"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/testUtils/setupTests.js"
-    ],
-    "transform": {
-      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-    ],
-    "moduleNameMapper": {
-      "\\.(css|less|scss)$": "identity-obj-proxy"
-    }
+  "devDependencies": {
+    "@vtex/test-tools": "^0.1.2",
+    "apollo-client": "^2.5.1"
+  },
+  "vtexTestTools": {
+    "defaultLocale": "en"
   }
 }
