@@ -9,7 +9,6 @@ node_js:
 
 before_install:
   - cd react
-  - yarn add coveralls
 
 install:
   - yarn install
@@ -18,4 +17,4 @@ script:
   - yarn test
 
 after_success:
-  - yarn test:coverage
+  - yarn gen:coveralls
