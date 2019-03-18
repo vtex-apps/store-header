@@ -5,7 +5,7 @@
   "scripts": {
     "pretest": "yarn",
     "test": "vtex-test-tools test",
-    "test:coverage": "vtex-test-tools --collectCoverage && cat ./coverage/lcov.info | coveralls"
+    "test:coverage": "vtex-test-tools test --collectCoverage && cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "classnames": "^2.2.5",
