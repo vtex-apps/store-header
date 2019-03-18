@@ -1,5 +1,8 @@
 # VTEX Header
 
+[![Build Status](https://travis-ci.org/vtex-apps/store-header.svg?branch=master)](https://travis-ci.org/vtex-apps/store-header)
+[![Coverage Status](https://coveralls.io/repos/github/vtex-apps/store-header/badge.svg?branch=master)](https://coveralls.io/github/vtex-apps/store-header?branch=master)
+
 ## Description
 
 The VTEX Header app is a store component that represents a top fixed navigation bar, and is used by store theme.
@@ -8,10 +11,10 @@ The VTEX Header app is a store component that represents a top fixed navigation 
 
 ## Release schedule
 
-| Release | Status | Initial Release | Maintenance LTS Start | End-of-life | Store Compatibility |
-| :-----: | :----: | :-------------: | :-------------------: | :---------: | :-----------------: |
-| [2.x] | **Current Release** | 2018-11-08 | | | 2.x |
-| [1.x] | **Maintenance LTS** | 2018-09-18 | 2018-11-08 | March 2019  | 1.x |
+| Release |       Status        | Initial Release | Maintenance LTS Start | End-of-life | Store Compatibility |
+| :-----: | :-----------------: | :-------------: | :-------------------: | :---------: | :-----------------: |
+|  [2.x]  | **Current Release** |   2018-11-08    |                       |             |         2.x         |
+|  [1.x]  | **Maintenance LTS** |   2018-09-18    |      2018-11-08       | March 2019  |         1.x         |
 
 See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for more information.
 
@@ -106,32 +109,32 @@ Note that every `header` implementation must append all required blocks within i
 
 Through the Storefront, you can change the headers's behavior and interface. However, you also can make in your theme app, as Store theme does.
 
-| Prop name | Type | Description | Default value |
-| --------- | ---- | ----------- | ------------- |
-| `leanWhen` | `String` | Cases in which the menu is in lean mode | 'a^' |
-| `linkUrl` | `String` | Address opened when the user clicks the logo | '/' |
-| `logoUrl` | `String` | URL of the logo image | N/A |
-| `logoTitle` | `String` | Alt text for the logo | N/A |
-| `logoSize` | `Object` | Sizes of logo in desktop and mobile | `desktop: { width: 132, height: 40 }, mobile: { width: 90, height: 40 }` |
-| `showSearchBar` | `Boolean` | Sets whether the search bar is visible or not | true |
-| `showLogin` | `Boolean` | Sets whether the login button is displayed or not | true |
-| `iconClasses` | `String`  | Classes for icons | 'c-on-base' |
-| `labelClasses` | `String` | Classes for labels | 'c-on-base' |
-| `collapsibleAnimation` | `Object` | Collapsible animation controlling | [Collapsible Animation](#collapsible-animation) |
+| Prop name              | Type      | Description                                       | Default value                                                            |
+| ---------------------- | --------- | ------------------------------------------------- | ------------------------------------------------------------------------ |
+| `leanWhen`             | `String`  | Cases in which the menu is in lean mode           | 'a^'                                                                     |
+| `linkUrl`              | `String`  | Address opened when the user clicks the logo      | '/'                                                                      |
+| `logoUrl`              | `String`  | URL of the logo image                             | N/A                                                                      |
+| `logoTitle`            | `String`  | Alt text for the logo                             | N/A                                                                      |
+| `logoSize`             | `Object`  | Sizes of logo in desktop and mobile               | `desktop: { width: 132, height: 40 }, mobile: { width: 90, height: 40 }` |
+| `showSearchBar`        | `Boolean` | Sets whether the search bar is visible or not     | true                                                                     |
+| `showLogin`            | `Boolean` | Sets whether the login button is displayed or not | true                                                                     |
+| `iconClasses`          | `String`  | Classes for icons                                 | 'c-on-base'                                                              |
+| `labelClasses`         | `String`  | Classes for labels                                | 'c-on-base'                                                              |
+| `collapsibleAnimation` | `Object`  | Collapsible animation controlling                 | [Collapsible Animation](#collapsible-animation)                          |
 
 ##### Collapsible Animation
 
 The Collapsible content can display animations on page scroll up or down, that can be configured through `collapsibleAnimation`, which is an object with the properties:
 
-| Prop name | Type | Description | Default value |
-| --------- | ---- | ----------- | ------------- |
-| `onScroll` | `Boolean` | If should animate on scroll | true |
-| `always` | `Boolean` | If should animate on every scroll up or down | true |
-| `anchor` | `Number` | Scroll value that animation starts to be active | 100 |
-| `from` | `Number` | Initial height before animation | 64 |
-| `to` | `Number` | Target height after animation | 0 |
-| `preset` | `String` | Animation configuration preset: [more @ react-spring](https://www.react-spring.io/docs/hooks/api) | 'default' |
-| `config` | `Object` | Animation configuration: [more @ react-spring](https://www.react-spring.io/docs/hooks/api) | {} |
+| Prop name  | Type      | Description                                                                                       | Default value |
+| ---------- | --------- | ------------------------------------------------------------------------------------------------- | ------------- |
+| `onScroll` | `Boolean` | If should animate on scroll                                                                       | true          |
+| `always`   | `Boolean` | If should animate on every scroll up or down                                                      | true          |
+| `anchor`   | `Number`  | Scroll value that animation starts to be active                                                   | 100           |
+| `from`     | `Number`  | Initial height before animation                                                                   | 64            |
+| `to`       | `Number`  | Target height after animation                                                                     | 0             |
+| `preset`   | `String`  | Animation configuration preset: [more @ react-spring](https://www.react-spring.io/docs/hooks/api) | 'default'     |
+| `config`   | `Object`  | Animation configuration: [more @ react-spring](https://www.react-spring.io/docs/hooks/api)        | {}            |
 
 Also, you can configure the blocks [telemarketing](https://github.com/vtex-apps/telemarketing), [logo](https://github.com/vtex-apps/store-components/blob/master/react/components/Logo/README.md), [login](https://github.com/vtex-apps/login), [category-menu](https://github.com/vtex-apps/category-menu), [search-bar](https://github.com/vtex-apps/store-components/blob/master/react/components/SearchBar/README.md) and [menu-link](https://github.com/vtex-apps/menu) defined on header.
 
@@ -161,15 +164,15 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 Below, we describe the namespaces that are defined in the header.
 
-| Class name | Description | Component Source |
-| ---------- | ----------- | ---------------- |
-| `container` | The main container of header | [index](/react/index.js) |
-| `leanMode` | The main container of header on lean mode | [index](/react/index.js) |
-| `topMenuContainer` | The container of `fixed` top menu | [FixedContent](/react/components/FixedContent.js) |
-| `topMenuLogo` | The container of logo in `fixed` top menu | [Logo](/react/components/Logo.js) |
-| `topMenuSearchBar` | The container of search bar in `fixed` top menu | [SearchBar](/react/components/SearchBar.js) |
-| `topMenuIcons` | The container of icons on `fixed` top menu | [Icons](/react/components/Icons.js) |
-| `topMenuCollapsible` | The container of `collapsible` top menu | [Collapsible](/react/components/Collapsible.js) |
+| Class name           | Description                                     | Component Source                                  |
+| -------------------- | ----------------------------------------------- | ------------------------------------------------- |
+| `container`          | The main container of header                    | [index](/react/index.js)                          |
+| `leanMode`           | The main container of header on lean mode       | [index](/react/index.js)                          |
+| `topMenuContainer`   | The container of `fixed` top menu               | [FixedContent](/react/components/FixedContent.js) |
+| `topMenuLogo`        | The container of logo in `fixed` top menu       | [Logo](/react/components/Logo.js)                 |
+| `topMenuSearchBar`   | The container of search bar in `fixed` top menu | [SearchBar](/react/components/SearchBar.js)       |
+| `topMenuIcons`       | The container of icons on `fixed` top menu      | [Icons](/react/components/Icons.js)               |
+| `topMenuCollapsible` | The container of `collapsible` top menu         | [Collapsible](/react/components/Collapsible.js)   |
 
 ## Troubleshooting
 
