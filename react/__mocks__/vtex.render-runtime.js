@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 export const useRuntime = () => {
-  const [hints, setHints] = useState({ mobile: false, desktop: true })
-  return { hints }
+  let hints = { mobile: false, desktop: true }
+  const setHints = h => {
+    hints = h
+  }
+  const page = 'test'
+  return { hints, setHints, page }
 }
 
-export const ExtensionPoint = () => (
-  <div className="extension-point-mock">Extension point</div>
+export const ExtensionPoint = ({ id }) => (
+  <div className="extension-point-mock">{id}</div>
 )
 
 export const Link = ({ children }) => (

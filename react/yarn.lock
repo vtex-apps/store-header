@@ -953,10 +953,10 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@vtex/test-tools@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@vtex/test-tools/-/test-tools-0.1.2.tgz#915db34fe9fd54fbce01cb26654c86b66ac97bc3"
-  integrity sha512-QngU7f526dzwcXzlMU3HvIZqwRqTB+NBnoD3PvQnog33WVwCnqYE/94Y6yDdqY5DTQjhYV+c83+ZHpd4LM5sIA==
+"@vtex/test-tools@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@vtex/test-tools/-/test-tools-0.1.3.tgz#68545c7c1d74f0ab20fec861210e346e696abef4"
+  integrity sha512-nzHhhLckErCdd/mvKF7CrDE9c32iiorjsuE9sKMOxGdbUXaKAzgPq4ZQXYLMfnwXKVO8rIZto1cXau2nVkVWcA==
   dependencies:
     "@babel/core" "^7.3.4"
     "@babel/plugin-proposal-class-properties" "^7.3.4"
@@ -980,6 +980,7 @@
     jest "^24.4.0"
     jest-dom "^3.1.2"
     jest-transform-graphql "^2.1.0"
+    ramda "^0.26.1"
     react "^16.8.4"
     react-apollo "^2.5.2"
     react-dom "^16.8.4"
@@ -3572,6 +3573,11 @@ qs@~6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
+
+ramda@^0.26.1:
+  version "0.26.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
+  integrity sha512-hLWjpy7EnsDBb0p+Z3B7rPi3GDeRG5ZtiI33kJhTt+ORCd38AbAIjB/9zRIUoeTbE/AVX5ZkU7m6bznsvrf8eQ==
 
 react-adopt@^0.6.0:
   version "0.6.0"
