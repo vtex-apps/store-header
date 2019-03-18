@@ -1,8 +1,5 @@
 # VTEX Header
 
-[![Build Status](https://travis-ci.org/vtex-apps/store-header.svg?branch=master)](https://travis-ci.org/vtex-apps/store-header)
-[![Coverage Status](https://coveralls.io/repos/github/vtex-apps/store-header/badge.svg?branch=master)](https://coveralls.io/github/vtex-apps/store-header?branch=master)
-
 ## Description
 
 The VTEX Header app is a store component that represents a top fixed navigation bar, and is used by store theme.
@@ -185,3 +182,4 @@ To execute our tests go to `react/` folder and run `yarn test`
 ### Travis CI
 
 [![Build Status](https://travis-ci.org/vtex-apps/store-header.svg?branch=master)](https://travis-ci.org/vtex-apps/store-header)
+[![Coverage Status](https://coveralls.io/repos/github/vtex-apps/store-header/badge.svg?branch=master)](https://coveralls.io/github/vtex-apps/store-header?branch=master)
