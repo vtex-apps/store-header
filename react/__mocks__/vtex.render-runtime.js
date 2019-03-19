@@ -6,7 +6,8 @@ export const useRuntime = () => {
     hints = h
   }
   const page = 'test'
-  return { hints, setHints, page }
+  const getSettings = () => ({ storeName: 'Store Name' })
+  return { hints, setHints, page, getSettings }
 }
 
 export const ExtensionPoint = ({ id }) => (

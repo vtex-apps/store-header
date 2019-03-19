@@ -35,7 +35,6 @@ export const logo = {
   defaultProps: {
     linkUrl: '/',
     logoUrl: '',
-    logoTitle: '',
     logoSize: {
       desktop: {
         width: 132,
