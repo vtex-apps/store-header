@@ -8,7 +8,7 @@
       "search-bar",
       "theme",
       "user-address",
-      "vtex.future-menu@0.x:menu"
+      "menu"
     ],
     "required": [
       "telemarketing",
@@ -21,7 +21,7 @@
       "menu-link",
       "theme",
       "user-address",
-      "vtex.future-menu@0.x:menu",
+      "menu",
       "category-menu"
     ],
     "required": [
