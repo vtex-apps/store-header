@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { ExtensionPoint } from 'vtex.render-runtime'
+import { ExtensionPoint, useChildBlock__unstable } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
 import { logo, collapsible, icons, lean, searchBar, login } from '../defaults'
@@ -22,6 +22,8 @@ const TopMenu = ({
   collapsibleAnimation,
   mobile,
 }) => {
+  const hasMenu = useChildBlock__unstable('menu')
+
   return (
     <Fragment>
       {extraHeaders}
@@ -44,9 +46,16 @@ const TopMenu = ({
         leanMode={leanMode}
         mobile={mobile}
       >
-        <div className="flex flex-grow-1"></div>
-        <ExtensionPoint id="menu" />
-        <div className="flex flex-grow-1"></div>
+        {hasMenu
+          ? (
+            <Fragment>
+              <div className="flex flex-grow-1"></div>
+              <ExtensionPoint id="menu" />
+              <div className="flex flex-grow-1"></div>
+            </Fragment>
+          )
+          : <ExtensionPoint id="category-menu" />
+        }
       </Collapsible>
     </Fragment>
   )
