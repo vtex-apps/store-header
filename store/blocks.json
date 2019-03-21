@@ -12,7 +12,8 @@
       "minicart",
       "login",
       "category-menu",
-      "search-bar"
+      "search-bar",
+      "vtex.future-menu@0.x:menu"
     ]
   }
 }
