@@ -45,7 +45,7 @@ const TopMenu = ({
         mobile={mobile}
       >
         <div className="flex flex-grow-1"></div>
-        <ExtensionPoint id="vtex.future-menu@0.x:menu" />
+        <ExtensionPoint id="menu" />
         <div className="flex flex-grow-1"></div>
       </Collapsible>
     </Fragment>

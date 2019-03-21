@@ -13,7 +13,7 @@
       "login",
       "category-menu",
       "search-bar",
-      "vtex.future-menu@0.x:menu"
+      "menu"
     ]
   }
 }
