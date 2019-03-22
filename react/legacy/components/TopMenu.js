@@ -22,7 +22,7 @@ const TopMenu = ({
   collapsibleAnimation,
   mobile,
 }) => {
-  const hasMenu = useChildBlock__unstable('menu')
+  const hasMenu = !!useChildBlock__unstable({id: 'menu'})
 
   return (
     <Fragment>
