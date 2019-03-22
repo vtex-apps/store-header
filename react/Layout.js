@@ -1,9 +1,3 @@
-import React from 'react'
-
-const Layout = ({ children }) => (
-  <React.Fragment>
-    {children}
-  </React.Fragment>
-)
+import Layout from './components/Layout'
 
 export default Layout

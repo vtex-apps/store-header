@@ -1,5 +1,3 @@
-import React from "react"
-
-const Spacer = () => <div className="flex flex-grow-1" />
+import Spacer from './components/Spacer'
 
 export default Spacer
