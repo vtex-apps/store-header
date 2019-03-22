@@ -8,30 +8,54 @@
       "search-bar",
       "theme",
       "user-address",
-      "menu"
-    ],
-    "required": [
+      "menu",
       "telemarketing",
-      "logo"
+      "logo",
+      "header-desktop",
+      "header-mobile"
     ],
     "component": "index"
   },
-  "header.full": {
+  "header.full": {},
+  "header-desktop": {
     "allowed": [
       "menu-link",
       "theme",
       "user-address",
       "menu",
-      "category-menu"
+      "category-menu",
+      "header-row"
     ],
-    "required": [
+    "component": "Layout",
+    "unstable__layoutMode": "dynamic"
+  },
+  "header-mobile": {
+    "allowed": [
+      "header-row"
+    ],
+    "component": "Layout",
+    "unstable__layoutMode": "dynamic"
+  },
+  "_": {
+    "component": "Spacer"
+  },
+  "header-row": {
+    "allowed": [
       "telemarketing",
       "logo",
       "minicart",
       "login",
-      "search-bar"
+      "search-bar",
+      "menu-link",
+      "category-menu",
+      "search-bar",
+      "theme",
+      "user-address",
+      "menu",
+      "_"
     ],
-    "component": "index"
+    "component": "Row",
+    "unstable__layoutMode": "dynamic"
   },
   "theme": {}
 }
