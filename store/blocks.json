@@ -12,8 +12,7 @@
       "minicart",
       "login",
       "category-menu",
-      "search-bar",
-      "menu"
+      "search-bar"
     ]
   },
   "header-desktop": {
@@ -45,7 +44,6 @@
   },
   "header-row#3desktop": {
     "children": [
-      "logo",
       "category-menu"
     ]
   },
