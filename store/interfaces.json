@@ -57,5 +57,8 @@
     "component": "Row",
     "unstable__layoutMode": "dynamic"
   },
+  "unstable--header-border": {
+    "component": "Border"
+  },
   "theme": {}
 }
