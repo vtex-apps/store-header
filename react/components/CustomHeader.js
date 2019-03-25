@@ -7,9 +7,9 @@ const CustomHeader = () => {
 
   if (!window || !window.matchMedia) {
     return mobile ? (
-      <ExtensionPoint id="header-mobile" />
+      <ExtensionPoint id="unstable--header-layout.mobile" />
     ) : (
-      <ExtensionPoint id="header-desktop" />
+      <ExtensionPoint id="unstable--header-layout.desktop" />
     )
   }
 
@@ -17,9 +17,9 @@ const CustomHeader = () => {
     <React.Fragment>
       <Media query="(max-width:40rem)">
         {matches => matches ? (
-          <ExtensionPoint id="header-mobile" />
+          <ExtensionPoint id="unstable--header-layout.mobile" />
         ) : (
-          <ExtensionPoint id="header-desktop" />
+          <ExtensionPoint id="unstable--header-layout.desktop" />
         )}
       </Media>
     </React.Fragment>
