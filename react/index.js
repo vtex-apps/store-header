@@ -24,13 +24,16 @@ const Header = ({
   labelClasses,
   collapsibleAnimation,
 }) => {
-  const { page } = useRuntime()
+  const { page, getSettings } = useRuntime()
   const { mobile } = useDevice()
   const [containerHeight, setContainerHeight] = useState(null)
+  const { storeName } = getSettings('vtex.store')
 
   useEffect(() => {
     if (document) {
-      const containerElement = document.querySelector('.vtex-store-header-2-x-container')
+      const containerElement = document.querySelector(
+        '.vtex-store-header-2-x-container'
+      )
       const elementHeight = containerElement && containerElement.offsetHeight
       setContainerHeight(elementHeight)
     }
@@ -39,7 +42,7 @@ const Header = ({
   const topMenuOptions = {
     linkUrl,
     logoUrl,
-    logoTitle,
+    logoTitle: logoTitle || storeName || '',
     logoSize,
     showSearchBar,
     showLogin,
