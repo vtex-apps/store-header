@@ -25,7 +25,7 @@
       "unstable--header-border"
     ],
     "component": "Layout",
-    "unstable__layoutMode": "dynamic"
+    "composition": "children"
   },
   "unstable--header-layout.desktop": {},
   "unstable--header-layout.mobile": {},
@@ -50,7 +50,7 @@
       "_"
     ],
     "component": "Row",
-    "unstable__layoutMode": "dynamic"
+    "composition": "children"
   },
   "unstable--header-border": {
     "component": "Border"
