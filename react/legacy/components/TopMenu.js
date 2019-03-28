@@ -4,6 +4,7 @@ import { ExtensionPoint, useChildBlock__unstable } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
 import { logo, collapsible, icons, lean, searchBar, login } from '../defaults'
+import styles from '../store-header.css'
 
 /**
  * Top menu that contains the fixed and collapsible parts
@@ -48,11 +49,11 @@ const TopMenu = ({
       >
         {hasMenu
           ? (
-            <Fragment>
+            <div className={styles.topMenuCompatibilityContainer}>
               <div className="flex flex-grow-1"></div>
               <ExtensionPoint id="unstable--menu" />
               <div className="flex flex-grow-1"></div>
-            </Fragment>
+            </div>
           )
           : <ExtensionPoint id="category-menu" />
         }
