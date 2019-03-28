@@ -3,33 +3,57 @@
     "allowed": [
       "minicart",
       "login",
-      "menu-link",
       "category-menu",
       "search-bar",
       "theme",
-      "user-address"
-    ],
-    "required": [
+      "user-address",
+      "unstable--menu",
+      "menu-link",
       "telemarketing",
-      "logo"
+      "logo",
+      "unstable--header-layout.desktop",
+      "unstable--header-layout.mobile",
+      "unstable--header-layout.desktopScroll",
+      "unstable--header-layout.mobileScroll"
     ],
     "component": "index"
   },
-  "header.full": {
+  "header.full": {},
+  "unstable--header-layout": {
     "allowed": [
-      "menu-link",
-      "theme",
-      "user-address"
+      "unstable--header-row",
+      "unstable--header-border"
     ],
-    "required": [
+    "component": "Layout",
+    "composition": "children"
+  },
+  "unstable--header-layout.desktop": {},
+  "unstable--header-layout.mobile": {},
+  "unstable--header-layout.desktopScroll": {},
+  "unstable--header-layout.mobileScroll": {},
+  "_": {
+    "component": "Spacer"
+  },
+  "unstable--header-row": {
+    "allowed": [
       "telemarketing",
       "logo",
       "minicart",
       "login",
+      "search-bar",
+      "menu-link",
       "category-menu",
-      "search-bar"
+      "unstable--menu",
+      "search-bar",
+      "theme",
+      "user-address",
+      "_"
     ],
-    "component": "index"
+    "component": "Row",
+    "composition": "children"
+  },
+  "unstable--header-border": {
+    "component": "Border"
   },
   "theme": {}
 }

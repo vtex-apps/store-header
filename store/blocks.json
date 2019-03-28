@@ -14,5 +14,65 @@
       "category-menu",
       "search-bar"
     ]
+  },
+  "unstable--header-layout.desktop": {
+    "children": [
+      "unstable--header-row#1desktop",
+      "unstable--header-row#2desktop",
+      "unstable--header-row#3desktop"
+    ]
+  },
+  "unstable--header-row#1desktop": {
+    "children": [
+      "telemarketing"
+    ],
+    "props": {
+      "fullWidth": true
+    }
+  },
+  "unstable--header-row#2desktop": {
+    "children": [
+      "_",
+      "search-bar",
+      "_",
+      "login",
+      "minicart"
+    ],
+    "props": {
+      "sticky": true
+    }
+  },
+  "unstable--header-row#3desktop": {
+    "children": [
+      "category-menu"
+    ]
+  },
+  "unstable--header-layout.mobile": {
+    "children": [
+      "unstable--header-row#1mobile",
+      "unstable--header-row#2mobile",
+      "unstable--header-row#3mobile"
+    ]
+  },
+  "unstable--header-row#1mobile": {
+    "children": [
+      "telemarketing"
+    ],
+    "props": {
+      "fullWidth": true
+    }
+  },
+  "unstable--header-row#2mobile": {
+    "children": [
+      "logo",
+      "search-bar",
+      "login",
+      "minicart"
+    ]
+  },
+  "unstable--header-row#3mobile": {
+    "children": [
+      "category-menu"
+    ]
   }
 }

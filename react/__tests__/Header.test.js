@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@vtex/test-tools/react'
 import { useRuntime } from 'vtex.render-runtime'
-import Header from '../index'
+import Header from '../legacy/index'
 
 describe('Header Component', () => {
   beforeEach(() => {

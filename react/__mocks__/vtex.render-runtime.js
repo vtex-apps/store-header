@@ -10,6 +10,10 @@ export const useRuntime = () => {
   return { hints, setHints, page, getSettings }
 }
 
+export const useChildBlock__unstable = ({ id }) => {
+  return null
+}
+
 export const ExtensionPoint = ({ id }) => (
   <div className="extension-point-mock">{id}</div>
 )
