@@ -24,8 +24,10 @@ const useDevice = (mobileBreakpoint = 640) => {
     }
     const debounced = debounce(handleResize, 100)
     window.addEventListener('resize', debounced)
+    window.addEventListener('load', handleResize)
     return () => {
       window.removeEventListener('resize', debounced)
+      window.removeEventListener('load', handleResize)
     }
   }, [mobileBreakpoint])
 
