@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useLayoutEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
@@ -83,7 +83,6 @@ const Header = ({
         />
       </div>
       <Spacer containerHeight={containerHeight} />
-      {/* <ExtensionPoint id="header-custom" /> */}
     </Fragment>
   )
 }
