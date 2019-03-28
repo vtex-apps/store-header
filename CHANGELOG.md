@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - All previously required blocks are now simply allowed.
 
+## Fixed
+- Fixed bug on legacy header where it would be in desktop mode on mobile devices.
+
 ## [2.10.6] - 2019-03-26
 
 ### Fixed
