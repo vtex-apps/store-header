@@ -50,7 +50,7 @@ const TopMenu = ({
           ? (
             <Fragment>
               <div className="flex flex-grow-1"></div>
-              <ExtensionPoint id="menu" />
+              <ExtensionPoint id="unstable--menu" />
               <div className="flex flex-grow-1"></div>
             </Fragment>
           )
