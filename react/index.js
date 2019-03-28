@@ -16,4 +16,9 @@ const Header = props => {
   )
 }
 
+Header.schema = {
+  title: 'editor.header.title',
+  description: 'editor.header.description',
+}
+
 export default Header
