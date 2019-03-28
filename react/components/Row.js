@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import { Container } from 'vtex.store-components'
 
 const Row = ({ children, fullWidth, sticky, inverted }) => {
@@ -10,7 +11,7 @@ const Row = ({ children, fullWidth, sticky, inverted }) => {
 
   return (
     <div
-      className={`w-100 top-0 ${sticky ? 'z-999' : '' } ${inverted ? 'bg-base--inverted c-on-base--inverted' : 'bg-base c-on-base'}`}
+      className={classNames('w-100 top-0', inverted ? 'bg-base--inverted c-on-base--inverted' : 'bg-base c-on-base', { 'z-999': sticky })}
       style={{
         // TODO: use `sticky` class once it's available on render
         position: sticky ? 'sticky' : 'relative',
