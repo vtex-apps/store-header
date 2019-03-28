@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.11.0] - 2019-03-28
+
 ### Added
 - Added new experimental `header-layout` blocks, under an `unstable--` flag.
 - Support for new experimental `menu` block, under an `unstable--` flag.
