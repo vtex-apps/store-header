@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { Container } from 'vtex.store-components'
 
-const Row = ({ children, fullWidth, sticky, inverted }) => {
+const Row = ({ children, fullWidth, inverted }) => {
   const content = (
     <div className="w-100 flex items-center">
       {children}
@@ -11,11 +11,7 @@ const Row = ({ children, fullWidth, sticky, inverted }) => {
 
   return (
     <div
-      className={classNames('w-100 top-0', inverted ? 'bg-base--inverted c-on-base--inverted' : 'bg-base c-on-base', { 'z-999': sticky })}
-      style={{
-        // TODO: use `sticky` class once it's available on render
-        position: sticky ? 'sticky' : 'relative',
-      }}>
+      className={classNames('w-100', inverted ? 'bg-base--inverted c-on-base--inverted' : 'bg-base c-on-base')}>
       {fullWidth ? content : (
         <Container className="w-100 flex">
           {content}
