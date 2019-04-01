@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Better support for the `sticky` prop. Now it allows multiple and interspected sticky rows.
+
 ## [2.11.0] - 2019-03-28
 
 ### Added
