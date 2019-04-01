@@ -1,6 +1,20 @@
 import React from 'react'
 
-const reducer = (state, action) => {
+interface State {
+  [id: string]: number
+}
+
+interface UpdateAction {
+  type: 'update'
+  payload: {
+    index: number
+    height: number
+  }
+}
+
+type Actions = UpdateAction
+
+const reducer = (state: State, action: Actions) => {
   switch(action.type) {
     case 'update':
       return {
@@ -13,9 +27,9 @@ const reducer = (state, action) => {
 }
 
 const useCumulativeHeightState = () => {
-  const [state, dispatch] = React.useReducer(reducer, {})
+  const [state, dispatch]: [State, React.Dispatch<UpdateAction>] = React.useReducer(reducer, {})
 
-  const handleResize = ({ height, index }) => {
+  const handleResize = ({ height, index }: { height: number, index: number }) => {
     dispatch({
       type: 'update',
       payload: {
@@ -25,7 +39,7 @@ const useCumulativeHeightState = () => {
     })
   }
 
-  const getAccumulatedHeight = index => {
+  const getAccumulatedHeight = (index: number) => {
     const sortedIndices = Object.keys(state)
       .map(key => parseInt(key, 10))
       .sort()

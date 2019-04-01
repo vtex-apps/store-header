@@ -1,7 +1,12 @@
 import React from 'react'
 import CumulativeHeight from './CumulativeHeight'
 
-const StickyRows = ({ children, isSticky }) => {
+interface Props {
+  children: JSX.Element[]
+  isSticky(): boolean
+}
+
+const StickyRows = ({ children, isSticky }: Props) => {
   return (
     <CumulativeHeight
       shouldAccumulateRow={isSticky}

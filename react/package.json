@@ -9,6 +9,7 @@
     "gen:coveralls": "yarn test:coverage  && cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
+    "@types/react-resize-detector": "^3.1.1",
     "classnames": "^2.2.5",
     "debounce": "^1.2.0",
     "hoist-non-react-statics": "^3.0.1",
@@ -19,7 +20,10 @@
     "react-media": "^1.9.2",
     "react-resize-detector": "^4.0.5",
     "react-spring": "^8.0.7",
-    "throttleit": "^1.0.0"
+    "throttleit": "^1.0.0",
+    "tslint": "^5.14.0",
+    "tslint-config-vtex": "^2.1.0",
+    "typescript": "^3.4.1"
   },
   "vtexScriptsOverride": {
     "srcPath": "."
