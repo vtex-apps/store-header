@@ -1,19 +1,18 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 
 interface Props {
-  children: JSX.Element | JSX.Element[]
   sticky?: boolean
   offset?: number
   onResize?(height?: number): void
 }
 
-const StickyRow = ({
+const StickyRow: FunctionComponent<Props> = ({
   children,
   sticky,
   offset = 0,
   onResize = () => 0,
-}: Props) => (
+}) => (
   <div
     style={sticky ? {
       position: 'sticky',
