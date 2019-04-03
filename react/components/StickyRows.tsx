@@ -1,27 +1,24 @@
 import React from 'react'
-import CumulativeHeight from './CumulativeHeight'
+import useCumulativeHeightState from '../hooks/useCumulativeHeightState'
+import StickyRow from './StickyRow'
 
 interface Props {
-  children: JSX.Element[]
-  isSticky(): boolean
+  children: JSX.Element | JSX.Element[]
 }
 
-const StickyRows = ({ children, isSticky }: Props) => {
+const StickyRows = ({ children }: Props) => {
+  const { updateRowHeight, getAccumulatedHeight } = useCumulativeHeightState()
+
   return (
-    <CumulativeHeight
-      shouldAccumulateRow={isSticky}
-      renderCumulativeRow={(row, height) => (
-        <div
-          style={{
-            position: 'sticky',
-            top: height,
-            zIndex: 999,
-          }}>
-          {row}
-        </div>
-      )}>
-      {children}
-    </CumulativeHeight>
+    React.Children.map(children, (child, index) => (
+      <StickyRow
+        sticky={child.props.sticky}
+        onResize={(height: number) => updateRowHeight({ height, index })}
+        offset={getAccumulatedHeight(index)}
+      >
+        {child}
+      </StickyRow>
+    ))
   )
 }
 

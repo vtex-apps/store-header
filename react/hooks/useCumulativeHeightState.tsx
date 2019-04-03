@@ -29,13 +29,17 @@ const reducer = (state: State, action: Actions) => {
 const useCumulativeHeightState = () => {
   const [state, dispatch]: [State, React.Dispatch<UpdateAction>] = React.useReducer(reducer, {})
 
-  const handleResize = ({ height, index }: { height: number, index: number }) => {
+  const updateRowHeight = ({ height, index }: { height: number, index: number }) => {
+    if (state[index] === height) {
+      return
+    }
+
     dispatch({
-      type: 'update',
       payload: {
-        index,
         height,
-      }
+        index,
+      },
+      type: 'update',
     })
   }
 
@@ -50,8 +54,8 @@ const useCumulativeHeightState = () => {
   }
 
   return {
-    handleResize,
     getAccumulatedHeight,
+    updateRowHeight,
   }
 }
 
