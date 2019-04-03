@@ -1,10 +1,9 @@
 import React from 'react'
-import StickyRows from './StickyRows'
+import StickyRows  from './StickyRows'
 
 const Layout = ({ children }) => {
   return (
-    <StickyRows
-      isSticky={child => child.props.sticky}>
+    <StickyRows>
       {children}
     </StickyRows>
   )
