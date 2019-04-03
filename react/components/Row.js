@@ -2,7 +2,11 @@ import React from 'react'
 import classNames from 'classnames'
 import { Container } from 'vtex.store-components'
 
-const Row = ({ children, fullWidth, inverted }) => {
+const Row = ({
+  children,
+  fullWidth,
+  inverted,
+}) => {
   const content = (
     <div className="w-100 flex items-center">
       {children}
@@ -10,8 +14,7 @@ const Row = ({ children, fullWidth, inverted }) => {
   )
 
   return (
-    <div
-      className={classNames('w-100', inverted ? 'bg-base--inverted c-on-base--inverted' : 'bg-base c-on-base')}>
+    <div className={classNames('w-100', inverted ? 'bg-base--inverted c-on-base--inverted' : 'bg-base c-on-base')}>
       {fullWidth ? content : (
         <Container className="w-100 flex">
           {content}
