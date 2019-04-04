@@ -7,6 +7,7 @@ interface State {
 enum ActionTypes {
   UPDATE = 'update',
 }
+
 interface UpdateAction {
   type: ActionTypes.UPDATE,
   payload: {
