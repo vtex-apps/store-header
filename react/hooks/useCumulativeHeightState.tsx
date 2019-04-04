@@ -54,7 +54,7 @@ const useCumulativeHeightState = () => {
 
     const indices = sortedIndices.slice(0, sortedIndices.indexOf(index))
 
-    return indices.reduce((acc, cur) => (state[cur] || 0) + acc ,0)
+    return indices.reduce((acc, cur) => (state[cur] || 0) + acc, 0)
   }
 
   return {
