@@ -4,8 +4,11 @@ interface State {
   [id: string]: number
 }
 
+enum ActionTypes {
+  UPDATE = 'update',
+}
 interface UpdateAction {
-  type: 'update'
+  type: ActionTypes.UPDATE,
   payload: {
     index: number
     height: number
@@ -39,7 +42,7 @@ const useCumulativeHeightState = () => {
         height,
         index,
       },
-      type: 'update',
+      type: ActionTypes.UPDATE,
     })
   }
 
