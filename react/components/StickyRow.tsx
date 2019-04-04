@@ -25,7 +25,7 @@ const StickyRow: FunctionComponent<Props> = ({
     {sticky && (
       <ReactResizeDetector
         handleHeight
-        onResize={(width, height) => onResize && onResize(height)}/>
+        onResize={(_, height) => onResize && onResize(height)}/>
     )}
   </div>
 )
