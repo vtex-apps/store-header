@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import Media from 'react-media'
 
-const CustomHeader = () => {
-  const { hints: { mobile } } = useRuntime()
+const CustomHeader: FunctionComponent = () => {
+  const {
+    hints: { mobile },
+  } = useRuntime()
 
   if (!window || !window.matchMedia) {
     return mobile ? (
@@ -16,11 +18,13 @@ const CustomHeader = () => {
   return (
     <React.Fragment>
       <Media query="(max-width:40rem)">
-        {matches => matches ? (
-          <ExtensionPoint id="unstable--header-layout.mobile" />
-        ) : (
-          <ExtensionPoint id="unstable--header-layout.desktop" />
-        )}
+        {matches =>
+          matches ? (
+            <ExtensionPoint id="unstable--header-layout.mobile" />
+          ) : (
+            <ExtensionPoint id="unstable--header-layout.desktop" />
+          )
+        }
       </Media>
     </React.Fragment>
   )

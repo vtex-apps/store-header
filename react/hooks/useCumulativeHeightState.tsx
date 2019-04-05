@@ -9,7 +9,7 @@ enum ActionTypes {
 }
 
 interface UpdateAction {
-  type: ActionTypes.UPDATE,
+  type: ActionTypes.UPDATE
   payload: {
     index: number
     height: number
@@ -19,7 +19,7 @@ interface UpdateAction {
 type Actions = UpdateAction
 
 const reducer = (state: State, action: Actions) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'update':
       return {
         ...state,
@@ -31,9 +31,18 @@ const reducer = (state: State, action: Actions) => {
 }
 
 const useCumulativeHeightState = () => {
-  const [state, dispatch]: [State, React.Dispatch<UpdateAction>] = React.useReducer(reducer, {})
+  const [state, dispatch]: [
+    State,
+    React.Dispatch<UpdateAction>
+  ] = React.useReducer(reducer, {})
 
-  const updateRowHeight = ({ height, index }: { height: number, index: number }) => {
+  const updateRowHeight = ({
+    height,
+    index,
+  }: {
+    height: number
+    index: number
+  }) => {
     if (state[index] === height) {
       return
     }
