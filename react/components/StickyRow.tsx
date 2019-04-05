@@ -1,33 +1,34 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useContext, CSSProperties } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
+import { RowContext } from './StickyRows'
 
 interface Props {
   sticky?: boolean
-  offset?: number
-  onResize?(height?: number): void
 }
 
-const StickyRow: FunctionComponent<Props> = ({
-  children,
-  sticky,
-  offset = 0,
-  onResize,
-}) => (
-  <div
-    style={sticky ? {
-      position: 'sticky',
-      top: offset,
-      zIndex: 999,
-    } : {}}>
+const StickyRow: FunctionComponent<Props> = ({ children, sticky }) => {
+  const { offset, onResize } = useContext(RowContext)
 
-    {children}
+  const stickyStyle: CSSProperties = {
+    position: 'sticky',
+    top: offset,
+    zIndex: 999,
+  }
 
-    {sticky && (
-      <ReactResizeDetector
-        handleHeight
-        onResize={(_, height) => onResize && onResize(height)}/>
-    )}
-  </div>
-)
+  return (
+    <div style={sticky ? stickyStyle : undefined}>
+      {children}
+
+      {sticky && (
+        <ReactResizeDetector
+          handleHeight
+          onResize={(_, height) => {
+            onResize(height)
+          }}
+        />
+      )}
+    </div>
+  )
+}
 
 export default StickyRow
