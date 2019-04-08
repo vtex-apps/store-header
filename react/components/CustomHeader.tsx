@@ -9,7 +9,7 @@ const CustomHeader: FunctionComponent = () => {
 
   if (!window || !window.matchMedia) {
     return mobile ? (
-      <ExtensionPoint id="unstable--header-layout.mobile" />
+      null
     ) : (
       <ExtensionPoint id="unstable--header-layout.desktop" />
     )
@@ -20,7 +20,7 @@ const CustomHeader: FunctionComponent = () => {
       <Media query="(max-width:40rem)">
         {matches =>
           matches ? (
-            <ExtensionPoint id="unstable--header-layout.mobile" />
+            null
           ) : (
             <ExtensionPoint id="unstable--header-layout.desktop" />
           )

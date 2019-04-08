@@ -13,6 +13,7 @@ const Header = props => {
 
   const hasCustomHeader = headerDesktop || headerMobile
 
+  return null
   return hasCustomHeader ? (
     <CustomHeader {...props} />
   ) : (
