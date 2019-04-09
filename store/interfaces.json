@@ -7,34 +7,34 @@
       "search-bar",
       "theme",
       "user-address",
-      "unstable--menu",
+      "menu",
       "menu-link",
       "telemarketing",
       "logo",
-      "unstable--header-layout.desktop",
-      "unstable--header-layout.mobile",
-      "unstable--header-layout.desktopScroll",
-      "unstable--header-layout.mobileScroll"
+      "header-layout.desktop",
+      "header-layout.mobile",
+      "header-layout.desktop-scroll",
+      "header-layout.mobile-scroll"
     ],
     "component": "index"
   },
   "header.full": {},
-  "unstable--header-layout": {
+  "header-layout": {
     "allowed": [
-      "unstable--header-row",
-      "unstable--header-border"
+      "header-row",
+      "header-border"
     ],
     "component": "Layout",
     "composition": "children"
   },
-  "unstable--header-layout.desktop": {},
-  "unstable--header-layout.mobile": {},
-  "unstable--header-layout.desktopScroll": {},
-  "unstable--header-layout.mobileScroll": {},
-  "_": {
+  "header-layout.desktop": {},
+  "header-layout.mobile": {},
+  "header-layout.desktop-scroll": {},
+  "header-layout.mobile-scroll": {},
+  "header-spacer": {
     "component": "Spacer"
   },
-  "unstable--header-row": {
+  "header-row": {
     "allowed": [
       "telemarketing",
       "logo",
@@ -43,16 +43,15 @@
       "search-bar",
       "menu-link",
       "category-menu",
-      "unstable--menu",
-      "search-bar",
+      "menu",
       "theme",
       "user-address",
-      "_"
+      "header-spacer"
     ],
     "component": "Row",
     "composition": "children"
   },
-  "unstable--header-border": {
+  "header-border": {
     "component": "Border"
   },
   "theme": {}
