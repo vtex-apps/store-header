@@ -2,6 +2,9 @@ import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { Container } from 'vtex.store-components'
 import StickyRow from './StickyRow'
+import { generateBlockClass, BlockClass } from '../modules/blockClass'
+
+import styles from './Row.css'
 
 interface Props {
   sticky?: boolean
@@ -9,29 +12,32 @@ interface Props {
   inverted?: boolean
 }
 
-const Row: FunctionComponent<Props> = ({
+const Row: FunctionComponent<Props & BlockClass> = ({
   children,
   sticky,
   fullWidth,
   inverted,
+  blockClass,
 }) => {
   const content = <div className="w-100 flex items-center">{children}</div>
 
   return (
     <StickyRow sticky={sticky}>
-      <div
-        className={classNames(
-          'w-100',
-          inverted
-            ? 'bg-base--inverted c-on-base--inverted'
-            : 'bg-base c-on-base'
-        )}
-      >
-        {fullWidth ? (
-          content
-        ) : (
-          <Container className="w-100 flex">{content}</Container>
-        )}
+      <div className={generateBlockClass(styles.headerRow, blockClass)}>
+        <div
+          className={classNames(
+            'w-100',
+            inverted
+              ? 'bg-base--inverted c-on-base--inverted'
+              : 'bg-base c-on-base'
+          )}
+        >
+          {fullWidth ? (
+            content
+          ) : (
+            <Container className="w-100 flex">{content}</Container>
+          )}
+        </div>
       </div>
     </StickyRow>
   )
