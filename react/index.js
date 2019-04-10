@@ -1,5 +1,5 @@
 import React from 'react'
-import { useChildBlock } from 'vtex.render-runtime' // eslint-disable-line @typescript-eslint/camelcase
+import { useChildBlock } from 'vtex.render-runtime'
 import LegacyHeader from './legacy'
 import CustomHeader from './components/CustomHeader'
 
