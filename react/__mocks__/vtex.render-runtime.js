@@ -10,7 +10,7 @@ export const useRuntime = () => {
   return { hints, setHints, page, getSettings }
 }
 
-export const useChildBlock__unstable = ({ id }) => {
+export const useChildBlock = () => {
   return null
 }
 

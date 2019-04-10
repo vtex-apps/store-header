@@ -1,14 +1,14 @@
 import React from 'react'
-import { useChildBlock__unstable } from 'vtex.render-runtime' // eslint-disable-line @typescript-eslint/camelcase
+import { useChildBlock } from 'vtex.render-runtime' // eslint-disable-line @typescript-eslint/camelcase
 import LegacyHeader from './legacy'
 import CustomHeader from './components/CustomHeader'
 
 const Header = props => {
-  const headerDesktop = !!useChildBlock__unstable({
-    id: 'unstable--header-layout.desktop',
+  const headerDesktop = !!useChildBlock({
+    id: 'header-layout.desktop',
   })
-  const headerMobile = !!useChildBlock__unstable({
-    id: 'unstable--header-layout.mobile',
+  const headerMobile = !!useChildBlock({
+    id: 'header-layout.mobile',
   })
 
   const hasCustomHeader = headerDesktop || headerMobile
