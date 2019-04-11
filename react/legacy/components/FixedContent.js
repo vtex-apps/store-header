@@ -38,82 +38,75 @@ const FixedContent = ({
   )
 
   return (
-    <Container
-      className={containerClasses}
-      style={{
-        transform: 'translateZ(0)', //Avoid shaking
-        zIndex: -1, // Allow popups to be on top of it
-      }}
-    >
-      <div
-        className={contentClasses}
+    <div className="w-100 bg-base">
+      <Container
+        className={containerClasses}
         style={{
-          /** Prevents the empty margins of this element from blocking the users clicks
-           * TODO: create a tachyons class for pointer events and remove this style
-           * @author lbebber */
-          pointerEvents: 'none',
+          transform: 'translateZ(0)', //Avoid shaking
         }}
       >
-        <div
-          className="flex w-100 justify-between-m items-center pv3"
-          style={{
-            pointerEvents: 'auto',
-          }}
-        >
-          {mobileSearchActive ? (
-            mobile &&
-            showSearchBar && (
-              <div className="flex justify-start pa2 relative w-100">
-                <SearchBar
-                  mobile={mobile}
-                  iconClasses={iconClasses}
-                  onCancel={() => toggleSearch(false)}
-                />
-              </div>
-            )
-          ) : (
-            <Fragment>
-              {!leanMode && mobile && (
-                <ExtensionPoint
-                  id="category-menu"
-                  mobileMode
-                  iconClasses={iconClasses}
-                />
-              )}
-
-              <Logo
-                logoUrl={logoUrl}
-                logoTitle={logoTitle}
-                linkUrl={linkUrl}
-                logoSize={logoSize}
-                mobile={mobile}
-              />
-
-              {!leanMode && !mobile && showSearchBar && (
-                <div className="dn db-ns flex-grow-1">
-                  <SearchBar mobile={mobile} />
+        <div className={contentClasses} style={{ pointerEvents: 'none' }}>
+          <div
+            className="flex w-100 justify-between-m items-center pv3"
+            style={{
+              pointerEvents: 'auto',
+            }}
+          >
+            {mobileSearchActive ? (
+              mobile &&
+              showSearchBar && (
+                <div className="flex justify-start pa2 relative w-100">
+                  <SearchBar
+                    mobile={mobile}
+                    iconClasses={iconClasses}
+                    onCancel={() => toggleSearch(false)}
+                  />
                 </div>
-              )}
+              )
+            ) : (
+              <Fragment>
+                {!leanMode && mobile && (
+                  <ExtensionPoint
+                    id="category-menu"
+                    mobileMode
+                    iconClasses={iconClasses}
+                  />
+                )}
 
-              <Actions
-                iconClasses={iconClasses}
-                labelClasses={labelClasses}
-                showSearchBar={showSearchBar}
-                showSearchIcon={showSearchBar}
-                leanMode={leanMode}
-                showLogin={showLogin}
-                onActiveSearch={() => toggleSearch(true)}
-                mobile={mobile}
-              />
+                <Logo
+                  logoUrl={logoUrl}
+                  logoTitle={logoTitle}
+                  linkUrl={linkUrl}
+                  logoSize={logoSize}
+                  mobile={mobile}
+                />
 
-              {!mobile && (
-                <ExtensionPoint id="user-address" variation="inline" />
-              )}
-            </Fragment>
-          )}
+                {!leanMode && !mobile && showSearchBar && (
+                  <div className="dn db-ns flex-grow-1">
+                    <SearchBar mobile={mobile} />
+                  </div>
+                )}
+
+                <Actions
+                  iconClasses={iconClasses}
+                  labelClasses={labelClasses}
+                  showSearchBar={showSearchBar}
+                  showSearchIcon={showSearchBar}
+                  leanMode={leanMode}
+                  showLogin={showLogin}
+                  onActiveSearch={() => toggleSearch(true)}
+                  mobile={mobile}
+                />
+
+                {!mobile && (
+                  <ExtensionPoint id="user-address" variation="inline" />
+                )}
+              </Fragment>
+            )}
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </div>
   )
 }
 

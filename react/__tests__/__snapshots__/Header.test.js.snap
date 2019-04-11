@@ -20,51 +20,55 @@ exports[`Header Component should match snapshot mobile with leanmode 1`] = `
         menu-link
       </div>
     </div>
-    <section
-      class="container-mock"
+    <div
+      class="w-100 bg-base"
     >
-      <div
-        class="w-100 mw9 flex justify-center pv0"
-        style="pointer-events: none;"
+      <section
+        class="container-mock"
       >
         <div
-          class="flex w-100 justify-between-m items-center pv3"
-          style="pointer-events: auto;"
+          class="w-100 mw9 flex justify-center pv0"
+          style="pointer-events: none;"
         >
           <div
-            class="topMenuLogo pv2 mr5"
+            class="flex w-100 justify-between-m items-center pv3"
+            style="pointer-events: auto;"
           >
             <div
-              class="link-mock"
+              class="topMenuLogo pv2 mr5"
             >
               <div
-                class="extension-point-mock"
+                class="link-mock"
               >
-                logo
+                <div
+                  class="extension-point-mock"
+                >
+                  logo
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="topMenuIcons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns"
-          >
             <div
-              class="flex"
+              class="topMenuIcons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns"
             >
               <div
-                class="extension-point-mock"
+                class="flex"
               >
-                login
+                <div
+                  class="extension-point-mock"
+                >
+                  login
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="extension-point-mock"
-          >
-            user-address
+            <div
+              class="extension-point-mock"
+            >
+              user-address
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
     <div
       class="bb bw1 b--muted-4 relative"
       style="box-sizing: content-box; z-index: -2;"
@@ -97,73 +101,77 @@ exports[`Header Component should match snapshot mobile without leanmode 1`] = `
         menu-link
       </div>
     </div>
-    <section
-      class="container-mock"
+    <div
+      class="w-100 bg-base"
     >
-      <div
-        class="w-100 mw9 flex justify-center pv6-l pv2-m"
-        style="pointer-events: none;"
+      <section
+        class="container-mock"
       >
         <div
-          class="flex w-100 justify-between-m items-center pv3"
-          style="pointer-events: auto;"
+          class="w-100 mw9 flex justify-center pv6-l pv2-m"
+          style="pointer-events: none;"
         >
           <div
-            class="topMenuLogo pv2 mr5"
+            class="flex w-100 justify-between-m items-center pv3"
+            style="pointer-events: auto;"
           >
             <div
-              class="link-mock"
+              class="topMenuLogo pv2 mr5"
             >
               <div
-                class="extension-point-mock"
-              >
-                logo
-              </div>
-            </div>
-          </div>
-          <div
-            class="dn db-ns flex-grow-1"
-          >
-            <div
-              class="topMenuSearchBar flex pa2-m flex-grow-1 justify-center"
-            >
-              <div
-                class="w-75"
+                class="link-mock"
               >
                 <div
                   class="extension-point-mock"
                 >
-                  search-bar
+                  logo
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            class="topMenuIcons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns"
-          >
             <div
-              class="flex"
+              class="dn db-ns flex-grow-1"
             >
               <div
-                class="extension-point-mock"
+                class="topMenuSearchBar flex pa2-m flex-grow-1 justify-center"
               >
-                login
-              </div>
-              <div
-                class="extension-point-mock"
-              >
-                minicart
+                <div
+                  class="w-75"
+                >
+                  <div
+                    class="extension-point-mock"
+                  >
+                    search-bar
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="extension-point-mock"
-          >
-            user-address
+            <div
+              class="topMenuIcons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns"
+            >
+              <div
+                class="flex"
+              >
+                <div
+                  class="extension-point-mock"
+                >
+                  login
+                </div>
+                <div
+                  class="extension-point-mock"
+                >
+                  minicart
+                </div>
+              </div>
+            </div>
+            <div
+              class="extension-point-mock"
+            >
+              user-address
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
     <div
       class="no-ssr-mock"
     >
@@ -206,51 +214,55 @@ exports[`Header Component should match snapshot with leanmode 1`] = `
         menu-link
       </div>
     </div>
-    <section
-      class="container-mock"
+    <div
+      class="w-100 bg-base"
     >
-      <div
-        class="w-100 mw9 flex justify-center pv0"
-        style="pointer-events: none;"
+      <section
+        class="container-mock"
       >
         <div
-          class="flex w-100 justify-between-m items-center pv3"
-          style="pointer-events: auto;"
+          class="w-100 mw9 flex justify-center pv0"
+          style="pointer-events: none;"
         >
           <div
-            class="topMenuLogo pv2 mr5"
+            class="flex w-100 justify-between-m items-center pv3"
+            style="pointer-events: auto;"
           >
             <div
-              class="link-mock"
+              class="topMenuLogo pv2 mr5"
             >
               <div
-                class="extension-point-mock"
+                class="link-mock"
               >
-                logo
+                <div
+                  class="extension-point-mock"
+                >
+                  logo
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="topMenuIcons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns"
-          >
             <div
-              class="flex"
+              class="topMenuIcons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns"
             >
               <div
-                class="extension-point-mock"
+                class="flex"
               >
-                login
+                <div
+                  class="extension-point-mock"
+                >
+                  login
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="extension-point-mock"
-          >
-            user-address
+            <div
+              class="extension-point-mock"
+            >
+              user-address
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
     <div
       class="bb bw1 b--muted-4 relative"
       style="box-sizing: content-box; z-index: -2;"
@@ -283,73 +295,77 @@ exports[`Header Component should match snapshot without leanmode 1`] = `
         menu-link
       </div>
     </div>
-    <section
-      class="container-mock"
+    <div
+      class="w-100 bg-base"
     >
-      <div
-        class="w-100 mw9 flex justify-center pv6-l pv2-m"
-        style="pointer-events: none;"
+      <section
+        class="container-mock"
       >
         <div
-          class="flex w-100 justify-between-m items-center pv3"
-          style="pointer-events: auto;"
+          class="w-100 mw9 flex justify-center pv6-l pv2-m"
+          style="pointer-events: none;"
         >
           <div
-            class="topMenuLogo pv2 mr5"
+            class="flex w-100 justify-between-m items-center pv3"
+            style="pointer-events: auto;"
           >
             <div
-              class="link-mock"
+              class="topMenuLogo pv2 mr5"
             >
               <div
-                class="extension-point-mock"
-              >
-                logo
-              </div>
-            </div>
-          </div>
-          <div
-            class="dn db-ns flex-grow-1"
-          >
-            <div
-              class="topMenuSearchBar flex pa2-m flex-grow-1 justify-center"
-            >
-              <div
-                class="w-75"
+                class="link-mock"
               >
                 <div
                   class="extension-point-mock"
                 >
-                  search-bar
+                  logo
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            class="topMenuIcons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns"
-          >
             <div
-              class="flex"
+              class="dn db-ns flex-grow-1"
             >
               <div
-                class="extension-point-mock"
+                class="topMenuSearchBar flex pa2-m flex-grow-1 justify-center"
               >
-                login
-              </div>
-              <div
-                class="extension-point-mock"
-              >
-                minicart
+                <div
+                  class="w-75"
+                >
+                  <div
+                    class="extension-point-mock"
+                  >
+                    search-bar
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="extension-point-mock"
-          >
-            user-address
+            <div
+              class="topMenuIcons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns"
+            >
+              <div
+                class="flex"
+              >
+                <div
+                  class="extension-point-mock"
+                >
+                  login
+                </div>
+                <div
+                  class="extension-point-mock"
+                >
+                  minicart
+                </div>
+              </div>
+            </div>
+            <div
+              class="extension-point-mock"
+            >
+              user-address
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
     <div
       class="no-ssr-mock"
     >
