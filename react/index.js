@@ -4,14 +4,24 @@ import LegacyHeader from './legacy'
 import CustomHeader from './components/CustomHeader'
 
 const Header = props => {
-  const headerDesktop = !!useChildBlock({
+  const hasHeaderDesktop = !!useChildBlock({
     id: 'header-layout.desktop',
   })
-  const headerMobile = !!useChildBlock({
+  const hasUnstableHeaderDesktop = !!useChildBlock({
+    id: 'unstable--header-layout.desktop',
+  })
+  const hasHeaderMobile = !!useChildBlock({
     id: 'header-layout.mobile',
   })
+  const hasUnstableHeaderMobile = !!useChildBlock({
+    id: 'unstable--header-layout.mobile',
+  })
 
-  const hasCustomHeader = headerDesktop || headerMobile
+  const hasCustomHeader =
+    hasHeaderDesktop ||
+    hasHeaderMobile ||
+    hasUnstableHeaderDesktop ||
+    hasUnstableHeaderMobile
 
   return hasCustomHeader ? (
     <CustomHeader {...props} />
