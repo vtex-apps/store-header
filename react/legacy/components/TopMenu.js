@@ -24,6 +24,13 @@ const TopMenu = ({
   mobile,
 }) => {
   const hasMenu = !!useChildBlock({ id: 'menu' })
+  const hasUnstableMenu = !!useChildBlock({ id: 'unstable--menu' })
+
+  if (hasUnstableMenu) {
+    console.warn(
+      'The flag `unstable--` from the menu component will be deprecated soon, in favor of just `menu`. The `second-level-menu` will also be deprecated in favor of `menu`.'
+    )
+  }
 
   return (
     <Fragment>
@@ -47,10 +54,10 @@ const TopMenu = ({
         leanMode={leanMode}
         mobile={mobile}
       >
-        {hasMenu ? (
+        {hasMenu || hasUnstableMenu ? (
           <div className={styles.topMenuCompatibilityContainer}>
             <div className="flex flex-grow-1" />
-            <ExtensionPoint id="menu" />
+            <ExtensionPoint id={hasMenu ? 'menu' : 'unstable--menu'} />
             <div className="flex flex-grow-1" />
           </div>
         ) : (
