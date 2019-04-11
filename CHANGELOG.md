@@ -7,13 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Add CSS handles and `blockClass` support for rows.
 - Adds support for `rich-text` on `header-row`s.
-
-### Changed
-- Removed `unstable` flags.
-- Renamed `_` to `header-spacer`.
-- Decreased `z-index` of rows.
 
 ## [2.13.0] - 2019-04-11
 ### Added
