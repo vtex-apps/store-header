@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.13.0] - 2019-04-11
+### Added
+- Add CSS handles and `blockClass` support for rows.
+
+### Changed
+- Removed `unstable` flags.
+- Renamed `_` to `header-spacer`.
+- Decreased `z-index` of rows.
+
+### Deprecated
+- Deprecated all `unstable` flags, which will be removed soon.
+- Deprecated `_` in favor of `header-spacer`, and will be removed soon.
+
 ## [2.12.2] - 2019-04-11
 ### Fixed
 - Fixed bug where the width of the FixedContent part of the Legacy header would be limited by the Container's width.

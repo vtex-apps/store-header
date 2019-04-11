@@ -15,14 +15,14 @@
       "search-bar"
     ]
   },
-  "unstable--header-layout.desktop": {
+  "header-layout.desktop": {
     "children": [
-      "unstable--header-row#1desktop",
-      "unstable--header-row#2desktop",
-      "unstable--header-row#3desktop"
+      "header-row#desktop-1",
+      "header-row#desktop-2",
+      "header-row#desktop-3"
     ]
   },
-  "unstable--header-row#1desktop": {
+  "header-row#desktop-1": {
     "children": [
       "telemarketing"
     ],
@@ -30,11 +30,11 @@
       "fullWidth": true
     }
   },
-  "unstable--header-row#2desktop": {
+  "header-row#desktop-2": {
     "children": [
-      "_",
+      "header-spacer",
       "search-bar",
-      "_",
+      "header-spacer",
       "login",
       "minicart"
     ],
@@ -42,19 +42,19 @@
       "sticky": true
     }
   },
-  "unstable--header-row#3desktop": {
+  "header-row#desktop-3": {
     "children": [
       "category-menu"
     ]
   },
-  "unstable--header-layout.mobile": {
+  "header-layout.mobile": {
     "children": [
-      "unstable--header-row#1mobile",
-      "unstable--header-row#2mobile",
-      "unstable--header-row#3mobile"
+      "header-row#mobile-1",
+      "header-row#mobile-2",
+      "header-row#mobile-3"
     ]
   },
-  "unstable--header-row#1mobile": {
+  "header-row#mobile-1": {
     "children": [
       "telemarketing"
     ],
@@ -62,7 +62,7 @@
       "fullWidth": true
     }
   },
-  "unstable--header-row#2mobile": {
+  "header-row#mobile-2": {
     "children": [
       "logo",
       "search-bar",
@@ -70,7 +70,7 @@
       "minicart"
     ]
   },
-  "unstable--header-row#3mobile": {
+  "header-row#mobile-3": {
     "children": [
       "category-menu"
     ]

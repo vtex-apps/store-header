@@ -12,7 +12,7 @@ const StickyRow: FunctionComponent<Props> = ({ children, sticky }) => {
   const stickyStyle: CSSProperties = {
     position: 'sticky',
     top: offset,
-    zIndex: 999,
+    zIndex: 9,
   }
 
   return (

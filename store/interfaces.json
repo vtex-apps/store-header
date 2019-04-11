@@ -7,18 +7,61 @@
       "search-bar",
       "theme",
       "user-address",
+      "menu",
       "unstable--menu",
       "menu-link",
       "telemarketing",
       "logo",
+      "header-layout.desktop",
+      "header-layout.mobile",
+      "header-layout.desktop-scroll",
+      "header-layout.mobile-scroll",
       "unstable--header-layout.desktop",
       "unstable--header-layout.mobile",
-      "unstable--header-layout.desktopScroll",
-      "unstable--header-layout.mobileScroll"
+      "unstable--header-layout.desktop-scroll",
+      "unstable--header-layout.mobile-scroll"
     ],
     "component": "index"
   },
   "header.full": {},
+  "header-layout": {
+    "allowed": [
+      "header-row",
+      "header-border"
+    ],
+    "component": "Layout",
+    "composition": "children"
+  },
+  "header-layout.desktop": {},
+  "header-layout.mobile": {},
+  "header-layout.desktop-scroll": {},
+  "header-layout.mobile-scroll": {},
+  "header-spacer": {
+    "component": "Spacer"
+  },
+  "header-row": {
+    "allowed": [
+      "telemarketing",
+      "logo",
+      "minicart",
+      "login",
+      "search-bar",
+      "menu-link",
+      "category-menu",
+      "menu",
+      "unstable--menu",
+      "theme",
+      "user-address",
+      "header-spacer"
+    ],
+    "component": "Row",
+    "composition": "children"
+  },
+  "header-border": {
+    "component": "Border"
+  },
+  "theme": {},
+
   "unstable--header-layout": {
     "allowed": [
       "unstable--header-row",
@@ -29,8 +72,8 @@
   },
   "unstable--header-layout.desktop": {},
   "unstable--header-layout.mobile": {},
-  "unstable--header-layout.desktopScroll": {},
-  "unstable--header-layout.mobileScroll": {},
+  "unstable--header-layout.desktop-scroll": {},
+  "unstable--header-layout.mobile-scroll": {},
   "_": {
     "component": "Spacer"
   },
@@ -43,8 +86,8 @@
       "search-bar",
       "menu-link",
       "category-menu",
+      "menu",
       "unstable--menu",
-      "search-bar",
       "theme",
       "user-address",
       "_"
@@ -54,6 +97,5 @@
   },
   "unstable--header-border": {
     "component": "Border"
-  },
-  "theme": {}
+  }
 }

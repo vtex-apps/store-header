@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { ExtensionPoint, useChildBlock__unstable } from 'vtex.render-runtime'
+import { ExtensionPoint, useChildBlock } from 'vtex.render-runtime'
 import Collapsible from './Collapsible'
 import FixedContent from './FixedContent'
 import { logo, collapsible, icons, lean, searchBar, login } from '../defaults'
@@ -23,7 +23,14 @@ const TopMenu = ({
   collapsibleAnimation,
   mobile,
 }) => {
-  const hasMenu = !!useChildBlock__unstable({id: 'unstable--menu'})
+  const hasMenu = !!useChildBlock({ id: 'menu' })
+  const hasUnstableMenu = !!useChildBlock({ id: 'unstable--menu' })
+
+  if (hasUnstableMenu) {
+    console.warn(
+      'The flag `unstable--` from the menu component will be deprecated soon, in favor of just `menu`. The `second-level-menu` will also be deprecated in favor of `menu`.'
+    )
+  }
 
   return (
     <Fragment>
@@ -47,16 +54,15 @@ const TopMenu = ({
         leanMode={leanMode}
         mobile={mobile}
       >
-        {hasMenu
-          ? (
-            <div className={styles.topMenuCompatibilityContainer}>
-              <div className="flex flex-grow-1"></div>
-              <ExtensionPoint id="unstable--menu" />
-              <div className="flex flex-grow-1"></div>
-            </div>
-          )
-          : <ExtensionPoint id="category-menu" />
-        }
+        {hasMenu || hasUnstableMenu ? (
+          <div className={styles.topMenuCompatibilityContainer}>
+            <div className="flex flex-grow-1" />
+            <ExtensionPoint id={hasMenu ? 'menu' : 'unstable--menu'} />
+            <div className="flex flex-grow-1" />
+          </div>
+        ) : (
+          <ExtensionPoint id="category-menu" />
+        )}
       </Collapsible>
     </Fragment>
   )
