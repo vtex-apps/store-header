@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Deprecated
 - Deprecated all `unstable` flags, which will be removed soon.
+- Deprecated `_` in favor of `header-spacer`, and will be removed soon.
 
 ## [2.12.2] - 2019-04-11
 ### Fixed
