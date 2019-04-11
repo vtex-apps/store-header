@@ -15,7 +15,11 @@
       "header-layout.desktop",
       "header-layout.mobile",
       "header-layout.desktop-scroll",
-      "header-layout.mobile-scroll"
+      "header-layout.mobile-scroll",
+      "unstable--header-layout.desktop",
+      "unstable--header-layout.mobile",
+      "unstable--header-layout.desktop-scroll",
+      "unstable--header-layout.mobile-scroll"
     ],
     "component": "index"
   },
@@ -56,5 +60,42 @@
   "header-border": {
     "component": "Border"
   },
-  "theme": {}
+  "theme": {},
+
+  "unstable--header-layout": {
+    "allowed": [
+      "unstable--header-row",
+      "unstable--header-border"
+    ],
+    "component": "Layout",
+    "composition": "children"
+  },
+  "unstable--header-layout.desktop": {},
+  "unstable--header-layout.mobile": {},
+  "unstable--header-layout.desktop-scroll": {},
+  "unstable--header-layout.mobile-scroll": {},
+  "_": {
+    "component": "Spacer"
+  },
+  "unstable--header-row": {
+    "allowed": [
+      "telemarketing",
+      "logo",
+      "minicart",
+      "login",
+      "search-bar",
+      "menu-link",
+      "category-menu",
+      "menu",
+      "unstable--menu",
+      "theme",
+      "user-address",
+      "_"
+    ],
+    "component": "Row",
+    "composition": "children"
+  },
+  "unstable--header-border": {
+    "component": "Border"
+  }
 }
