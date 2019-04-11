@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- Fixed bug where the width of the FixedContent part of the Legacy header would be limited by the Containe width.
+- Fixed bug where the width of the FixedContent part of the Legacy header would be limited by the Container's width.
 
 ## [2.12.1] - 2019-04-10
 
