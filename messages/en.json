@@ -1,14 +1,14 @@
 {
-  "editor.header.title": "Header",
-  "editor.header.description": "Header component",
-  "editor.header.logo.title": "Logo",
-  "editor.header.logo.image": "Logo image",
-  "editor.header.link.url": "Logo link",
-  "editor.header.show.searchbar.title": "Show SearchBar",
-  "editor.header.show.login.title": "Show Login",
-  "header.search-placeholder": "Search for products, brands...",
-  "header.search-emptyPlaceholder": "No matches found",
-  "header.topMenu.minicart.icon.label": "My Cart",
-  "header.topMenu.login.icon.label": "Sign in",
-  "header.search-cancel": "Cancel"
+  "admin/editor.header.title": "Header",
+  "admin/editor.header.description": "Header component",
+  "admin/editor.header.logo.title": "Logo",
+  "admin/editor.header.logo.image": "Logo image",
+  "admin/editor.header.link.url": "Logo link",
+  "admin/editor.header.show.searchbar.title": "Show SearchBar",
+  "admin/editor.header.show.login.title": "Show Login",
+  "store/header.search-placeholder": "Search for products, brands...",
+  "store/header.search-emptyPlaceholder": "No matches found",
+  "store/header.topMenu.minicart.icon.label": "My Cart",
+  "store/header.topMenu.login.icon.label": "Sign in",
+  "store/header.search-cancel": "Cancel"
 }

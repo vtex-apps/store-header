@@ -1,14 +1,14 @@
 {
-  "editor.header.title": "Cabecera",
-  "editor.header.description": "Componente de cabecera",
-  "editor.header.logo.title": "Logotipo",
-  "editor.header.logo.image": "Imagen del logotipo",
-  "editor.header.link.url": "Link del logotipo",
-  "editor.header.show.searchbar.title": "Mostrar Busca",
-  "editor.header.show.login.title": "Mostrar Login",
-  "header.search-placeholder": "Búsqueda por productos, marcas...",
-  "header.search-emptyPlaceholder": "Ningún resultado encontrado",
-  "header.topMenu.minicart.icon.label": "Mi Cesta",
-  "header.topMenu.login.icon.label": "Entrar",
-  "header.search-cancel": "Cancelar"
+  "admin/editor.header.title": "Cabecera",
+  "admin/editor.header.description": "Componente de cabecera",
+  "admin/editor.header.logo.title": "Logotipo",
+  "admin/editor.header.logo.image": "Imagen del logotipo",
+  "admin/editor.header.link.url": "Link del logotipo",
+  "admin/editor.header.show.searchbar.title": "Mostrar Busca",
+  "admin/editor.header.show.login.title": "Mostrar Login",
+  "store/header.search-placeholder": "Búsqueda por productos, marcas...",
+  "store/header.search-emptyPlaceholder": "Ningún resultado encontrado",
+  "store/header.topMenu.minicart.icon.label": "Mi Cesta",
+  "store/header.topMenu.login.icon.label": "Entrar",
+  "store/header.search-cancel": "Cancelar"
 }

@@ -1,14 +1,14 @@
 {
-  "editor.header.title": "editor.header.title",
-  "editor.header.description": "editor.header.description",
-  "editor.header.logo.title": "editor.header.logo.title",
-  "editor.header.logo.image": "editor.header.logo.image",
-  "editor.header.link.url": "editor.header.link.url",
-  "editor.header.show.searchbar.title": "editor.header.show.searchbar.title",
-  "editor.header.show.login.title": "editor.header.show.login.title",
-  "header.search-placeholder": "header.search-placeholder",
-  "header.search-emptyPlaceholder": "header.search-emptyPlaceholder",
-  "header.topMenu.minicart.icon.label": "header.topMenu.minicart.icon.label",
-  "header.topMenu.login.icon.label": "header.topMenu.login.icon.label",
-  "header.search-cancel": "header.search-cancel"
+  "admin/editor.header.title": "admin/editor.header.title",
+  "admin/editor.header.description": "admin/editor.header.description",
+  "admin/editor.header.logo.title": "admin/editor.header.logo.title",
+  "admin/editor.header.logo.image": "admin/editor.header.logo.image",
+  "admin/editor.header.link.url": "admin/editor.header.link.url",
+  "admin/editor.header.show.searchbar.title": "admin/editor.header.show.searchbar.title",
+  "admin/editor.header.show.login.title": "admin/editor.header.show.login.title",
+  "store/header.search-placeholder": "store/header.search-placeholder",
+  "store/header.search-emptyPlaceholder": "store/header.search-emptyPlaceholder",
+  "store/header.topMenu.minicart.icon.label": "store/header.topMenu.minicart.icon.label",
+  "store/header.topMenu.login.icon.label": "store/header.topMenu.login.icon.label",
+  "store/header.search-cancel": "store/header.search-cancel"
 }
