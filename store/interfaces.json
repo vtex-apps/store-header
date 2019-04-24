@@ -42,6 +42,7 @@
   "header-row": {
     "allowed": [
       "telemarketing",
+      "notification",
       "logo",
       "minicart",
       "login",
