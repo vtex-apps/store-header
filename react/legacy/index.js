@@ -107,29 +107,29 @@ Header.defaultProps = {
 }
 
 Header.schema = {
-  title: 'editor.header.title',
-  description: 'editor.header.description',
+  title: 'admin/editor.header.title',
+  description: 'admin/editor.header.description',
   type: 'object',
   properties: {
     logoUrl: {
       type: 'string',
-      title: 'editor.header.logo.image',
+      title: 'admin/editor.header.logo.image',
       widget: {
         'ui:widget': 'image-uploader',
       },
     },
     linkUrl: {
       type: 'string',
-      title: 'editor.header.link.url',
+      title: 'admin/editor.header.link.url',
     },
     showSearchBar: {
-      title: 'editor.header.show.searchbar.title',
+      title: 'admin/editor.header.show.searchbar.title',
       type: 'boolean',
       default: true,
       isLayout: true,
     },
     showLogin: {
-      title: 'editor.header.show.login.title',
+      title: 'admin/editor.header.show.login.title',
       type: 'boolean',
       default: true,
       isLayout: true,

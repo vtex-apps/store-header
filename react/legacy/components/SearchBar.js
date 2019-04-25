@@ -25,9 +25,9 @@ const SearchBar = ({ onCancel, iconClasses, mobile }) => {
       <div className="w-75">
         <Adopt
           mapper={{
-            placeholder: <FormattedMessage id="header.search-placeholder" />,
+            placeholder: <FormattedMessage id="store/header.search-placeholder" />,
             emptyPlaceholder: (
-              <FormattedMessage id="header.search-emptyPlaceholder" />
+              <FormattedMessage id="store/header.search-emptyPlaceholder" />
             ),
           }}
         >
@@ -47,7 +47,7 @@ const SearchBar = ({ onCancel, iconClasses, mobile }) => {
         <div className="w-25 pa2-m pt2-s">
           <Button size="small" variation="tertiary" onClick={onCancel}>
             <span className={cancelClassNames}>
-              <FormattedMessage id="header.search-cancel" />
+              <FormattedMessage id="store/header.search-cancel" />
             </span>
           </Button>
         </div>

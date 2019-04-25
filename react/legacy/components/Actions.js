@@ -66,7 +66,7 @@ const Actions = ({
               iconClasses={iconClasses}
               labelClasses={labelClasses}
               iconLabel={
-                <FormattedMessage id="header.topMenu.login.icon.label" />
+                <FormattedMessage id="store/header.topMenu.login.icon.label" />
               }
             />
           )}
@@ -77,7 +77,7 @@ const Actions = ({
               iconClasses={iconClasses}
               labelClasses={labelClasses}
               iconLabel={
-                <FormattedMessage id="header.topMenu.minicart.icon.label" />
+                <FormattedMessage id="store/header.topMenu.minicart.icon.label" />
               }
             />
           )}
