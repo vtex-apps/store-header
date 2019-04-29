@@ -54,7 +54,8 @@
       "theme",
       "user-address",
       "header-spacer",
-      "rich-text"
+      "rich-text",
+      "drawer"
     ],
     "component": "Row",
     "composition": "children"

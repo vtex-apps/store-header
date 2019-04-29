@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "store-header",
-  "version": "2.16.0",
+  "version": "2.17.0",
   "title": "VTEX Store Header",
   "defaultLocale": "pt-BR",
   "description": "The VTEX Store Header component",
@@ -27,6 +27,7 @@
     "vtex.category-menu": "2.x",
     "vtex.store-components": "3.x",
     "vtex.store-icons": "0.x",
-    "vtex.rich-text": "0.x"
+    "vtex.rich-text": "0.x",
+    "vtex.store-drawer": "0.x"
   }
 }
