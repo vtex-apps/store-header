@@ -23,6 +23,7 @@ See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for mor
   - [Styles API](#styles-api)
     - [CSS namespaces](#css-namespaces)
 - [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
 - [Tests](#tests)
 
 ## Usage
