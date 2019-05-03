@@ -175,6 +175,10 @@ Below, we describe the namespaces that are defined in the header.
 
 You can check if others are passing through similar issues [here](https://github.com/vtex-apps/store-header/issues). Also feel free to [open issues](https://github.com/vtex-apps/store-header/issues/new) or contribute with pull requests.
 
+## Contributing
+
+Check it out [how to contribute](https://github.com/vtex-apps/awesome-io#contributing) with this project. 
+
 ## Tests
 
 To execute our tests go to `react/` folder and run `yarn test`
