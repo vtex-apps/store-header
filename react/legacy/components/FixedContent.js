@@ -86,7 +86,7 @@ const FixedContent = ({
                     <SearchBar mobile={mobile} />
                   </div>
                 )}
-                
+
                 <ExtensionPoint id="locale-switcher"/>
 
                 <Actions
