@@ -17,6 +17,7 @@ const TopMenu = ({
   logoTitle,
   logoSize,
   showLogin,
+  showLocaleSwitcher,
   showSearchBar,
   iconClasses,
   labelClasses,
@@ -44,6 +45,7 @@ const TopMenu = ({
         logoTitle={logoTitle}
         showSearchBar={showSearchBar}
         showLogin={showLogin}
+        showLocaleSwitcher={showLocaleSwitcher}
         iconClasses={iconClasses}
         labelClasses={labelClasses}
         mobile={mobile}

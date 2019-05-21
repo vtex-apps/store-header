@@ -6,6 +6,7 @@
   "admin/editor.header.link.url": "Logo link",
   "admin/editor.header.show.searchbar.title": "Show SearchBar",
   "admin/editor.header.show.login.title": "Show Login",
+  "admin/editor.header.show.localeswitcher.title": "Show Locale Switcher",
   "store/header.search-placeholder": "Search for products, brands...",
   "store/header.search-emptyPlaceholder": "No matches found",
   "store/header.topMenu.minicart.icon.label": "My Cart",

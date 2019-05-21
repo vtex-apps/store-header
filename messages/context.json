@@ -6,6 +6,7 @@
   "admin/editor.header.link.url": "admin/editor.header.link.url",
   "admin/editor.header.show.searchbar.title": "admin/editor.header.show.searchbar.title",
   "admin/editor.header.show.login.title": "admin/editor.header.show.login.title",
+  "admin/editor.header.show.localeswitcher.title": "admin/editor.header.show.localeswitcher.title",
   "store/header.search-placeholder": "store/header.search-placeholder",
   "store/header.search-emptyPlaceholder": "store/header.search-emptyPlaceholder",
   "store/header.topMenu.minicart.icon.label": "store/header.topMenu.minicart.icon.label",

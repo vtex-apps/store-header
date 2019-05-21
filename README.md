@@ -107,18 +107,19 @@ Note that every `header` implementation must append all required blocks within i
 
 Through the Storefront, you can change the headers's behavior and interface. However, you also can make in your theme app, as Store theme does.
 
-| Prop name              | Type      | Description                                       | Default value                                                            |
-| ---------------------- | --------- | ------------------------------------------------- | ------------------------------------------------------------------------ |
-| `leanWhen`             | `String`  | Cases in which the menu is in lean mode           | 'a^'                                                                     |
-| `linkUrl`              | `String`  | Address opened when the user clicks the logo      | '/'                                                                      |
-| `logoUrl`              | `String`  | URL of the logo image                             | N/A                                                                      |
-| `logoTitle`            | `String`  | Alt text for the logo                             | N/A                                                                      |
-| `logoSize`             | `Object`  | Sizes of logo in desktop and mobile               | `desktop: { width: 132, height: 40 }, mobile: { width: 90, height: 40 }` |
-| `showSearchBar`        | `Boolean` | Sets whether the search bar is visible or not     | true                                                                     |
-| `showLogin`            | `Boolean` | Sets whether the login button is displayed or not | true                                                                     |
-| `iconClasses`          | `String`  | Classes for icons                                 | 'c-on-base'                                                              |
-| `labelClasses`         | `String`  | Classes for labels                                | 'c-on-base'                                                              |
-| `collapsibleAnimation` | `Object`  | Collapsible animation controlling                 | [Collapsible Animation](#collapsible-animation)                          |
+| Prop name              | Type      | Description                                          | Default value                                                              |
+| ---------------------- | --------- | ---------------------------------------------------- | ------------------------------------------------------------------------ |
+| `leanWhen`             | `String`  | Cases in which the menu is in lean mode              | 'a^'                                                                       |
+| `linkUrl`              | `String`  | Address opened when the user clicks the logo         | '/'                                                                        |
+| `logoUrl`              | `String`  | URL of the logo image                                | N/A                                                                        |
+| `logoTitle`            | `String`  | Alt text for the logo                                | N/A                                                                        |
+| `logoSize`             | `Object`  | Sizes of logo in desktop and mobile                  | `desktop: { width: 132, height: 40 }, mobile: { width: 90, height: 40 }` |
+| `showSearchBar`        | `Boolean` | Sets whether the search bar is visible or not        | true                                                                       |
+| `showLogin`            | `Boolean` | Sets whether the login button is displayed or not    | true                                                                       |
+| `showLocaleSwitcher`   | `Boolean` | Sets whether the locale switcher is displayed or not | true                                                                       |
+| `iconClasses`          | `String`  | Classes for icons                                    | 'c-on-base'                                                                |
+| `labelClasses`         | `String`  | Classes for labels                                   | 'c-on-base'                                                                |
+| `collapsibleAnimation` | `Object`  | Collapsible animation controlling                    | [Collapsible Animation](#collapsible-animation)                            |
 
 ##### Collapsible Animation
 

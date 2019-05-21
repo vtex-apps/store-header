@@ -22,6 +22,7 @@ const FixedContent = ({
   logoSize,
   showSearchBar,
   showLogin,
+  showLocaleSwitcher,
   iconClasses,
   labelClasses,
   mobile,
@@ -85,6 +86,10 @@ const FixedContent = ({
                   <div className="dn db-ns flex-grow-1">
                     <SearchBar mobile={mobile} />
                   </div>
+                )}
+                
+                {showLocaleSwitcher && (
+                  <ExtensionPoint id="locale-switcher"/>
                 )}
 
                 <Actions

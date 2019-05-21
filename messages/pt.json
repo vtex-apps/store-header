@@ -6,6 +6,7 @@
   "admin/editor.header.link.url": "Link da Logo",
   "admin/editor.header.show.searchbar.title": "Mostrar Busca",
   "admin/editor.header.show.login.title": "Mostrar Login",
+  "admin/editor.header.show.localeswitcher.title": "Mostrar alternador de localidade",
   "store/header.search-placeholder": "Busque por produtos, marcas...",
   "store/header.search-emptyPlaceholder": "Nenhum resultado encontrado",
   "store/header.topMenu.minicart.icon.label": "Meu Carrinho",
