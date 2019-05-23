@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Support for `localeSwitcher`.
 
 ## [2.17.0] - 2019-04-29
+### Added
+- Added CSS Override class to header row background.
 
 ### Added
 - Allow `drawer` block on `header-row`. 
