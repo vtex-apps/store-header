@@ -48,6 +48,11 @@ exports[`Header Component should match snapshot mobile with leanmode 1`] = `
               </div>
             </div>
             <div
+              class="extension-point-mock"
+            >
+              locale-switcher
+            </div>
+            <div
               class="topMenuIcons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns"
             >
               <div
@@ -146,6 +151,11 @@ exports[`Header Component should match snapshot mobile without leanmode 1`] = `
               </div>
             </div>
             <div
+              class="extension-point-mock"
+            >
+              locale-switcher
+            </div>
+            <div
               class="topMenuIcons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns"
             >
               <div
@@ -240,6 +250,11 @@ exports[`Header Component should match snapshot with leanmode 1`] = `
                   logo
                 </div>
               </div>
+            </div>
+            <div
+              class="extension-point-mock"
+            >
+              locale-switcher
             </div>
             <div
               class="topMenuIcons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns"
@@ -338,6 +353,11 @@ exports[`Header Component should match snapshot without leanmode 1`] = `
                   </div>
                 </div>
               </div>
+            </div>
+            <div
+              class="extension-point-mock"
+            >
+              locale-switcher
             </div>
             <div
               class="topMenuIcons flex justify-end flex-grow-1 flex-grow-0-ns items-center order-1-s ml-auto-s order-2-ns"
