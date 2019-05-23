@@ -5,7 +5,7 @@
   "admin/editor.header.logo.image": "Imagen del logotipo",
   "admin/editor.header.link.url": "Link del logotipo",
   "admin/editor.header.show.searchbar.title": "Mostrar Busca",
-  "admin/editor.header.show.localeswitcher.title": "Mostrar alternador de localidade",
+  "admin/editor.header.show.localeswitcher.title": "Mostrar selector de localidade",
   "admin/editor.header.show.login.title": "Mostrar Login",
   "store/header.search-placeholder": "Búsqueda por productos, marcas...",
   "store/header.search-emptyPlaceholder": "Ningún resultado encontrado",

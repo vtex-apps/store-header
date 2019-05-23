@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Adds support for `localeSwitcher`.
+- Support for `localeSwitcher`.
 
 ## [2.17.0] - 2019-04-29
 
