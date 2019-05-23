@@ -26,7 +26,7 @@ const Row: FunctionComponent<Props & BlockClass> = ({
       <div className={generateBlockClass(styles.headerRow, blockClass)}>
         <div
           className={classNames(
-            'w-100',
+            `${generateBlockClass(styles.headerRowBackground, blockClass)} w-100`,
             inverted
               ? 'bg-base--inverted c-on-base--inverted'
               : 'bg-base c-on-base'
