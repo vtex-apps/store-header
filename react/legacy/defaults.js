@@ -84,13 +84,11 @@ export const icons = {
 export const localeSwitcher = {
   propTypes: {
     showLocaleSwitcher: PropTypes.bool,
-    bottom: PropTypes.bool,
     color: PropTypes.string,
     hoverColor: PropTypes.string,
   },
   defaultProps: {
     showLocaleSwitcher: true,
-    bottom: false,
     color: 'near-black',
     hoverColor: 'rebel-pink',
   }
