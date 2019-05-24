@@ -19,7 +19,7 @@ const Row: FunctionComponent<Props & BlockClass> = ({
   inverted,
   blockClass,
 }) => {
-  const content = <div className="w-100 flex items-center">{children}</div>
+  const content = <div className={`${styles.headerRowContainer} w-100 flex items-center`}>{children}</div>
 
   return (
     <StickyRow sticky={sticky}>
