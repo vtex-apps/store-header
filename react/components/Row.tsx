@@ -19,14 +19,14 @@ const Row: FunctionComponent<Props & BlockClass> = ({
   inverted,
   blockClass,
 }) => {
-  const content = <div className="w-100 flex items-center">{children}</div>
+  const content = <div className={`${styles.headerRowContainer} w-100 flex items-center`}>{children}</div>
 
   return (
     <StickyRow sticky={sticky}>
       <div className={generateBlockClass(styles.headerRow, blockClass)}>
         <div
           className={classNames(
-            'w-100',
+            `${generateBlockClass(styles.headerRowBackground, blockClass)} w-100`,
             inverted
               ? 'bg-base--inverted c-on-base--inverted'
               : 'bg-base c-on-base'
