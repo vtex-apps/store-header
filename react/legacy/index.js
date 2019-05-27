@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { ExtensionPoint, useRuntime } from 'vtex.render-runtime'
 import TopMenu from './components/TopMenu'
 import Spacer from './components/Helpers/Spacer'
-import { logo, collapsible, icons, searchBar, login, localeSwitcher } from './defaults'
+import { logo, collapsible, icons, searchBar, login } from './defaults'
 
 import styles from './store-header.css'
 import useDevice from './hooks/useDevice'
@@ -20,7 +20,6 @@ const Header = ({
   logoSize,
   showSearchBar,
   showLogin,
-  showLocaleSwitcher,
   iconClasses,
   labelClasses,
   collapsibleAnimation,
@@ -47,7 +46,6 @@ const Header = ({
     logoSize,
     showSearchBar,
     showLogin,
-    showLocaleSwitcher,
     iconClasses,
     labelClasses,
     collapsibleAnimation,
@@ -97,7 +95,6 @@ Header.propTypes = {
   ...icons.propTypes,
   ...logo.propTypes,
   ...collapsible.propTypes,
-  ...localeSwitcher.propTypes,
 }
 
 Header.defaultProps = {
@@ -107,7 +104,6 @@ Header.defaultProps = {
   ...icons.defaultProps,
   ...logo.defaultProps,
   ...collapsible.defaultProps,
-  ...localeSwitcher.defaultProps,
 }
 
 Header.schema = {
@@ -134,12 +130,6 @@ Header.schema = {
     },
     showLogin: {
       title: 'admin/editor.header.show.login.title',
-      type: 'boolean',
-      default: true,
-      isLayout: true,
-    },
-    showLocaleSwitcher: {
-      title: 'admin/editor.header.show.localeswitcher.title',
       type: 'boolean',
       default: true,
       isLayout: true,

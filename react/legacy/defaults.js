@@ -81,19 +81,6 @@ export const icons = {
   },
 }
 
-export const localeSwitcher = {
-  propTypes: {
-    showLocaleSwitcher: PropTypes.bool,
-    color: PropTypes.string,
-    hoverColor: PropTypes.string,
-  },
-  defaultProps: {
-    showLocaleSwitcher: true,
-    color: 'near-black',
-    hoverColor: 'rebel-pink',
-  }
-}
-
 export const collapsible = {
   propTypes: {
     collapsibleAnimation: PropTypes.shape({

@@ -22,7 +22,6 @@ const FixedContent = ({
   logoSize,
   showSearchBar,
   showLogin,
-  showLocaleSwitcher,
   iconClasses,
   labelClasses,
   mobile,
@@ -88,9 +87,7 @@ const FixedContent = ({
                   </div>
                 )}
                 
-                {showLocaleSwitcher && (
-                  <ExtensionPoint id="locale-switcher"/>
-                )}
+                <ExtensionPoint id="locale-switcher"/>
 
                 <Actions
                   iconClasses={iconClasses}

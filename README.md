@@ -116,7 +116,6 @@ Through the Storefront, you can change the headers's behavior and interface. How
 | `logoSize`             | `Object`  | Sizes of logo in desktop and mobile                  | `desktop: { width: 132, height: 40 }, mobile: { width: 90, height: 40 }` |
 | `showSearchBar`        | `Boolean` | Sets whether the search bar is visible or not        | true                                                                       |
 | `showLogin`            | `Boolean` | Sets whether the login button is displayed or not    | true                                                                       |
-| `showLocaleSwitcher`   | `Boolean` | Sets whether the locale switcher is displayed or not | true                                                                       |
 | `iconClasses`          | `String`  | Classes for icons                                    | 'c-on-base'                                                                |
 | `labelClasses`         | `String`  | Classes for labels                                   | 'c-on-base'                                                                |
 | `collapsibleAnimation` | `Object`  | Collapsible animation controlling                    | [Collapsible Animation](#collapsible-animation)                            |
