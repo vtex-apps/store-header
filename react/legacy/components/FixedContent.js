@@ -87,6 +87,8 @@ const FixedContent = ({
                   </div>
                 )}
 
+                <ExtensionPoint id="locale-switcher"/>
+
                 <Actions
                   iconClasses={iconClasses}
                   labelClasses={labelClasses}
