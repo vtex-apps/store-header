@@ -57,7 +57,8 @@
       "user-address",
       "header-spacer",
       "rich-text",
-      "drawer"
+      "drawer",
+      "header-center-container"
     ],
     "component": "Row",
     "composition": "children"
@@ -103,5 +104,10 @@
   },
   "unstable--header-border": {
     "component": "Border"
+  },
+  "header-center-container": {
+    "component": "CenterContainer",
+    "composition": "children",
+    "allowed": "*"
   }
 }
