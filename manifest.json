@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "store-header",
-  "version": "2.19.0",
+  "version": "2.20.0",
   "title": "VTEX Store Header",
   "defaultLocale": "pt-BR",
   "description": "The VTEX Store Header component",
@@ -30,5 +30,6 @@
     "vtex.rich-text": "0.x",
     "vtex.store-drawer": "0.x",
     "vtex.locale-switcher": "0.x"
-  }
+  },
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
