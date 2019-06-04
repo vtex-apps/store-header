@@ -58,7 +58,7 @@
       "header-spacer",
       "rich-text",
       "drawer",
-      "header-center-container"
+      "header-force-center"
     ],
     "component": "Row",
     "composition": "children"
@@ -105,8 +105,8 @@
   "unstable--header-border": {
     "component": "Border"
   },
-  "header-center-container": {
-    "component": "CenterContainer",
+  "header-force-center": {
+    "component": "ForceCenter",
     "composition": "children",
     "allowed": "*"
   }
