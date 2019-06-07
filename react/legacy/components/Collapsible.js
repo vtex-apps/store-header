@@ -2,7 +2,11 @@ import React from 'react'
 import classNames from 'classnames'
 import { NoSSR, ExtensionPoint } from 'vtex.render-runtime'
 import PropTypes from 'prop-types'
-import { useSpring, animated, config as springPresets } from 'react-spring'
+import {
+  useSpring,
+  animated,
+  config as springPresets,
+} from 'react-spring/web.cjs'
 import useScrollDirection from '../hooks/useScrollDirection'
 import Border from './Helpers/Border'
 import { collapsible, lean } from '../defaults'
