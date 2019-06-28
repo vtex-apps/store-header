@@ -8,6 +8,7 @@ import styles from './Row.css'
 
 interface Props {
   sticky?: boolean
+  zIndex?: number
   fullWidth?: boolean
   inverted?: boolean
 }
@@ -15,6 +16,7 @@ interface Props {
 const Row: FunctionComponent<Props & BlockClass> = ({
   children,
   sticky,
+  zIndex,
   fullWidth,
   inverted,
   blockClass,
@@ -26,7 +28,7 @@ const Row: FunctionComponent<Props & BlockClass> = ({
   )
 
   return (
-    <StickyRow sticky={sticky}>
+    <StickyRow sticky={sticky} zIndex={zIndex}>
       <div className={generateBlockClass(styles.headerRow, blockClass)}>
         <div
           className={classNames(
