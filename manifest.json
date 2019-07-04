@@ -6,6 +6,7 @@
   "defaultLocale": "pt-BR",
   "description": "The VTEX Store Header component",
   "builders": {
+    "docs": "0.x",
     "react": "3.x",
     "store": "0.x",
     "messages": "1.x"
