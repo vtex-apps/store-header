@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import { Block, useDevice } from 'vtex.render-runtime'
+import { Block } from 'vtex.render-runtime'
+import { useDevice } from 'vtex.device-detector'
 
 enum Device {
   mobile = 'mobile',
