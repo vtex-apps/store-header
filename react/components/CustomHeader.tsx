@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import { ExtensionPoint, useRuntime, NoSSR } from 'vtex.render-runtime'
-import Media from 'react-media'
+import { Block } from 'vtex.render-runtime'
+import { useDevice } from 'vtex.device-detector'
 
 enum Device {
   mobile = 'mobile',
@@ -12,40 +12,26 @@ const CustomHeaderLayout = ({ device }: { device: Device }) => {
     case Device.mobile:
       return (
         <>
-          <ExtensionPoint id="header-layout.mobile" />
-          <ExtensionPoint id="unstable--header-layout.mobile" />
+          <Block id="header-layout.mobile" />
+          <Block id="unstable--header-layout.mobile" />
         </>
       )
     case Device.desktop:
     default:
       return (
         <>
-          <ExtensionPoint id="header-layout.desktop" />
-          <ExtensionPoint id="unstable--header-layout.desktop" />
+          <Block id="header-layout.desktop" />
+          <Block id="unstable--header-layout.desktop" />
         </>
       )
   }
 }
 
 const CustomHeader: FunctionComponent = () => {
-  const {
-    hints: { mobile },
-  } = useRuntime()
+  const { isMobile } = useDevice()
 
   return (
-    <NoSSR
-      onSSR={
-        <CustomHeaderLayout device={mobile ? Device.mobile : Device.desktop} />
-      }
-    >
-      <Media query="(max-width:40rem)">
-        {matches => (
-          <CustomHeaderLayout
-            device={matches ? Device.mobile : Device.desktop}
-          />
-        )}
-      </Media>
-    </NoSSR>
+    <CustomHeaderLayout device={isMobile ? Device.mobile : Device.desktop} />
   )
 }
 
