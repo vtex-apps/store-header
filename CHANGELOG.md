@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.21.3-beta] - 2019-08-04
+
 ## [2.21.2] - 2019-07-16
 ### Changed
 - Use `useDevice` hook for device detection.
