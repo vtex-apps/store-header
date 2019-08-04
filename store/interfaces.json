@@ -22,7 +22,8 @@
       "unstable--header-layout.desktop-scroll",
       "unstable--header-layout.mobile-scroll"
     ],
-    "component": "index"
+    "component": "index",
+    "render": "lazy"
   },
   "header.full": {},
   "header-layout": {
@@ -31,7 +32,8 @@
       "header-border"
     ],
     "component": "Layout",
-    "composition": "children"
+    "composition": "children",
+    "render": "lazy"
   },
   "header-layout.desktop": {},
   "header-layout.mobile": {},
