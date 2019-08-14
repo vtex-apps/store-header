@@ -42,6 +42,7 @@
   },
   "header-row": {
     "allowed": [
+      "social-networks",
       "telemarketing",
       "notification",
       "logo",
