@@ -28,20 +28,8 @@
   "header-layout": {
     "allowed": [
       "header-row",
-      "header-border"
-    ],
-    "component": "Layout",
-    "composition": "children"
-  },
-  "header-layout.desktop": {},
-  "header-layout.mobile": {},
-  "header-layout.desktop-scroll": {},
-  "header-layout.mobile-scroll": {},
-  "header-spacer": {
-    "component": "Spacer"
-  },
-  "header-row": {
-    "allowed": [
+      "header-border",
+      "flex-layout",
       "telemarketing",
       "notification",
       "logo",
@@ -60,6 +48,18 @@
       "drawer",
       "header-force-center"
     ],
+    "component": "Layout",
+    "composition": "children"
+  },
+  "header-layout.desktop": {},
+  "header-layout.mobile": {},
+  "header-layout.desktop-scroll": {},
+  "header-layout.mobile-scroll": {},
+  "header-spacer": {
+    "component": "Spacer"
+  },
+  "header-row": {
+    "allowed": "*",
     "component": "Row",
     "composition": "children"
   },
@@ -69,10 +69,7 @@
   "theme": {},
 
   "unstable--header-layout": {
-    "allowed": [
-      "unstable--header-row",
-      "unstable--header-border"
-    ],
+    "allowed": ["unstable--header-row", "unstable--header-border"],
     "component": "Layout",
     "composition": "children"
   },
