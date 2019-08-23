@@ -7,93 +7,130 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- `flex-layout` to the `allowed` array for the `header-layout` interface.
+
 ## [2.21.2] - 2019-07-16
+
 ### Changed
+
 - Use `useDevice` hook for device detection.
 
 ## [2.21.1] - 2019-07-03
+
 ### Fixed
+
 - Issue where the hydration would break under certain circumstances (namely, when the user agent would be that of a mobile device but the screen size would be considered a desktop).
 
 ## [2.21.0] - 2019-06-28
+
 ### Added
+
 - Prop `zIndex` to `header-row`.
 
 ## [2.20.2] - 2019-06-27
 
 ### Fixed
+
 - Build assets with new builder hub.
 
 ## [2.20.1] - 2019-06-07
+
 ### Fixed
+
 - Fixed issue that causes syntax error on IE11, due to the use of ES6 features.
 
 ## [2.20.0] - 2019-06-04
+
 ### Added
+
 - `header-force-center` block, for forcing centering on header.
 
 ## [2.19.0] - 2019-05-28
+
 ### Added
+
 - Support for `localeSwitcher`.
 
 ## [2.18.0] - 2019-05-25
 
 ## [2.17.0] - 2019-04-29
+
 ### Added
+
 - Added CSS Override class to header row background.
 
 ### Added
-- Allow `drawer` block on `header-row`. 
+
+- Allow `drawer` block on `header-row`.
 
 ## [2.16.0] - 2019-04-24
+
 ### Changed
+
 - Scope messages by domain
 
 ## [2.15.0] - 2019-04-24
+
 ### Added
+
 - Adds support for `notification` on `header-row`.
 
 ## [2.14.0] - 2019-04-11
+
 ### Added
+
 - Adds support for `rich-text` on `header-row`s.
 
 ## [2.13.0] - 2019-04-11
+
 ### Added
+
 - Add CSS handles and `blockClass` support for rows.
 
 ### Changed
+
 - Removed `unstable` flags.
 - Renamed `_` to `header-spacer`.
 - Decreased `z-index` of rows.
 
 ### Deprecated
+
 - Deprecated all `unstable` flags, which will be removed soon.
 - Deprecated `_` in favor of `header-spacer`, and will be removed soon.
 
 ## [2.12.2] - 2019-04-11
+
 ### Fixed
+
 - Fixed bug where the width of the FixedContent part of the Legacy header would be limited by the Container's width.
 
 ## [2.12.1] - 2019-04-10
 
 ### Fixed
+
 - Legacy Header schema
 
 ## [2.12.0] - 2019-04-05
 
 ### Added
+
 - Better support for the `sticky` prop. Now it allows multiple and interspected sticky rows.
 
 ## [2.11.0] - 2019-03-28
 
 ### Added
+
 - Added new experimental `header-layout` blocks, under an `unstable--` flag.
 - Support for new experimental `menu` block, under an `unstable--` flag.
 
 ### Changed
+
 - All previously required blocks are now simply allowed.
 
 ## Fixed
+
 - Fixed bug on legacy header where it would be in desktop mode on mobile devices.
 
 ## [2.10.6] - 2019-03-26
