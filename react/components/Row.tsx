@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { Container } from 'vtex.store-components'
-import StickyRow from './StickyRow'
+import { StickyRow } from 'vtex.sticky-layout'
 import { generateBlockClass, BlockClass } from '@vtex/css-handles'
 
 import styles from './Row.css'
