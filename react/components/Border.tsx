@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { StickyRow } from 'vtex.sticky-layout'
+import StickyRow from './StickyRow'
 
 interface Props {
   sticky: boolean
