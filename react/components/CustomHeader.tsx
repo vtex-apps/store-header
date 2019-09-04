@@ -7,7 +7,7 @@ enum Device {
   desktop = 'desktop',
 }
 
-const CustomHeaderLayout = ({ device }: { device: Device }) => {
+const CustomHeaderLayout = React.memo(({ device }: { device: Device }) => {
   switch (device) {
     case Device.mobile:
       return (
@@ -25,7 +25,9 @@ const CustomHeaderLayout = ({ device }: { device: Device }) => {
         </>
       )
   }
-}
+})
+
+CustomHeaderLayout.displayName = 'CustomHeaderLayout'
 
 const CustomHeader: FunctionComponent = () => {
   const { isMobile } = useDevice()
