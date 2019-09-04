@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from 'react'
+import React, { FunctionComponent } from 'react'
 import { Block } from 'vtex.render-runtime'
 import { useDevice } from 'vtex.device-detector'
 
@@ -7,7 +7,7 @@ enum Device {
   desktop = 'desktop',
 }
 
-const CustomHeaderLayout = ({ device }: { device: Device }) => {
+const CustomHeaderLayout = React.memo(({ device }: { device: Device }) => {
   switch (device) {
     case Device.mobile:
       return (
@@ -25,16 +25,15 @@ const CustomHeaderLayout = ({ device }: { device: Device }) => {
         </>
       )
   }
-}
+})
+
+CustomHeaderLayout.displayName = 'CustomHeaderLayout'
 
 const CustomHeader: FunctionComponent = () => {
   const { isMobile } = useDevice()
 
-  return useMemo(
-    () => (
-      <CustomHeaderLayout device={isMobile ? Device.mobile : Device.desktop} />
-    ),
-    [isMobile]
+  return (
+    <CustomHeaderLayout device={isMobile ? Device.mobile : Device.desktop} />
   )
 }
 
