@@ -11,7 +11,6 @@ const StickyRow: FunctionComponent<Props> = ({ children, sticky, zIndex }) => {
   const { offset, onResize } = useContext(RowContext)
 
   const stickyStyle: CSSProperties = {
-    position: 'sticky',
     top: offset,
     zIndex,
   }
@@ -19,7 +18,7 @@ const StickyRow: FunctionComponent<Props> = ({ children, sticky, zIndex }) => {
   return (
     <div
       style={sticky ? stickyStyle : undefined}
-      className={sticky && !zIndex ? 'z-999' : ''}
+      className={sticky ? `sticky ${!zIndex ? 'z-999' : ''}` : ''}
     >
       {children}
 
