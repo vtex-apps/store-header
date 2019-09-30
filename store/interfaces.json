@@ -58,7 +58,8 @@
       "header-spacer",
       "rich-text",
       "drawer",
-      "header-force-center"
+      "header-force-center",
+      "modal"
     ],
     "component": "Row",
     "composition": "children"
