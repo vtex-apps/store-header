@@ -44,7 +44,7 @@ const Row: FunctionComponent<Props & BlockClass> = ({
           {fullWidth ? (
             content
           ) : (
-            <Container className="w-100 flex">{content}</Container>
+            <Container className="flex">{content}</Container>
           )}
         </div>
       </div>
