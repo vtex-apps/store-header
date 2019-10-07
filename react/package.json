@@ -6,7 +6,8 @@
     "pretest": "yarn",
     "test": "vtex-test-tools test",
     "test:coverage": "vtex-test-tools test --collectCoverage",
-    "gen:coveralls": "yarn test:coverage  && cat ./coverage/lcov.info | coveralls"
+    "gen:coveralls": "yarn test:coverage  && cat ./coverage/lcov.info | coveralls",
+    "lint": "tsc --noEmit && eslint --ext ts,tsx ."
   },
   "dependencies": {
     "@types/react-resize-detector": "^3.1.1",
