@@ -1,5 +1,7 @@
 import React, { FunctionComponent, useContext, CSSProperties } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
+import { useCssHandles } from 'vtex.css-handles'
+
 import { RowContext } from './StickyRows'
 
 interface Props {
@@ -7,7 +9,10 @@ interface Props {
   zIndex?: number
 }
 
+const CSS_HANDLES = ['headerStickyRow'] as const
+
 const StickyRow: FunctionComponent<Props> = ({ children, sticky, zIndex }) => {
+  const handles = useCssHandles(CSS_HANDLES)
   const { offset, onResize } = useContext(RowContext)
 
   const stickyStyle: CSSProperties = {
@@ -18,7 +23,9 @@ const StickyRow: FunctionComponent<Props> = ({ children, sticky, zIndex }) => {
   return (
     <div
       style={sticky ? stickyStyle : undefined}
-      className={sticky ? `sticky ${!zIndex ? 'z-999' : ''}` : ''}
+      className={`${handles.headerStickyRow} ${
+        sticky ? `sticky ${!zIndex ? 'z-999' : ''}` : ''
+      }`}
     >
       {children}
 
