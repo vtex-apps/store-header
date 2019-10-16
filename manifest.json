@@ -13,9 +13,7 @@
   },
   "mustUpdateAt": "2019-04-02",
   "categories": [],
-  "registries": [
-    "smartcheckout"
-  ],
+  "registries": ["smartcheckout"],
   "scripts": {
     "postreleasy": "vtex publish --verbose"
   },
@@ -31,7 +29,8 @@
     "vtex.rich-text": "0.x",
     "vtex.store-drawer": "0.x",
     "vtex.locale-switcher": "0.x",
-    "vtex.device-detector": "0.x"
+    "vtex.device-detector": "0.x",
+    "vtex.css-handles": "0.x"
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
