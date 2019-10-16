@@ -32,5 +32,6 @@
     "@vtex/test-tools": "^0.1.3",
     "apollo-client": "^2.5.1",
     "coveralls": "^3.0.3"
-  }
+  },
+  "version": "2.22.0"
 }
