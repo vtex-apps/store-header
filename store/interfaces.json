@@ -57,6 +57,7 @@
       "user-address",
       "header-spacer",
       "rich-text",
+      "info-card",
       "drawer",
       "header-force-center"
     ],
