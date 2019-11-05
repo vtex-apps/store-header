@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - `modal` added to `header-row` allowed list.
 
+## [2.22.1] - 2019-11-01
+### Fixed
+- Builder crashing because it doesn't find the `graphql` type.
+
+## [2.22.0] - 2019-10-16
+### Added
+- New `forceCenterInnerContainer`, `headerBorder`, `headerRowContentContainer`, `headerSpacer`, `headerStickyRow` CSS handles.
+
 ## [2.21.7] - 2019-09-06
 ### Fixed
 - Fix iOS issue where `sticky` would not work.

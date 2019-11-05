@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { Container } from 'vtex.store-components'
-import StickyRow from './StickyRow'
-import { generateBlockClass, BlockClass } from '@vtex/css-handles'
+import { useCssHandles } from 'vtex.css-handles'
 
-import styles from './Row.css'
+import StickyRow from './StickyRow'
 
 interface Props {
   sticky?: boolean
@@ -13,29 +12,34 @@ interface Props {
   inverted?: boolean
 }
 
-const Row: FunctionComponent<Props & BlockClass> = ({
+const CSS_HANDLES = [
+  'headerRowContainer',
+  'headerRow',
+  'headerRowBackground',
+  'headerRowContentContainer',
+] as const
+
+const Row: FunctionComponent<Props> = ({
   children,
   sticky,
   zIndex,
   fullWidth,
   inverted,
-  blockClass,
 }) => {
+  const handles = useCssHandles(CSS_HANDLES)
+
   const content = (
-    <div className={`${styles.headerRowContainer} w-100 flex items-center`}>
+    <div className={`${handles.headerRowContainer} w-100 flex items-center`}>
       {children}
     </div>
   )
 
   return (
     <StickyRow sticky={sticky} zIndex={zIndex}>
-      <div className={generateBlockClass(styles.headerRow, blockClass)}>
+      <div className={handles.headerRow}>
         <div
           className={classNames(
-            `${generateBlockClass(
-              styles.headerRowBackground,
-              blockClass
-            )} w-100`,
+            `${handles.headerRowBackground} w-100`,
             inverted
               ? 'bg-base--inverted c-on-base--inverted'
               : 'bg-base c-on-base'
@@ -44,7 +48,11 @@ const Row: FunctionComponent<Props & BlockClass> = ({
           {fullWidth ? (
             content
           ) : (
-            <Container className="w-100 flex">{content}</Container>
+            <Container
+              className={`${handles.headerRowContentContainer} w-100 flex`}
+            >
+              {content}
+            </Container>
           )}
         </div>
       </div>
