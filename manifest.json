@@ -13,16 +13,14 @@
   },
   "mustUpdateAt": "2019-04-02",
   "categories": [],
-  "registries": [
-    "smartcheckout"
-  ],
+  "registries": ["smartcheckout"],
   "scripts": {
     "postreleasy": "vtex publish --verbose"
   },
   "dependencies": {
     "vtex.styleguide": "9.x",
     "vtex.telemarketing": "2.x",
-    "vtex.minicart": "2.x",
+    "vtex.minicart": "3.x",
     "vtex.login": "2.x",
     "vtex.menu": "2.x",
     "vtex.category-menu": "2.x",
