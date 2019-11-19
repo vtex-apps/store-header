@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- New minicart-base-content interface to the allowed list in both header and header-row.
+- New `minicart-base-content` interface to the allowed list in both header and header-row.
 
 ## [2.22.1] - 2019-11-01
 ### Fixed
