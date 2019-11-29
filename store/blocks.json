@@ -1,53 +1,27 @@
 {
   "header": {
-    "blocks": [
-      "telemarketing",
-      "logo"
-    ]
+    "blocks": ["telemarketing", "logo"]
   },
   "header.full": {
-    "blocks": [
-      "telemarketing",
-      "logo",
-      "minicart",
-      "login",
-      "category-menu",
-      "search-bar",
-      "locale-switcher"
-    ]
+    "blocks": ["header-layout.desktop", "header-layout.mobile"]
   },
   "header-layout.desktop": {
-    "children": [
-      "header-row#desktop-1",
-      "header-row#desktop-2",
-      "header-row#desktop-3"
-    ]
+    "children": ["header-row#desktop-1", "header-row#desktop-2"]
   },
   "header-row#desktop-1": {
-    "children": [
-      "telemarketing"
-    ],
+    "children": ["telemarketing"],
     "props": {
       "fullWidth": true
     }
   },
   "header-row#desktop-2": {
-    "children": [
-      "header-spacer",
-      "search-bar",
-      "locale-switcher",
-      "header-spacer",
-      "login",
-      "minicart"
-    ],
+    "children": ["logo", "header-spacer", "search-bar", "login", "minicart"],
     "props": {
       "sticky": true
     }
   },
   "header-row#desktop-3": {
-    "children": [
-      "category-menu"
-    ]
+    "children": ["category-menu"]
   },
   "header-layout.mobile": {
     "children": [
@@ -57,25 +31,15 @@
     ]
   },
   "header-row#mobile-1": {
-    "children": [
-      "telemarketing"
-    ],
+    "children": ["telemarketing"],
     "props": {
       "fullWidth": true
     }
   },
   "header-row#mobile-2": {
-    "children": [
-      "logo",
-      "search-bar",
-      "locale-switcher",
-      "login",
-      "minicart"
-    ]
+    "children": ["logo", "search-bar", "locale-switcher", "login", "minicart"]
   },
   "header-row#mobile-3": {
-    "children": [
-      "category-menu"
-    ]
+    "children": ["category-menu"]
   }
 }
