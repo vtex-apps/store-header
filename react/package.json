@@ -33,5 +33,5 @@
     "apollo-client": "^2.5.1",
     "coveralls": "^3.0.3"
   },
-  "version": "2.22.2"
+  "version": "2.22.3"
 }
