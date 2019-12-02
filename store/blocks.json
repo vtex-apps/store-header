@@ -1,42 +1,24 @@
 {
   "header": {
-    "blocks": [
-      "telemarketing",
-      "logo"
-    ]
+    "blocks": ["telemarketing", "logo"]
   },
   "header.full": {
-    "blocks": [
-      "telemarketing",
-      "logo",
-      "minicart",
-      "login",
-      "category-menu",
-      "search-bar",
-      "locale-switcher"
-    ]
+    "blocks": ["header-layout.desktop", "header-layout.mobile"]
   },
   "header-layout.desktop": {
-    "children": [
-      "header-row#desktop-1",
-      "header-row#desktop-2",
-      "header-row#desktop-3"
-    ]
+    "children": ["header-row#desktop-1", "header-row#desktop-2"]
   },
   "header-row#desktop-1": {
-    "children": [
-      "telemarketing"
-    ],
+    "children": ["telemarketing"],
     "props": {
       "fullWidth": true
     }
   },
   "header-row#desktop-2": {
     "children": [
+      "logo#header",
       "header-spacer",
       "search-bar",
-      "locale-switcher",
-      "header-spacer",
       "login",
       "minicart"
     ],
@@ -45,37 +27,40 @@
     }
   },
   "header-row#desktop-3": {
-    "children": [
-      "category-menu"
-    ]
+    "children": ["category-menu"]
   },
   "header-layout.mobile": {
-    "children": [
-      "header-row#mobile-1",
-      "header-row#mobile-2",
-      "header-row#mobile-3"
-    ]
+    "children": ["header-row#mobile-2"]
   },
   "header-row#mobile-1": {
-    "children": [
-      "telemarketing"
-    ],
+    "children": ["telemarketing"],
     "props": {
-      "fullWidth": true
+      "fullWidth": true,
+      "sticky": true
     }
   },
   "header-row#mobile-2": {
     "children": [
-      "logo",
-      "search-bar",
-      "locale-switcher",
-      "login",
+      "logo#header",
+      "header-spacer",
+      "login#header-mobile",
       "minicart"
-    ]
+    ],
+    "props": {
+      "sticky": true
+    }
   },
-  "header-row#mobile-3": {
-    "children": [
-      "category-menu"
-    ]
+  "login#header-mobile": {
+    "props": {
+      "showIconProfile": true
+    }
+  },
+  "logo#header": {
+    "props": {
+      "width": 132,
+      "height": 32,
+      "mobileWidth": 90,
+      "mobileHeight": 32
+    }
   }
 }
