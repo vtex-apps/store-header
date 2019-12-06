@@ -2,6 +2,7 @@
   "header": {
     "allowed": [
       "minicart",
+      "minicart-base-content",
       "login",
       "category-menu",
       "search-bar",
@@ -26,10 +27,7 @@
   },
   "header.full": {},
   "header-layout": {
-    "allowed": [
-      "header-row",
-      "header-border"
-    ],
+    "allowed": ["header-row", "header-border"],
     "component": "Layout",
     "composition": "children"
   },
@@ -46,6 +44,7 @@
       "notification",
       "logo",
       "minicart",
+      "minicart-base-content",
       "login",
       "search-bar",
       "locale-switcher",
@@ -69,10 +68,7 @@
   "theme": {},
 
   "unstable--header-layout": {
-    "allowed": [
-      "unstable--header-row",
-      "unstable--header-border"
-    ],
+    "allowed": ["unstable--header-row", "unstable--header-border"],
     "component": "Layout",
     "composition": "children"
   },
