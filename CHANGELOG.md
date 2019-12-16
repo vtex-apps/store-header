@@ -10,6 +10,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - `info-card` component to allowed list `header-row`.
 
+## [2.23.0] - 2019-12-06
+### Added
+- New `minicart-base-content` interface to the allowed list in both header and header-row.
+
+## [2.22.3] - 2019-12-02
+### Changed
+- Default blocks implementation for `header.full`.
+
+## [2.22.2] - 2019-11-08
+
+## [2.22.1] - 2019-11-01
+### Fixed
+- Builder crashing because it doesn't find the `graphql` type.
 
 ## [2.22.0] - 2019-10-16
 ### Added
