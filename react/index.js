@@ -1,7 +1,8 @@
-import React from 'react'
-import { useChildBlock } from 'vtex.render-runtime'
-import LegacyHeader from './legacy'
+import React, { Suspense } from 'react'
+import { useChildBlock, NoSSR } from 'vtex.render-runtime'
+
 import CustomHeader from './components/CustomHeader'
+const LegacyHeader = React.lazy(() => import('./legacy'))
 
 const Header = props => {
   const hasHeaderDesktop = !!useChildBlock({
@@ -26,7 +27,11 @@ const Header = props => {
   return hasCustomHeader ? (
     <CustomHeader {...props} />
   ) : (
-    <LegacyHeader {...props} />
+    <NoSSR>
+      <Suspense fallback={<div />}>
+        <LegacyHeader {...props} />
+      </Suspense>
+    </NoSSR>
   )
 }
 
