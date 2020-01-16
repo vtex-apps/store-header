@@ -3,6 +3,11 @@
     "allowed": [
       "minicart",
       "minicart-base-content",
+      "minicart-content",
+      "minicart-product-list",
+      "minicart-summary",
+      "minicart-empty-state",
+      "flex-layout",
       "login",
       "category-menu",
       "search-bar",
@@ -41,6 +46,11 @@
   },
   "header-row": {
     "allowed": [
+      "minicart-base-content",
+      "minicart-content",
+      "minicart-product-list",
+      "minicart-summary",
+      "minicart-empty-state",
       "telemarketing",
       "notification",
       "logo",
@@ -59,7 +69,8 @@
       "header-spacer",
       "rich-text",
       "drawer",
-      "header-force-center"
+      "header-force-center",
+      "flex-layout"
     ],
     "component": "Row",
     "composition": "children"

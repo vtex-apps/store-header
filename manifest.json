@@ -33,7 +33,9 @@
     "vtex.locale-switcher": "0.x",
     "vtex.device-detector": "0.x",
     "vtex.css-handles": "0.x",
-    "vtex.sandbox": "0.x"
+    "vtex.sandbox": "0.x",
+    "vtex.flex-layout": "0.x",
+    "vtex.product-list": "0.x"
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
