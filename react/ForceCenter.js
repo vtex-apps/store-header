@@ -8,9 +8,7 @@ const ForceCenter = ({ children }) => {
 
   return (
     <div
-      className={`${
-        handles.forceCenter
-      } absolute left-0 right-0 flex justify-center z-1`}
+      className={`${handles.forceCenter} absolute left-0 right-0 flex justify-center z-1`}
       style={{ pointerEvents: 'none' }}
     >
       <div

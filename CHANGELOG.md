@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Sort numbers by value instead of alphabetically.
 
 ## [2.25.0] - 2020-01-06
 ### Changed
@@ -83,7 +85,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added CSS Override class to header row background.
 
 ### Added
-- Allow `drawer` block on `header-row`. 
+- Allow `drawer` block on `header-row`.
 
 ## [2.16.0] - 2019-04-24
 ### Changed
