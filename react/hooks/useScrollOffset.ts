@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import throttle from 'throttleit'
 
 const listeners = new Set<Function>()
@@ -30,6 +30,6 @@ function attach(fn: Function) {
  */
 export const useScrollOffset = () => {
   const [scroll, setScroll] = useState(0)
-  useEffect(() => attach(setScroll), [])
+  useLayoutEffect(() => attach(setScroll), [])
   return { scroll }
 }
