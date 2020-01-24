@@ -59,7 +59,7 @@ const useCumulativeHeightState = () => {
   const getAccumulatedHeight = (index: number) => {
     const sortedIndices = Object.keys(state)
       .map(key => parseInt(key, 10))
-      .sort()
+      .sort((a, b) => a - b)
 
     const indices = sortedIndices.slice(0, sortedIndices.indexOf(index))
 

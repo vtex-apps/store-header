@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { useChildBlock, NoSSR } from 'vtex.render-runtime'
 
 import CustomHeader from './components/CustomHeader'
+
 const LegacyHeader = React.lazy(() => import('./legacy'))
 
 const Header = props => {

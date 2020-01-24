@@ -1,10 +1,12 @@
 import React, { FunctionComponent } from 'react'
+
 import useCumulativeHeightState from '../hooks/useCumulativeHeightState'
 
 const RowContext = React.createContext<{
   onResize(height: number): void
   offset: number
 }>({
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onResize: () => {},
   offset: 0,
 })
