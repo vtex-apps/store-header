@@ -11,13 +11,12 @@ import { RowContext } from './StickyRows'
 import { useScrollOffset } from '../hooks/useScrollOffset'
 
 interface Props {
-  sticky?: boolean
   zIndex?: number
 }
 
 const CSS_HANDLES = ['headerStickyRow'] as const
 
-const StickyRow: FunctionComponent<Props> = ({ children, sticky, zIndex }) => {
+const StickyRow: FunctionComponent<Props> = ({ children, zIndex }) => {
   const handles = useCssHandles(CSS_HANDLES)
   const { offset, onResize } = useContext(RowContext)
   const { scroll } = useScrollOffset()
@@ -25,11 +24,10 @@ const StickyRow: FunctionComponent<Props> = ({ children, sticky, zIndex }) => {
 
   const stickyStyle: CSSProperties = {
     top: offset,
-    zIndex,
+    zIndex: zIndex,
   }
 
   const mainCssHandle =
-    sticky &&
     scroll >= offset &&
     ref.current &&
     scroll >= ref.current.offsetTop - window.pageYOffset
@@ -39,21 +37,16 @@ const StickyRow: FunctionComponent<Props> = ({ children, sticky, zIndex }) => {
   return (
     <div
       ref={ref}
-      style={sticky ? stickyStyle : undefined}
-      className={`${mainCssHandle} ${
-        sticky ? `sticky ${!zIndex ? 'z-999' : ''}` : ''
-      }`}
+      style={stickyStyle}
+      className={`${mainCssHandle} sticky ${!zIndex ? 'z-999' : ''}`}
     >
       {children}
-
-      {sticky && (
-        <ReactResizeDetector
-          handleHeight
-          onResize={(_, height) => {
-            onResize(height)
-          }}
-        />
-      )}
+      <ReactResizeDetector
+        handleHeight
+        onResize={(_, height) => {
+          onResize(height)
+        }}
+      />
     </div>
   )
 }

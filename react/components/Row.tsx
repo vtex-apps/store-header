@@ -28,36 +28,40 @@ const Row: FunctionComponent<Props> = ({
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
 
-  const content = (
+  const rowContent = (
     <div className={`${handles.headerRowContainer} w-100 flex items-center`}>
       {children}
     </div>
   )
 
-  return (
-    <StickyRow sticky={sticky} zIndex={zIndex}>
-      <div className={handles.headerRow}>
-        <div
-          className={classNames(
-            `${handles.headerRowBackground} w-100`,
-            inverted
-              ? 'bg-base--inverted c-on-base--inverted'
-              : 'bg-base c-on-base'
-          )}
-        >
-          {fullWidth ? (
-            content
-          ) : (
-            <Container
-              className={`${handles.headerRowContentContainer} w-100 flex`}
-            >
-              {content}
-            </Container>
-          )}
-        </div>
+  const row = (
+    <div className={handles.headerRow}>
+      <div
+        className={classNames(
+          `${handles.headerRowBackground} w-100`,
+          inverted
+            ? 'bg-base--inverted c-on-base--inverted'
+            : 'bg-base c-on-base'
+        )}
+      >
+        {fullWidth ? (
+          rowContent
+        ) : (
+          <Container
+            className={`${handles.headerRowContentContainer} w-100 flex`}
+          >
+            {rowContent}
+          </Container>
+        )}
       </div>
-    </StickyRow>
+    </div>
   )
+
+  if (sticky) {
+    return <StickyRow zIndex={zIndex}>{row}</StickyRow>
+  }
+
+  return row
 }
 
 export default Row
