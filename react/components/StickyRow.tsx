@@ -24,7 +24,7 @@ const StickyRow: FunctionComponent<Props> = ({ children, zIndex }) => {
 
   const stickyStyle: CSSProperties = {
     top: offset,
-    zIndex: zIndex,
+    zIndex,
   }
 
   const mainCssHandle =
