@@ -162,21 +162,22 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 Below, we describe the namespaces that are defined in the header.
 
-| Class name           | Description                                     | Component Source                                  |
-| -------------------- | ----------------------------------------------- | ------------------------------------------------- |
-| `container`          | The main container of header                    | [index](/react/index.js)                          |
-| `leanMode`           | The main container of header on lean mode       | [index](/react/index.js)                          |
-| `topMenuContainer`   | The container of `fixed` top menu               | [FixedContent](/react/components/FixedContent.js) |
-| `topMenuLogo`        | The container of logo in `fixed` top menu       | [Logo](/react/components/Logo.js)                 |
-| `topMenuSearchBar`   | The container of search bar in `fixed` top menu | [SearchBar](/react/components/SearchBar.js)       |
-| `topMenuIcons`       | The container of icons on `fixed` top menu      | [Icons](/react/components/Icons.js)               |
-| `topMenuCollapsible` | The container of `collapsible` top menu         | [Collapsible](/react/components/Collapsible.js)   |
-| `forceCenter` | The container of `ForceCenter` component         | [ForceCenter](/react/ForceCenter.js)   |
-| `forceCenterInnerContainer` | The innermost container of `ForceCenter`'s children         | [ForceCenter](/react/ForceCenter.js)   |
-| `headerBorder` | The `Border` component         | [Border](/react/components/Border.tsx)   |
-| `headerSpacer` | The `Spacer` component         | [Spacer](/react/components/Spacer.tsx)   |
-| `headerStickyRow` | The `StickyRow` component         | [StickyRow](/react/components/StickyRow.tsx)   |
-| `headerRowContentContainer` | The container for the content inside of `Row` component         | [Row](/react/components/Row.tsx)   |
+| Class name                  | Description                                               | Component Source                                  |
+| --------------------------- | --------------------------------------------------------- | ------------------------------------------------- |
+| `container`                 | The main container of header                              | [index](/react/index.js)                          |
+| `leanMode`                  | The main container of header on lean mode                 | [index](/react/index.js)                          |
+| `topMenuContainer`          | The container of `fixed` top menu                         | [FixedContent](/react/components/FixedContent.js) |
+| `topMenuLogo`               | The container of logo in `fixed` top menu                 | [Logo](/react/components/Logo.js)                 |
+| `topMenuSearchBar`          | The container of search bar in `fixed` top menu           | [SearchBar](/react/components/SearchBar.js)       |
+| `topMenuIcons`              | The container of icons on `fixed` top menu                | [Icons](/react/components/Icons.js)               |
+| `topMenuCollapsible`        | The container of `collapsible` top menu                   | [Collapsible](/react/components/Collapsible.js)   |
+| `forceCenter`               | The container of `ForceCenter` component                  | [ForceCenter](/react/ForceCenter.js)              |
+| `forceCenterInnerContainer` | The innermost container of `ForceCenter`'s children       | [ForceCenter](/react/ForceCenter.js)              |
+| `headerBorder`              | The `Border` component                                    | [Border](/react/components/Border.tsx)            |
+| `headerSpacer`              | The `Spacer` component                                    | [Spacer](/react/components/Spacer.tsx)            |
+| `headerStickyRow`           | The `StickyRow` component                                 | [StickyRow](/react/components/StickyRow.tsx)      |
+| `headerStickyRow--fixed`    | The `StickyRow` component when stuck at the top of window | [StickyRow](/react/components/StickyRow.tsx)      |
+| `headerRowContentContainer` | The container for the content inside of `Row` component   | [Row](/react/components/Row.tsx)                  |
 
 ## Troubleshooting
 
