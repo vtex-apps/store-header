@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- `--fixed` modification class to the `StickyRow` component when stuck at the top.
+
+### Changed
+- Non `sticky` rows are not wrapped in `StickyRow` anymore.
 
 ## [2.25.1] - 2020-01-24
 ### Fixed
