@@ -3,7 +3,7 @@ import ReactResizeDetector from 'react-resize-detector'
 import { useCssHandles, applyModifiers } from 'vtex.css-handles'
 
 import { RowContext } from './StickyRows'
-import { useScrollThreshold } from '../hooks/useScrollOffset'
+import { useScrollThreshold } from '../hooks/useScrollThreshold'
 
 interface Props {
   zIndex?: number

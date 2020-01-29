@@ -52,19 +52,21 @@ export const useScrollThreshold = ({ offset }: { offset: number }) => {
   useLayoutEffect(
     () =>
       attach((scroll: number) => {
-        const reached = initialOffsetTop && initialOffsetTop - scroll <= offset
+        const reached =
+          initialOffsetTop != null && initialOffsetTop - scroll <= offset
 
-        if (!hasReachedThreshold && reached) {
-          setReachedThreshold(true)
-          return
-        }
+        // checks if reached state has changed
+        // if not, do nothing
+        if (hasReachedThreshold === reached) return
 
-        if (hasReachedThreshold && !reached) {
-          setReachedThreshold(false)
-        }
+        // otherwise, update the state
+        setReachedThreshold(reached)
       }),
     [hasReachedThreshold, initialOffsetTop, offset]
   )
 
-  return { hasReachedThreshold, ref: mountedDivRef }
+  return {
+    hasReachedThreshold,
+    ref: mountedDivRef,
+  }
 }
