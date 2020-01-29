@@ -15,7 +15,9 @@ const StickyRow: FunctionComponent<Props> = ({ children, zIndex }) => {
   const handles = useCssHandles(CSS_HANDLES)
   const { offset, onResize } = useContext(RowContext)
 
-  const { ref, hasReachedThreshold } = useScrollThreshold({ offset })
+  const { ref, hasReachedThreshold } = useScrollThreshold<HTMLDivElement>({
+    offset,
+  })
   const mainCssHandle = hasReachedThreshold
     ? applyModifiers(handles.headerStickyRow, 'fixed')
     : handles.headerStickyRow

@@ -28,7 +28,11 @@ function attach(fn: Function) {
  * It uses one single window scroll listener.
  * @returns {Number} - scroll position value
  */
-export const useScrollThreshold = ({ offset }: { offset: number }) => {
+export function useScrollThreshold<T extends HTMLElement>({
+  offset,
+}: {
+  offset: number
+}) {
   // Initial element distance to the top of the container
   const [initialOffsetTop, setInitialOffsetTop] = useState<number>()
   const [hasReachedThreshold, setReachedThreshold] = useState(false)
@@ -36,7 +40,7 @@ export const useScrollThreshold = ({ offset }: { offset: number }) => {
   // We use this callback as a ref to get the instance of the element once its mounted
   // Reference: https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node
   const mountedDivRef = useCallback(
-    (node: HTMLDivElement) => {
+    (node: T) => {
       if (node !== null) {
         // `offsetTop` can be used for position:sticky, but not for position:fixed
         // If we decide to change the css implementation for a js one, this should be revisited
