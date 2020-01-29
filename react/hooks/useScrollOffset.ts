@@ -28,10 +28,10 @@ function attach(fn: Function) {
  * It uses one single window scroll listener.
  * @returns {Number} - scroll position value
  */
-export const useScrollOffset = ({ offset }: { offset: number }) => {
+export const useScrollThreshold = ({ offset }: { offset: number }) => {
   // Initial element distance to the top of the container
   const [initialOffsetTop, setInitialOffsetTop] = useState<number>()
-  const [hasReachedOffset, setReachedOffset] = useState(false)
+  const [hasReachedThreshold, setReachedThreshold] = useState(false)
 
   // We use this callback as a ref to get the instance of the element once its mounted
   // Reference: https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node
@@ -54,17 +54,17 @@ export const useScrollOffset = ({ offset }: { offset: number }) => {
       attach((scroll: number) => {
         const reached = initialOffsetTop && initialOffsetTop - scroll <= offset
 
-        if (!hasReachedOffset && reached) {
-          setReachedOffset(true)
+        if (!hasReachedThreshold && reached) {
+          setReachedThreshold(true)
           return
         }
 
-        if (hasReachedOffset && !reached) {
-          setReachedOffset(false)
+        if (hasReachedThreshold && !reached) {
+          setReachedThreshold(false)
         }
       }),
-    [hasReachedOffset, initialOffsetTop, offset]
+    [hasReachedThreshold, initialOffsetTop, offset]
   )
 
-  return { hasReachedOffset, ref: mountedDivRef }
+  return { hasReachedThreshold, ref: mountedDivRef }
 }

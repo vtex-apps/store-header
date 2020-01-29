@@ -3,7 +3,7 @@ import ReactResizeDetector from 'react-resize-detector'
 import { useCssHandles, applyModifiers } from 'vtex.css-handles'
 
 import { RowContext } from './StickyRows'
-import { useScrollOffset } from '../hooks/useScrollOffset'
+import { useScrollThreshold } from '../hooks/useScrollOffset'
 
 interface Props {
   zIndex?: number
@@ -15,8 +15,8 @@ const StickyRow: FunctionComponent<Props> = ({ children, zIndex }) => {
   const handles = useCssHandles(CSS_HANDLES)
   const { offset, onResize } = useContext(RowContext)
 
-  const { ref, hasReachedOffset } = useScrollOffset({ offset })
-  const mainCssHandle = hasReachedOffset
+  const { ref, hasReachedThreshold } = useScrollThreshold({ offset })
+  const mainCssHandle = hasReachedThreshold
     ? applyModifiers(handles.headerStickyRow, 'fixed')
     : handles.headerStickyRow
 
