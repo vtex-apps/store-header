@@ -32,8 +32,12 @@
     "component": "Layout",
     "composition": "children"
   },
-  "header-layout.desktop": {},
-  "header-layout.mobile": {},
+  "header-layout.desktop": {
+    "device": "desktop"
+  },
+  "header-layout.mobile": {
+    "device": "mobile"
+  },
   "header-layout.desktop-scroll": {},
   "header-layout.mobile-scroll": {},
   "header-spacer": {
@@ -74,10 +78,18 @@
     "component": "Layout",
     "composition": "children"
   },
-  "unstable--header-layout.desktop": {},
-  "unstable--header-layout.mobile": {},
-  "unstable--header-layout.desktop-scroll": {},
-  "unstable--header-layout.mobile-scroll": {},
+  "unstable--header-layout.desktop": {
+    "device": "desktop"
+  },
+  "unstable--header-layout.mobile": {
+    "device": "mobile"
+  },
+  "unstable--header-layout.desktop-scroll": {
+    "device": "desktop"
+  },
+  "unstable--header-layout.mobile-scroll": {
+    "device": "mobile"
+  },
   "_": {
     "component": "Spacer"
   },
