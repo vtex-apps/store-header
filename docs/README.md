@@ -1,38 +1,15 @@
-# VTEX Header
+📢 Use this project, [contribute](https://github.com/vtex-apps/breadcrumb) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
 
-## Description
+# Header
 
-The VTEX Header app is a store component that represents a top fixed navigation bar, and is used by store theme.
+The VTEX Header app is responsible for displaying a navigation bar fixed on a store's page upper side. 
+Other blocks that are important for user navigation are found in the Header, for example the store's logo, the minicart, user login and search bar.
 
-:loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
+![header](https://user-images.githubusercontent.com/52087100/74090325-b6235d00-4a88-11ea-8227-317f93204d8f.png) 
 
-## Release schedule
+## Configuration
 
-| Release |       Status        | Initial Release | Maintenance LTS Start | End-of-life | Store Compatibility |
-| :-----: | :-----------------: | :-------------: | :-------------------: | :---------: | :-----------------: |
-|  [2.x]  | **Current Release** |   2018-11-08    |                       |             |         2.x         |
-|  [1.x]  | **Maintenance LTS** |   2018-09-18    |      2018-11-08       | March 2019  |         1.x         |
-
-See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for more information.
-
-## Table of Contents
-
-- [Usage](#usage)
-  - [Blocks API](#blocks-api)
-    - [Configuration](#configuration)
-  - [Styles API](#styles-api)
-    - [CSS namespaces](#css-namespaces)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [Tests](#tests)
-
-## Usage
-
-This app uses our store builder with the blocks architecture. To know more about Store Builder [click here.](https://help.vtex.com/en/tutorial/understanding-storebuilder-and-stylesbuilder#structuring-and-configuring-our-store-with-object-object).
-
-We add the header as a block in our [Store](https://github.com/vtex-apps/store/blob/master/store/interfaces.json).
-
-To configure or customize this app, you need to import it in your dependencies in `manifest.json`.
+1. Import the `store-header` app to your theme's dependencies in `manifest.json`: 
 
 ```json
   dependencies: {
@@ -40,157 +17,144 @@ To configure or customize this app, you need to import it in your dependencies i
   }
 ```
 
-Then, add `header` block into your app theme as we do in our [Store theme app](https://github.com/vtex-apps/store-theme/blob/master/store/blocks.json).
+The  `Header` is comprised of 3 others blocks: the `header-layout`, that in practice subdivides in two (`header-layout.desktop` and `header-layout.mobile`), the `header-row` and the `header-border`. 
 
-Now, select the desired blocks, for example:
-
-```json
-"header.full": {
-  "blocks": [
-    "login",
-    "minicart",
-    "logo",
-    "search-bar",
-    "menu-link",
-    "telemarketing",
-    "category-menu"
-  ]
-}
-```
-
-### Blocks API
-
-When implementing apps as a block various inner blocks may be available. The following interface lists the available blocks within `header` and describes if they are required or optional.
+2. First off, declare the two `header-layout` blocks, allowing you to define how the Header should be displayed for both mobile and desktop:
 
 ```json
+{
 "header": {
-  "allowed": [
-    "minicart",
-    "login",
-    "menu-link",
-    "category-menu",
-    "search-bar",
-    "theme"
-  ],
-  "required": [
-    "telemarketing",
-    "logo"
-  ],
-  "component": "index"
+"blocks": [
+"header-layout.desktop",
+"header-layout.mobile"
+]
 },
-
-"header.full": {
-  "allowed": [
-    "menu-link",
-    "theme"
-  ],
-  "required": [
-    "telemarketing",
-    "logo",
-    "minicart",
-    "login",
-    "category-menu",
-    "search-bar"
-  ],
-  "component": "index"
-},
-}
 ```
 
-It's essential to remark that, the `header` has the default and `full` versions defined as blocks by **`header`** and **`header.full`** respectively.
+3. Configure both `header-layout.desktop` and `header-layout.mobile`, declaring `header-row` to create Header lines according to your store needs. 
 
-The **`header.full`** has `telemarketing`, `logo`, `minicart`, `login`, `category-menu` and `search-bar` as required inner-blocks, meanwhile **`header`** only requires `telemarketing` and `logo`. The `menu-link` and `theme` blocks are optional in both versions.
+In the example below, we will configure 4 different levels for `header-layout.desktop`. It will thus be possible to replicate the Header displayed above sheltering the telemarketing functionalities (when activated), a notification, links to pages and every other blocks, such as Logo, Menu, etc.
 
-Note that every `header` implementation must append all required blocks within its version. Similarly, each inner block has its own configurable structure. There is a link to its API in the next section.
+```json
+{
+"header": {
+"blocks": [
+"header-layout.desktop",
+"header-layout.mobile"
+]
+},
+"header-layout.desktop": {
+"children": [
+"header-row#1-desktop",
+"header-row#2-desktop",
+"header-row#3-desktop",
+"header-row#4-desktop"
+]
+},
+```
 
-#### Configuration
+Remember that the number of `header-row`s *should meet your business needs, determining how many Header lines you want to apply to your store.*
 
-Through the Storefront, you can change the headers's behavior and interface. However, you also can make in your theme app, as Store theme does.
+4. Configure each of the `header-row`s , applying props and declaring the blocks for each line. To correctly structure your Header, you should check the [documentation](https://vtex.io/docs/components/all) for each of the desired blocks. The most commonly used are [Logo](https://vtex.io/docs/components/all/vtex.store-components/logo), [Minicart](https://vtex.io/docs/components/all/vtex.minicart/) and [Menu](https://vtex.io/docs/components/all/vtex.menu/). 
 
-| Prop name              | Type      | Description                                       | Default value                                                            |
-| ---------------------- | --------- | ------------------------------------------------- | ------------------------------------------------------------------------ |
-| `leanWhen`             | `String`  | Cases in which the menu is in lean mode           | 'a^'                                                                     |
-| `linkUrl`              | `String`  | Address opened when the user clicks the logo      | '/'                                                                      |
-| `logoUrl`              | `String`  | URL of the logo image                             | N/A                                                                      |
-| `logoTitle`            | `String`  | Alt text for the logo                             | N/A                                                                      |
-| `logoSize`             | `Object`  | Sizes of logo in desktop and mobile               | `desktop: { width: 132, height: 40 }, mobile: { width: 90, height: 40 }` |
-| `showSearchBar`        | `Boolean` | Sets whether the search bar is visible or not     | true                                                                     |
-| `showLogin`            | `Boolean` | Sets whether the login button is displayed or not | true                                                                     |
-| `iconClasses`          | `String`  | Classes for icons                                 | 'c-on-base'                                                              |
-| `labelClasses`         | `String`  | Classes for labels                                | 'c-on-base'                                                              |
-| `collapsibleAnimation` | `Object`  | Collapsible animation controlling                 | [Collapsible Animation](#collapsible-animation)                          |
+In the example below, we're configured the `header-row#1-desktop` as [Telemarketing](https://vtex.io/docs/components/all/vtex.telemarketing/):
 
-##### Collapsible Animation
+```json
+"header-row#1-desktop": {
+"children": [
+"telemarketing"
+],
+"props": {
+"fullWidth": true
+}
+},
+```
 
-The Collapsible content can display animations on page scroll up or down, that can be configured through `collapsibleAnimation`, which is an object with the properties:
+- `header-row` props: 
 
 | Prop name  | Type      | Description                                                                                       | Default value |
-| ---------- | --------- | ------------------------------------------------------------------------------------------------- | ------------- |
-| `onScroll` | `Boolean` | If should animate on scroll                                                                       | true          |
-| `always`   | `Boolean` | If should animate on every scroll up or down                                                      | true          |
-| `anchor`   | `Number`  | Scroll value that animation starts to be active                                                   | 100           |
-| `from`     | `Number`  | Initial height before animation                                                                   | 64            |
-| `to`       | `Number`  | Target height after animation                                                                     | 0             |
-| `preset`   | `String`  | Animation configuration preset: [more @ react-spring](https://www.react-spring.io/docs/hooks/api) | 'default'     |
-| `config`   | `Object`  | Animation configuration: [more @ react-spring](https://www.react-spring.io/docs/hooks/api)        | {}            |
+| ---------- | --------- | ------------------------------------------------------------------------------------ | ------------- |
+| `zIndex` | `Number` | CSS property that controls the vertical stacking order of elements for overlapping.                                                                      | `0`         |
+| `sticky` | `Boolean` | Whether the Header margin should be fixed on the layout (`true`) or not (`false`)                                                                    | `false`          |
+| `fullWidth` | `Boolean` | Whether the Header should take the full width of the screen or not                                                                   | `true`          |
+| `inverted` | `Boolean` | Whether the row will use the base color (`false`) or the inverted base color (`true`) as defined in `styles.json`.                                                                    | `false`          |
 
-Also, you can configure the blocks [telemarketing](https://github.com/vtex-apps/telemarketing), [logo](https://github.com/vtex-apps/store-components/blob/master/react/components/Logo/README.md), [login](https://github.com/vtex-apps/login), [category-menu](https://github.com/vtex-apps/category-menu), [search-bar](https://github.com/vtex-apps/store-components/blob/master/react/components/SearchBar/README.md) and [menu-link](https://github.com/vtex-apps/menu) defined on header.
+:warning: You should repeat step 4 for all `header-layout.desktop` `header-rows`, as well as redo steps 3 and 4 to define your `header-layout.mobile`. 
 
-### Styles API
+You can add two more blocks to the `header-row`: `header-border` and `header-spacer`. 
 
-This app provides some CSS classes as an API for style customization.
+- **`header-border`**:
 
-To use this CSS API, you must add the `styles` builder and create an app styling CSS file.
-
-1. Add the `styles` builder to your `manifest.json`:
+When declared, the `header-border` block adds a `1px` margin to your store's Header.
 
 ```json
-  "builders": {
-    "styles": "1.x"
-  }
-```
-
-2. Create a file called `vtex.store-header.css` inside the `styles/css` folder. Add your custom styles:
-
-```css
-.container {
-  margin-top: 10px;
+"header-row#2-desktop": {
+"children": [
+"header-border",
+"notification.bar#home"
+],
+"props": {
+"fullWidth": "true"
 }
+},
+"notification.bar#home": {
+"props": {
+"content": "SELECTED ITEMS ON SALE! CHECK IT OUT!"
+}
+},
 ```
 
-#### CSS namespaces
+| Prop name  | Type      | Description                                                                                       | Default value |
+| ---------- | --------- | ------------------------------------------------------------------------------------ | ------------- |
+| `sticky` | `Boolean` | Whether the Header margin should be fixed in the layout or not                                                                       | `false`          |
 
-Below, we describe the namespaces that are defined in the header.
+- **`header-spacer`**: 
 
-| Class name           | Description                                     | Component Source                                  |
-| -------------------- | ----------------------------------------------- | ------------------------------------------------- |
-| `container`          | The main container of header                    | [index](/react/index.js)                          |
-| `leanMode`           | The main container of header on lean mode       | [index](/react/index.js)                          |
-| `topMenuContainer`   | The container of `fixed` top menu               | [FixedContent](/react/components/FixedContent.js) |
-| `topMenuLogo`        | The container of logo in `fixed` top menu       | [Logo](/react/components/Logo.js)                 |
-| `topMenuSearchBar`   | The container of search bar in `fixed` top menu | [SearchBar](/react/components/SearchBar.js)       |
-| `topMenuIcons`       | The container of icons on `fixed` top menu      | [Icons](/react/components/Icons.js)               |
-| `topMenuCollapsible` | The container of `collapsible` top menu         | [Collapsible](/react/components/Collapsible.js)   |
-| `forceCenter` | The container of `ForceCenter` component         | [ForceCenter](/react/ForceCenter.js)   |
-| `forceCenterInnerContainer` | The innermost container of `ForceCenter`'s children         | [ForceCenter](/react/ForceCenter.js)   |
-| `headerBorder` | The `Border` component         | [Border](/react/components/Border.tsx)   |
-| `headerSpacer` | The `Spacer` component         | [Spacer](/react/components/Spacer.tsx)   |
-| `headerStickyRow` | The `StickyRow` component         | [StickyRow](/react/components/StickyRow.tsx)   |
-| `headerRowContentContainer` | The container for the content inside of `Row` component         | [Row](/react/components/Row.tsx)   |
+The `header-spacer` is tasked with adding spacing between blocks throughout the Header lines. 
 
-## Troubleshooting
+```json
+"header-row#3-desktop": {
+"children": [
+"vtex.menu@2.x:menu#websites",
+"header-spacer",
+"vtex.menu@2.x:menu#institutional"
+],
+"props": {
+"blockClass": "menu-link",
+"inverted": "true"
+}
+},
+```
 
-You can check if others are passing through similar issues [here](https://github.com/vtex-apps/store-header/issues). Also feel free to [open issues](https://github.com/vtex-apps/store-header/issues/new) or contribute with pull requests.
+In practice, it will make blocks declared before it position themselves to the left on the screen, whereas blocks that are declared after will be positioned to the right. For example: 
 
-## Contributing
+![header-spacer](https://user-images.githubusercontent.com/52087100/74090331-c8050000-4a88-11ea-8566-98097b18c83d.png)
 
-Check it out [how to contribute](https://github.com/vtex-apps/awesome-io#contributing) with this project.
+:warning: The Header must be declared in `blocks.jsonc` just once, meaning that when you declare and configure the block in the homepage template, as mentioned in the configuration above, Store Framework will reproduce these same configurations for the remaining store templates behind the scenes. If you want to apply different configurations to the template, check the advanced configurations section below. 
 
-## Tests
+### Advanced configuration
 
-To execute our tests go to `react/` folder and run `yarn test`
+Automatic behind the scenes Header and Footer reproduction in other templates aside from `store.home` is only possible because both blocks are defined as default store interface elements in the `interfaces.json` file from Store Theme. 
 
-### Travis CI
+This definition in `interfaces.json` enables Store Framework to identify the Header and Footer blocks, declared just once in `blocks.jsonc`, as defaults for all other templates.
 
-[![Build Status](https://travis-ci.org/vtex-apps/store-header.svg?branch=master)](https://travis-ci.org/vtex-apps/store-header)
-[![Coverage Status](https://coveralls.io/repos/github/vtex-apps/store-header/badge.svg?branch=master)](https://coveralls.io/github/vtex-apps/store-header?branch=master)
+To overwrite this automatic duplication in `interfaces.json` and use new configurations in different templates, refer to the step-by-step of the following recipe: [Customizing the Header and Footer](). 
+
+## Customization
+
+In order to apply CSS customizations in these and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization). 
+| CSS Handles          | 
+---------------------- |
+| `container`          |                       
+| `leanMode`           |                        
+| `topMenuContainer`   | 
+| `topMenuLogo`        |              
+| `topMenuSearchBar`   |     
+| `topMenuIcons`       |             
+| `topMenuCollapsible` |   
+| `forceCenter`        |   
+| `forceCenterInnerContainer` |   
+| `headerBorder` | 
+| `headerSpacer` | 
+| `headerStickyRow` | 
+| `headerRowContentContainer` |
