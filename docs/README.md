@@ -2,8 +2,8 @@
 
 # Header
 
-The VTEX Header app is responsible for displaying a navigation bar fixed on a store's page upper side. 
-Other blocks that are important for user navigation are found in the Header, for example the store's logo, the minicart, user login and search bar.
+The VTEX Header app is responsible for displaying a **navigation bar** fixed on a store's page upper side. 
+Other blocks that are important for user navigation are found in the Header, for example the store's [logo](https://vtex.io/docs/components/all/vtex.store-components/logo), the [minicart](https://vtex.io/docs/components/all/vtex.minicart/), user [login](https://vtex.io/docs/components/all/vtex.login/) and [search bar](https://vtex.io/docs/components/all/vtex.store-components/search-bar).
 
 ![header](https://user-images.githubusercontent.com/52087100/74090325-b6235d00-4a88-11ea-8227-317f93204d8f.png) 
 
@@ -138,7 +138,7 @@ Automatic behind the scenes Header and Footer reproduction in other templates as
 
 This definition in `interfaces.json` enables Store Framework to identify the Header and Footer blocks, declared just once in `blocks.jsonc`, as defaults for all other templates.
 
-To overwrite this automatic duplication in `interfaces.json` and use new configurations in different templates, refer to the step-by-step of the following recipe: [Customizing the Header and Footer](). 
+To overwrite this automatic duplication in `interfaces.json` and use new configurations in different templates, refer to the step-by-step of the following recipe: [Customizing the Header and Footer](https://vtex.io/docs/recipes/layout/customizing-the-header-and-footer-blocks-by-page). 
 
 ## Customization
 
