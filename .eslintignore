@@ -1,2 +1,4 @@
-node_modules
-legacy
+node_modules/
+coverage/
+*.snap.ts
+react/legacy/
