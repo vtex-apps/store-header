@@ -12,8 +12,8 @@ Other blocks that are important for user navigation are found in the Header, for
 1. Import the `store-header` app to your theme's dependencies in `manifest.json`: 
 
 ```json
-  dependencies: {
-    "vtex.store-header": "2.x"
+dependencies: {
+  "vtex.store-header": "2.x"
   }
 ```
 
@@ -23,12 +23,12 @@ The  `Header` is comprised of 3 others blocks: the `header-layout`, that in prac
 
 ```json
 {
-"header": {
-"blocks": [
-"header-layout.desktop",
-"header-layout.mobile"
-]
-},
+  "header": {
+    "blocks": [
+      "header-layout.desktop",
+      "header-layout.mobile"
+    ]
+  },
 ```
 
 3. Configure both `header-layout.desktop` and `header-layout.mobile`, declaring `header-row` to create Header lines according to your store needs. 
@@ -37,20 +37,20 @@ In the example below, we will configure 4 different levels for `header-layout.de
 
 ```json
 {
-"header": {
-"blocks": [
-"header-layout.desktop",
-"header-layout.mobile"
-]
-},
-"header-layout.desktop": {
-"children": [
-"header-row#1-desktop",
-"header-row#2-desktop",
-"header-row#3-desktop",
-"header-row#4-desktop"
-]
-},
+  "header": {
+    "blocks": [
+      "header-layout.desktop",
+      "header-layout.mobile"
+    ]
+  },
+  "header-layout.desktop": {
+    "children": [
+      "header-row#1-desktop",
+      "header-row#2-desktop",
+      "header-row#3-desktop",
+      "header-row#4-desktop"
+    ]
+  },
 ```
 
 Remember that the number of `header-row`s *should meet your business needs, determining how many Header lines you want to apply to your store.*
@@ -61,12 +61,12 @@ In the example below, we're configured the `header-row#1-desktop` as [Telemarket
 
 ```json
 "header-row#1-desktop": {
-"children": [
-"telemarketing"
-],
-"props": {
-"fullWidth": true
-}
+  "children": [
+    "telemarketing"
+  ],
+  "props": {
+    "fullWidth": true
+  }
 },
 ```
 
@@ -81,7 +81,7 @@ In the example below, we're configured the `header-row#1-desktop` as [Telemarket
 
 :warning: You should repeat step 4 for all `header-layout.desktop` `header-rows`, as well as redo steps 3 and 4 to define your `header-layout.mobile`. 
 
-You can add two more blocks to the `header-row`: `header-border` and `header-spacer`. 
+You can add three more blocks to the `header-row`: `header-border`, `header-force-center` and `header-spacer`. 
 
 - **`header-border`**:
 
@@ -89,18 +89,18 @@ When declared, the `header-border` block adds a `1px` margin to your store's Hea
 
 ```json
 "header-row#2-desktop": {
-"children": [
-"header-border",
-"notification.bar#home"
-],
-"props": {
-"fullWidth": "true"
-}
+  "children": [
+    "header-border",
+    "notification.bar#home"
+  ],
+  "props": {
+    "fullWidth": "true"
+  }
 },
 "notification.bar#home": {
-"props": {
-"content": "SELECTED ITEMS ON SALE! CHECK IT OUT!"
-}
+  "props": {
+    "content": "SELECTED ITEMS ON SALE! CHECK IT OUT!"
+  }
 },
 ```
 
@@ -108,21 +108,54 @@ When declared, the `header-border` block adds a `1px` margin to your store's Hea
 | ---------- | --------- | ------------------------------------------------------------------------------------ | ------------- |
 | `sticky` | `Boolean` | Whether the Header margin should be fixed in the layout or not                                                                       | `false`          |
 
+- **`header-force-center`**
+
+When passed on, the `header-force-center` centralizes its children blocks in a Header line, for example: 
+
+```json
+"header-row#4-desktop": {
+  "props": {
+    "blockClass": "main-header",
+    "horizontalAlign": "center",
+    "verticalAlign": "center",
+    "preventHorizontalStretch": true,
+    "preventVerticalStretch": true,
+    "fullWidth": true
+  },
+  "children": ["header-force-center"]
+},  
+"header-force-center": {
+  "children":[
+    "logo#desktop"
+  ]
+},
+"logo#desktop": {
+  "props": {
+    "title": "Logo",
+    "href": "/",
+    "url": "https://storecomponents.vteximg.com.br/arquivos/store-theme-logo.png",
+    "width": "180"
+  }
+},
+```
+
+![header-force-center](https://user-images.githubusercontent.com/52087100/76665339-2d577f80-6566-11ea-981d-3f4cdaec1a2b.png)
+
 - **`header-spacer`**: 
 
 The `header-spacer` is tasked with adding spacing between blocks throughout the Header lines. 
 
 ```json
 "header-row#3-desktop": {
-"children": [
-"vtex.menu@2.x:menu#websites",
-"header-spacer",
-"vtex.menu@2.x:menu#institutional"
-],
-"props": {
-"blockClass": "menu-link",
-"inverted": "true"
-}
+  "children": [
+    "vtex.menu@2.x:menu#websites",
+    "header-spacer",
+    "vtex.menu@2.x:menu#institutional"
+  ],
+  "props": {
+    "blockClass": "menu-link",
+    "inverted": "true"
+  }
 },
 ```
 
