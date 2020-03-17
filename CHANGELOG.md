@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.25.4] - 2020-03-17
+
 ### Added
 
 - `header-force-center` is now documented. 
