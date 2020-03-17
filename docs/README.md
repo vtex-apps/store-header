@@ -17,7 +17,7 @@ dependencies: {
   }
 ```
 
-Now, you are able to use all blocks exported by the `store-header` app. Check out the full list below
+Now, you are able to use all blocks exported by the `store-header` app. Check out the full list below:
 
 | Block name | Description | 
 | --------  | ------------ | 
