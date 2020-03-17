@@ -90,7 +90,7 @@ Now, you are able to use all blocks exported by the `store-header` app. Check ou
 | `fullWidth` | `Boolean` | Whether the Header should take the full width of the screen or not                                                                   | `true`          |
 | `inverted` | `Boolean` | Whether the row will use the base color (`false`) or the inverted base color (`true`) as defined in `styles.json`.                                                                    | `false`          |
 
-:warning: ***Repeat step 4 for any other `header-rows` you may have in the `header-layout.desktop`**. Remember to declare the desired blocks for each row, as we declared the Telemarketing block for the `header-row#1-desktop`, and properly configure all blocks using props. Once it is all finished, **redo steps 3 and 4 to define your `header-layout.mobile` as well**.
+:warning: ***Repeat step 4 for any other `header-rows` you may have in the `header-layout.desktop`**. Remember to declare the desired blocks for each row, as we declared the Telemarketing block for the `header-row#1-desktop`, and properly configure all blocks using props. Once it is all finished, **redo steps 3 and 4 to define your `header-layout.mobile` as well***.
 
 Three blocks can be added as `header-row`'s children in order to customize your Header row layout: `header-border`, `header-force-center` and `header-spacer`. 
 
@@ -154,7 +154,7 @@ When passed on, the `header-force-center` centralizes its children blocks in a H
 
 - **`header-spacer`**: 
 
-The `header-spacer` is tasked with adding spacing between blocks throughout the Header rows. 
+The `header-spacer` is tasked with adding spacing between blocks throughout the Header rows. For example:
 
 ```json
 "header-row#3-desktop": {
@@ -170,7 +170,7 @@ The `header-spacer` is tasked with adding spacing between blocks throughout the 
 },
 ```
 
-In practice, it will make blocks declared before it position themselves to the left on the screen, whereas blocks that are declared after will be positioned to the right. For example: 
+In practice, it will make all blocks declared before it position themselves to the left on the screen, whereas blocks that are declared after will be positioned to the right. Considering that the Menus were properly declared and configured in the theme code, we would have the following: 
 
 ![header-spacer](https://user-images.githubusercontent.com/52087100/74090331-c8050000-4a88-11ea-8566-98097b18c83d.png)
 
