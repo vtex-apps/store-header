@@ -12,8 +12,8 @@ Other blocks that are important for user navigation are found in the Header, for
 1. Add the `store-header` app to your theme's dependencies in `manifest.json`: 
 
 ```json
-dependencies: {
-  "vtex.store-header": "2.x"
+  dependencies: {
+    "vtex.store-header": "2.x"
   }
 ```
 
