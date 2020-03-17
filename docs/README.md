@@ -2,14 +2,14 @@
 
 # Header
 
-The VTEX Header app is responsible for displaying a **navigation bar** fixed on a store's page upper side. 
+The Header app is responsible for displaying a **navigation bar** fixed on a store's page upper side. 
 Other blocks that are important for user navigation are found in the Header, for example the store's [logo](https://vtex.io/docs/components/all/vtex.store-components/logo), the [minicart](https://vtex.io/docs/components/all/vtex.minicart/), user [login](https://vtex.io/docs/components/all/vtex.login/) and [search bar](https://vtex.io/docs/components/all/vtex.store-components/search-bar).
 
 ![header](https://user-images.githubusercontent.com/52087100/74090325-b6235d00-4a88-11ea-8227-317f93204d8f.png) 
 
 ## Configuration
 
-1. Import the `store-header` app to your theme's dependencies in `manifest.json`: 
+1. Add the `store-header` app to your theme's dependencies in `manifest.json`: 
 
 ```json
 dependencies: {
@@ -17,9 +17,24 @@ dependencies: {
   }
 ```
 
-The  `Header` is comprised of 3 others blocks: the `header-layout`, that in practice subdivides in two (`header-layout.desktop` and `header-layout.mobile`), the `header-row` and the `header-border`. 
+Now, you are able to use all blocks exported by the `store-header` app. Check out the full list below
 
-2. First off, declare the two `header-layout` blocks, allowing you to define how the Header should be displayed for both mobile and desktop:
+| Block name | Description | 
+| --------  | ------------ | 
+| `header-layout.desktop` | ![https://img.shields.io/badge/-Mandatory-red](https://img.shields.io/badge/-Mandatory-red) Defines the Header layout for desktop device through `header-row` blocks. | 
+| `header-layout.mobile`| Defines the Header layout for mobile device through `header-row` blocks. |
+| `header-row` | ![https://img.shields.io/badge/-Mandatory-red](https://img.shields.io/badge/-Mandatory-red) Create Header lines according to your store needs. |  
+| `header-border` | Adds a `1px` margin to a Header row. | 
+| `header-force-center` | Centralizes its children blocks in a Header row. | 
+| `header-spacer` | Adds spacing between blocks throughout a Header row. | 
+
+2. In the theme's `blocks` folder, create a file to declare your store Header. For example:
+
+![header jsonc](https://user-images.githubusercontent.com/52087100/76867425-43a25b80-6844-11ea-938c-0f7870efdafc.png)
+
+:information_source: *The Header does not need to be declared in a specific template of your theme, once the app is defined as default store interface element in the `interfaces.json` file. This means that Store Framework will reproduce the configurations defined in the file you just created for all store templates behind the scenes. If you want to apply different configurations to each store template, check the **advanced configurations** section below.*
+
+3. First off, declare the two `header-layout` blocks, allowing you to define how the Header should be displayed for both mobile and desktop:
 
 ```json
 {
@@ -31,9 +46,7 @@ The  `Header` is comprised of 3 others blocks: the `header-layout`, that in prac
   },
 ```
 
-3. Configure both `header-layout.desktop` and `header-layout.mobile`, declaring `header-row` to create Header lines according to your store needs. 
-
-In the example below, we will configure 4 different levels for `header-layout.desktop`. It will thus be possible to replicate the Header displayed above sheltering the telemarketing functionalities (when activated), a notification, links to pages and every other blocks, such as Logo, Menu, etc.
+4. Configure both `header-layout.desktop` and `header-layout.mobile`, declaring `header-row` to create Header lines according to your store needs. 
 
 ```json
 {
@@ -53,11 +66,9 @@ In the example below, we will configure 4 different levels for `header-layout.de
   },
 ```
 
-Remember that the number of `header-row`s *should meet your business needs, determining how many Header lines you want to apply to your store.*
+:warning: *In the example above, we configured 4 different levels for `header-layout.desktop`. It will thus be possible to replicate the Header displayed above sheltering the telemarketing functionalities (when activated), a notification, links to pages and every other blocks, such as Logo, Menu, etc. **Remember that the number of `header-row`s should meet your business needs**, determining how many Header lines you want to apply to your store.*
 
-4. Configure each of the `header-row`s , applying props and declaring the blocks for each line. To correctly structure your Header, you should check the [documentation](https://vtex.io/docs/components/all) for each of the desired blocks. The most commonly used are [Logo](https://vtex.io/docs/components/all/vtex.store-components/logo), [Minicart](https://vtex.io/docs/components/all/vtex.minicart/) and [Menu](https://vtex.io/docs/components/all/vtex.menu/). 
-
-In the example below, we're configured the `header-row#1-desktop` as [Telemarketing](https://vtex.io/docs/components/all/vtex.telemarketing/):
+5. Configure each of the `header-row`s , applying props and declaring the desired store blocks for each line. To correctly structure your Header, you should check the [documentation](https://vtex.io/docs/components/all) for each of the desired blocks. The most commonly used are [Logo](https://vtex.io/docs/components/all/vtex.store-components/logo), [Minicart](https://vtex.io/docs/components/all/vtex.minicart/) and [Menu](https://vtex.io/docs/components/all/vtex.menu/). In the example below, we will configure the `header-row#1-desktop` as [Telemarketing](https://vtex.io/docs/components/all/vtex.telemarketing/):
 
 ```json
 "header-row#1-desktop": {
@@ -79,9 +90,9 @@ In the example below, we're configured the `header-row#1-desktop` as [Telemarket
 | `fullWidth` | `Boolean` | Whether the Header should take the full width of the screen or not                                                                   | `true`          |
 | `inverted` | `Boolean` | Whether the row will use the base color (`false`) or the inverted base color (`true`) as defined in `styles.json`.                                                                    | `false`          |
 
-:warning: You should repeat step 4 for all `header-layout.desktop` `header-rows`, as well as redo steps 3 and 4 to define your `header-layout.mobile`. 
+:warning: ***Repeat step 4 for any other `header-rows` you may have in the `header-layout.desktop`**. Remember to declare the desired blocks for each row, as we declared the Telemarketing block for the `header-row#1-desktop`, and properly configure all blocks using props. Once it is all finished, **redo steps 3 and 4 to define your `header-layout.mobile` as well**.
 
-You can add three more blocks to the `header-row`: `header-border`, `header-force-center` and `header-spacer`. 
+Three blocks can be added as `header-row`'s children in order to customize your Header row layout: `header-border`, `header-force-center` and `header-spacer`. 
 
 - **`header-border`**:
 
@@ -110,7 +121,7 @@ When declared, the `header-border` block adds a `1px` margin to your store's Hea
 
 - **`header-force-center`**
 
-When passed on, the `header-force-center` centralizes its children blocks in a Header line, for example: 
+When passed on, the `header-force-center` centralizes its children blocks in a Header row, for example: 
 
 ```json
 "header-row#4-desktop": {
@@ -143,7 +154,7 @@ When passed on, the `header-force-center` centralizes its children blocks in a H
 
 - **`header-spacer`**: 
 
-The `header-spacer` is tasked with adding spacing between blocks throughout the Header lines. 
+The `header-spacer` is tasked with adding spacing between blocks throughout the Header rows. 
 
 ```json
 "header-row#3-desktop": {
@@ -163,13 +174,11 @@ In practice, it will make blocks declared before it position themselves to the l
 
 ![header-spacer](https://user-images.githubusercontent.com/52087100/74090331-c8050000-4a88-11ea-8566-98097b18c83d.png)
 
-:warning: The Header must be declared in `blocks.jsonc` just once, meaning that when you declare and configure the block in the homepage template, as mentioned in the configuration above, Store Framework will reproduce these same configurations for the remaining store templates behind the scenes. If you want to apply different configurations to the template, check the advanced configurations section below. 
-
 ### Advanced configuration
 
-Automatic behind the scenes Header and Footer reproduction in other templates aside from `store.home` is only possible because both blocks are defined as default store interface elements in the `interfaces.json` file from Store Theme. 
+Automatic behind the scenes Header reproduction in every store template is only possible because it is defined as default store interface elements in the `interfaces.json` file from Store Theme. 
 
-This definition in `interfaces.json` enables Store Framework to identify the Header and Footer blocks, declared just once in `blocks.jsonc`, as defaults for all other templates.
+This definition in `interfaces.json` enables Store Framework to identify the Header block declared just once in a `blocks.jsonc` file and reproduce it as default for all other templates.
 
 To overwrite this automatic duplication in `interfaces.json` and use new configurations in different templates, refer to the step-by-step of the following recipe: [Customizing the Header and Footer](https://vtex.io/docs/recipes/layout/customizing-the-header-and-footer-blocks-by-page). 
 
