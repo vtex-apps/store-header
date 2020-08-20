@@ -31,13 +31,7 @@ Now, you are able to use all blocks exported by the `store-header` app. Check ou
 | `header-force-center` | Centralizes its children blocks in a Header row. | 
 | `header-spacer` | Adds spacing between blocks throughout a Header row. | 
 
-2. In the theme's `blocks` folder, create a file to declare your store Header. For example:
-
-![header jsonc](https://user-images.githubusercontent.com/52087100/76867425-43a25b80-6844-11ea-938c-0f7870efdafc.png)
-
-:information_source: *The Header does not need to be declared in a specific template of your theme, once the app is defined as default store interface element in the `interfaces.json` file. This means that Store Framework will reproduce the configurations defined in the file you just created for all store templates behind the scenes. If you want to apply different configurations to each store template, check the **advanced configurations** section below.*
-
-3. First off, declare the two `header-layout` blocks, allowing you to define how the Header should be displayed for both mobile and desktop:
+2. First off, declare the two `header-layout` blocks, allowing you to define how the Header should be displayed for both mobile and desktop:
 
 ```json
 {
@@ -48,6 +42,9 @@ Now, you are able to use all blocks exported by the `store-header` app. Check ou
     ]
   },
 ```
+
+:information_source: *The Header does not need to be declared in a specific template of your theme, once the app is defined as default store interface element in the `interfaces.json` file. This means that Store Framework will reproduce the configurations defined in the file you just created for all store templates behind the scenes. If you want to apply different configurations to each store template, check the **advanced configurations** section below.*
+
 
 4. Configure both `header-layout.desktop` and `header-layout.mobile`, declaring `header-row` to create Header lines according to your store needs. 
 
