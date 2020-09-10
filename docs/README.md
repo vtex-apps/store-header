@@ -31,7 +31,7 @@ Now, you are able to use all blocks exported by the `store-header` app. Check ou
 | `header-force-center` | Centralizes its children blocks in a Header row. | 
 | `header-spacer` | Adds spacing between blocks throughout a Header row. | 
 
-2. First off, declare the two `header-layout` blocks, allowing you to define how the Header should be displayed for both mobile and desktop:
+2. Declare the two `header-layout` blocks, allowing you to define how the Header should be displayed for both mobile and desktop:
 
 ```json
 {
