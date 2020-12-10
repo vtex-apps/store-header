@@ -1,18 +1,29 @@
-import React, { FunctionComponent, useContext, CSSProperties } from 'react'
+import type { FunctionComponent, CSSProperties } from 'react'
+import React, { useContext } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import { useCssHandles } from 'vtex.css-handles'
+import type { CssHandlesTypes } from 'vtex.css-handles'
 
 import { RowContext } from './StickyRows'
+
+const CSS_HANDLES = ['headerStickyRow'] as const
 
 interface Props {
   sticky?: boolean
   zIndex?: number
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
-const CSS_HANDLES = ['headerStickyRow'] as const
+const StickyRow: FunctionComponent<Props> = ({
+  children,
+  sticky,
+  zIndex,
+  classes,
+}) => {
+  const { handles } = useCssHandles(CSS_HANDLES, {
+    classes,
+  })
 
-const StickyRow: FunctionComponent<Props> = ({ children, sticky, zIndex }) => {
-  const handles = useCssHandles(CSS_HANDLES)
   const { offset, onResize } = useContext(RowContext)
 
   const stickyStyle: CSSProperties = {

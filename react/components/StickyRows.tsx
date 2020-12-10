@@ -1,21 +1,24 @@
-import React, { FunctionComponent } from 'react'
+import type { PropsWithChildren } from 'react'
+import React from 'react'
 
 import useCumulativeHeightState from '../hooks/useCumulativeHeightState'
 
-const RowContext = React.createContext<{
+type RowContextType = {
   onResize(height: number): void
   offset: number
-}>({
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+}
+
+const RowContext = React.createContext<RowContextType>({
   onResize: () => {},
   offset: 0,
 })
 
-const StickyRows: FunctionComponent = ({ children }) => {
+// eslint-disable-next-line @typescript-eslint/ban-types
+function StickyRows({ children }: PropsWithChildren<{}>) {
   const { updateRowHeight, getAccumulatedHeight } = useCumulativeHeightState()
 
   return (
-    <React.Fragment>
+    <>
       {React.Children.map(children, (child, index) => (
         <RowContext.Provider
           value={{
@@ -26,9 +29,10 @@ const StickyRows: FunctionComponent = ({ children }) => {
           {child}
         </RowContext.Provider>
       ))}
-    </React.Fragment>
+    </>
   )
 }
 
 export default StickyRows
+
 export { RowContext }
