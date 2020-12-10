@@ -1,3 +1,4 @@
+import type { PropsWithChildren } from 'react'
 import React, { Suspense } from 'react'
 import { useChildBlock, NoSSR } from 'vtex.render-runtime'
 
@@ -5,16 +6,19 @@ import CustomHeader from './components/CustomHeader'
 
 const LegacyHeader = React.lazy(() => import('./legacy'))
 
-const Header = props => {
+function Header(props: PropsWithChildren<unknown>) {
   const hasHeaderDesktop = !!useChildBlock({
     id: 'header-layout.desktop',
   })
+
   const hasUnstableHeaderDesktop = !!useChildBlock({
     id: 'unstable--header-layout.desktop',
   })
+
   const hasHeaderMobile = !!useChildBlock({
     id: 'header-layout.mobile',
   })
+
   const hasUnstableHeaderMobile = !!useChildBlock({
     id: 'unstable--header-layout.mobile',
   })
@@ -36,6 +40,7 @@ const Header = props => {
   )
 }
 
+// @ts-expect-error - legacy code
 Header.schema = LegacyHeader.schema
 
 export default Header
