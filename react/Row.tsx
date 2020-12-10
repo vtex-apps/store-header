@@ -1,4 +1,4 @@
-import type { FunctionComponent } from 'react'
+import type { PropsWithChildren } from 'react'
 import React from 'react'
 import classNames from 'classnames'
 import { Container } from 'vtex.store-components'
@@ -22,14 +22,14 @@ interface Props {
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
-const Row: FunctionComponent<Props> = ({
+function Row({
   children,
   sticky,
   zIndex,
   fullWidth,
   inverted,
   classes,
-}) => {
+}: PropsWithChildren<Props>) {
   const { handles } = useCssHandles(CSS_HANDLES, {
     classes,
   })

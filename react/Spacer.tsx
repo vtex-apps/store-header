@@ -5,7 +5,7 @@ import { useCssHandles } from 'vtex.css-handles'
 
 const CSS_HANDLES = ['headerSpacer'] as const
 
-type Props = {
+interface Props {
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
