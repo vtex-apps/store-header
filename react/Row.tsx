@@ -1,9 +1,10 @@
-import React, { FunctionComponent } from 'react'
+import type { FunctionComponent } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 import { Container } from 'vtex.store-components'
 import { useCssHandles } from 'vtex.css-handles'
 
-import StickyRow from './StickyRow'
+import StickyRow from './components/StickyRow'
 
 interface Props {
   sticky?: boolean
