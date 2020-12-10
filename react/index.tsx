@@ -6,9 +6,6 @@ import CustomHeader from './components/CustomHeader'
 
 const LegacyHeader = React.lazy(() => import('./legacy'))
 
-/**
- * @deprecated Use `vtex.sticky-layout` and inline elements instead.
- */
 function Header(props: PropsWithChildren<unknown>) {
   const hasHeaderDesktop = !!useChildBlock({
     id: 'header-layout.desktop',
