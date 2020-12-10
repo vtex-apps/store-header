@@ -4,7 +4,7 @@ interface State {
   [id: string]: number
 }
 
-enum ActionTypes {
+const enum ActionTypes {
   UPDATE = 'update',
 }
 
@@ -25,6 +25,7 @@ const reducer = (state: State, action: Actions) => {
         ...state,
         [action.payload.index]: action.payload.height,
       }
+
     default:
       return state
   }
@@ -58,7 +59,7 @@ const useCumulativeHeightState = () => {
 
   const getAccumulatedHeight = (index: number) => {
     const sortedIndices = Object.keys(state)
-      .map(key => parseInt(key, 10))
+      .map((key) => parseInt(key, 10))
       .sort((a, b) => a - b)
 
     const indices = sortedIndices.slice(0, sortedIndices.indexOf(index))

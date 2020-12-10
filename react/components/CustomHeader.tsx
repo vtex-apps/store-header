@@ -1,8 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import type { FunctionComponent } from 'react'
+import React from 'react'
 import { Block } from 'vtex.render-runtime'
 import { useDevice } from 'vtex.device-detector'
 
-enum Device {
+const enum Device {
   mobile = 'mobile',
   desktop = 'desktop',
 }
@@ -16,7 +17,10 @@ const CustomHeaderLayout = React.memo(({ device }: { device: Device }) => {
           <Block id="unstable--header-layout.mobile" />
         </>
       )
+
     case Device.desktop:
+    // falls through
+
     default:
       return (
         <>
