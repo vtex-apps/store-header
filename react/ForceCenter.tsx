@@ -9,6 +9,9 @@ interface Props {
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
+/**
+ * @deprecated Use `vtex.sticky-layout` and inline elements instead.
+ */
 function ForceCenter({ children, classes }: PropsWithChildren<Props>) {
   const { handles } = useCssHandles(CSS_HANDLES, {
     classes,
