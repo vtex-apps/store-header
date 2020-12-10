@@ -15,13 +15,28 @@ const CSS_HANDLES = [
 ] as const
 
 interface Props {
+  /**
+   * Define if the row behaves in a sticky manner
+   * @default false
+   * */
   sticky?: boolean
   zIndex?: number
+  /**
+   * Define if the element takes the full width of its container
+   * @default false
+   * */
   fullWidth?: boolean
+  /**
+   * Define if the row should have inverted background and text colors
+   * @default false
+   * */
   inverted?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
+/**
+ * @deprecated Use the `vtex.sticky-layout` app instead.
+ */
 function Row({
   children,
   sticky,

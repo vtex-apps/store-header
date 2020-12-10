@@ -9,6 +9,10 @@ import { RowContext } from './StickyRows'
 const CSS_HANDLES = ['headerStickyRow'] as const
 
 interface Props {
+  /**
+   * Define if the element behaves in a sticky manner
+   * @default false
+   * */
   sticky?: boolean
   zIndex?: number
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>

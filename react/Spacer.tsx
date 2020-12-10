@@ -9,6 +9,9 @@ interface Props {
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
+/**
+ * @deprecated Use a simple inline element instead
+ */
 function Spacer({ classes }: PropsWithChildren<Props>) {
   const { handles } = useCssHandles(CSS_HANDLES, {
     classes,
