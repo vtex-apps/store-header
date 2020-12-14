@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.25.7] - 2020-12-14
+
 ### Changed
 - Deprecate usage of `Row`. `Spacer`, `Layout`, `Border` and `ForceCenter`.
 - Use `vtex.css-handles@1.x`.
