@@ -14,7 +14,7 @@ const customRender = (node, options) => {
 
   return {
     ...rendered,
-    rerender: newUi =>
+    rerender: (newUi) =>
       customRender(newUi, {
         container: rendered.container,
         baseElement: rendered.baseElement,

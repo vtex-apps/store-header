@@ -2,11 +2,13 @@ import React from 'react'
 
 export const useRuntime = () => {
   let hints = { mobile: false, desktop: true }
-  const setHints = h => {
+  const setHints = (h) => {
     hints = h
   }
+
   const page = 'test'
   const getSettings = () => ({ storeName: 'Store Name' })
+
   return { hints, setHints, page, getSettings }
 }
 
