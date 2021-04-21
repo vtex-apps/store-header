@@ -1,0 +1,14 @@
+{
+  "admin/editor.header.title": "Ylätunniste",
+  "admin/editor.header.description": "Otsikkokomponentti",
+  "admin/editor.header.logo.title": "Logo",
+  "admin/editor.header.logo.image": "Logo-kuva",
+  "admin/editor.header.link.url": "Logo-linkki",
+  "admin/editor.header.show.searchbar.title": "Näytä hakurivi",
+  "admin/editor.header.show.login.title": "Näytä kirjautuminen",
+  "store/header.search-placeholder": "Hae tuotteita, brändejä...",
+  "store/header.search-emptyPlaceholder": "Tuloksia ei löytynyt",
+  "store/header.topMenu.minicart.icon.label": "Oma ostoskori",
+  "store/header.topMenu.login.icon.label": "Kirjaudu sisään",
+  "store/header.search-cancel": "Peruuta"
+}
