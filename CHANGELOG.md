@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- I18n Da, Fi, Ja, Ko and Ro.
+
+### Changed
+- Crowdin configuration file.
+
 ## [2.25.7] - 2020-12-14
 
 ### Changed
