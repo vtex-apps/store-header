@@ -1,0 +1,14 @@
+{
+  "admin/editor.header.title": "ヘッダー",
+  "admin/editor.header.description": "ヘッダーコンポーネント",
+  "admin/editor.header.logo.title": "ロゴ",
+  "admin/editor.header.logo.image": "ロゴ画像",
+  "admin/editor.header.link.url": "ロゴリンク",
+  "admin/editor.header.show.searchbar.title": "検索バーを表示",
+  "admin/editor.header.show.login.title": "ログインを表示",
+  "store/header.search-placeholder": "製品やブランドを検索…",
+  "store/header.search-emptyPlaceholder": "一致しませんでした",
+  "store/header.topMenu.minicart.icon.label": "マイカート",
+  "store/header.topMenu.login.icon.label": "サインイン",
+  "store/header.search-cancel": "キャンセル"
+}

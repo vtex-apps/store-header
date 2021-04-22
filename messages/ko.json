@@ -1,0 +1,14 @@
+{
+  "admin/editor.header.title": "헤더",
+  "admin/editor.header.description": "헤더 구성 요소",
+  "admin/editor.header.logo.title": "로고",
+  "admin/editor.header.logo.image": "로고 이미지",
+  "admin/editor.header.link.url": "로고 링크",
+  "admin/editor.header.show.searchbar.title": "검색창 표시",
+  "admin/editor.header.show.login.title": "로그인 표시",
+  "store/header.search-placeholder": "제품, 브랜드 검색...",
+  "store/header.search-emptyPlaceholder": "일치하는 항목을 찾을 수 없음",
+  "store/header.topMenu.minicart.icon.label": "내 장바구니",
+  "store/header.topMenu.login.icon.label": "로그인",
+  "store/header.search-cancel": "취소"
+}
