@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Norwegian and Norwegian variant translations.
+
 ## [2.27.0] - 2021-09-29
 
 ### Added
@@ -38,7 +41,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- `header-force-center` is now documented. 
+- `header-force-center` is now documented.
 
 ## [2.25.3] - 2020-02-12
 
