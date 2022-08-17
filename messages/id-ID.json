@@ -1,0 +1,14 @@
+{
+  "admin/editor.header.title": "Header",
+  "admin/editor.header.description": "Komponen header",
+  "admin/editor.header.logo.title": "Logo",
+  "admin/editor.header.logo.image": "Gambar logo",
+  "admin/editor.header.link.url": "Tautan logo",
+  "admin/editor.header.show.searchbar.title": "Tampilkan Bilah Pencarian",
+  "admin/editor.header.show.login.title": "Tampilkan Log Masuk",
+  "store/header.search-placeholder": "Cari produk, merek...",
+  "store/header.search-emptyPlaceholder": "Tidak ada yang cocok",
+  "store/header.topMenu.minicart.icon.label": "Troli Saya",
+  "store/header.topMenu.login.icon.label": "Masuk",
+  "store/header.search-cancel": "Batalkan"
+}
