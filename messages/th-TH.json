@@ -1,0 +1,14 @@
+{
+  "admin/editor.header.title": "ส่วนหัวของหน้า",
+  "admin/editor.header.description": "คอมโพเนนต์ของส่วนหัวของหน้า",
+  "admin/editor.header.logo.title": "โลโก้",
+  "admin/editor.header.logo.image": "รูปภาพโลโก้",
+  "admin/editor.header.link.url": "ลิงก์โลโก้",
+  "admin/editor.header.show.searchbar.title": "แสดงแถบค้นหา",
+  "admin/editor.header.show.login.title": "แสดงการเข้าสู่ระบบ",
+  "store/header.search-placeholder": "ค้นหาผลิตถัณฑ์ แบรนด์...",
+  "store/header.search-emptyPlaceholder": "ไม่พบข้อมูลที่ตรงกัน",
+  "store/header.topMenu.minicart.icon.label": "รถเข็นของฉัน",
+  "store/header.topMenu.login.icon.label": "ลงชื่อเข้าใช้",
+  "store/header.search-cancel": "ยกเลิก"
+}
