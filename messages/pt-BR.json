@@ -1,0 +1,14 @@
+{
+  "admin/editor.header.title": "Cabeçalho",
+  "admin/editor.header.description": "Componente de cabeçalho",
+  "admin/editor.header.logo.title": "Logotipo",
+  "admin/editor.header.logo.image": "Imagem do logotipo",
+  "admin/editor.header.link.url": "Link do logotipo",
+  "admin/editor.header.show.searchbar.title": "Mostrar busca",
+  "admin/editor.header.show.login.title": "Mostrar login",
+  "store/header.search-placeholder": "Busque por produtos, marcas...",
+  "store/header.search-emptyPlaceholder": "Nenhum resultado encontrado",
+  "store/header.topMenu.minicart.icon.label": "Meu carrinho",
+  "store/header.topMenu.login.icon.label": "Entrar",
+  "store/header.search-cancel": "Cancelar"
+}
