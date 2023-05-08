@@ -1,0 +1,14 @@
+{
+  "admin/editor.header.title": "Header",
+  "admin/editor.header.description": "Header component",
+  "admin/editor.header.logo.title": "Logo",
+  "admin/editor.header.logo.image": "Logo image",
+  "admin/editor.header.link.url": "Logo link",
+  "admin/editor.header.show.searchbar.title": "Show Search Bar",
+  "admin/editor.header.show.login.title": "Show Login",
+  "store/header.search-placeholder": "Search by products, brands...",
+  "store/header.search-emptyPlaceholder": "No matches found",
+  "store/header.topMenu.minicart.icon.label": "My Cart",
+  "store/header.topMenu.login.icon.label": "Sign In",
+  "store/header.search-cancel": "Cancel"
+}
