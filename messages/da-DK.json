@@ -1,0 +1,14 @@
+{
+  "admin/editor.header.title": "Overskrift",
+  "admin/editor.header.description": "Overskrift komponent",
+  "admin/editor.header.logo.title": "Logo",
+  "admin/editor.header.logo.image": "Logobillede",
+  "admin/editor.header.link.url": "Logolink",
+  "admin/editor.header.show.searchbar.title": "Vis søgebar",
+  "admin/editor.header.show.login.title": "Vis login",
+  "store/header.search-placeholder": "Søg efter produkter, brands...",
+  "store/header.search-emptyPlaceholder": "Ingen matches fundet",
+  "store/header.topMenu.minicart.icon.label": "Min kurv",
+  "store/header.topMenu.login.icon.label": "Log ind",
+  "store/header.search-cancel": "Annuller"
+}
