@@ -1,0 +1,14 @@
+{
+  "admin/editor.header.title": "Fejléc",
+  "admin/editor.header.description": "Fejlécösszetevő",
+  "admin/editor.header.logo.title": "Logó",
+  "admin/editor.header.logo.image": "Logókép",
+  "admin/editor.header.link.url": "Logóhivatkozás",
+  "admin/editor.header.show.searchbar.title": "Keresősáv megjelenítése",
+  "admin/editor.header.show.login.title": "Bejelentkezés megjelenítése",
+  "store/header.search-placeholder": "Termékek, márkák stb. keresése.",
+  "store/header.search-emptyPlaceholder": "Nincs találat",
+  "store/header.topMenu.minicart.icon.label": "Saját kosár",
+  "store/header.topMenu.login.icon.label": "Bejelentkezés",
+  "store/header.search-cancel": "Mégse"
+}
