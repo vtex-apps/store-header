@@ -1,0 +1,14 @@
+{
+  "admin/editor.header.title": "Antet",
+  "admin/editor.header.description": "Componentă antet",
+  "admin/editor.header.logo.title": "Logo",
+  "admin/editor.header.logo.image": "Imagine logo",
+  "admin/editor.header.link.url": "Link logo",
+  "admin/editor.header.show.searchbar.title": "Arată Bara de căutare",
+  "admin/editor.header.show.login.title": "Arată Autentificarea",
+  "store/header.search-placeholder": "Caută produse, mărci...",
+  "store/header.search-emptyPlaceholder": "Nu s-a găsit niciun rezultat",
+  "store/header.topMenu.minicart.icon.label": "Coșul meu",
+  "store/header.topMenu.login.icon.label": "Autentificare",
+  "store/header.search-cancel": "Anulează"
+}
