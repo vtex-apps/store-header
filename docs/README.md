@@ -5,6 +5,8 @@
 
 # Header
 
+[<i class="fa-brands fa-github"></i> Source code](https://github.com/vtex-apps/store-header)
+
 The Header app displays a navigation bar at the top of your store's pages. It serves as the central hub for essential navigation elements, such as your store's [logo](https://vtex.io/docs/components/all/vtex.store-components/logo), the [minicart](https://vtex.io/docs/components/all/vtex.minicart/), user [login](https://vtex.io/docs/components/all/vtex.login/) and [search bar](https://vtex.io/docs/components/all/vtex.store-components/search-bar).
 
 ![header](https://user-images.githubusercontent.com/52087100/74090325-b6235d00-4a88-11ea-8227-317f93204d8f.png) 
