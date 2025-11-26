@@ -7,7 +7,7 @@
 
 [<i class="fa-brands fa-github"></i> Source code](https://github.com/vtex-apps/store-header)
 
-The Header app displays a navigation bar at the top of your store pages. It serves as the central hub for essential navigation elements, such as your store [logo](https://vtex.io/docs/components/all/vtex.store-components/logo), the [minicart](https://vtex.io/docs/components/all/vtex.minicart/), user [login](https://vtex.io/docs/components/all/vtex.login/) and the [search bar](https://vtex.io/docs/components/all/vtex.store-components/search-bar).
+The Header app displays a navigation bar at the top of your store pages. It serves as the central hub for essential navigation elements, such as your store [logo](https://developers.vtex.com/docs/apps/vtex.store-components/logo), the [minicart](https://developers.vtex.com/docs/apps/vtex.minicart), user [login](https://developers.vtex.com/docs/apps/vtex.login), and the [search bar](https://developers.vtex.com/docs/apps/vtex.store-components/searchbar).
 
 ![header](https://user-images.githubusercontent.com/52087100/74090325-b6235d00-4a88-11ea-8227-317f93204d8f.png) 
 
@@ -178,7 +178,7 @@ For detailed instructions, see the guide [Customizing the Header and Footer bloc
 
 ## Customization
 
-To apply CSS customizations to these and other blocks, follow the instructions in [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
+To apply CSS customizations to these and other blocks, follow the instructions in [Using CSS Handles for store customization](https://developers.vtex.com/docs/guides/vtex-io-documentation-using-css-handles-for-store-customization).
 
 | CSS Handles          | 
 |----------------------|
